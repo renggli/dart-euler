@@ -9,7 +9,8 @@ library problem_010;
 
 import 'problem_003.dart' as problem_003;
 
+var max = 2000000;
+
 void main() {
-  var max = 2000000;
   print(problem_003.primesUpTo(max).reduce((a, b) => a + b)); // 142913828922
 }

@@ -11,9 +11,9 @@
  */
 library problem_002;
 
-void main() {
-  var max = 4000000;
+var max = 4000000;
 
+void main() {
   var s = 0;
   var a = 1, b = 0;
   while (true) {

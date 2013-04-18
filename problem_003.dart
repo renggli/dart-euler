@@ -54,9 +54,9 @@ List<int> primesUpTo(int max) {
   return primes;
 }
 
-void main() {
-  var value = 600851475143;
+var value = 600851475143;
 
+void main() {
   var max = sqrt(value).ceil();
   for (int factor in primesUpTo(max).reversed) {
     if (value % factor == 0) {

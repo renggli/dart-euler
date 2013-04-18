@@ -12,9 +12,9 @@
  */
 library problem_009;
 
-void main() {
-  var sum = 1000;
+var sum = 1000;
 
+void main() {
   for (var a = 1; a <= sum - 2; a++) {
     for (var b = a; b <= sum - a - 1; b++) {
       var c = sum - a - b;

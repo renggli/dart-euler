@@ -19,10 +19,10 @@ bool isPalindrome(int p) {
   return true;
 }
 
-void main() {
-  var min = 100;
-  var max = 999;
+var min = 100;
+var max = 999;
 
+void main() {
   var c = -1;
   for (var i = max; i >= min; i--) {
     for (var j = i; j >= min; j--) {

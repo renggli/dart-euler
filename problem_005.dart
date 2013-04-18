@@ -22,10 +22,10 @@ int lcm(int a, int b) {
   return a * b ~/ gcd(a, b);
 }
 
-void main() {
-  var min = 1;
-  var max = 20;
+var min = 1;
+var max = 20;
 
+void main() {
   var result = 1;
   for (int i = min; i <= max; i++) {
     result = lcm(result, i);

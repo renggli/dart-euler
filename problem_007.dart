@@ -10,7 +10,8 @@ library problem_007;
 
 import 'problem_003.dart' as problem_003;
 
+var ith = 10001;
+
 void main() {
-  var ith = 10001;
   print(problem_003.primesUpTo(1000000)[ith - 1]); // 104743
 }
