@@ -24,13 +24,13 @@ void main() {
   var max = 999;
 
   var c = -1;
-  for (var i = max; i > min; i--) {
-    for (var j = i; j > min; j--) {
+  for (var i = max; i >= min; i--) {
+    for (var j = i; j >= min; j--) {
       var p = i * j;
       if (p > c && isPalindrome(p)) {
         c = p;
       }
     }
   }
-  print(c);
+  print(c); // 906609
 }

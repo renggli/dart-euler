@@ -60,7 +60,7 @@ void main() {
   var max = sqrt(value).ceil();
   for (int factor in primesUpTo(max).reversed) {
     if (value % factor == 0) {
-      print(factor);
+      print(factor); // 6857
       return;
     }
   }
