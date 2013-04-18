@@ -22,7 +22,7 @@ void main() {
       print(s);
       return;
     }
-    if (c % 2 == 0) {
+    if (c.isEven) {
       s += c;
     }
     a = b;
