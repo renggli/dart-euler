@@ -12,6 +12,18 @@
 library problem_002;
 
 void main() {
-
-
+  var s = 0;
+  var a = 1, b = 0;
+  while (true) {
+    var c = a + b;
+    if (c > 4000000) {
+      print(s);
+      return;
+    }
+    if (c % 2 == 0) {
+      s += c;
+    }
+    a = b;
+    b = c;
+  }
 }
