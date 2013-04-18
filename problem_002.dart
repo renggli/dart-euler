@@ -12,11 +12,13 @@
 library problem_002;
 
 void main() {
+  var max = 4000000;
+
   var s = 0;
   var a = 1, b = 0;
   while (true) {
     var c = a + b;
-    if (c > 4000000) {
+    if (c > max) {
       print(s);
       return;
     }

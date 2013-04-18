@@ -9,8 +9,10 @@
 library problem_001;
 
 void main() {
+  var max = 1000;
+
   var total = 0;
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < max; i++) {
     if (i % 3 == 0 || i % 5 == 0) {
       total += i;
     }
