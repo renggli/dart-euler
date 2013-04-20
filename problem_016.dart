@@ -22,10 +22,9 @@ num power(int x, int n) {
 var exp = 1000;
 
 void main() {
-  var offset = '0'.runes.first;
   print(power(2, exp)
       .toString()
       .runes
-      .map((each) => each - offset)
+      .map((each) => each - '0'.runes.first)
       .reduce((a, b) => a + b)); // 1366
 }
