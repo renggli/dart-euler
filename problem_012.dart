@@ -24,25 +24,18 @@
  */
 library problem_012;
 
-int numberOfDivisors(int number) {
-  if (number < 1) {
-    throw new Error();
-  }
-  if (number < 3) {
-    return number;
-  }
-  var count = 2; // 1 and n
-  var index = 2;
-  while (index * index < number) {
-    if (number % index == 0) {
-      count += 2;
+int numberOfDivisors(int n) {
+  var c = 0, d = 1;
+  while (d * d < n) {
+    if (n % d == 0) {
+      c += 2;
     }
-    index++;
+    d++;
   }
-  if (index * index == number) {
-    count++;
+  if (d * d == n) {
+    c++;
   }
-  return count;
+  return c;
 }
 
 var divisors = 500;
