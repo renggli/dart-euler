@@ -28,18 +28,20 @@ import 'problem_021.dart';
 var max = 28123;
 
 void main() {
-  var hasSum = new BitSet(max + 1);
   var abundant = new List();
   for (var i = 1; i <= max; i++) {
     if (sumOfProperDivisors(i) > i) {
       abundant.add(i);
     }
   }
+  var hasSum = new BitSet(max + 1);
   for (var i = 0; i < abundant.length; i++) {
     for (var j = i; j < abundant.length; j++) {
       var sum = abundant[i] + abundant[j];
       if (sum <= max) {
         hasSum[sum] = true;
+      } else {
+        break;
       }
     }
   }
