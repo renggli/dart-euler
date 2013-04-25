@@ -7,8 +7,8 @@ contains all the solutions I came up with. Most of the code is implemented
 using [Dart](http://dartlang.org).
 
 None of the code produces actual output, but instead performs a single
-assertion that veryfies that the result is still correct. To run all the
-puzzles from the command line evaluate the following line of code and 
-and wait for a few seconds:
+assertion that veryfies that the result is still correct. I focus on
+short, elegant and fast solutions. To run all the puzzles from the command 
+line evaluate the following line of code:
 
     find . -name "*.dart" -print -exec dart --checked "{}" \;
