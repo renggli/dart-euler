@@ -9,27 +9,10 @@
  */
 library problem_015;
 
-/**
- * The number of ways to arrange [n] distinct objects into a sequence.
- */
-int factorial(int value) {
-  var result = 1;
-  for (var i = 2; i <= value; i++) {
-    result *= i;
-  }
-  return result;
-}
-
-/**
- * The number of ways, disregarding order, that [k] objects can be chosen from
- * among [n] objects.
- */
-int binominal(int n, int k) {
-  return factorial(n) ~/ (factorial(k) * factorial(n - k));
-}
+import 'package:more/int_math.dart';
 
 var grid = 20;
 
 void main() {
-  assert(binominal(2 * grid, grid) == 137846528820);
+  assert(binomial(2 * grid, grid) == 137846528820);
 }

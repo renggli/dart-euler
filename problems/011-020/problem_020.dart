@@ -11,7 +11,7 @@
  */
 library problem_020;
 
-import 'problem_015.dart';
+import 'package:more/int_math.dart';
 
 void main() {
   var sum = (factorial(100).toString().codeUnits

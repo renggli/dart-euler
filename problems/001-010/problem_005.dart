@@ -9,18 +9,7 @@
  */
 library problem_005;
 
-int gcd(int a, int b) {
-  while (b != 0) {
-    var t = b;
-    b = a % b;
-    a = t;
-  }
-  return a;
-}
-
-int lcm(int a, int b) {
-  return a * b ~/ gcd(a, b);
-}
+import 'package:more/int_math.dart';
 
 var min = 1;
 var max = 20;

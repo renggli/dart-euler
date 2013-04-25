@@ -7,17 +7,7 @@
  */
 library problem_016;
 
-num power(int x, int n) {
-  if (n == 0) {
-    return 1;
-  } else if (n < 0) {
-    return 1 / -power(x, -n);
-  } else if (n.isEven) {
-    return power(x * x, n ~/ 2);
-  } else {
-    return x * power(x, n - 1);
-  }
-}
+import 'package:more/int_math.dart';
 
 var exp = 1000;
 
