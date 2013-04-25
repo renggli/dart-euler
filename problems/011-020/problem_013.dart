@@ -109,7 +109,8 @@ List<int> numbers = [
    53503534226472524250874054075591789781264330331690];
 
 void main() {
-  print(numbers.reduce((a, b) => a + b)
+  var sum = numbers.reduce((a, b) => a + b)
       .toString()
-      .substring(0, 10)); // 5537376230
+      .substring(0, 10);
+  assert(sum == '5537376230');
 }

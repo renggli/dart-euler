@@ -32,5 +32,5 @@ void main() {
       }
     }
   }
-  print(c); // 906609
+  assert(c == 906609);
 }

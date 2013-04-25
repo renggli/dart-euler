@@ -29,5 +29,5 @@ void main() {
       }
     }
   }
-  print(sundays); // 171
+  assert(sundays == 171);
 }

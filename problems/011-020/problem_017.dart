@@ -63,5 +63,5 @@ void main() {
   for (var i = 1; i <= 1000; i++) {
     total += spell(i).join('').length;
   }
-  print(total); // 21124
+  assert(total == 21124);
 }

@@ -14,7 +14,8 @@ library problem_020;
 import 'problem_015.dart';
 
 void main() {
-  print(factorial(100).toString().codeUnits
+  var sum = (factorial(100).toString().codeUnits
       .map((each) => each - '0'.codeUnits.first)
-      .reduce((a, b) => a + b)); // 648
+      .reduce((a, b) => a + b));
+  assert(sum == 648);
 }

@@ -30,5 +30,5 @@ void main() {
   for (int i = min; i <= max; i++) {
     result = lcm(result, i);
   }
-  print(result); // 232792560
+  assert(result == 232792560);
 }

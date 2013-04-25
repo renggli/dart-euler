@@ -19,7 +19,7 @@ void main() {
   while (true) {
     var c = a + b;
     if (c > max) {
-      print(s); // 4613732
+      assert(s == 4613732);
       return;
     }
     if (c.isEven) {
@@ -28,4 +28,5 @@ void main() {
     a = b;
     b = c;
   }
+  assert(false);
 }

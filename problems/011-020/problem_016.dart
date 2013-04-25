@@ -22,9 +22,10 @@ num power(int x, int n) {
 var exp = 1000;
 
 void main() {
-  print(power(2, exp)
+  var sum = power(2, exp)
       .toString()
       .runes
       .map((each) => each - '0'.runes.first)
-      .reduce((a, b) => a + b)); // 1366
+      .reduce((a, b) => a + b);
+  assert(sum == 1366);
 }

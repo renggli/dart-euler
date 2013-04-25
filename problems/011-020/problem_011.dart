@@ -53,5 +53,5 @@ void main() {
       }
     }
   }
-  print(max); // 70600674
+  assert(max == 70600674);
 }

@@ -47,5 +47,5 @@ void main() {
         triangle[row][col] + triangle[row + 1][col + 1]);
     }
   }
-  print(triangle[0][0]); // 1074
+  assert(triangle[0][0] == 1074);
 }

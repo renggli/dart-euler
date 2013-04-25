@@ -51,5 +51,5 @@ void main() {
       c_m = collatz(i);
     }
   }
-  print('$i_m'); // 837799
+  assert(i_m == 837799);
 }

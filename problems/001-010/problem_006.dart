@@ -28,7 +28,8 @@ num sum(int start, int stop, num fun(int)) {
 var max = 100;
 
 void main() {
-  var sum_of_squares = max * (max + 1) ~/ 2;
+  var sum_of_squares = sum(1, max, (i) => i * i);
   var square_of_sums = sum(1, max, (i) => i) * sum(1, max, (i) => i);
-  print(square_of_sums - sum_of_squares); // 25164150
+  var total = square_of_sums - sum_of_squares;
+  assert(total == 25164150);
 }

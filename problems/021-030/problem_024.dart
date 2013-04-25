@@ -56,5 +56,5 @@ void main() {
   for (var i = 1; i < ith; i++) {
     nextPermutation(list);
   }
-  print(list.join()); // 2783915460
+  assert(list.join() == '2783915460');
 }

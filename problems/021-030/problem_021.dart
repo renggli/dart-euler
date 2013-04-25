@@ -41,5 +41,5 @@ void main() {
       sum += a + b;
     }
   }
-  print(sum); // 31626
+  assert(sum == 31626);
 }

@@ -17,5 +17,5 @@ void main() {
       total += i;
     }
   }
-  print(total); // 233168
+  assert(total == 233168);
 }

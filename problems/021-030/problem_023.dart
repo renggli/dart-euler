@@ -22,7 +22,7 @@
  */
 library problem_023;
 
-import 'problem_003.dart';
+import 'package:more/bit_set.dart';
 import 'problem_021.dart';
 
 var max = 28123;
@@ -49,5 +49,5 @@ void main() {
       sum += i;
     }
   }
-  print(sum); // 4179871
+  assert(sum == 4179871);
 }

@@ -45,9 +45,10 @@ void main() {
   while (true) {
     t += i;
     if (numberOfDivisors(t) > divisors) {
-      print(t); // 76576500
+      assert(t == 76576500);
       return;
     }
     i++;
   }
+  assert(false);
 }

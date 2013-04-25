@@ -13,5 +13,5 @@ import 'problem_003.dart' as problem_003;
 var ith = 10001;
 
 void main() {
-  print(problem_003.primesUpTo(1000000)[ith - 1]); // 104743
+  assert(problem_003.primesUpTo(1000000)[ith - 1] == 104743);
 }

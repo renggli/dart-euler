@@ -19,11 +19,12 @@ void main() {
     for (var b = a; b <= sum - a - 1; b++) {
       var c = sum - a - b;
       if (a * a + b * b == c * c) {
-        print(a * b * c); // 31875000
+        assert(a * b * c == 31875000);
         return;
       }
     }
   }
+  assert(false);
 }
 
 

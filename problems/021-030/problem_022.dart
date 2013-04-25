@@ -371,7 +371,8 @@ int score(String name) {
 void main() {
   names.sort();
   var index = 0;
-  print(names
+  var total = names
       .map((each) => ++index * score(each))
-      .reduce((a, b) => a + b)); // 871198282
+      .reduce((a, b) => a + b);
+  assert(total == 871198282);
 }

@@ -12,5 +12,6 @@ import 'problem_003.dart' as problem_003;
 var max = 2000000;
 
 void main() {
-  print(problem_003.primesUpTo(max).reduce((a, b) => a + b)); // 142913828922
+  var sum = problem_003.primesUpTo(max).reduce((a, b) => a + b);
+  assert(sum == 142913828922);
 }

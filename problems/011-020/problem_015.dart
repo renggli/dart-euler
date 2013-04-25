@@ -31,5 +31,5 @@ int binominal(int n, int k) {
 var grid = 20;
 
 void main() {
-  print(binominal(2 * grid, grid)); // 137846528820
+  assert(binominal(2 * grid, grid) == 137846528820);
 }

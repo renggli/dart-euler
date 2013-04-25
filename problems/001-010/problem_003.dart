@@ -8,37 +8,7 @@
 library problem_003;
 
 import 'dart:math';
-import 'dart:typeddata';
-
-class BitSet {
-
-  static final int BITS_PER_INDEX = 32;
-
-  final Uint32List _buffer;
-
-  BitSet._(this._buffer);
-
-  factory BitSet(int size) {
-    return new BitSet._(new Uint32List(1 + size ~/ BITS_PER_INDEX));
-  }
-
-  bool operator [] (int index) {
-    var i = index ~/ BITS_PER_INDEX;
-    var j = index % BITS_PER_INDEX;
-    return (_buffer[i] & (1 << j)) != 0;
-  }
-
-  void operator []= (int index, bool value) {
-    var i = index ~/ BITS_PER_INDEX;
-    var j = index % BITS_PER_INDEX;
-    if (value) {
-      _buffer[i] |= (1 << j);
-    } else {
-      _buffer[i] &= ~(1 << j);
-    }
-  }
-
-}
+import 'package:more/bit_set.dart';
 
 List<int> primesUpTo(int max) {
   List<int> primes = new List();
@@ -60,8 +30,9 @@ void main() {
   var max = sqrt(value).ceil();
   for (int factor in primesUpTo(max).reversed) {
     if (value % factor == 0) {
-      print(factor); // 6857
+      assert(factor == 6857);
       return;
     }
   }
+  assert(false);
 }
