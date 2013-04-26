@@ -8,15 +8,12 @@
  */
 library problem_004;
 
+import 'package:more/range.dart';
+
 bool isPalindrome(int p) {
   var s = p.toString();
-  var m = s.length ~/ 2;
-  for (int i = 0; i < m; i++) {
-    if (s[i] != s[s.length - i - 1]) {
-      return false;
-    }
-  }
-  return true;
+  return range(s.length ~/ 2)
+      .every((i) => s[i] == s[s.length - i - 1]);
 }
 
 var min = 100;

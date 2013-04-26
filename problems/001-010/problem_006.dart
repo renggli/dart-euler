@@ -17,12 +17,12 @@
  */
 library problem_006;
 
+import 'package:more/range.dart';
+
 num sum(int start, int stop, num fun(int)) {
-  var result = 0;
-  for (int i = start; i <= stop; i++) {
-    result += fun(i);
-  }
-  return result;
+  return range(start, stop + 1)
+      .map(fun)
+      .reduce((a, b) => a + b);
 }
 
 var max = 100;

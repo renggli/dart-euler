@@ -8,14 +8,13 @@
  */
 library problem_001;
 
+import 'package:more/range.dart';
+
 var max = 1000;
 
 void main() {
-  var total = 0;
-  for (var i = 0; i < max; i++) {
-    if (i % 3 == 0 || i % 5 == 0) {
-      total += i;
-    }
-  }
+  var total = range(max)
+      .where((i) => i % 3 == 0 || i % 5 == 0)
+      .reduce((a, b) => a + b);
   assert(total == 233168);
 }
