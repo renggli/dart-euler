@@ -30,7 +30,7 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 var digits = 1000;
-var limit = power(10, digits - 1);
+var limit = pow(10, digits - 1);
 
 void main() {
   var count = fib(1, 1)

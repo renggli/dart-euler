@@ -19,6 +19,8 @@
  */
 library problem_019;
 
+import 'package:more/range.dart';
+
 void main() {
   var sundays = 0;
   for (var year = 1901; year <= 2000; year++) {
