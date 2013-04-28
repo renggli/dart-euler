@@ -11,22 +11,14 @@
  */
 library problem_002;
 
+import 'package:more/iterable.dart';
+
 var max = 4000000;
 
 void main() {
-  var s = 0;
-  var a = 1, b = 0;
-  while (true) {
-    var c = a + b;
-    if (c > max) {
-      assert(s == 4613732);
-      return;
-    }
-    if (c.isEven) {
-      s += c;
-    }
-    a = b;
-    b = c;
-  }
-  assert(false);
+  var sum = fib(1, 2)
+      .takeWhile((v) => v < max)
+      .where((v) => v.isEven)
+      .reduce((a, b) => a + b);
+  assert(sum == 4613732);
 }

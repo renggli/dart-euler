@@ -13,8 +13,8 @@ import 'package:more/range.dart';
 var max = 1000;
 
 void main() {
-  var total = range(max)
+  var sum = range(max)
       .where((i) => i % 3 == 0 || i % 5 == 0)
       .reduce((a, b) => a + b);
-  assert(total == 233168);
+  assert(sum == 233168);
 }

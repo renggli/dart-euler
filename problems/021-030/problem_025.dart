@@ -27,17 +27,14 @@
 library problem_024;
 
 import 'package:more/int_math.dart';
+import 'package:more/iterable.dart';
 
 var digits = 1000;
 var limit = power(10, digits - 1);
 
 void main() {
-  int index = 0, current = 0, previous = 1;
-  while (current < limit) {
-    var temporary = current;
-    current += previous;
-    previous = temporary;
-    index++;
-  }
-  assert(index == 4782);
+  var count = fib(1, 1)
+      .takeWhile((v) => v < limit)
+      .fold(1, (a, b) => a + 1);
+  assert(count == 4782);
 }

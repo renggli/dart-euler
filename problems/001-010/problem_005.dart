@@ -16,5 +16,6 @@ var min = 1;
 var max = 20;
 
 void main() {
-  assert(range(min, max + 1).fold(1, lcm) == 232792560);
+  var result = range(min, max + 1).fold(1, lcm);
+  assert(result == 232792560);
 }

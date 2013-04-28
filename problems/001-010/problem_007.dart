@@ -8,10 +8,10 @@
  */
 library problem_007;
 
-import 'problem_003.dart' as problem_003;
+import 'package:more/int_math.dart';
 
 var ith = 10001;
 
 void main() {
-  assert(problem_003.primesUpTo(1000000)[ith - 1] == 104743);
+  assert(primesUpTo(1000000)[ith - 1] == 104743);
 }

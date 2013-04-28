@@ -12,7 +12,7 @@ import 'package:more/int_math.dart';
 var exp = 1000;
 
 void main() {
-  var sum = power(2, exp)
+  var sum = pow(2, exp)
       .toString()
       .runes
       .map((each) => each - '0'.runes.first)
