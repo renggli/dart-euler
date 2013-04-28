@@ -24,7 +24,7 @@
  *
  * What is the first term in the Fibonacci sequence to contain 1000 digits?
  */
-library problem_024;
+library problem_025;
 
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
