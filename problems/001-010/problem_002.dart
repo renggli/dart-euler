@@ -16,7 +16,7 @@ import 'package:more/iterable.dart';
 var max = 4000000;
 
 void main() {
-  var sum = fib(1, 2)
+  var sum = fibonacci(1, 2)
       .takeWhile((v) => v < max)
       .where((v) => v.isEven)
       .reduce((a, b) => a + b);

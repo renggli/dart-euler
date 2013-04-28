@@ -33,7 +33,7 @@ var digits = 1000;
 var limit = pow(10, digits - 1);
 
 void main() {
-  var count = fib(1, 1)
+  var count = fibonacci(1, 1)
       .takeWhile((v) => v < limit)
       .fold(1, (a, b) => a + 1);
   assert(count == 4782);
