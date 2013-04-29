@@ -12,3 +12,8 @@ short, elegant and fast solutions. To run all the puzzles from the command
 line evaluate the following line of code:
 
     find . -name "*.dart" -print -exec dart --checked "{}" \;
+
+If the packages cannot be found after running "pub install" evaluate the
+following code to create the necessary links:
+
+    find problems -d 1 -exec ln -fs "../../packages" "{}/packages" \;
