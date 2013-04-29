@@ -22,7 +22,7 @@
  */
 library problem_014;
 
-import 'dart:typeddata';
+import 'dart:typed_data';
 
 var max = 1000000;
 

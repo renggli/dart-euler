@@ -15,7 +15,7 @@
  */
 library problem_021;
 
-import 'dart:typeddata';
+import 'dart:typed_data';
 
 int sumOfProperDivisors(int n) {
   var s = 1, d = 2;
