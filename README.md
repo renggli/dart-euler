@@ -16,4 +16,5 @@ line evaluate the following line of code:
 If the packages cannot be found after running "pub install" evaluate the
 following code to create the necessary links:
 
-    find problems -d 1 -exec ln -fs "../../packages" "{}/packages" \;
+    find problems -type d -exec ln -fs "../../packages" "{}/packages" \;
+
