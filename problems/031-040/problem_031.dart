@@ -14,9 +14,6 @@
  */
 library problem_031;
 
-// import 'package:more/int_math.dart';
-// import 'package:more/range.dart';
-
 final coins = const [1, 2, 5, 10, 20, 50, 100, 200];
 final target = 200;
 
