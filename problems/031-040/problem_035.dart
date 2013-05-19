@@ -12,10 +12,23 @@
 library problem_035;
 
 import 'package:more/int_math.dart';
+import 'package:more/iterable.dart';
 
 final max = 1000000;
-final primes = primesUpTo(max);
+final primes = primesUpTo(max).toSet();
+
+bool isCircular(int prime) {
+  var rotation = digits(prime).toList();
+  for (var round = 1; round < rotation.length; round++) {
+    rotation.insert(0, rotation.removeLast());
+    if (!primes.contains(polynomial(rotation))) {
+      return false;
+    }
+  }
+  return true;
+}
 
 void main() {
-
+  // TODO(renggli): submit to euler
+  assert(primes.where((x) => isCircular(x)).length == 55);
 }
