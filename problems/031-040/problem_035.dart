@@ -29,6 +29,5 @@ bool isCircular(int prime) {
 }
 
 void main() {
-  // TODO(renggli): submit to euler
   assert(primes.where((x) => isCircular(x)).length == 55);
 }
