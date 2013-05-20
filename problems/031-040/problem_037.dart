@@ -13,12 +13,26 @@
  */
 library problem_037;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
-void main() {
+final primes = primesUpTo(800000);
+final primeSet = primes.toSet();
 
+bool isTruncable(int prime) {
+  var digits = digits(prime).toList();
+  for (var i = 1; i < digits.length; i++) {
+    if (!primeSet.contains(polynomial(digits.sublist(0, i)))
+        || !primeSet.contains(polynomial(digits.sublist(i, digits.length)))) {
+      return false;
+    }
+  }
+  return true;
+}
+
+void main() {
+  assert(primes
+      .where((x) => x > 9 && isTruncable(x))
+      .reduce((a, b) => a + b) == 748317);
 }

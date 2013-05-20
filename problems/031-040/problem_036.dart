@@ -12,12 +12,23 @@
  */
 library problem_036;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
-void main() {
+final max = 1000000;
 
+bool isPalindrom(List<int> digits) {
+  for (var i = 0, j = digits.length - 1; i < j; i++, j--) {
+    if (digits[i] != digits[j]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+void main() {
+  assert(range(max)
+      .where((value) => isPalindrom(digits(value, 10).toList())
+                     && isPalindrom(digits(value, 2).toList()))
+      .reduce((a, b) => a + b) == 872187);
 }

@@ -15,12 +15,13 @@
  */
 library problem_040;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 void main() {
-
+  var n = 1;
+  var d = new List();
+  while (d.length < 1000000) {
+    d.addAll(digits(n++).toList().reversed);
+  }
+  assert(d[0] * d[9] * d[99] * d[999] * d[9999] * d[99999] * d[999999] == 210);
 }

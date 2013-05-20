@@ -17,5 +17,21 @@ import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
 void main() {
-
+  var mp = 0, mpc = 0;
+  for (var p = 1; p <= 1000; p++) {
+    var pc = 0;
+    for (var a = 1; a <= p - 2; a++) {
+      for (var b = a; b <= p - a - 1; b++) {
+        var c = p - a - b;
+        if (a * a + b * b == c * c) {
+          pc++;
+        }
+      }
+    }
+    if (pc > mpc) {
+      mpc = pc;
+      mp = p;
+    }
+  }
+  assert(mp == 840);
 }
