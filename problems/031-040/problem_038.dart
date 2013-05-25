@@ -19,12 +19,42 @@
  */
 library problem_038;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+
+int number(int n, int x) {
+  var result = new List();
+  for (int i = n; i > 0; i--) {
+    result.addAll(digits(i * x));
+  }
+  return polynomial(result);
+}
+
+bool isPandigital(int x) {
+  var decimals = digits(x);
+  if (decimals.length != 9) {
+    return false;
+  }
+  for (var i = 1; i <= 9; i++) {
+    if (!decimals.contains(i)) {
+      return false;
+    }
+  }
+  return true;
+}
 
 void main() {
-
+  var max = 0;
+  for (int n = 2; n <= 9; n++) {
+    for (int x = 1; x < 987654321; x++) {
+      var candidate = number(n, x);
+      if (candidate > 987654321) {
+        break;
+      }
+      if (isPandigital(candidate) && candidate > max) {
+        max = candidate;
+      }
+    }
+  }
+  assert(max == 932718654);
 }
