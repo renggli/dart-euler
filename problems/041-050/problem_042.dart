@@ -19,8 +19,9 @@
  */
 library problem_042;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
+import 'dart:io';
+
+import 'package:more/char_matcher.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
@@ -31,6 +32,8 @@ final traingleNumbers = range(1000)
 
 final baseOffset = 'A'.codeUnitAt(0) - 1;
 
+final timmer = isChar('"');
+
 int wordValue(String word) {
   return word.toUpperCase().codeUnits
       .map((each) => each - baseOffset)
@@ -38,5 +41,10 @@ int wordValue(String word) {
 }
 
 void main() {
-  print(wordValue('sky'));
+  assert(new File('words.txt')
+      .readAsStringSync()
+      .split(',')
+      .map((each) => timmer.trimFrom(each))
+      .where((each) => traingleNumbers.contains(wordValue(each)))
+      .length == 162);
 }

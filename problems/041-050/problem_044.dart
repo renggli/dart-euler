@@ -25,5 +25,5 @@ import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
 void main() {
-
+  assert(false);
 }
