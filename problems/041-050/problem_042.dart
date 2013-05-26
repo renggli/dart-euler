@@ -19,10 +19,6 @@
  */
 library problem_042;
 
-import 'dart:io';
-
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
 final words = const ['A', 'ABILITY', 'ABLE', 'ABOUT', 'ABOVE', 'ABSENCE',
