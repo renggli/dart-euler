@@ -8,14 +8,11 @@
 library problem_016;
 
 import 'package:more/int_math.dart';
+import 'package:more/iterable.dart';
 
-var exp = 1000;
+final exp = 1000;
 
 void main() {
-  var sum = pow(2, exp)
-      .toString()
-      .runes
-      .map((each) => each - '0'.runes.first)
-      .reduce((a, b) => a + b);
+  var sum = digits(pow(2, exp)).reduce((a, b) => a + b);
   assert(sum == 1366);
 }

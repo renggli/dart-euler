@@ -10,7 +10,7 @@ library problem_007;
 
 import 'package:more/int_math.dart';
 
-var ith = 10001;
+final ith = 10001;
 
 void main() {
   assert(primesUpTo(1000000)[ith - 1] == 104743);

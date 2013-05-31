@@ -10,12 +10,6 @@
  */
 library problem_039;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
-
 void main() {
   var mp = 0, mpc = 0;
   for (var p = 1; p <= 1000; p++) {

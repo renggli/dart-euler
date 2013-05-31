@@ -12,8 +12,8 @@ library problem_005;
 import 'package:more/int_math.dart';
 import 'package:more/range.dart';
 
-var min = 1;
-var max = 20;
+final min = 1;
+final max = 20;
 
 void main() {
   var result = range(min, max + 1).fold(1, lcm);

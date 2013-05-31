@@ -9,7 +9,7 @@ library problem_010;
 
 import 'package:more/int_math.dart';
 
-var max = 2000000;
+final max = 2000000;
 
 void main() {
   var sum = primesUpTo(max).reduce((a, b) => a + b);

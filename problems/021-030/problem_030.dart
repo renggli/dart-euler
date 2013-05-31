@@ -20,13 +20,13 @@ library problem_030;
 import 'package:more/int_math.dart';
 import 'package:more/range.dart';
 
+final int power = 5;
+final int upper = 200000;
+
 int sumOfDigitPowers(int number, int power) {
   return number.toString().codeUnits
       .fold(0, (sum, each) => sum + pow(each - 48, power));
 }
-
-final int power = 5;
-final int upper = 200000;
 
 void main() {
   var sum = range(2, upper)

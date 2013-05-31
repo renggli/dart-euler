@@ -10,7 +10,7 @@ library problem_001;
 
 import 'package:more/range.dart';
 
-var max = 1000;
+final max = 1000;
 
 void main() {
   var sum = range(max)

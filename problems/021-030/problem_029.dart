@@ -21,8 +21,8 @@ library problem_029;
 
 import 'package:more/int_math.dart';
 
-var min = 2;
-var max = 100;
+final min = 2;
+final max = 100;
 
 void main() {
   var t = new Set();

@@ -10,7 +10,7 @@ library problem_003;
 import 'dart:math';
 import 'package:more/int_math.dart';
 
-var value = 600851475143;
+final value = 600851475143;
 
 void main() {
   var factor = primesUpTo(sqrt(value).ceil())

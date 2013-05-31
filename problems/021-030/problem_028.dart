@@ -19,7 +19,7 @@ library problem_028;
 
 import 'package:more/range.dart';
 
-var max = 1001;
+final max = 1001;
 
 void main() {
   var sum = range(3, max + 1, 2).fold(1, (a, b) {

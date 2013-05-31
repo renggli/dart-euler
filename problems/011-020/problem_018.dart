@@ -22,7 +22,7 @@ library problem_018;
 
 import 'dart:math';
 
-var triangle = [
+final triangle = [
     [75],
     [95, 64],
     [17, 47, 82],

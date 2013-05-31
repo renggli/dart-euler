@@ -19,13 +19,13 @@ library problem_006;
 
 import 'package:more/range.dart';
 
+final max = 100;
+
 num sum(int start, int stop, num fun(int)) {
   return range(start, stop + 1)
       .map(fun)
       .reduce((a, b) => a + b);
 }
-
-var max = 100;
 
 void main() {
   var sum_of_squares = sum(1, max, (i) => i * i);

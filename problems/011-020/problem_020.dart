@@ -12,10 +12,11 @@
 library problem_020;
 
 import 'package:more/int_math.dart';
+import 'package:more/iterable.dart';
+
+final number = 100;
 
 void main() {
-  var sum = (factorial(100).toString().codeUnits
-      .map((each) => each - '0'.codeUnits.first)
-      .reduce((a, b) => a + b));
+  var sum = digits(factorial(number)).reduce((a, b) => a + b);
   assert(sum == 648);
 }

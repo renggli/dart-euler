@@ -10,14 +10,14 @@ library problem_004;
 
 import 'package:more/range.dart';
 
+final min = 100;
+final max = 999;
+
 bool isPalindrome(int p) {
   var s = p.toString();
   return range(s.length ~/ 2)
       .every((i) => s[i] == s[s.length - i - 1]);
 }
-
-var min = 100;
-var max = 999;
 
 void main() {
   var c = -1;

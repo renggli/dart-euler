@@ -12,7 +12,7 @@
  */
 library problem_009;
 
-var sum = 1000;
+final sum = 1000;
 
 void main() {
   for (var a = 1; a <= sum - 2; a++) {

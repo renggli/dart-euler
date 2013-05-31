@@ -24,6 +24,8 @@
  */
 library problem_012;
 
+final divisors = 500;
+
 int numberOfDivisors(int n) {
   var c = 0, d = 1;
   while (d * d < n) {
@@ -37,8 +39,6 @@ int numberOfDivisors(int n) {
   }
   return c;
 }
-
-var divisors = 500;
 
 void main() {
   var i = 1, t = 0;

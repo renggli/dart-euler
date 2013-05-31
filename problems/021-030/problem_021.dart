@@ -15,7 +15,7 @@
  */
 library problem_021;
 
-import 'dart:typed_data';
+final max = 10000;
 
 int sumOfProperDivisors(int n) {
   var s = 1, d = 2;
@@ -30,8 +30,6 @@ int sumOfProperDivisors(int n) {
   }
   return s;
 }
-
-var max = 10000;
 
 void main() {
   var sum = 0;

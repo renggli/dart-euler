@@ -22,7 +22,7 @@
  */
 library problem_026;
 
-var d = 1000;
+final d = 1000;
 
 int cycleSize(int d) {
   var remainders = new List.from([1]);

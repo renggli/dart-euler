@@ -25,7 +25,7 @@ library problem_023;
 import 'package:more/bit_set.dart';
 import 'problem_021.dart';
 
-var max = 28123;
+final max = 28123;
 
 void main() {
   var abundant = new List();

@@ -15,8 +15,8 @@ library problem_024;
 
 import 'package:more/iterable.dart';
 
-var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var index = 1000000;
+final list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+final index = 1000000;
 
 void main() {
   var permutation = permutations(list)

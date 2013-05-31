@@ -13,7 +13,7 @@ library problem_002;
 
 import 'package:more/iterable.dart';
 
-var max = 4000000;
+final max = 4000000;
 
 void main() {
   var sum = fibonacci(1, 2)

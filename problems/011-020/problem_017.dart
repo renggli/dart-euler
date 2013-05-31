@@ -14,10 +14,10 @@
  */
 library problem_017;
 
-var cardinals = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six',
+final cardinals = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six',
   'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
   'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ];
-var decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
+final decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
   'seventy', 'eighty', 'ninety' ];
 
 List<String> spell(int value) {

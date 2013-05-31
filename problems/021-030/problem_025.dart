@@ -29,8 +29,8 @@ library problem_025;
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-var digits = 1000;
-var limit = pow(10, digits - 1);
+final digits = 1000;
+final limit = pow(10, digits - 1);
 
 void main() {
   var count = fibonacci(1, 1)
