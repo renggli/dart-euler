@@ -289,7 +289,8 @@ final traingleNumbers = range(1000)
     .toSet();
 
 void main() {
-  assert(words
+  var tally = words
       .where((each) => traingleNumbers.contains(wordValue(each)))
-      .length == 162);
+      .length;
+  assert(tally == 162);
 }

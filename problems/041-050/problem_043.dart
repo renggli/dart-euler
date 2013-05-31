@@ -37,8 +37,9 @@ bool isDivisible(List<int> digits) {
 }
 
 void main() {
-  assert(permutations(range(0, 10).toList())
+  var sum = permutations(range(0, 10).toList())
       .where((list) => isDivisible(list))
       .map((list) => polynomial(list))
-      .reduce((a, b) => a + b) == 16695334890);
+      .reduce((a, b) => a + b);
+  assert(sum == 16695334890);
 }

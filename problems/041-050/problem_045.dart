@@ -14,12 +14,22 @@
  */
 library problem_045;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+int T(int n) => n * (n + 1) ~/ 2;
+int P(int n) => n * (3 * n - 1) ~/ 2;
+int H(int n) => n * (2 * n - 1);
+
+int t = 285;
+int p = 165;
+int h = 143;
 
 void main() {
-  assert(false);
+  while (true) {
+    t++;
+    while (P(p) < T(t)) p++;
+    while (H(h) < T(t)) h++;
+    if (T(t) == P(p) && P(p) == H(h)) {
+      assert(T(t) == 1533776805);
+      return;
+    }
+  }
 }
