@@ -24,7 +24,7 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
-final primes = primesUpTo(1000000);
+final primes = primesUpTo(10000);
 final prime_set = primes.toSet();
 
 bool verifySquare(int n) {
