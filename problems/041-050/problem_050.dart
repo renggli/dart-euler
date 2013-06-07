@@ -16,12 +16,26 @@
  */
 library problem_050;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
 import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
+
+final primes = primesUpTo(1000000);
 
 void main() {
-  assert(false);
+  var length = 0, prime = 0;
+  for (var start = 0; start < primes.length; start++) {
+    var sum = 0;
+    for (var stop = start; stop < primes.length; stop++) {
+      sum += primes[stop];
+      var index = binarySearch(primes, sum);
+      if (-index > primes.length) {
+        break; // sum too large
+      }
+      if (stop - start > length && index >= 0) {
+        length = stop - start + 1;
+        prime = sum;
+      }
+    }
+  }
+  assert(prime == 997651);
 }
