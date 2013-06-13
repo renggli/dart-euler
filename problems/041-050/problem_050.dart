@@ -17,8 +17,9 @@
 library problem_050;
 
 import 'package:more/int_math.dart';
-import 'package:more/collection.dart';
+import 'package:more/ordering.dart';
 
+final ordering = new Ordering.natural();
 final primes = primesUpTo(1000000);
 
 void main() {
@@ -27,7 +28,7 @@ void main() {
     var sum = 0;
     for (var stop = start; stop < primes.length; stop++) {
       sum += primes[stop];
-      var index = binarySearch(primes, sum);
+      var index = ordering.binarySearch(primes, sum);
       if (-index > primes.length) {
         break; // sum too large
       }
