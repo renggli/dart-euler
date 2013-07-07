@@ -10,13 +10,19 @@
  */
 library problem_056;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 void main() {
-  assert(false);
+  var ms = 0;
+  for (var a = 1; a < 100; a++) {
+    for (var b = 1; b < 100; b++) {
+      var s = digits(pow(a, b))
+        .reduce((a, b) => a + b);
+      if (s > ms) {
+        ms = s;
+      }
+    }
+  }
+  assert(ms == 972);
 }
