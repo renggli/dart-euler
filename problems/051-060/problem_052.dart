@@ -9,13 +9,24 @@
  */
 library problem_052;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+import 'package:more/ordering.dart';
+
+var comparator = new Ordering.natural().lexicographical();
 
 void main() {
+  for (var x = 1; ; x++) {
+    var xd = digits(x).toList()..sort();
+    for (var n = 2; n <= 6; n++) {
+      var nd = digits(n * x).toList()..sort();
+      if (nd.length > xd.length || comparator.compare(xd, nd) != 0) {
+        break;
+      }
+      if (n == 6) {
+        assert(x == 142857);
+        return;
+      }
+    }
+  }
   assert(false);
 }
