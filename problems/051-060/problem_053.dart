@@ -18,13 +18,16 @@
  */
 library problem_053;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 void main() {
-  assert(false);
+  var tally = 0;
+  for (var n = 1; n <= 100; n++) {
+    for (var k = 0; k <= n; k++) {
+      if (binomial(n, k) > 1000000) {
+        tally++;
+      }
+    }
+  }
+  assert(tally == 4075);
 }

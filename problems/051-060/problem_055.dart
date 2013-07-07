@@ -33,13 +33,33 @@
  */
 library problem_055;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
+bool isPalindromic(List<int> n) {
+  for (var a = 0, b = n.length - 1; a < b; a++, b--) {
+    if (n[a] != n[b]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool isLychrel(int n) {
+  var np = digits(n).toList();
+  for (var i = 0; i < 50; i++) {
+    n += polynomial(np.reversed);
+    np = digits(n).toList();
+    if (isPalindromic(np)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 void main() {
-  assert(false);
+  assert(range(10000)
+      .where((i) => isLychrel(i))
+      .length == 249);
 }
