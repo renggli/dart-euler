@@ -22,13 +22,23 @@
  */
 library problem_057;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
-import 'package:more/int_math.dart';
+import 'package:more/fraction.dart';
 import 'package:more/iterable.dart';
 import 'package:more/range.dart';
 
+final half = new Fraction(1, 2);
+final one = new Fraction(1);
+final two = new Fraction(2);
+
 void main() {
-  assert(false);
+  var tally = 0;
+  var fraction = two + half;
+  for (var i = 1; i <= 1000; i++) {
+    var value = fraction - one;
+    if (digits(value.numerator).length > digits(value.denominator).length) {
+      tally++;
+    }
+    fraction = two + one / fraction;
+  }
+  assert(tally == 153);
 }
