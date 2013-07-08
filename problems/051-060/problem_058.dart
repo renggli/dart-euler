@@ -23,13 +23,31 @@
  */
 library problem_058;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+
+final primes = primesUpTo(30000);
+
+bool isPrime(int x) {
+  assert(x < primes.last * primes.last);
+  return primes
+      .takeWhile((p) => p * p <= x)
+      .every((p) => x % p != 0);
+}
 
 void main() {
+  var total = 1, tally = 0;
+  for (var side = 3; ; side += 2) {
+    for (var value = 0; value < 4; value++) {
+      var candidate = side * side - side * value + value;
+      if (isPrime(candidate)) {
+        tally++;
+      }
+      total++;
+    }
+    if (tally / total < 0.1) {
+      assert(side == 26241);
+      return;
+    }
+  }
   assert(false);
 }
