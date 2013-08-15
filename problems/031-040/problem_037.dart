@@ -15,7 +15,6 @@ library problem_037;
 
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 final primes = primesUpTo(800000);
 final primeSet = primes.toSet();
