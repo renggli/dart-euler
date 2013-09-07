@@ -18,8 +18,6 @@ void main() {
             ['--checked', file.path],
             stdoutEncoding: UTF8,
             stderrEncoding: UTF8);
-        stdout.write(result.stdout);
-        stderr.write(result.stderr);
         expect(result.exitCode, 0, reason: 'Exit code');
       });
     });
