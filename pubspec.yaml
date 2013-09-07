@@ -4,5 +4,6 @@ author: Lukas Renggli <renggli@gmail.com>
 description: My advances on the Project Euler.
 homepage: https://github.com/renggli/ProjectEuler
 dependencies:
-  unittest: any
+  junitconfiguration: any
   more: any
+  unittest: any
