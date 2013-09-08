@@ -10,22 +10,14 @@
 library problem_062;
 
 void main() {
-  var cubes = new Map();
-  for (var base = 0; base < 1000; base++) {
-    var value = base * base * base;
-    var key = new String.fromCharCodes(value.toString().codeUnits..sort());
-    cubes.putIfAbsent(key, () => new List()).add(value);
-  }
-  var candidates = new List();
-  for (var values in cubes.values) {
+  var permutations = new Map();
+  for (var base = 1; ; base++) {
+    var cube = base * base * base;
+    var key = new String.fromCharCodes(new List.from(cube.toString().codeUnits)..sort());
+    var values = permutations.putIfAbsent(key, () => new List())..add(cube);
     if (values.length == 5) {
-      candidates.addAll(values);
+      assert(values.first == 127035954683);
+      return;
     }
   }
-  candidates.sort();
-  print(candidates);
-  assert(false);
 }
-
-
-//    print min([min(v) for k, v in cubes.items() if len(v) == 5])
