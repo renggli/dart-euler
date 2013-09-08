@@ -22,13 +22,16 @@
  */
 library problem_069;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 void main() {
-  assert(false);
+  // A small phi will maximize n/phi(n), find the product of the first
+  // few primes smaller than 1000000.
+  var p = 1;
+  for (var i = 2; p * i <= 1000000; i++) {
+    if (isProbablyPrime(i)) {
+      p *= i;
+    }
+  }
+  assert(p == 510510);
 }
