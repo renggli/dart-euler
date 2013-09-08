@@ -9,13 +9,23 @@
  */
 library problem_062;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
-
 void main() {
+  var cubes = new Map();
+  for (var base = 0; base < 1000; base++) {
+    var value = base * base * base;
+    var key = new String.fromCharCodes(value.toString().codeUnits..sort());
+    cubes.putIfAbsent(key, () => new List()).add(value);
+  }
+  var candidates = new List();
+  for (var values in cubes.values) {
+    if (values.length == 5) {
+      candidates.addAll(values);
+    }
+  }
+  candidates.sort();
+  print(candidates);
   assert(false);
 }
+
+
+//    print min([min(v) for k, v in cubes.items() if len(v) == 5])
