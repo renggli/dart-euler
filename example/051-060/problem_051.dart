@@ -16,13 +16,35 @@
  */
 library problem_051;
 
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 void main() {
+  for (var prime in primesUpTo(1000000)) {
+    if (prime > 100000) {
+      var prime_digits = digits(prime);
+      // need to check only repeating digits 0, 1, 2
+      for (var repeating = 0; repeating < 3; repeating++) {
+        // need to check only for digits that have 3 repeating digits
+        if (prime_digits.where((digit) => digit == repeating).length == 3) {
+          // find if this is a family of 8
+          var count = 0;
+          for (var replacement = 0; replacement < 10; replacement++) {
+            var replaced_digits = prime_digits.map((digit) {
+              return digit == repeating ? replacement : digit;
+            });
+            var replaced = polynomial(replaced_digits);
+            if (replaced > 100000 && isProbablyPrime(replaced)) {
+              count++;
+            }
+          }
+          if (count == 8) {
+            assert(prime == 121313);
+            return;
+          }
+        }
+      }
+    }
+  }
   assert(false);
 }
