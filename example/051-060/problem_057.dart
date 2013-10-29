@@ -24,7 +24,6 @@ library problem_057;
 
 import 'package:more/fraction.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
 
 final half = new Fraction(1, 2);
 final one = new Fraction(1);
