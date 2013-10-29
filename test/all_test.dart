@@ -8,12 +8,9 @@ import 'dart:platform' as Platform;
 
 import 'package:unittest/unittest.dart';
 
-void main(List<String> arguments) {
-  var directory = arguments.isEmpty
-      ? Directory.current.parent
-      : new Directory(arguments.first);
+void main() {
   var pattern = new RegExp(r'problem_\d\d\d\.dart$');
-  directory
+  Directory.current.parent
     .listSync(recursive: true, followLinks: false)
     .where((file) => pattern.hasMatch(file.path))
     .forEach((file) {
