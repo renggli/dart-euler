@@ -1,8 +1,10 @@
 name: ProjectEuler
 version: 0.0.1
 author: Lukas Renggli <renggli@gmail.com>
-description: My advances on the Project Euler.
+description: My advances on Project Euler.
 homepage: https://github.com/renggli/ProjectEuler
+environment:
+  sdk: '>=0.8.10+6 <2.0.0'
 dependencies:
   junitconfiguration: any
   more: any

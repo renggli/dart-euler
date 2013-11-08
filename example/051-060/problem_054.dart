@@ -61,14 +61,7 @@ The file, poker.txt, contains one-thousand random hands dealt to two players. Ea
 
 How many hands does Player 1 win?
  */
-library problem_0XX;
-
-import 'dart:math';
-import 'package:more/bit_set.dart';
-import 'package:more/ordering.dart';
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+library problem_054;
 
 void main() {
   assert(false);

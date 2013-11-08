@@ -22,7 +22,7 @@
  */
 library problem_023;
 
-import 'package:more/bit_set.dart';
+import 'package:more/bit_list.dart';
 import 'problem_021.dart';
 
 final max = 28123;
@@ -34,7 +34,7 @@ void main() {
       abundant.add(i);
     }
   }
-  var hasSum = new BitSet(max + 1);
+  var hasSum = new BitList(max + 1);
   for (var i = 0; i < abundant.length; i++) {
     for (var j = i; j < abundant.length; j++) {
       var sum = abundant[i] + abundant[j];

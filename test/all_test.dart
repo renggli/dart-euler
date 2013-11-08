@@ -4,7 +4,6 @@ library all_test;
 
 import 'dart:io';
 import 'dart:convert';
-import 'dart:platform' as Platform;
 
 import 'package:unittest/unittest.dart';
 
