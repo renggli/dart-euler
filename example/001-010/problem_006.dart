@@ -17,7 +17,7 @@
  */
 library problem_006;
 
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final max = 100;
 

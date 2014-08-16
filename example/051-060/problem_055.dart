@@ -35,7 +35,7 @@ library problem_055;
 
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 bool isPalindromic(List<int> n) {
   for (var a = 0, b = n.length - 1; a < b; a++, b--) {

@@ -13,7 +13,7 @@
 library problem_036;
 
 import 'package:more/iterable.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final max = 1000000;
 

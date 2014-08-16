@@ -10,7 +10,7 @@
 library problem_005;
 
 import 'package:more/int_math.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final min = 1;
 final max = 20;

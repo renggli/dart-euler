@@ -18,7 +18,7 @@
 library problem_030;
 
 import 'package:more/int_math.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final int power = 5;
 final int upper = 200000;

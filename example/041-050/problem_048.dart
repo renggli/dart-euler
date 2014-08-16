@@ -8,7 +8,7 @@
 library problem_048;
 
 import 'package:more/int_math.dart';
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final max = 1000;
 

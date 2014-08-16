@@ -8,7 +8,7 @@
  */
 library problem_004;
 
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final min = 100;
 final max = 999;

@@ -19,7 +19,7 @@
  */
 library problem_042;
 
-import 'package:more/range.dart';
+import 'package:more/collection.dart';
 
 final words = const ['A', 'ABILITY', 'ABLE', 'ABOUT', 'ABOVE', 'ABSENCE',
     'ABSOLUTELY', 'ACADEMIC', 'ACCEPT', 'ACCESS', 'ACCIDENT', 'ACCOMPANY',
