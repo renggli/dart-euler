@@ -1,8 +1,8 @@
-name: ProjectEuler
-version: 0.0.1
+name: euler
+version: 0.0.2
 author: Lukas Renggli <renggli@gmail.com>
 description: My advances on Project Euler.
-homepage: https://github.com/renggli/ProjectEuler
+homepage: https://github.com/renggli/dart-euler
 environment:
   sdk: '>=1.0.0 <2.0.0'
 dependencies:
