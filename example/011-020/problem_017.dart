@@ -56,12 +56,15 @@ List<String> spell(int value) {
         ..addAll(spell(value % 1000));
     }
   }
+  throw new ArgumentError('Unable to spell $value');
 }
 
 void main() {
   var total = 0;
   for (var i = 1; i <= 1000; i++) {
-    total += spell(i).join('').length;
+    total += spell(i)
+        .map((a) => a.length)
+        .reduce((a, b) => a + b);
   }
   assert(total == 21124);
 }
