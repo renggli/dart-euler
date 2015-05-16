@@ -1,4 +1,4 @@
-library all_benchmark;
+library euler_benchmark;
 
 import 'package:euler/euler.dart';
 
