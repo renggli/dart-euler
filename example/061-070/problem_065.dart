@@ -1,6 +1,4 @@
-/**
- * Problem 65: Convergents of e
- */
+/// Problem 65: Convergents of e
 library problem_065;
 
 void main() {

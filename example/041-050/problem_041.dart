@@ -1,12 +1,10 @@
-/**
- * Problem 41: Pandigital prime
- *
- * We shall say that an n-digit number is pandigital if it makes use of all
- * digits 1 to n exatly once. For example, 2143 is a 4-digit pandigital and is
- * also a prime.
- *
- * What is the largest n-digit pandigital prime that exists?
- */
+/// Problem 41: Pandigital prime
+///
+/// We shall say that an n-digit number is pandigital if it makes use of all
+/// digits 1 to n exatly once. For example, 2143 is a 4-digit pandigital and is
+/// also a prime.
+///
+/// What is the largest n-digit pandigital prime that exists?
 library problem_041;
 
 import 'dart:math';

@@ -1,9 +1,7 @@
-/**
- * Problem 8: Largest product in a series
- *
- * Find the greatest product of five consecutive digits in the 1000-digit
- * number.
- */
+/// Problem 8: Largest product in a series
+///
+/// Find the greatest product of five consecutive digits in the 1000-digit
+/// number.
 library problem_008;
 
 final consec = 5;
