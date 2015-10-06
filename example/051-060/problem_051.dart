@@ -20,18 +20,18 @@ import 'package:more/iterable.dart';
 void main() {
   for (var prime in primesUpTo(1000000)) {
     if (prime > 100000) {
-      var prime_digits = digits(prime);
+      var primeDigits = digits(prime);
       // need to check only repeating digits 0, 1, 2
       for (var repeating = 0; repeating < 3; repeating++) {
         // need to check only for digits that have 3 repeating digits
-        if (prime_digits.where((digit) => digit == repeating).length == 3) {
+        if (primeDigits.where((digit) => digit == repeating).length == 3) {
           // find if this is a family of 8
           var count = 0;
           for (var replacement = 0; replacement < 10; replacement++) {
-            var replaced_digits = prime_digits.map((digit) {
+            var replacedDigits = primeDigits.map((digit) {
               return digit == repeating ? replacement : digit;
             });
-            var replaced = polynomial(replaced_digits);
+            var replaced = polynomial(replacedDigits);
             if (replaced > 100000 && isProbablyPrime(replaced)) {
               count++;
             }

@@ -49,12 +49,12 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
     chains.add([]);
   } else {
     for (var index in indexes) {
-      var new_indexes = indexes
+      var newIndexes = indexes
           .where((value) => value != index)
           .toList();
       for (var number in types[index]) {
         if (prefix == -1 || number ~/ 100 == prefix) {
-          for (var chain in findChains(new_indexes, number % 100)) {
+          for (var chain in findChains(newIndexes, number % 100)) {
             chains.add(chain..insert(0, number));
           }
         }

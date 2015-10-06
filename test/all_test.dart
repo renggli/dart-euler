@@ -1,4 +1,4 @@
-library euler_test;
+library euler.test.all_test;
 
 import 'package:euler/euler.dart';
 import 'package:test/test.dart';

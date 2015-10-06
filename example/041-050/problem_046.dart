@@ -20,7 +20,7 @@ import 'dart:math';
 import 'package:more/int_math.dart';
 
 final primes = primesUpTo(10000);
-final prime_set = primes.toSet();
+final primeSet = primes.toSet();
 
 bool verifySquare(int n) {
   if (n.isOdd) {
@@ -39,7 +39,7 @@ bool verify(int n) {
 
 void main() {
   for (var n = 3; ; n += 2) {
-    if (!prime_set.contains(n) && !verify(n)) {
+    if (!primeSet.contains(n) && !verify(n)) {
       assert(n == 5777);
       return;
     }

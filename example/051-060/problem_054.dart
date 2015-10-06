@@ -58,8 +58,8 @@ library problem_054;
 import 'package:more/iterable.dart';
 import 'package:more/collection.dart';
 
-const List<String> VALUES = const ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
-const List<String> SUITS = const ['C', 'D', 'H', 'S'];
+const List<String> values = const ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
+const List<String> suits = const ['C', 'D', 'H', 'S'];
 
 class Card {
 
@@ -73,13 +73,13 @@ class Card {
     if (input.length != 2) {
       throw new ArgumentError('Invalid card: $input');
     }
-    if (!VALUES.contains(input[0])) {
+    if (!values.contains(input[0])) {
       throw new ArgumentError('Invalid card value: $input');
     }
-    if (!SUITS.contains(input[1])) {
+    if (!suits.contains(input[1])) {
       throw new ArgumentError('Invalid card suit: $input');
     }
-    return new Card._(input, VALUES.indexOf(input[0]) + 2, SUITS.indexOf(input[1]));
+    return new Card._(input, values.indexOf(input[0]) + 2, suits.indexOf(input[1]));
   }
 
   @override

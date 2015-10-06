@@ -1,4 +1,4 @@
-library euler_benchmark;
+library euler.test.benchmark;
 
 import 'package:euler/euler.dart';
 
@@ -11,7 +11,7 @@ void main() {
     var result = executor();
     var elapsed = watch.elapsedMilliseconds;
     if (result.exitCode == 0) {
-      print('  <benchmark name="$problem">${elapsed}</benchmark>');
+      print('  <benchmark name="$problem">$elapsed</benchmark>');
     }
   });
   print('</benchmarks>');
