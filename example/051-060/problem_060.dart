@@ -27,7 +27,6 @@ bool allPrime(List<List<num>> pairs) {
 }
 
 void main() {
-  var result = 0;
   for (var pi1 = 0; pi1 < primes.length; pi1++) {
     var p1 = primes[pi1];
     for (var pi2 = pi1 + 1; pi2 < primes.length; pi2++) {
