@@ -21,6 +21,36 @@
 /// Find the value of D ≤ 1000 in minimal solutions of x for which the largest value of x is obtained.
 library problem_066;
 
+import 'dart:math' as math;
+
+/// The integer square root of `n` or `-1`.
+int sqrt(int n) {
+  var root = math.sqrt(n).round();
+  return root * root == n ? root : -1;
+}
+
+final int D = 7;
+
 void main() {
+  var max_x = 0, max_d = 0;
+  for (var d = 2; d <= D; d++) {
+    if (sqrt(d) == -1) {
+      for (var x = 2;; x++) {
+        var upper = x * x - 1;
+        if (upper % d == 0) {
+          var y = sqrt(upper ~/ d);
+          if (y > 0) {
+            print('d: $d\tx: $x\ty: $y');
+            if (x > max_x) {
+              max_x = x;
+              max_d = d;
+            }
+            break;
+          }
+        }
+      }
+    }
+  }
+  print('x: $max_x, D: $max_d');
   assert(false);
 }
