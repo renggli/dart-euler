@@ -48,5 +48,4 @@ void main() {
     }
     i++;
   }
-  assert(false);
 }

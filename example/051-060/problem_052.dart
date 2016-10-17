@@ -26,5 +26,4 @@ void main() {
       }
     }
   }
-  assert(false);
 }
