@@ -13,7 +13,7 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 final max = 1000000;
-final primes = primesUpTo(max).toSet();
+final Set<int> primes = primesUpTo(max).toSet();
 
 bool isCircular(int prime) {
   var rotation = digits(prime).toList();

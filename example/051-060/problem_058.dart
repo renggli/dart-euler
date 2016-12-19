@@ -23,7 +23,7 @@ library problem_058;
 
 import 'package:more/int_math.dart';
 
-final primes = primesUpTo(30000);
+final List<int> primes = primesUpTo(30000);
 
 bool isPrime(int x) {
   assert(x < primes.last * primes.last);

@@ -12,8 +12,7 @@ library problem_060;
 
 import 'package:more/int_math.dart';
 
-final primes = primesUpTo(10000);
-final cache = new Map();
+final List<int> primes = primesUpTo(10000);
 
 bool allPrime(List<List<num>> pairs) {
   for (var pair in pairs) {

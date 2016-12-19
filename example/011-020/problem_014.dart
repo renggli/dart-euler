@@ -24,7 +24,7 @@ import 'dart:typed_data';
 
 final max = 1000000;
 
-final cache = new Uint16List(4 * max);
+final List<int> cache = new Uint16List(4 * max);
 
 int collatz(int value) {
   if (value < cache.length && cache[value] > 0) {

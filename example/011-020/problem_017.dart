@@ -12,10 +12,10 @@
 /// British usage.
 library problem_017;
 
-final cardinals = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six',
+final List<String> cardinals = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six',
   'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
   'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ];
-final decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
+final List<String> decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
   'seventy', 'eighty', 'ninety' ];
 
 List<String> spell(int value) {

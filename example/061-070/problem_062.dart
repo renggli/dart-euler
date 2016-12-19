@@ -8,7 +8,7 @@
 library problem_062;
 
 void main() {
-  var permutations = new Map();
+  Map<String, List<int>> permutations = new Map();
   for (var base = 1; ; base++) {
     var cube = base * base * base;
     var key = new String.fromCharCodes(new List.from(cube.toString().codeUnits)..sort());

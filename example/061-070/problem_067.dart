@@ -21,7 +21,7 @@ library problem_067;
 
 import 'dart:math';
 
-final triangle = [
+final List<List<int>> triangle = [
   [59],
   [73, 41],
   [52, 40, 09],

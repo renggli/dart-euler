@@ -14,8 +14,8 @@ library problem_037;
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-final primes = primesUpTo(800000);
-final primeSet = primes.toSet();
+final List<int> primes = primesUpTo(800000);
+final Set<int> primeSet = primes.toSet();
 
 bool isTruncable(int prime) {
   var expanded = digits(prime).toList();

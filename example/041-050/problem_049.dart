@@ -17,8 +17,8 @@ import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-final ordering = new Ordering.natural();
-final listOrdering = ordering.lexicographical();
+final Ordering<int> ordering = new Ordering.natural();
+final Ordering<Iterable<int>> listOrdering = ordering.lexicographical();
 final primes = primesUpTo(9999)
     .skipWhile((x) => x <= 1487)
     .toList();

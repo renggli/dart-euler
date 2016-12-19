@@ -19,8 +19,8 @@ library problem_046;
 import 'dart:math';
 import 'package:more/int_math.dart';
 
-final primes = primesUpTo(10000);
-final primeSet = primes.toSet();
+final List<int> primes = primesUpTo(10000);
+final Set<int> primeSet = primes.toSet();
 
 bool verifySquare(int n) {
   if (n.isOdd) {

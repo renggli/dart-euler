@@ -31,7 +31,7 @@ void main() {
   var tally = 0;
   var fraction = two + half;
   for (var i = 1; i <= 1000; i++) {
-    var value = fraction - one;
+    Fraction value = fraction - one;
     if (digits(value.numerator).length > digits(value.denominator).length) {
       tally++;
     }

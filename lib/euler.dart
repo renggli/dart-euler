@@ -28,7 +28,7 @@ void allProblemsDo(ProblemHandler handler, {List<String> arguments: const []}) {
 }
 
 void main() {
-  allProblemsDo((problem, executor) {
+  allProblemsDo((int problem, Executor executor) {
     stdout.write('Problem $problem');
     var result = executor();
     stdout.writeln(result.exitCode == 0 ? '' : ' [FAILURE]');

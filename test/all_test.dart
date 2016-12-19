@@ -4,7 +4,7 @@ import 'package:euler/euler.dart';
 import 'package:test/test.dart';
 
 void main() {
-  allProblemsDo((problem, executor) {
+  allProblemsDo((int problem, Executor executor) {
     test('Problem $problem', () {
       var result = executor();
       if (result.exitCode != 0) {

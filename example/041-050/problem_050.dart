@@ -17,8 +17,8 @@ library problem_050;
 import 'package:more/int_math.dart';
 import 'package:more/ordering.dart';
 
-final ordering = new Ordering.natural();
-final primes = primesUpTo(1000000);
+final Ordering<int> ordering = new Ordering.natural();
+final List<int> primes = primesUpTo(1000000);
 
 void main() {
   var length = 0, prime = 0;

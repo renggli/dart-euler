@@ -19,7 +19,7 @@ library problem_042;
 
 import 'package:more/collection.dart';
 
-final words = const ['A', 'ABILITY', 'ABLE', 'ABOUT', 'ABOVE', 'ABSENCE',
+final List<String> words = const ['A', 'ABILITY', 'ABLE', 'ABOUT', 'ABOVE', 'ABSENCE',
     'ABSOLUTELY', 'ACADEMIC', 'ACCEPT', 'ACCESS', 'ACCIDENT', 'ACCOMPANY',
     'ACCORDING', 'ACCOUNT', 'ACHIEVE', 'ACHIEVEMENT', 'ACID', 'ACQUIRE',
     'ACROSS', 'ACT', 'ACTION', 'ACTIVE', 'ACTIVITY', 'ACTUAL', 'ACTUALLY',

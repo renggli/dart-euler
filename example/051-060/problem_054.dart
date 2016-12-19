@@ -99,11 +99,11 @@ class Hand {
       throw new ArgumentError('Invalid hand: $input');
     }
     var cards = new List.from(input)
-        ..sort((a, b) => a.value - b.value);
+        ..sort((Card a, Card b) => a.value - b.value);
     var values = new Multiset.from(cards
-        .map((card) => card.value));
+        .map((Card card) => card.value));
     var suits = new Multiset.from(cards
-        .map((each) => each.suit));
+        .map((Card each) => each.suit));
     return new Hand._(cards, values, suits);
   }
 
@@ -189,7 +189,7 @@ void main() {
     '4D 6S 9H QH QC        3D 6D 7H QD QS',
     '2H 2D 4C 4D 4S        3C 3D 3S 9S 9D',
   ];
-  for (var input in inputs) {
+  for (String input in inputs) {
     var cards = input.split(new RegExp('\\s+'))
         .map((each) => new Card(each));
     var hands = partition(cards, 5)

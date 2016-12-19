@@ -10,7 +10,7 @@ library problem_052;
 import 'package:more/iterable.dart';
 import 'package:more/ordering.dart';
 
-var comparator = new Ordering.natural().lexicographical();
+final Ordering<Iterable<int>> comparator = new Ordering.natural().lexicographical();
 
 void main() {
   for (var x = 1; ; x++) {

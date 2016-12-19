@@ -18,8 +18,8 @@ import 'package:more/fraction.dart';
 
 final max_d = 1e6;
 
-final target = new Fraction(3, 7);
-final target_float = target.toDouble();
+final Fraction target = new Fraction(3, 7);
+final double target_float = target.toDouble();
 
 void main() {
   var best = new Fraction(0, 1);
