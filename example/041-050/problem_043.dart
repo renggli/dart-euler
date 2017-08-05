@@ -18,9 +18,9 @@
 /// Find the sum of all 0 to 9 pandigitial numbers with this property.
 library problem_043;
 
-import 'package:more/iterable.dart';
-import 'package:more/int_math.dart';
 import 'package:more/collection.dart';
+import 'package:more/int_math.dart';
+import 'package:more/iterable.dart';
 
 final List<int> divisors = [2, 3, 5, 7, 11, 13, 17];
 
@@ -36,8 +36,8 @@ bool isDivisible(List<int> digits) {
 
 void main() {
   var sum = permutations(range(0, 10).toList())
-      .where((list) => isDivisible(list))
-      .map((list) => polynomial(list))
+      .where(isDivisible)
+      .map(polynomial)
       .reduce((a, b) => a + b);
   assert(sum == 16695334890);
 }

@@ -23,8 +23,12 @@ int h = 143;
 void main() {
   while (true) {
     t++;
-    while (P(p) < T(t)) p++;
-    while (H(h) < T(t)) h++;
+    while (P(p) < T(t)) {
+      p++;
+    }
+    while (H(h) < T(t)) {
+      h++;
+    }
     if (T(t) == P(p) && P(p) == H(h)) {
       assert(T(t) == 1533776805);
       return;

@@ -10,8 +10,8 @@
 /// leading zeros.)
 library problem_036;
 
-import 'package:more/iterable.dart';
 import 'package:more/collection.dart';
+import 'package:more/iterable.dart';
 
 final max = 1000000;
 

@@ -27,5 +27,5 @@ bool isCircular(int prime) {
 }
 
 void main() {
-  assert(primes.where((x) => isCircular(x)).length == 55);
+  assert(primes.where(isCircular).length == 55);
 }

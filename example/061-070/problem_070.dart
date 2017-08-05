@@ -13,8 +13,8 @@
 library problem_070;
 
 import 'package:more/int_math.dart';
-import 'package:more/ordering.dart';
 import 'package:more/iterable.dart';
+import 'package:more/ordering.dart';
 
 int phi(int n) {
   var r = 0;

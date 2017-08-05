@@ -31,9 +31,9 @@
 /// theoretical nature of Lychrel numbers.
 library problem_055;
 
+import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/collection.dart';
 
 bool isPalindromic(List<int> n) {
   for (var a = 0, b = n.length - 1; a < b; a++, b--) {
@@ -58,6 +58,6 @@ bool isLychrel(int n) {
 
 void main() {
   assert(range(10000)
-      .where((i) => isLychrel(i))
+      .where(isLychrel)
       .length == 249);
 }

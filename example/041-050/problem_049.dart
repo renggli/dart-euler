@@ -13,9 +13,9 @@
 /// sequence?
 library problem_049;
 
-import 'package:more/ordering.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/ordering.dart';
 
 final Ordering<int> ordering = new Ordering.natural();
 final Ordering<Iterable<int>> listOrdering = ordering.lexicographical();

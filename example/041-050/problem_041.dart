@@ -8,6 +8,7 @@
 library problem_041;
 
 import 'dart:math';
+
 import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';

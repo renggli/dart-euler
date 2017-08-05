@@ -5,8 +5,8 @@
 /// Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 library problem_048;
 
-import 'package:more/int_math.dart';
 import 'package:more/collection.dart';
+import 'package:more/int_math.dart';
 
 final max = 1000;
 

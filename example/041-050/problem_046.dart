@@ -17,6 +17,7 @@
 library problem_046;
 
 import 'dart:math';
+
 import 'package:more/int_math.dart';
 
 final List<int> primes = primesUpTo(10000);

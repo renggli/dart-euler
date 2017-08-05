@@ -16,8 +16,12 @@ final List<int> coins = const [1, 2, 5, 10, 20, 50, 100, 200];
 final target = 200;
 
 int count(int index, int target) {
-  if (target == 0) return 1;
-  if (index == coins.length) return 0;
+  if (target == 0) {
+    return 1;
+  }
+  if (index == coins.length) {
+    return 0;
+  }
   var tally = 0;
   for (var i = 0; i <= target ~/ coins[index]; i++) {
     tally += count(index + 1, target - i * coins[index]);

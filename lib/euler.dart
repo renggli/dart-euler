@@ -1,7 +1,7 @@
 library euler;
 
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
 
 typedef ProcessResult Executor();
 
@@ -14,16 +14,15 @@ void allProblemsDo(ProblemHandler handler, {List<String> arguments: const []}) {
       .where((file) => pattern.hasMatch(file.path))
       .forEach((file) {
         var problem = int.parse(pattern.firstMatch(file.path).group(1));
-        var executor = () {
+        handler(problem, () {
           return Process.runSync(
-                Platform.executable,
-                new List()
-                    ..addAll(arguments)
-                    ..add(file.path),
-                stdoutEncoding: UTF8,
-                stderrEncoding: UTF8);
-        };
-        handler(problem, executor);
+              Platform.executable,
+              new List()
+                ..addAll(arguments)
+                ..add(file.path),
+              stdoutEncoding: UTF8,
+              stderrEncoding: UTF8);
+        });
       });
 }
 

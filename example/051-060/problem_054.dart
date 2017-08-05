@@ -55,8 +55,8 @@
 /// How many hands does Player 1 win?
 library problem_054;
 
-import 'package:more/iterable.dart';
 import 'package:more/collection.dart';
+import 'package:more/iterable.dart';
 
 const List<String> values = const ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
 const List<String> suits = const ['C', 'D', 'H', 'S'];

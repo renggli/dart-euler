@@ -7,8 +7,8 @@
 /// numbers from 1 to 20?
 library problem_005;
 
-import 'package:more/int_math.dart';
 import 'package:more/collection.dart';
+import 'package:more/int_math.dart';
 
 final min = 1;
 final max = 20;

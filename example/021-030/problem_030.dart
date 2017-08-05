@@ -15,15 +15,15 @@
 /// fifth powers of their digits.
 library problem_030;
 
-import 'package:more/int_math.dart';
 import 'package:more/collection.dart';
+import 'package:more/int_math.dart';
 
 final int power = 5;
 final int upper = 200000;
 
 int sumOfDigitPowers(int number, int power) {
   return number.toString().codeUnits
-      .fold(0, (sum, each) => sum + pow(each - 48, power));
+      .fold(0, (sum, each) => sum + pow(each - 48, power) as int);
 }
 
 void main() {
