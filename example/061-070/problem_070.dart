@@ -27,7 +27,7 @@ int phi(int n) {
 }
 
 final Ordering<int> ordering = new Ordering.natural();
-final Ordering<Iterable<int>> listOrdering = ordering.lexicographical();
+final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
 
 bool isPermutation(int a, int b) {
   var ad = digits(a).toList()..sort();
