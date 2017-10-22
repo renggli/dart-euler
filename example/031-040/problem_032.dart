@@ -17,7 +17,7 @@ library problem_032;
 import 'package:more/iterable.dart';
 
 bool isPandigitalProduct(int a, int b) {
-  var list = new List();
+  var list = [];
   list.addAll(digits(a));
   list.addAll(digits(b));
   list.addAll(digits(a * b));

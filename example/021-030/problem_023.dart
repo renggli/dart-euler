@@ -27,7 +27,7 @@ import 'problem_021.dart';
 final max = 28123;
 
 void main() {
-  var abundant = new List();
+  var abundant = <int>[];
   for (var i = 1; i <= max; i++) {
     if (sumOfProperDivisors(i) > i) {
       abundant.add(i);

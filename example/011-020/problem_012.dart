@@ -40,7 +40,7 @@ int numberOfDivisors(int n) {
 
 void main() {
   var i = 1, t = 0;
-  while (true) {
+  for (;;) {
     t += i;
     if (numberOfDivisors(t) > divisors) {
       assert(t == 76576500);

@@ -21,7 +21,7 @@ int p = 165;
 int h = 143;
 
 void main() {
-  while (true) {
+  for (;;) {
     t++;
     while (P(p) < T(t)) {
       p++;

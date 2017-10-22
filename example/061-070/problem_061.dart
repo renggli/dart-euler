@@ -26,7 +26,7 @@
 library problem_061;
 
 List<int> generate(int func(int)) {
-  var result = new List();
+  var result = [];
   for (var n = 1, v = 1; v < 10000; n++, v = func(n)) {
     if (v > 999) {
       result.add(v);
@@ -44,7 +44,7 @@ final List<List<int>> types = [
   generate((n) => n * (3 * n - 2))];
 
 List<List<int>> findChains(List<int> indexes, int prefix) {
-  var chains = new List();
+  var chains = [];
   if (indexes.isEmpty) {
     chains.add([]);
   } else {

@@ -20,35 +20,35 @@ final List<String> decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fif
 
 List<String> spell(int value) {
   if (value < cardinals.length) {
-    return new List()
+    return []
       ..add(cardinals[value]);
   } else if (value < 100) {
     if (value % 10 == 0) {
-      return new List()
+      return []
         ..add(decimals[value ~/ 10]);
     } else {
-      return new List()
+      return []
         ..add(decimals[value ~/ 10])
         ..add(cardinals[value % 10]);
     }
   } else if (value < 1000) {
     if (value % 100 == 0) {
-      return new List()
+      return []
         ..addAll(spell(value ~/ 100))
         ..add('hundred');
     } else {
-      return new List()
+      return []
         ..addAll(spell(value ~/ 100))
         ..addAll(['hundred', 'and'])
         ..addAll(spell(value % 100));
     }
   } else if (value < 1000000) {
     if (value % 1000 == 0) {
-      return new List()
+      return []
         ..addAll(spell(value ~/ 1000))
         ..add('thousand');
     } else {
-      return new List()
+      return []
         ..addAll(spell(value ~/ 1000))
         ..addAll(['thousand', 'and'])
         ..addAll(spell(value % 1000));

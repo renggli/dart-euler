@@ -17,8 +17,8 @@ final List<int> primes = primesUpTo(10000);
 bool allPrime(List<List<num>> pairs) {
   for (var pair in pairs) {
     var s1 = pair[0].toString(), s2 = pair[1].toString();
-    if (!isProbablyPrime(int.parse('${s1}${s2}')) ||
-        !isProbablyPrime(int.parse('${s2}${s1}'))) {
+    if (!isProbablyPrime(int.parse('$s1$s2')) ||
+        !isProbablyPrime(int.parse('$s2$s1'))) {
       return false;
     }
   }

@@ -21,7 +21,7 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 int number(int n, int x) {
-  var result = new List<int>();
+  var result = <int>[];
   for (int i = n; i > 0; i--) {
     result.addAll(digits(i * x));
   }

@@ -67,8 +67,6 @@ class Card {
   final int value;
   final int suit;
 
-  Card._(this.name, this.value, this.suit);
-
   factory Card(String input) {
     if (input.length != 2) {
       throw new ArgumentError('Invalid card: $input');
@@ -82,6 +80,8 @@ class Card {
     return new Card._(input, values.indexOf(input[0]) + 2, suits.indexOf(input[1]));
   }
 
+  Card._(this.name, this.value, this.suit);
+
   @override
   String toString() => name;
 }
@@ -92,20 +92,20 @@ class Hand {
   final Multiset<int> values;
   final Multiset<int> suits;
 
-  Hand._(this.cards, this.values, this.suits);
-
   factory Hand(List<Card> input) {
     if (input.length != 5) {
       throw new ArgumentError('Invalid hand: $input');
     }
-    var cards = new List.from(input)
-        ..sort((Card a, Card b) => a.value - b.value);
-    var values = new Multiset.from(cards
-        .map((Card card) => card.value));
-    var suits = new Multiset.from(cards
-        .map((Card each) => each.suit));
+    List<Card> cards = new List.from(input)
+        ..sort((a, b) => a.value - b.value);
+    Multiset<int> values = new Multiset.from(cards
+        .map((card) => card.value));
+    Multiset<int> suits = new Multiset.from(cards
+        .map((each) => each.suit));
     return new Hand._(cards, values, suits);
   }
+
+  Hand._(this.cards, this.values, this.suits);
 
   int get rank {
 
@@ -171,9 +171,9 @@ class Hand {
   }
 
   int rankFine(int base, Iterable<Card> cards) {
-    var values = new List();
+    var values = <int>[];
     values.add(base);
-    values.addAll(partition(cards.map((card) => card.value), 5, 0));
+    //values.addAll(partition(cards.map((card) => card.value), 5, 0));
     return 0; //
   }
 
@@ -200,4 +200,5 @@ void main() {
         : 'Player 2';
     print('$input        $ranks        $winner');
   }
+  assert(false);
 }

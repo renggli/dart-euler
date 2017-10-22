@@ -31,7 +31,7 @@ int count(int n) {
 }
 
 void main() {
-  var list = new List();
+  var list = <int>[];
   for (int i = 2; ; i++) {
     list.add(count(i));
     if (list.length > size) {

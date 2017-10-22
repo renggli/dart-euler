@@ -42,7 +42,7 @@ void main() {
   for (var n = 2; n < max; n++) {
     var p = phi(n);
     if (isPermutation(n, p)) {
-      print('$n      ${p}      ${n/p}');
+      print('$n      $p      ${n/p}');
     }
   }
 }

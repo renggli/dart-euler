@@ -5,7 +5,7 @@ import 'package:euler/euler.dart';
 void main() {
   print('<?xml version="1.0"?>');
   print('<benchmarks>');
-  allProblemsDo((int problem, Executor executor) {
+  allProblemsDo((problem, executor) {
     var watch = new Stopwatch();
     watch.start();
     var result = executor();
