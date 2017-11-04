@@ -10,7 +10,7 @@ void main() {
       if (result.exitCode != 0) {
         fail(result.stderr);
       }
-      expect(executor().exitCode, 0, reason: 'Exit code');
+      expect(result.exitCode, 0, reason: 'Exit code');
     });
   }, arguments: ['--checked']);
 }
