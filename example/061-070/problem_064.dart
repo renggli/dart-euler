@@ -32,10 +32,9 @@
 /// Exactly four continued fractions, for N ≤ 13, have an odd period.
 ///
 /// How many continued fractions for N ≤ 10000 have an odd period?
-///
+library problem_064;
 
 import 'dart:math';
-
 import 'package:more/collection.dart';
 
 // https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Algorithm
@@ -55,8 +54,5 @@ Iterable<int> expansion(int n) sync* {
 }
 
 void main() {
-  assert(range(0, 10000 + 1)
-      .map(expansion)
-      .where((e) => e.length.isOdd)
-      .length == 1322);
+  assert(range(0, 10000 + 1).map(expansion).where((e) => e.length.isOdd).length == 1322);
 }
