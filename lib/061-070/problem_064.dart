@@ -35,6 +35,7 @@
 library euler.problem_064;
 
 import 'dart:math';
+
 import 'package:more/collection.dart';
 
 // https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Algorithm
