@@ -16,4 +16,4 @@ assertion that verifies that the result is still correct. I focus on
 short, elegant and fast solutions. To run all the puzzles from the command
 line evaluate the following line of code or run the tests.
 
-    find . -name "*.dart" -print -exec dart --checked "{}" \;
+    dart lib/euler.dart
