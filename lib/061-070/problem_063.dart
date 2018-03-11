@@ -6,14 +6,11 @@
 /// How many n-digit positive integers exist which are also an n-th power?
 library euler.problem_063;
 
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-
 void main() {
   var count = 0;
-  for (var a = 1; a < 25; a++) {
+  for (var a = BigInt.one; a < new BigInt.from(25); a += BigInt.one) {
     for (var b = 1; b < 25; b++) {
-      var len = digits(pow(a, b)).length;
+      var len = a.pow(b).toString().length;
       if (len == b) {
         count++;
       } else if (len > b) {
