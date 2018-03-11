@@ -6,7 +6,6 @@
 library euler.problem_048;
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
 
 final max = 1000;
 

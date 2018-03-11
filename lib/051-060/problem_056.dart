@@ -8,15 +8,14 @@
 /// maximum digital sum?
 library euler.problem_056;
 
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
+import 'package:more/collection.dart';
 
 void main() {
   var ms = 0;
-  for (var a = 1; a < 100; a++) {
+  for (var a = BigInt.one; a < new BigInt.from(100); a += BigInt.one) {
     for (var b = 1; b < 100; b++) {
-      var s = digits(pow(a, b))
-        .reduce((a, b) => a + b);
+      var s = string(a.pow(b))
+        .fold(0, (a, b) => a + int.parse(b));
       if (s > ms) {
         ms = s;
       }

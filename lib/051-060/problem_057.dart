@@ -20,22 +20,24 @@
 /// with more digits than denominator?
 library euler.problem_057;
 
-import 'package:more/fraction.dart';
-import 'package:more/iterable.dart';
-
-final half = new Fraction(1, 2);
-final one = new Fraction(1);
-final two = new Fraction(2);
-
 void main() {
   var tally = 0;
-  var fraction = two + half;
+  // fraction = two + half
+  var fraction_n = new BigInt.from(5);
+  var fraction_d = new BigInt.from(2);
   for (var i = 1; i <= 1000; i++) {
-    Fraction value = fraction - one;
-    if (digits(value.numerator).length > digits(value.denominator).length) {
+    // value = fraction - one
+    var value_n = fraction_n - fraction_d;
+    var value_d = fraction_d;
+    if (value_n.toString().length > value_d.toString().length) {
       tally++;
     }
-    fraction = two + one / fraction;
+    // fraction = 2 + 1 / fraction
+    var n_fraction_n = BigInt.two * fraction_n + fraction_d;
+    var n_fraction_d = fraction_n;
+    var n_faction_gcd = n_fraction_n.gcd(n_fraction_d);
+    fraction_n = n_fraction_n ~/ n_faction_gcd;
+    fraction_d = n_fraction_d ~/ n_faction_gcd;
   }
   assert(tally == 153);
 }

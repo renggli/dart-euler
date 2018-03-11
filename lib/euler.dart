@@ -1,7 +1,6 @@
 library euler;
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 /// Matches the filename of a problem.
@@ -25,9 +24,7 @@ class Problem {
         Platform.executable,
         []
           ..addAll(arguments)
-          ..add(path),
-        stdoutEncoding: UTF8,
-        stderrEncoding: UTF8);
+          ..add(path));
   }
 
   /// Executes the problem asynchronously.
@@ -36,9 +33,7 @@ class Problem {
         Platform.executable,
         []
           ..addAll(arguments)
-          ..add(path),
-        stdoutEncoding: UTF8,
-        stderrEncoding: UTF8);
+          ..add(path));
   }
 }
 
