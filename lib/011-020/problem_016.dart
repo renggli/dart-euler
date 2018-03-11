@@ -5,12 +5,11 @@
 /// What is the sum of the digits of the number 2^1000?
 library euler.problem_016;
 
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
-
-final exp = 1000;
+import 'package:more/collection.dart';
 
 void main() {
-  var sum = digits(pow(2, exp)).reduce((a, b) => a + b);
+  var number = new BigInt.from(2).pow(1000);
+  var sum = string(number)
+      .fold(0, (a, b) => a + int.parse(b));
   assert(sum == 1366);
 }

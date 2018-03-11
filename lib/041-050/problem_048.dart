@@ -11,8 +11,9 @@ import 'package:more/int_math.dart';
 final max = 1000;
 
 void main() {
-  var sum = range(1, max + 1)
-      .map((i) => pow(i, i))
+  var sum = new IntegerRange(1, max + 1)
+      .map((i) => new BigInt.from(i).pow(i))
       .reduce((a, b) => a + b);
-  assert(sum % pow(10, 10) == 9110846700);
+  var digits = sum % new BigInt.from(10).pow(10);
+  assert(digits.toInt() == 9110846700);
 }

@@ -9,12 +9,14 @@
 /// Find the sum of the digits in the number 100!
 library euler.problem_020;
 
-import 'package:more/int_math.dart';
-import 'package:more/iterable.dart';
+import 'package:more/collection.dart';
 
 final number = 100;
 
 void main() {
-  var sum = digits(factorial(number)).reduce((a, b) => a + b);
+  var val = new IntegerRange(1, 100)
+      .fold(BigInt.one, (a, b) => a * new BigInt.from(b));
+  var sum = string(val)
+      .fold(0, (a, b) => a + int.parse(b));
   assert(sum == 648);
 }

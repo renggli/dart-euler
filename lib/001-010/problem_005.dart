@@ -14,6 +14,7 @@ final min = 1;
 final max = 20;
 
 void main() {
-  var result = range(min, max + 1).fold(1, lcm);
+  var result = new IntegerRange(min, max + 1)
+      .fold(1, lcm);
   assert(result == 232792560);
 }

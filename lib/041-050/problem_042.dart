@@ -282,7 +282,7 @@ int wordValue(String word) {
       .reduce((a, b) => a + b);
 }
 
-final Set<int> traingleNumbers = range(1000)
+final Set<int> traingleNumbers = new IntegerRange(1000)
     .map((value) => value * (value + 1) ~/ 2)
     .toSet();
 

@@ -20,7 +20,7 @@ import 'package:more/collection.dart';
 final max = 100;
 
 num sum(int start, int stop, num fun(int)) {
-  return range(start, stop + 1)
+  return new IntegerRange(start, stop + 1)
       .map(fun)
       .reduce((a, b) => a + b);
 }

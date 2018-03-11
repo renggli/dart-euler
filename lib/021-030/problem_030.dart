@@ -27,7 +27,7 @@ int sumOfDigitPowers(int number, int power) {
 }
 
 void main() {
-  var sum = range(2, upper)
+  var sum = new IntegerRange(2, upper)
       .where((i) => sumOfDigitPowers(i, power) == i)
       .reduce((a, b) => a + b);
   assert(sum == 443839);

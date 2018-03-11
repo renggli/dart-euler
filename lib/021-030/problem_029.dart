@@ -17,16 +17,14 @@
 /// 2 <= a <= 100 and 2 <= b <= 100?
 library euler.problem_029;
 
-import 'package:more/int_math.dart';
-
 final min = 2;
 final max = 100;
 
 void main() {
-  var t = new Set();
-  for (var a = min; a <= max; a++) {
+  var t = new Set<BigInt>();
+  for (var a = new BigInt.from(min); a <= new BigInt.from(max); a += BigInt.one) {
     for (var b = min; b <= max; b++) {
-      t.add(pow(a, b));
+      t.add(a.pow(b));
     }
   }
   assert(t.length == 9183);

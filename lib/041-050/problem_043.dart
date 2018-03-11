@@ -35,7 +35,7 @@ bool isDivisible(List<int> digits) {
 }
 
 void main() {
-  var sum = permutations(range(0, 10).toList())
+  var sum = permutations(new IntegerRange(0, 10).toList())
       .where(isDivisible)
       .map(polynomial)
       .reduce((a, b) => a + b);
