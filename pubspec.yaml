@@ -4,7 +4,7 @@ author: Lukas Renggli <renggli@gmail.com>
 description: My advances on Project Euler.
 homepage: https://github.com/renggli/dart-euler
 environment:
-  sdk: ^2.0.0
+  sdk: '>=2.0.0-dev.61.0 <3.0.0'
 dependencies:
   test: any
   more: any
