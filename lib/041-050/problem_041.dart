@@ -26,7 +26,7 @@ bool isPrime(int value) {
 }
 
 bool isPandigital(int x) {
-  var decimals = digits(x).toList();
+  final decimals = digits(x).toList();
   for (var n = 1; n <= decimals.length; n++) {
     if (!decimals.contains(n)) {
       return false;

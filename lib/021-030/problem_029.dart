@@ -21,7 +21,7 @@ final min = 2;
 final max = 100;
 
 void main() {
-  var t = Set<BigInt>();
+  final t = Set<BigInt>();
   for (var a = BigInt.from(min); a <= BigInt.from(max); a += BigInt.one) {
     for (var b = min; b <= max; b++) {
       t.add(a.pow(b));

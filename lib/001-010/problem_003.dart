@@ -12,7 +12,7 @@ import 'package:more/int_math.dart';
 final value = 600851475143;
 
 void main() {
-  var factor =
+  final factor =
       primesUpTo(sqrt(value).ceil()).lastWhere((each) => value % each == 0);
   assert(factor == 6857);
 }

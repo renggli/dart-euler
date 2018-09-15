@@ -17,7 +17,7 @@ import 'package:more/iterable.dart';
 
 void main() {
   var n = 1;
-  var d = <int>[];
+  final d = <int>[];
   while (d.length < 1000000) {
     d.addAll(digits(n++).toList().reversed);
   }

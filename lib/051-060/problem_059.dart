@@ -35,16 +35,15 @@ final String input = String.fromCharCodes(inputRaw.split(',').map(int.parse));
 final _a = 'a'.codeUnitAt(0);
 final _z = 'z'.codeUnitAt(0);
 
-String crypt(String input, String password) {
-  return String.fromCharCodes(List.generate(input.length,
-      (i) => input.codeUnitAt(i) ^ password.codeUnitAt(i % password.length)));
-}
+String crypt(String input, String password) =>
+    String.fromCharCodes(List.generate(input.length,
+        (i) => input.codeUnitAt(i) ^ password.codeUnitAt(i % password.length)));
 
 void main() {
   for (var a = _a; a <= _z; a++) {
     for (var b = _a; b <= _z; b++) {
       for (var c = _a; c <= _z; c++) {
-        var output = crypt(input, String.fromCharCodes([a, b, c]));
+        final output = crypt(input, String.fromCharCodes([a, b, c]));
         if (output.contains('because')) {
           assert(output.codeUnits.reduce((a, b) => a + b) == 107359);
           return;

@@ -41,10 +41,10 @@ int consecutivePrimes(int a, int b) {
 
 void main() {
   var mc = 0, mp = 0;
-  var bs = primesUpTo(limit).takeWhile((x) => x < limit).toList();
+  final bs = primesUpTo(limit).takeWhile((x) => x < limit).toList();
   for (var a = -limit; a <= limit; a++) {
     for (var b in bs) {
-      var c = consecutivePrimes(a, b);
+      final c = consecutivePrimes(a, b);
       if (c > mc) {
         mc = c;
         mp = a * b;

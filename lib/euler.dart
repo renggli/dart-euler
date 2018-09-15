@@ -18,36 +18,32 @@ class Problem {
   int get number => int.parse(pattern.firstMatch(path).group(1));
 
   /// Executes the problem synchronously.
-  ProcessResult executeSync({List<String> arguments = const []}) {
-    return Process.runSync(
-        Platform.executable,
-        []
-          ..addAll(arguments)
-          ..add(path));
-  }
+  ProcessResult executeSync({List<String> arguments = const []}) =>
+      Process.runSync(
+          Platform.executable,
+          []
+            ..addAll(arguments)
+            ..add(path));
 
   /// Executes the problem asynchronously.
-  Future<ProcessResult> execute({List<String> arguments = const []}) {
-    return Process.run(
-        Platform.executable,
-        []
-          ..addAll(arguments)
-          ..add(path));
-  }
+  Future<ProcessResult> execute({List<String> arguments = const []}) =>
+      Process.run(
+          Platform.executable,
+          []
+            ..addAll(arguments)
+            ..add(path));
 }
 
 /// Iterator over all the Euler problems.
-Iterable<Problem> get problems {
-  return Directory.current.parent
-      .listSync(recursive: true, followLinks: false)
-      .where((file) => pattern.hasMatch(file.path))
-      .map((file) => Problem(file.path));
-}
+Iterable<Problem> get problems => Directory.current.parent
+    .listSync(recursive: true, followLinks: false)
+    .where((file) => pattern.hasMatch(file.path))
+    .map((file) => Problem(file.path));
 
 void main() {
   for (var problem in problems) {
     stdout.write('Problem ${problem.number}');
-    var result = problem.executeSync();
+    final result = problem.executeSync();
     stdout.writeln(result.exitCode == 0 ? '' : ' [FAILURE]');
   }
 }

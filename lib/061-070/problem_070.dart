@@ -30,8 +30,8 @@ final Ordering<int> ordering = Ordering.natural();
 final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
 
 bool isPermutation(int a, int b) {
-  var ad = digits(a).toList()..sort();
-  var bd = digits(b).toList()..sort();
+  final ad = digits(a).toList()..sort();
+  final bd = digits(b).toList()..sort();
   return listOrdering.compare(ad, bd) == 0;
 }
 

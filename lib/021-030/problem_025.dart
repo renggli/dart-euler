@@ -30,8 +30,9 @@ Iterable<BigInt> fibonacci() =>
     fold([BigInt.one, BigInt.one], (e) => e[0] + e[1]);
 
 void main() {
-  var digits = 1000;
-  var limit = BigInt.from(10).pow(digits - 1);
-  var count = fibonacci().takeWhile((v) => v < limit).fold(1, (a, b) => a + 1);
+  final digits = 1000;
+  final limit = BigInt.from(10).pow(digits - 1);
+  final count =
+      fibonacci().takeWhile((v) => v < limit).fold(1, (a, b) => a + 1);
   assert(count == 4782);
 }

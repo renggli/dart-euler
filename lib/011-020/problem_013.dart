@@ -108,6 +108,6 @@ final List<BigInt> numbers = [
 ];
 
 void main() {
-  var sum = numbers.reduce((a, b) => a + b).toString().substring(0, 10);
+  final sum = numbers.reduce((a, b) => a + b).toString().substring(0, 10);
   assert(sum == '5537376230');
 }

@@ -8,12 +8,12 @@
 library euler.problem_062;
 
 void main() {
-  Map<String, List<int>> permutations = {};
+  final permutations = <String, List<int>>{};
   for (var base = 1;; base++) {
-    var cube = base * base * base;
-    var key =
+    final cube = base * base * base;
+    final key =
         String.fromCharCodes(List.from(cube.toString().codeUnits)..sort());
-    var values = permutations.putIfAbsent(key, () => <int>[])..add(cube);
+    final values = permutations.putIfAbsent(key, () => <int>[])..add(cube);
     if (values.length == 5) {
       assert(values.first == 127035954683);
       return;

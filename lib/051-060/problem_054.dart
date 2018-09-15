@@ -112,17 +112,17 @@ class Hand {
     if (input.length != 5) {
       throw ArgumentError('Invalid hand: $input');
     }
-    List<Card> cards = input.map((input) => Card(input)).toList(growable: false)
+    final cards = input.map((input) => Card(input)).toList(growable: false)
       ..sort();
-    Multiset<int> values = Multiset.from(cards.map((card) => card.value));
-    Multiset<int> suits = Multiset.from(cards.map((each) => each.suit));
+    final values = Multiset.from(cards.map((card) => card.value));
+    final suits = Multiset.from(cards.map((each) => each.suit));
     return Hand._(input.join(' '), cards, values, suits);
   }
 
   Hand._(this.input, this.cards, this.values, this.suits);
 
   int get rank {
-    double rank = 0.0;
+    var rank = 0.0;
 
     // Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
     if (suits.distinct.length == 1 && cards[0].value == 8) {
@@ -139,14 +139,14 @@ class Hand {
     }
 
     // Four of a Kind: Four cards of the same value.
-    var fourOfAKind = cards.where((card) => values[card.value] == 4);
+    final fourOfAKind = cards.where((card) => values[card.value] == 4);
     if (fourOfAKind.length == 4) {
       rank += 1e8 + 2e7 * fourOfAKind.last.value;
     }
 
     // Full House: Three of a kind and a pair.
-    var twoOfAKind = cards.where((card) => values[card.value] == 2);
-    var treeOfAKind = cards.where((card) => values[card.value] == 3);
+    final twoOfAKind = cards.where((card) => values[card.value] == 2);
+    final treeOfAKind = cards.where((card) => values[card.value] == 3);
     if (twoOfAKind.length == 2 && treeOfAKind.length == 3) {
       rank += 1e7;
     }
@@ -190,8 +190,8 @@ class Hand {
 }
 
 void main() {
-  var splitter = RegExp(r'\s+');
-  var inputs = const [
+  final splitter = RegExp(r'\s+');
+  final inputs = const [
     '8C TS KC 9H 4S 7D 2S 5D 3S AC',
     '5C AD 5D AC 9C 7C 5H 8D TD KS',
     '3H 7H 6S KC JS QH TD JC 2D 8S',
@@ -1194,9 +1194,10 @@ void main() {
     'AS KD 3D JD 8H 7C 8C 5C QD 6C',
   ];
   var firstWins = 0;
-  for (String input in inputs) {
-    var ranks =
-        partition(input.split(splitter), 5).map((hand) => Hand(hand).rank);
+  for (var input in inputs) {
+    final ranks = partition(input.split(splitter), 5)
+        .map((hand) => Hand(hand).rank)
+        .toList();
     if (ranks.first > ranks.last) {
       firstWins++;
     }

@@ -21,15 +21,15 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 int number(int n, int x) {
-  var result = <int>[];
-  for (int i = n; i > 0; i--) {
+  final result = <int>[];
+  for (var i = n; i > 0; i--) {
     result.addAll(digits(i * x));
   }
   return polynomial(result);
 }
 
 bool isPandigital(int x) {
-  var decimals = digits(x);
+  final decimals = digits(x);
   if (decimals.length != 9) {
     return false;
   }
@@ -43,9 +43,9 @@ bool isPandigital(int x) {
 
 void main() {
   var max = 0;
-  for (int n = 2; n <= 9; n++) {
-    for (int x = 1; x < 987654321; x++) {
-      var candidate = number(n, x);
+  for (var n = 2; n <= 9; n++) {
+    for (var x = 1; x < 987654321; x++) {
+      final candidate = number(n, x);
       if (candidate > 987654321) {
         break;
       }

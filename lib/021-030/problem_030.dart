@@ -21,15 +21,13 @@ import 'package:more/int_math.dart';
 final int power = 5;
 final int upper = 200000;
 
-int sumOfDigitPowers(int number, int power) {
-  return number
-      .toString()
-      .codeUnits
-      .fold(0, (sum, each) => sum + pow(each - 48, power).toInt());
-}
+int sumOfDigitPowers(int number, int power) => number
+    .toString()
+    .codeUnits
+    .fold(0, (sum, each) => sum + pow(each - 48, power).toInt());
 
 void main() {
-  var sum = IntegerRange(2, upper)
+  final sum = IntegerRange(2, upper)
       .where((i) => sumOfDigitPowers(i, power) == i)
       .reduce((a, b) => a + b);
   assert(sum == 443839);

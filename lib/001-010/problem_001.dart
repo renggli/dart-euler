@@ -11,7 +11,7 @@ import 'package:more/collection.dart';
 final max = 1000;
 
 void main() {
-  var sum = IntegerRange(max)
+  final sum = IntegerRange(max)
       .where((i) => i % 3 == 0 || i % 5 == 0)
       .reduce((a, b) => a + b);
   assert(sum == 233168);

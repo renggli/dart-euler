@@ -17,7 +17,7 @@ library euler.problem_032;
 import 'package:more/iterable.dart';
 
 bool isPandigitalProduct(int a, int b) {
-  var list = [];
+  final list = <int>[];
   list.addAll(digits(a));
   list.addAll(digits(b));
   list.addAll(digits(a * b));
@@ -27,7 +27,7 @@ bool isPandigitalProduct(int a, int b) {
 }
 
 void main() {
-  var products = Set();
+  final products = Set();
   for (var a = 1; a <= 98; a++) {
     for (var b = 123; b <= 9876; b++) {
       if (isPandigitalProduct(a, b)) {

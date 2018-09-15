@@ -12,7 +12,7 @@ final min = 100;
 final max = 999;
 
 bool isPalindrome(int p) {
-  var s = p.toString();
+  final s = p.toString();
   return IntegerRange(s.length ~/ 2).every((i) => s[i] == s[s.length - i - 1]);
 }
 
@@ -20,7 +20,7 @@ void main() {
   var c = -1;
   for (var i = max; i >= min; i--) {
     for (var j = i; j >= min; j--) {
-      var p = i * j;
+      final p = i * j;
       if (p > c && isPalindrome(p)) {
         c = p;
       }

@@ -22,15 +22,15 @@ final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
 final primes = primesUpTo(9999).skipWhile((x) => x <= 1487).toList();
 
 bool isPermutation(int a, int b) {
-  var ad = digits(a).toList()..sort();
-  var bd = digits(b).toList()..sort();
+  final ad = digits(a).toList()..sort();
+  final bd = digits(b).toList()..sort();
   return listOrdering.compare(ad, bd) == 0;
 }
 
 void main() {
   for (var step = 2; step < 5000; step += 2) {
     for (var a in primes) {
-      var b = a + step, c = b + step;
+      final b = a + step, c = b + step;
       if (ordering.binarySearch(primes, b) > 0 &&
           ordering.binarySearch(primes, c) > 0 &&
           isPermutation(a, b) &&

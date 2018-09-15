@@ -10,6 +10,6 @@ import 'package:more/int_math.dart';
 final max = 2000000;
 
 void main() {
-  var sum = primesUpTo(max).reduce((a, b) => a + b);
+  final sum = primesUpTo(max).reduce((a, b) => a + b);
   assert(sum == 142913828922);
 }

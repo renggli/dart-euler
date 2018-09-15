@@ -19,30 +19,30 @@ import 'package:more/iterable.dart';
 
 void main() {
   // wow, this is the most ugly code so far
-  var num_p = 1, den_p = 1;
+  var nump = 1, denp = 1;
   for (var num = 11; num <= 99; num++) {
     for (var den = num + 1; den <= 99; den++) {
-      var gcd1 = gcd(num, den);
+      final gcd1 = gcd(num, den);
       if (gcd1 > 1 && num % 10 > 0 && den % 10 > 0) {
-        var nums = digits(num).toList();
-        var dens = digits(den).toList();
-        var com = nums.contains(dens[0])
+        final nums = digits(num).toList();
+        final dens = digits(den).toList();
+        final com = nums.contains(dens[0])
             ? dens[0]
             : nums.contains(dens[1]) ? dens[1] : 0;
         if (com > 0) {
           nums.remove(com);
           dens.remove(com);
-          var numx = nums[0];
-          var denx = dens[0];
-          var gcdx = gcd(numx, denx);
+          final numx = nums[0];
+          final denx = dens[0];
+          final gcdx = gcd(numx, denx);
           if (num ~/ gcd1 == numx ~/ gcdx && den ~/ gcd1 == denx ~/ gcdx) {
-            num_p *= num;
-            den_p *= den;
+            nump *= num;
+            denp *= den;
           }
         }
       }
     }
   }
-  var gcd_p = gcd(num_p, den_p);
-  assert(den_p ~/ gcd_p == 100);
+  final gcdp = gcd(nump, denp);
+  assert(denp ~/ gcdp == 100);
 }

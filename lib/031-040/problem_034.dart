@@ -12,9 +12,10 @@ import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 void main() {
-  var t = 0, m = 100000;
+  var t = 0;
+  final m = 100000;
   for (var i = 3; i <= m; i++) {
-    var s = digits(i).map(factorial).reduce((a, b) => a + b);
+    final s = digits(i).map(factorial).reduce((a, b) => a + b);
     if (i == s) {
       t += s;
     }

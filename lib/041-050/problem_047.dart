@@ -18,8 +18,8 @@ library euler.problem_047;
 final size = 4;
 
 int count(int n) {
-  var distinct = Set();
   var d = 2;
+  final distinct = Set();
   while (n > 1) {
     while (n % d == 0) {
       distinct.add(d);
@@ -31,8 +31,8 @@ int count(int n) {
 }
 
 void main() {
-  var list = <int>[];
-  for (int i = 2;; i++) {
+  final list = <int>[];
+  for (var i = 2;; i++) {
     list.add(count(i));
     if (list.length > size) {
       list.removeAt(0);

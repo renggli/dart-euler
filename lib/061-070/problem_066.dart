@@ -25,25 +25,25 @@ import 'dart:math' as math;
 
 /// The integer square root of `n` or `-1`.
 int sqrt(int n) {
-  var root = math.sqrt(n).round();
+  final root = math.sqrt(n).round();
   return root * root == n ? root : -1;
 }
 
-final int D = 7;
+final searchMaxD = 7;
 
 void main() {
-  var max_x = 0, max_d = 0;
-  for (var d = 2; d <= D; d++) {
+  var maxX = 0, maxD = 0;
+  for (var d = 2; d <= searchMaxD; d++) {
     if (sqrt(d) == -1) {
       for (var x = 2;; x++) {
-        var upper = x * x - 1;
+        final upper = x * x - 1;
         if (upper % d == 0) {
-          var y = sqrt(upper ~/ d);
+          final y = sqrt(upper ~/ d);
           if (y > 0) {
             print('d: $d\tx: $x\ty: $y');
-            if (x > max_x) {
-              max_x = x;
-              max_d = d;
+            if (x > maxX) {
+              maxX = x;
+              maxD = d;
             }
             break;
           }
@@ -51,6 +51,6 @@ void main() {
       }
     }
   }
-  print('x: $max_x, D: $max_d');
+  print('x: $maxX, D: $maxD');
   assert(false);
 }

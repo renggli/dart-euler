@@ -19,13 +19,12 @@ import 'package:more/collection.dart';
 
 final max = 100;
 
-num sum(int start, int stop, num fun(int)) {
-  return IntegerRange(start, stop + 1).map(fun).reduce((a, b) => a + b);
-}
+num sum(int start, int stop, num fun(int)) =>
+    IntegerRange(start, stop + 1).map(fun).reduce((a, b) => a + b);
 
 void main() {
-  var sumOfSquares = sum(1, max, (i) => i * i);
-  var squareOfSums = sum(1, max, (i) => i) * sum(1, max, (i) => i);
-  var total = squareOfSums - sumOfSquares;
+  final sumOfSquares = sum(1, max, (i) => i * i);
+  final squareOfSums = sum(1, max, (i) => i) * sum(1, max, (i) => i);
+  final total = squareOfSums - sumOfSquares;
   assert(total == 25164150);
 }

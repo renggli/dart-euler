@@ -16,7 +16,7 @@ final max = 1000000;
 final Set<int> primes = primesUpTo(max).toSet();
 
 bool isCircular(int prime) {
-  var rotation = digits(prime).toList();
+  final rotation = digits(prime).toList();
   for (var round = 1; round < rotation.length; round++) {
     rotation.insert(0, rotation.removeLast());
     if (!primes.contains(polynomial(rotation))) {

@@ -22,11 +22,11 @@ import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-final List<int> divisors = [2, 3, 5, 7, 11, 13, 17];
+final divisors = <int>[2, 3, 5, 7, 11, 13, 17];
 
 bool isDivisible(List<int> digits) {
-  for (int i = 0; i < divisors.length; i++) {
-    var sub = 100 * digits[8 - i] + 10 * digits[7 - i] + digits[6 - i];
+  for (var i = 0; i < divisors.length; i++) {
+    final sub = 100 * digits[8 - i] + 10 * digits[7 - i] + digits[6 - i];
     if (sub % divisors[i] != 0) {
       return false;
     }
@@ -35,7 +35,7 @@ bool isDivisible(List<int> digits) {
 }
 
 void main() {
-  var sum = permutations(IntegerRange(0, 10).toList())
+  final sum = permutations(IntegerRange(0, 10).toList())
       .where(isDivisible)
       .map(polynomial)
       .reduce((a, b) => a + b);

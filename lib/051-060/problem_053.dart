@@ -39,7 +39,7 @@ BigInt binomial(int n, int k) {
 
 void main() {
   var tally = 0;
-  var max = BigInt.from(1000000);
+  final max = BigInt.from(1000000);
   for (var n = 1; n <= 100; n++) {
     for (var k = 0; k <= n; k++) {
       if (binomial(n, k) > max) {

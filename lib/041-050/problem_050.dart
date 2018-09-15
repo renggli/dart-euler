@@ -26,7 +26,7 @@ void main() {
     var sum = 0;
     for (var stop = start; stop < primes.length; stop++) {
       sum += primes[stop];
-      var index = ordering.binarySearch(primes, sum);
+      final index = ordering.binarySearch(primes, sum);
       if (-index > primes.length) {
         break; // sum too large
       }

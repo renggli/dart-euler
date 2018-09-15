@@ -5179,16 +5179,14 @@ final List<String> names = [
   'ALONSO'
 ];
 
-int score(String name) {
-  return name.runes
-      .map((value) => value - 'A'.runes.first + 1)
-      .reduce((a, b) => a + b);
-}
+int score(String name) => name.runes
+    .map((value) => value - 'A'.runes.first + 1)
+    .reduce((a, b) => a + b);
 
 void main() {
   names.sort();
   var index = 0;
-  var total =
+  final total =
       names.map((each) => ++index * score(each)).reduce((a, b) => a + b);
   assert(total == 871198282);
 }

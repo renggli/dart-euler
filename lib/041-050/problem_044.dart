@@ -27,7 +27,7 @@ final Set<int> pentagonalNumbersSet = pentagonalNumbers.toSet();
 void main() {
   for (var i = 1; i < pentagonalNumbers.length; i++) {
     for (var x = i, y = 0; x > y; x--, y++) {
-      var a = pentagonalNumbers[x], b = pentagonalNumbers[y];
+      final a = pentagonalNumbers[x], b = pentagonalNumbers[y];
       if (pentagonalNumbersSet.contains(a + b) &&
           pentagonalNumbersSet.contains(a - b)) {
         assert(a - b == 5482660);

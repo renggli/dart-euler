@@ -28,10 +28,10 @@ final String number = '73167176531330624919225119674426574742355349194934'
 
 void main() {
   var max = 0;
-  var numbers = number.runes.map((each) => each - 48).toList();
-  for (int i = 0; i < numbers.length - consec + 1; i++) {
+  final numbers = number.runes.map((each) => each - 48).toList();
+  for (var i = 0; i < numbers.length - consec + 1; i++) {
     var product = 1;
-    for (int j = i; j < i + consec; j++) {
+    for (var j = i; j < i + consec; j++) {
       product *= numbers[j];
     }
     if (product > max) {

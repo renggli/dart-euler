@@ -14,7 +14,8 @@ import 'package:more/collection.dart';
 final number = 100;
 
 void main() {
-  var val = IntegerRange(1, 100).fold(BigInt.one, (a, b) => a * BigInt.from(b));
-  var sum = string(val).fold(0, (a, b) => a + int.parse(b));
+  final val =
+      IntegerRange(1, 100).fold(BigInt.one, (a, b) => a * BigInt.from(b));
+  final sum = string(val).fold(0, (a, b) => a + int.parse(b));
   assert(sum == 648);
 }

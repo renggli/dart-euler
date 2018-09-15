@@ -23,13 +23,13 @@ library euler.problem_026;
 final d = 1000;
 
 int cycleSize(int d) {
-  var remainders = List.from([1]);
+  final remainders = [1];
   while (remainders.last != 0) {
     if (remainders.last < d) {
       remainders.add(10 * remainders.last);
     } else {
-      var r = 10 * (remainders.last % d);
-      var i = remainders.indexOf(r);
+      final r = 10 * (remainders.last % d);
+      final i = remainders.indexOf(r);
       if (i > -1) {
         return remainders.length - i;
       }
@@ -42,7 +42,7 @@ int cycleSize(int d) {
 void main() {
   var mi = 0, mc = 0;
   for (var i = 1; i < d; i++) {
-    var c = cycleSize(i);
+    final c = cycleSize(i);
     if (mc < c) {
       mi = i;
       mc = c;

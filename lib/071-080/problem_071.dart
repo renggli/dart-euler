@@ -14,22 +14,22 @@
 /// the left of 3/7.
 library euler.problem_071;
 
-import 'package:more/fraction.dart';
+import 'package:more/number.dart';
 
-final max_d = 1e6;
+final maxD = 1e6;
 
 final Fraction target = Fraction(3, 7);
-final double target_float = target.toDouble();
+final double targetFloat = target.toDouble();
 
 void main() {
   var best = Fraction(0, 1);
-  var best_float = best.toDouble();
-  for (var d = 1; d <= max_d; d++) {
-    for (var n = (d * target_float).floor(); n < d * target_float; n++) {
-      var next_float = n / d;
-      if (best_float < next_float && next_float < target_float) {
+  var bestFloat = best.toDouble();
+  for (var d = 1; d <= maxD; d++) {
+    for (var n = (d * targetFloat).floor(); n < d * targetFloat; n++) {
+      final nextFloat = n / d;
+      if (bestFloat < nextFloat && nextFloat < targetFloat) {
         best = Fraction(n, d);
-        best_float = best.toDouble();
+        bestFloat = best.toDouble();
       }
     }
   }

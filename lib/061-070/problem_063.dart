@@ -10,7 +10,7 @@ void main() {
   var count = 0;
   for (var a = BigInt.one; a < BigInt.from(25); a += BigInt.one) {
     for (var b = 1; b < 25; b++) {
-      var len = a.pow(b).toString().length;
+      final len = a.pow(b).toString().length;
       if (len == b) {
         count++;
       } else if (len > b) {

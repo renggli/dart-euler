@@ -40,7 +40,7 @@ import 'package:more/collection.dart';
 
 // https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Algorithm
 Iterable<int> expansion(int n) sync* {
-  var a0 = sqrt(n).floor();
+  final a0 = sqrt(n).floor();
   if (a0 * a0 != n) {
     var m = 0;
     var d = 1;

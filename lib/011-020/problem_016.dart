@@ -8,7 +8,7 @@ library euler.problem_016;
 import 'package:more/collection.dart';
 
 void main() {
-  var number = BigInt.from(2).pow(1000);
-  var sum = string(number).fold(0, (a, b) => a + int.parse(b));
+  final number = BigInt.from(2).pow(1000);
+  final sum = string(number).fold(0, (a, b) => a + int.parse(b));
   assert(sum == 1366);
 }

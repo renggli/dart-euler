@@ -21,7 +21,7 @@ void main() {
   var sundays = 0;
   for (var year = 1901; year <= 2000; year++) {
     for (var month = DateTime.january; month <= DateTime.december; month++) {
-      var date = DateTime(year, month, 1);
+      final date = DateTime(year, month, 1);
       if (date.weekday == DateTime.sunday) {
         sundays++;
       }

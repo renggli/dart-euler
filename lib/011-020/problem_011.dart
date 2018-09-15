@@ -5,7 +5,7 @@
 /// Find the sum of all the primes below two million.
 library euler.problem_011;
 
-final List<List<int>> grid = [
+final grid = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [
     49,
@@ -301,13 +301,13 @@ final List<List<int>> grid = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-final List<List<int>> offset_x = [
+final offsetX = [
   [0, 1, 2, 3],
   [0, 0, 0, 0],
   [0, 1, 2, 3],
   [0, 1, 2, 3]
 ];
-final List<List<int>> offset_y = [
+final offsetY = [
   [0, 0, 0, 0],
   [0, 1, 2, 3],
   [0, 1, 2, 3],
@@ -318,13 +318,13 @@ void main() {
   var max = 0;
   for (var x = 0; x < grid.length; x++) {
     for (var y = 0; y < grid.length; y++) {
-      for (var o = 0; o < offset_x.length; o++) {
+      for (var o = 0; o < offsetX.length; o++) {
         var product = 1;
-        for (var i = 0; i < offset_x[o].length; i++) {
-          var x_o = x + offset_x[o][i];
-          var y_o = y + offset_y[o][i];
-          if (0 <= x_o && x_o < grid.length && 0 <= y_o && y_o < grid.length) {
-            product *= grid[x_o][y_o];
+        for (var i = 0; i < offsetX[o].length; i++) {
+          final xo = x + offsetX[o][i];
+          final yo = y + offsetY[o][i];
+          if (0 <= xo && xo < grid.length && 0 <= yo && yo < grid.length) {
+            product *= grid[xo][yo];
           } else {
             product = 0;
           }

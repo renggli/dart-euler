@@ -30,7 +30,7 @@ int collatz(int value) {
   if (value < cache.length && cache[value] > 0) {
     return cache[value];
   }
-  var result = value.isEven
+  final result = value.isEven
       ? 1 + collatz(value ~/ 2)
       : value != 1 ? 1 + collatz(3 * value + 1) : value;
   if (value < cache.length) {
@@ -40,12 +40,12 @@ int collatz(int value) {
 }
 
 void main() {
-  var i_m = 0, c_m = 0;
-  for (int i = 1; i < max; i++) {
-    if (collatz(i) > c_m) {
-      i_m = i;
-      c_m = collatz(i);
+  var im = 0, cm = 0;
+  for (var i = 1; i < max; i++) {
+    if (collatz(i) > cm) {
+      im = i;
+      cm = collatz(i);
     }
   }
-  assert(i_m == 837799);
+  assert(im == 837799);
 }

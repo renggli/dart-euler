@@ -1810,19 +1810,17 @@ final List<String> words = const [
 
 final baseOffset = 'A'.codeUnitAt(0) - 1;
 
-int wordValue(String word) {
-  return word
-      .toUpperCase()
-      .codeUnits
-      .map((each) => each - baseOffset)
-      .reduce((a, b) => a + b);
-}
+int wordValue(String word) => word
+    .toUpperCase()
+    .codeUnits
+    .map((each) => each - baseOffset)
+    .reduce((a, b) => a + b);
 
 final Set<int> traingleNumbers =
     IntegerRange(1000).map((value) => value * (value + 1) ~/ 2).toSet();
 
 void main() {
-  var tally =
+  final tally =
       words.where((each) => traingleNumbers.contains(wordValue(each))).length;
   assert(tally == 162);
 }

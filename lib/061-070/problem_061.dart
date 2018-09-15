@@ -26,7 +26,7 @@
 library euler.problem_061;
 
 List<int> generate(int func(int)) {
-  var result = [];
+  final result = <int>[];
   for (var n = 1, v = 1; v < 10000; n++, v = func(n)) {
     if (v > 999) {
       result.add(v);
@@ -45,12 +45,12 @@ final List<List<int>> types = [
 ];
 
 List<List<int>> findChains(List<int> indexes, int prefix) {
-  var chains = [];
+  final chains = <List<int>>[];
   if (indexes.isEmpty) {
-    chains.add([]);
+    chains.add(<int>[]);
   } else {
     for (var index in indexes) {
-      var newIndexes = indexes.where((value) => value != index).toList();
+      final newIndexes = indexes.where((value) => value != index).toList();
       for (var number in types[index]) {
         if (prefix == -1 || number ~/ 100 == prefix) {
           for (var chain in findChains(newIndexes, number % 100)) {

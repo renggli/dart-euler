@@ -18,7 +18,7 @@ final List<int> primes = primesUpTo(800000);
 final Set<int> primeSet = primes.toSet();
 
 bool isTruncable(int prime) {
-  var expanded = digits(prime).toList();
+  final expanded = digits(prime).toList();
   for (var i = 1; i < expanded.length; i++) {
     if (!primeSet.contains(polynomial(expanded.sublist(0, i))) ||
         !primeSet.contains(polynomial(expanded.sublist(i, expanded.length)))) {

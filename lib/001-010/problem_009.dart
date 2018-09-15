@@ -15,7 +15,7 @@ final sum = 1000;
 void main() {
   for (var a = 1; a <= sum - 2; a++) {
     for (var b = a; b <= sum - a - 1; b++) {
-      var c = sum - a - b;
+      final c = sum - a - b;
       if (a * a + b * b == c * c) {
         assert(a * b * c == 31875000);
         return;

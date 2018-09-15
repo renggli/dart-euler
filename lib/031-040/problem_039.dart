@@ -14,7 +14,7 @@ void main() {
     var pc = 0;
     for (var a = 1; a <= p - 2; a++) {
       for (var b = a; b <= p - a - 1; b++) {
-        var c = p - a - b;
+        final c = p - a - b;
         if (a * a + b * b == c * c) {
           pc++;
         }

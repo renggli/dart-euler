@@ -20,21 +20,20 @@ import 'dart:math';
 
 import 'package:more/int_math.dart';
 
-final List<int> primes = primesUpTo(10000);
-final Set<int> primeSet = primes.toSet();
+final primes = primesUpTo(10000);
+final primeSet = primes.toSet();
 
 bool verifySquare(int n) {
   if (n.isOdd) {
     return false;
   }
-  var m = n ~/ 2;
-  var s = sqrt(m).truncate();
+  final m = n ~/ 2;
+  final s = sqrt(m).truncate();
   return s * s == m;
 }
 
-bool verify(int n) {
-  return primes.takeWhile((p) => p <= n - 2).any((p) => verifySquare(n - p));
-}
+bool verify(int n) =>
+    primes.takeWhile((p) => p <= n - 2).any((p) => verifySquare(n - p));
 
 void main() {
   for (var n = 3;; n += 2) {

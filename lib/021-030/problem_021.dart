@@ -32,7 +32,7 @@ int sumOfProperDivisors(int n) {
 void main() {
   var sum = 0;
   for (var a = 1; a <= max; a++) {
-    var b = sumOfProperDivisors(a);
+    final b = sumOfProperDivisors(a);
     if (a < b && b <= max && sumOfProperDivisors(b) == a) {
       sum += a + b;
     }

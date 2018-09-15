@@ -23,21 +23,21 @@ library euler.problem_057;
 void main() {
   var tally = 0;
   // fraction = two + half
-  var fraction_n = BigInt.from(5);
-  var fraction_d = BigInt.from(2);
+  var fractionN = BigInt.from(5);
+  var fractionD = BigInt.from(2);
   for (var i = 1; i <= 1000; i++) {
     // value = fraction - one
-    var value_n = fraction_n - fraction_d;
-    var value_d = fraction_d;
-    if (value_n.toString().length > value_d.toString().length) {
+    final valueN = fractionN - fractionD;
+    final valueD = fractionD;
+    if (valueN.toString().length > valueD.toString().length) {
       tally++;
     }
     // fraction = 2 + 1 / fraction
-    var n_fraction_n = BigInt.two * fraction_n + fraction_d;
-    var n_fraction_d = fraction_n;
-    var n_faction_gcd = n_fraction_n.gcd(n_fraction_d);
-    fraction_n = n_fraction_n ~/ n_faction_gcd;
-    fraction_d = n_fraction_d ~/ n_faction_gcd;
+    final nFractionN = BigInt.two * fractionN + fractionD;
+    final nFractionD = fractionN;
+    final nFactionGcd = nFractionN.gcd(nFractionD);
+    fractionN = nFractionN ~/ nFactionGcd;
+    fractionD = nFractionD ~/ nFactionGcd;
   }
   assert(tally == 153);
 }

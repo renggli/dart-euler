@@ -34,7 +34,7 @@ void main() {
   var total = 1, tally = 0;
   for (var side = 3;; side += 2) {
     for (var value = 0; value < 4; value++) {
-      var candidate = side * side - side * value + value;
+      final candidate = side * side - side * value + value;
       if (isPrime(candidate)) {
         tally++;
       }
