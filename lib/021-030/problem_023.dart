@@ -33,7 +33,7 @@ void main() {
       abundant.add(i);
     }
   }
-  var hasSum = new BitList(max + 1);
+  var hasSum = BitList(max + 1);
   for (var i = 0; i < abundant.length; i++) {
     for (var j = i; j < abundant.length; j++) {
       var sum = abundant[i] + abundant[j];

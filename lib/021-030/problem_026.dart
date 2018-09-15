@@ -23,7 +23,7 @@ library euler.problem_026;
 final d = 1000;
 
 int cycleSize(int d) {
-  var remainders = new List.from([1]);
+  var remainders = List.from([1]);
   while (remainders.last != 0) {
     if (remainders.last < d) {
       remainders.add(10 * remainders.last);

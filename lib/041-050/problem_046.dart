@@ -33,13 +33,11 @@ bool verifySquare(int n) {
 }
 
 bool verify(int n) {
-  return primes
-      .takeWhile((p) => p <= n - 2)
-      .any((p) => verifySquare(n - p));
+  return primes.takeWhile((p) => p <= n - 2).any((p) => verifySquare(n - p));
 }
 
 void main() {
-  for (var n = 3; ; n += 2) {
+  for (var n = 3;; n += 2) {
     if (!primeSet.contains(n) && !verify(n)) {
       assert(n == 5777);
       return;

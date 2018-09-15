@@ -4,11 +4,10 @@ import 'dart:async';
 import 'dart:io';
 
 /// Matches the filename of a problem.
-final pattern = new RegExp(r'problem_(\d+)\.dart$');
+final pattern = RegExp(r'problem_(\d+)\.dart$');
 
 /// Encapsulate an euler problem.
 class Problem {
-
   /// Constructs a problem from a path.
   Problem(this.path);
 
@@ -19,7 +18,7 @@ class Problem {
   int get number => int.parse(pattern.firstMatch(path).group(1));
 
   /// Executes the problem synchronously.
-  ProcessResult executeSync({List<String> arguments: const []}) {
+  ProcessResult executeSync({List<String> arguments = const []}) {
     return Process.runSync(
         Platform.executable,
         []
@@ -28,7 +27,7 @@ class Problem {
   }
 
   /// Executes the problem asynchronously.
-  Future<ProcessResult> execute({List<String> arguments: const []}) {
+  Future<ProcessResult> execute({List<String> arguments = const []}) {
     return Process.run(
         Platform.executable,
         []
@@ -42,7 +41,7 @@ Iterable<Problem> get problems {
   return Directory.current.parent
       .listSync(recursive: true, followLinks: false)
       .where((file) => pattern.hasMatch(file.path))
-      .map((file) => new Problem(file.path));
+      .map((file) => Problem(file.path));
 }
 
 void main() {

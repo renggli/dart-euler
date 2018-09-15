@@ -12,24 +12,49 @@
 /// British usage.
 library euler.problem_017;
 
-final List<String> cardinals = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six',
-  'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
-  'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ];
-final List<String> decimals = [ 'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
-  'seventy', 'eighty', 'ninety' ];
+final List<String> cardinals = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen'
+];
+final List<String> decimals = [
+  'zero',
+  'ten',
+  'twenty',
+  'thirty',
+  'forty',
+  'fifty',
+  'sixty',
+  'seventy',
+  'eighty',
+  'ninety'
+];
 
 List<String> spell(int value) {
   if (value < cardinals.length) {
-    return []
-      ..add(cardinals[value]);
+    return []..add(cardinals[value]);
   } else if (value < 100) {
     if (value % 10 == 0) {
-      return []
-        ..add(decimals[value ~/ 10]);
+      return []..add(decimals[value ~/ 10]);
     } else {
-      return []
-        ..add(decimals[value ~/ 10])
-        ..add(cardinals[value % 10]);
+      return []..add(decimals[value ~/ 10])..add(cardinals[value % 10]);
     }
   } else if (value < 1000) {
     if (value % 100 == 0) {
@@ -54,15 +79,13 @@ List<String> spell(int value) {
         ..addAll(spell(value % 1000));
     }
   }
-  throw new ArgumentError('Unable to spell $value');
+  throw ArgumentError('Unable to spell $value');
 }
 
 void main() {
   var total = 0;
   for (var i = 1; i <= 1000; i++) {
-    total += spell(i)
-        .map((a) => a.length)
-        .reduce((a, b) => a + b);
+    total += spell(i).map((a) => a.length).reduce((a, b) => a + b);
   }
   assert(total == 21124);
 }

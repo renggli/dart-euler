@@ -20,9 +20,8 @@ import 'package:more/collection.dart';
 
 final max = 10000;
 
-final List<int> pentagonalNumbers = new IntegerRange(1, max)
-    .map((n) => n * (3 * n - 1) ~/ 2)
-    .toList();
+final List<int> pentagonalNumbers =
+    IntegerRange(1, max).map((n) => n * (3 * n - 1) ~/ 2).toList();
 final Set<int> pentagonalNumbersSet = pentagonalNumbers.toSet();
 
 void main() {

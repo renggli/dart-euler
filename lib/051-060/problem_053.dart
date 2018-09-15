@@ -18,28 +18,28 @@ library euler.problem_053;
 
 BigInt binomial(int n, int k) {
   if (k < 0 || k > n) {
-    throw new ArgumentError('binomial($n, $k) is undefined for arguments.');
+    throw ArgumentError('binomial($n, $k) is undefined for arguments.');
   }
   if (k == 0 || k == n) {
     return BigInt.zero;
   }
   if (k == 1 || k == n - 1) {
-    return new BigInt.from(n);
+    return BigInt.from(n);
   }
   if (k > n - k) {
     k = n - k;
   }
   var r = BigInt.one;
   for (var i = 1; i <= k; i++) {
-    r *= new BigInt.from(n--);
-    r = r ~/ new BigInt.from(i);
+    r *= BigInt.from(n--);
+    r = r ~/ BigInt.from(i);
   }
   return r;
 }
 
 void main() {
   var tally = 0;
-  var max = new BigInt.from(1000000);
+  var max = BigInt.from(1000000);
   for (var n = 1; n <= 100; n++) {
     for (var k = 0; k <= n; k++) {
       if (binomial(n, k) > max) {

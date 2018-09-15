@@ -38,7 +38,7 @@ import 'package:more/collection.dart';
 void main() {
   var n0 = BigInt.one, n1 = BigInt.two;
   for (var i = 2; i <= 100; i++) {
-    var n = n0 + n1 * new BigInt.from(i % 3 == 0 ? 2 * i ~/ 3 : 1);
+    var n = n0 + n1 * BigInt.from(i % 3 == 0 ? 2 * i ~/ 3 : 1);
     n0 = n1;
     n1 = n;
   }

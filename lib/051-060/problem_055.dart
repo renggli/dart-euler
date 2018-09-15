@@ -57,7 +57,5 @@ bool isLychrel(int n) {
 }
 
 void main() {
-  assert(new IntegerRange(10000)
-      .where(isLychrel)
-      .length == 249);
+  assert(IntegerRange(10000).where(isLychrel).length == 249);
 }

@@ -8,7 +8,7 @@ library euler.problem_063;
 
 void main() {
   var count = 0;
-  for (var a = BigInt.one; a < new BigInt.from(25); a += BigInt.one) {
+  for (var a = BigInt.one; a < BigInt.from(25); a += BigInt.one) {
     for (var b = 1; b < 25; b++) {
       var len = a.pow(b).toString().length;
       if (len == b) {

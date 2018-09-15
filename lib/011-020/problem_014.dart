@@ -24,7 +24,7 @@ import 'dart:typed_data';
 
 final max = 1000000;
 
-final List<int> cache = new Uint16List(4 * max);
+final List<int> cache = Uint16List(4 * max);
 
 int collatz(int value) {
   if (value < cache.length && cache[value] > 0) {
@@ -32,9 +32,7 @@ int collatz(int value) {
   }
   var result = value.isEven
       ? 1 + collatz(value ~/ 2)
-      : value != 1
-          ? 1 + collatz(3 * value + 1)
-          : value;
+      : value != 1 ? 1 + collatz(3 * value + 1) : value;
   if (value < cache.length) {
     cache[value] = result;
   }

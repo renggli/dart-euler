@@ -58,8 +58,22 @@ library euler.problem_054;
 import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 
-const values = const ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
-const suits = const ['C', 'D', 'H', 'S'];
+const values = [
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'T',
+  'J',
+  'Q',
+  'K',
+  'A'
+];
+const suits = ['C', 'D', 'H', 'S'];
 
 class Card implements Comparable<Card> {
   final String input;
@@ -68,15 +82,15 @@ class Card implements Comparable<Card> {
 
   factory Card(String input) {
     if (input.length != 2) {
-      throw new ArgumentError('Invalid card: $input');
+      throw ArgumentError('Invalid card: $input');
     }
     if (!values.contains(input[0])) {
-      throw new ArgumentError('Invalid card value: $input');
+      throw ArgumentError('Invalid card value: $input');
     }
     if (!suits.contains(input[1])) {
-      throw new ArgumentError('Invalid card suit: $input');
+      throw ArgumentError('Invalid card suit: $input');
     }
-    return new Card._(input, values.indexOf(input[0]), suits.indexOf(input[1]));
+    return Card._(input, values.indexOf(input[0]), suits.indexOf(input[1]));
   }
 
   Card._(this.input, this.value, this.suit);
@@ -96,12 +110,13 @@ class Hand {
 
   factory Hand(Iterable<String> input) {
     if (input.length != 5) {
-      throw new ArgumentError('Invalid hand: $input');
+      throw ArgumentError('Invalid hand: $input');
     }
-    List<Card> cards = input.map((input) => new Card(input)).toList(growable: false)..sort();
-    Multiset<int> values = new Multiset.from(cards.map((card) => card.value));
-    Multiset<int> suits = new Multiset.from(cards.map((each) => each.suit));
-    return new Hand._(input.join(' '), cards, values, suits);
+    List<Card> cards = input.map((input) => Card(input)).toList(growable: false)
+      ..sort();
+    Multiset<int> values = Multiset.from(cards.map((card) => card.value));
+    Multiset<int> suits = Multiset.from(cards.map((each) => each.suit));
+    return Hand._(input.join(' '), cards, values, suits);
   }
 
   Hand._(this.input, this.cards, this.values, this.suits);
@@ -175,7 +190,7 @@ class Hand {
 }
 
 void main() {
-  var splitter = new RegExp(r'\s+');
+  var splitter = RegExp(r'\s+');
   var inputs = const [
     '8C TS KC 9H 4S 7D 2S 5D 3S AC',
     '5C AD 5D AC 9C 7C 5H 8D TD KS',
@@ -1180,7 +1195,8 @@ void main() {
   ];
   var firstWins = 0;
   for (String input in inputs) {
-    var ranks = partition(input.split(splitter), 5).map((hand) => new Hand(hand).rank);
+    var ranks =
+        partition(input.split(splitter), 5).map((hand) => Hand(hand).rank);
     if (ranks.first > ranks.last) {
       firstWins++;
     }

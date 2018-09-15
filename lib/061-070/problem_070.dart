@@ -26,7 +26,7 @@ int phi(int n) {
   return r;
 }
 
-final Ordering<int> ordering = new Ordering.natural();
+final Ordering<int> ordering = Ordering.natural();
 final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
 
 bool isPermutation(int a, int b) {

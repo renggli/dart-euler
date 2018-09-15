@@ -26,9 +26,9 @@ void main() {
       if (gcd1 > 1 && num % 10 > 0 && den % 10 > 0) {
         var nums = digits(num).toList();
         var dens = digits(den).toList();
-        var com = nums.contains(dens[0]) ? dens[0]
-            : nums.contains(dens[1]) ? dens[1]
-            : 0;
+        var com = nums.contains(dens[0])
+            ? dens[0]
+            : nums.contains(dens[1]) ? dens[1] : 0;
         if (com > 0) {
           nums.remove(com);
           dens.remove(com);

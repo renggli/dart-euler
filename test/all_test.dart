@@ -6,13 +6,12 @@ import 'package:test/test.dart';
 void main() {
   for (var problem in problems) {
     test('Problem ${problem.number}', () {
-      return problem.execute(arguments: ['--checked'])
-          .then((result) {
-            if (result.exitCode != 0) {
-              fail(result.stderr);
-            }
-            expect(result.exitCode, 0, reason: 'Exit code');
-          });
+      return problem.execute(arguments: ['--checked']).then((result) {
+        if (result.exitCode != 0) {
+          fail(result.stderr);
+        }
+        expect(result.exitCode, 0, reason: 'Exit code');
+      });
     });
   }
 }

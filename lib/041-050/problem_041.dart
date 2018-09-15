@@ -36,7 +36,8 @@ bool isPandigital(int x) {
 }
 
 void main() {
-  assert(new IntegerRange(max, 0, -1)
-      .where((value) => isPrime(value) && isPandigital(value))
-      .first == 7652413);
+  assert(IntegerRange(max, 0, -1)
+          .where((value) => isPrime(value) && isPandigital(value))
+          .first ==
+      7652413);
 }

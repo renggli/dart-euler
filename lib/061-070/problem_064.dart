@@ -55,8 +55,9 @@ Iterable<int> expansion(int n) sync* {
 }
 
 void main() {
-  assert(new IntegerRange(0, 10000 + 1)
-      .map(expansion)
-      .where((e) => e.length.isOdd)
-      .length == 1322);
+  assert(IntegerRange(0, 10000 + 1)
+          .map(expansion)
+          .where((e) => e.length.isOdd)
+          .length ==
+      1322);
 }

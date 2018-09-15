@@ -21,12 +21,13 @@ bool isPandigitalProduct(int a, int b) {
   list.addAll(digits(a));
   list.addAll(digits(b));
   list.addAll(digits(a * b));
-  return list.length == 9 && !list.contains(0)
-      && new Set.from(list).length == list.length;
+  return list.length == 9 &&
+      !list.contains(0) &&
+      Set.from(list).length == list.length;
 }
 
 void main() {
-  var products = new Set();
+  var products = Set();
   for (var a = 1; a <= 98; a++) {
     for (var b = 123; b <= 9876; b++) {
       if (isPandigitalProduct(a, b)) {

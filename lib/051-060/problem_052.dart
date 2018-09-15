@@ -10,10 +10,10 @@ library euler.problem_052;
 import 'package:more/iterable.dart';
 import 'package:more/ordering.dart';
 
-final Ordering<Iterable<int>> comparator = new Ordering.natural().lexicographical;
+final Ordering<Iterable<int>> comparator = Ordering.natural().lexicographical;
 
 void main() {
-  for (var x = 1; ; x++) {
+  for (var x = 1;; x++) {
     var xd = digits(x).toList()..sort();
     for (var n = 2; n <= 6; n++) {
       var nd = digits(n * x).toList()..sort();

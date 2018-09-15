@@ -22,12 +22,14 @@ final int power = 5;
 final int upper = 200000;
 
 int sumOfDigitPowers(int number, int power) {
-  return number.toString().codeUnits
+  return number
+      .toString()
+      .codeUnits
       .fold(0, (sum, each) => sum + pow(each - 48, power).toInt());
 }
 
 void main() {
-  var sum = new IntegerRange(2, upper)
+  var sum = IntegerRange(2, upper)
       .where((i) => sumOfDigitPowers(i, power) == i)
       .reduce((a, b) => a + b);
   assert(sum == 443839);

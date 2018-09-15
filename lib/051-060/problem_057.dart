@@ -23,8 +23,8 @@ library euler.problem_057;
 void main() {
   var tally = 0;
   // fraction = two + half
-  var fraction_n = new BigInt.from(5);
-  var fraction_d = new BigInt.from(2);
+  var fraction_n = BigInt.from(5);
+  var fraction_d = BigInt.from(2);
   for (var i = 1; i <= 1000; i++) {
     // value = fraction - one
     var value_n = fraction_n - fraction_d;

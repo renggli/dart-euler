@@ -20,7 +20,7 @@ import 'package:more/collection.dart';
 final max = 1001;
 
 void main() {
-  var sum = new IntegerRange(3, max + 1, 2)
-      .fold(1, (a, b) => a + 4 * b * b - 6 * b + 6);
+  var sum =
+      IntegerRange(3, max + 1, 2).fold(1, (a, b) => a + 4 * b * b - 6 * b + 6);
   assert(sum == 669171001);
 }

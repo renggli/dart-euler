@@ -20,8 +20,8 @@ final Set<int> primeSet = primes.toSet();
 bool isTruncable(int prime) {
   var expanded = digits(prime).toList();
   for (var i = 1; i < expanded.length; i++) {
-    if (!primeSet.contains(polynomial(expanded.sublist(0, i)))
-        || !primeSet.contains(polynomial(expanded.sublist(i, expanded.length)))) {
+    if (!primeSet.contains(polynomial(expanded.sublist(0, i))) ||
+        !primeSet.contains(polynomial(expanded.sublist(i, expanded.length)))) {
       return false;
     }
   }
@@ -29,7 +29,6 @@ bool isTruncable(int prime) {
 }
 
 void main() {
-  assert(primes
-      .where((x) => x > 9 && isTruncable(x))
-      .reduce((a, b) => a + b) == 748317);
+  assert(primes.where((x) => x > 9 && isTruncable(x)).reduce((a, b) => a + b) ==
+      748317);
 }

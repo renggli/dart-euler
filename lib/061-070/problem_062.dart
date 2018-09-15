@@ -9,9 +9,10 @@ library euler.problem_062;
 
 void main() {
   Map<String, List<int>> permutations = {};
-  for (var base = 1; ; base++) {
+  for (var base = 1;; base++) {
     var cube = base * base * base;
-    var key = new String.fromCharCodes(new List.from(cube.toString().codeUnits)..sort());
+    var key =
+        String.fromCharCodes(List.from(cube.toString().codeUnits)..sort());
     var values = permutations.putIfAbsent(key, () => <int>[])..add(cube);
     if (values.length == 5) {
       assert(values.first == 127035954683);

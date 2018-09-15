@@ -36,7 +36,7 @@ int consecutivePrimes(int a, int b) {
       return n;
     }
   }
-  throw new ArgumentError('Should never happen');
+  throw ArgumentError('Should never happen');
 }
 
 void main() {

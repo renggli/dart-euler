@@ -10,9 +10,9 @@ import 'package:more/collection.dart';
 final max = 1000;
 
 void main() {
-  var sum = new IntegerRange(1, max + 1)
-      .map((i) => new BigInt.from(i).pow(i))
+  var sum = IntegerRange(1, max + 1)
+      .map((i) => BigInt.from(i).pow(i))
       .reduce((a, b) => a + b);
-  var digits = sum % new BigInt.from(10).pow(10);
+  var digits = sum % BigInt.from(10).pow(10);
   assert(digits.toInt() == 9110846700);
 }

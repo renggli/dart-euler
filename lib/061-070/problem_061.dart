@@ -32,7 +32,7 @@ List<int> generate(int func(int)) {
       result.add(v);
     }
   }
-  return new List.from(result, growable: false);
+  return List.from(result, growable: false);
 }
 
 final List<List<int>> types = [
@@ -41,7 +41,8 @@ final List<List<int>> types = [
   generate((n) => n * (3 * n - 1) ~/ 2),
   generate((n) => n * (2 * n - 1)),
   generate((n) => n * (5 * n - 3) ~/ 2),
-  generate((n) => n * (3 * n - 2))];
+  generate((n) => n * (3 * n - 2))
+];
 
 List<List<int>> findChains(List<int> indexes, int prefix) {
   var chains = [];
@@ -49,9 +50,7 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
     chains.add([]);
   } else {
     for (var index in indexes) {
-      var newIndexes = indexes
-          .where((value) => value != index)
-          .toList();
+      var newIndexes = indexes.where((value) => value != index).toList();
       for (var number in types[index]) {
         if (prefix == -1 || number ~/ 100 == prefix) {
           for (var chain in findChains(newIndexes, number % 100)) {

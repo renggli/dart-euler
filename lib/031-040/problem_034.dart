@@ -14,9 +14,7 @@ import 'package:more/iterable.dart';
 void main() {
   var t = 0, m = 100000;
   for (var i = 3; i <= m; i++) {
-    var s = digits(i)
-        .map(factorial)
-        .reduce((a, b) => a + b);
+    var s = digits(i).map(factorial).reduce((a, b) => a + b);
     if (i == s) {
       t += s;
     }

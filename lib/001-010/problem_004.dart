@@ -13,8 +13,7 @@ final max = 999;
 
 bool isPalindrome(int p) {
   var s = p.toString();
-  return new IntegerRange(s.length ~/ 2)
-      .every((i) => s[i] == s[s.length - i - 1]);
+  return IntegerRange(s.length ~/ 2).every((i) => s[i] == s[s.length - i - 1]);
 }
 
 void main() {

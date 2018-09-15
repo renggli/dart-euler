@@ -17,8 +17,6 @@ final list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 final index = 1000000;
 
 void main() {
-  var permutation = permutations(list)
-      .elementAt(index - 1)
-      .join();
+  var permutation = permutations(list).elementAt(index - 1).join();
   assert(permutation == '2783915460');
 }
