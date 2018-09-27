@@ -10,7 +10,7 @@ library euler.problem_052;
 import 'package:more/iterable.dart';
 import 'package:more/ordering.dart';
 
-final comparator = Ordering.natural<int>().lexicographical;
+final comparator = Ordering<int>.natural().lexicographical;
 
 void main() {
   for (var x = 1;; x++) {
