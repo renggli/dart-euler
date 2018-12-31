@@ -18,8 +18,8 @@ library euler.problem_030;
 import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 
-final int power = 5;
-final int upper = 200000;
+const int power = 5;
+const int upper = 200000;
 
 int sumOfDigitPowers(int number, int power) => number
     .toString()

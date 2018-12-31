@@ -19,7 +19,7 @@ library euler.problem_042;
 
 import 'package:more/collection.dart';
 
-final List<String> words = const [
+const List<String> words = [
   'A',
   'ABILITY',
   'ABLE',
@@ -1808,7 +1808,7 @@ final List<String> words = const [
   'YOUTH'
 ];
 
-final baseOffset = 'A'.codeUnitAt(0) - 1;
+final int baseOffset = 'A'.codeUnitAt(0) - 1;
 
 int wordValue(String word) => word
     .toUpperCase()

@@ -12,7 +12,7 @@ library euler.problem_035;
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-final max = 1000000;
+const int max = 1000000;
 final Set<int> primes = primesUpTo(max).toSet();
 
 bool isCircular(int prime) {

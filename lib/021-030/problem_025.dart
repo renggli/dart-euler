@@ -29,8 +29,9 @@ import 'package:more/iterable.dart';
 Iterable<BigInt> fibonacci() =>
     fold([BigInt.one, BigInt.one], (e) => e[0] + e[1]);
 
+const int digits = 1000;
+
 void main() {
-  final digits = 1000;
   final limit = BigInt.from(10).pow(digits - 1);
   final count =
       fibonacci().takeWhile((v) => v < limit).fold(1, (a, b) => a + 1);

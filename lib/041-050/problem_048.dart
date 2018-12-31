@@ -7,7 +7,7 @@ library euler.problem_048;
 
 import 'package:more/collection.dart';
 
-final max = 1000;
+const int max = 1000;
 
 void main() {
   final sum = IntegerRange(1, max + 1)

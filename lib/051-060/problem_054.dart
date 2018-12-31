@@ -46,11 +46,12 @@
 ///           Full House            Full House
 ///           With Three Fours      With Three Threes
 ///
-/// The file, poker.txt, contains one-thousand random hands dealt to two players. Each line of
-/// the file contains ten cards (separated by a single space): the first five are Player 1's cards
-/// and the last five are Player 2's cards. You can assume that all hands are valid (no invalid
-/// characters or repeated cards), each player's hand is in no specific order, and in each hand
-/// there is a clear winner.
+/// The file, poker.txt, contains one-thousand random hands dealt to two
+/// players. Each line of the file contains ten cards (separated by a single
+/// space): the first five are Player 1's cards and the last five are Player
+/// 2's cards. You can assume that all hands are valid (no invalid characters
+/// or repeated cards), each player's hand is in no specific order, and in each
+/// hand there is a clear winner.
 ///
 /// How many hands does Player 1 win?
 library euler.problem_054;
@@ -58,7 +59,7 @@ library euler.problem_054;
 import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 
-const values = [
+const List<String> values = [
   '2',
   '3',
   '4',
@@ -73,7 +74,7 @@ const values = [
   'K',
   'A'
 ];
-const suits = ['C', 'D', 'H', 'S'];
+const List<String> suits = ['C', 'D', 'H', 'S'];
 
 class Card implements Comparable<Card> {
   final String input;
@@ -191,7 +192,7 @@ class Hand {
 
 void main() {
   final splitter = RegExp(r'\s+');
-  final inputs = const [
+  const inputs = [
     '8C TS KC 9H 4S 7D 2S 5D 3S AC',
     '5C AD 5D AC 9C 7C 5H 8D TD KS',
     '3H 7H 6S KC JS QH TD JC 2D 8S',

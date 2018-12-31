@@ -9,7 +9,7 @@ import 'dart:math';
 
 import 'package:more/int_math.dart';
 
-final value = 600851475143;
+const int value = 600851475143;
 
 void main() {
   final factor =

@@ -7,7 +7,7 @@ library euler.problem_010;
 
 import 'package:more/int_math.dart';
 
-final max = 2000000;
+const int max = 2000000;
 
 void main() {
   final sum = primesUpTo(max).reduce((a, b) => a + b);

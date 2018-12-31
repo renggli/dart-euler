@@ -17,10 +17,10 @@ library euler.problem_006;
 
 import 'package:more/collection.dart';
 
-final max = 100;
+const int max = 100;
 
-num sum(int start, int stop, num fun(int)) =>
-    IntegerRange(start, stop + 1).map(fun).reduce((a, b) => a + b);
+num sum(int start, int stop, num Function(int) callback) =>
+    IntegerRange(start, stop + 1).map(callback).reduce((a, b) => a + b);
 
 void main() {
   final sumOfSquares = sum(1, max, (i) => i * i);

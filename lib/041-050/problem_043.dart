@@ -4,8 +4,8 @@
 /// of each of the digits 0 to 9 in some order, but it also has a rather
 /// interesting sub-string divisibility property.
 ///
-/// Let d_1 be the 1st digit, d_2 be the 2nd, and so on. In this way, we note the
-/// following:
+/// Let d_1 be the 1st digit, d_2 be the 2nd, and so on. In this way, we note
+/// the following:
 ///
 ///    d_2, d_3, d_4 = 406 is divisible by 2
 ///    d_3, d_4, d_5 = 063 is divisible by 3
@@ -22,7 +22,7 @@ import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
-final divisors = <int>[2, 3, 5, 7, 11, 13, 17];
+const List<int> divisors = [2, 3, 5, 7, 11, 13, 17];
 
 bool isDivisible(List<int> digits) {
   for (var i = 0; i < divisors.length; i++) {

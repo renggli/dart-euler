@@ -1,7 +1,7 @@
 /// Problem 64: Odd period square roots
 ///
-/// All square roots are periodic when written as continued fractions and can be written in the
-/// form:
+/// All square roots are periodic when written as continued fractions and can be
+/// written in the form:
 ///
 ///   √N = a0 + 1 / (a1 + 1 / (a2 + 1 / (a3 + ...))))
 ///
@@ -13,10 +13,12 @@
 ///
 ///   √23 = 4 + 1 / (1 + 1 / (3 + 1 / (1 + 1 / (8 + 1 / ...))))
 ///
-/// It can be seen that the sequence is repeating. For conciseness, we use the notation √23 =
-/// [4;(1,3,1,8)], to indicate that the block (1,3,1,8) repeats indefinitely.
+/// It can be seen that the sequence is repeating. For conciseness, we use the
+/// notation √23 = [4;(1,3,1,8)], to indicate that the block (1,3,1,8) repeats
+/// indefinitely.
 ///
-/// The first ten continued fraction representations of (irrational) square roots are:
+/// The first ten continued fraction representations of (irrational) square
+/// roots are:
 ///
 ///   √2=[1;(2)], period=1
 ///   √3=[1;(1,2)], period=2

@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 /// Matches the filename of a problem.
-final pattern = RegExp(r'problem_(\d+)\.dart$');
+final RegExp pattern = RegExp(r'problem_(\d+)\.dart$');
 
 /// Encapsulate an euler problem.
 class Problem {

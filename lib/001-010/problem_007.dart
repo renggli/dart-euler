@@ -8,7 +8,7 @@ library euler.problem_007;
 
 import 'package:more/int_math.dart';
 
-final ith = 10001;
+const int ith = 10001;
 
 void main() {
   assert(primesUpTo(1000000)[ith - 1] == 104743);

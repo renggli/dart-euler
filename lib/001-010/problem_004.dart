@@ -8,8 +8,8 @@ library euler.problem_004;
 
 import 'package:more/collection.dart';
 
-final min = 100;
-final max = 999;
+const int min = 100;
+const int max = 999;
 
 bool isPalindrome(int p) {
   final s = p.toString();

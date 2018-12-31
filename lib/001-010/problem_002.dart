@@ -5,13 +5,13 @@
 ///
 /// 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 ///
-/// By considering the terms in the Fibonacci sequence whose values do not exceed
-/// four million, find the sum of the even-valued terms.
+/// By considering the terms in the Fibonacci sequence whose values do not
+/// exceed four million, find the sum of the even-valued terms.
 library euler.problem_002;
 
 import 'package:more/iterable.dart';
 
-final max = 4000000;
+const int max = 4000000;
 
 void main() {
   final sum = fibonacci(1, 2)

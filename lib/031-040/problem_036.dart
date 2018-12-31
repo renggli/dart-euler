@@ -13,7 +13,7 @@ library euler.problem_036;
 import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 
-final max = 1000000;
+const int max = 1000000;
 
 bool isPalindrom(List<int> digits) {
   for (var i = 0, j = digits.length - 1; i < j; i++, j--) {

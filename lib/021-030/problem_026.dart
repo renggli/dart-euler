@@ -20,7 +20,7 @@
 /// cycle in its decimal fraction part.
 library euler.problem_026;
 
-final d = 1000;
+const int d = 1000;
 
 int cycleSize(int d) {
   final remainders = [1];

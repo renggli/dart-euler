@@ -10,8 +10,8 @@ library euler.problem_005;
 import 'package:more/collection.dart';
 import 'package:more/int_math.dart';
 
-final min = 1;
-final max = 20;
+const int min = 1;
+const int max = 20;
 
 void main() {
   final result = IntegerRange(min, max + 1).fold(1, lcm);

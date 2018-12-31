@@ -5,7 +5,7 @@
 /// Find the sum of all the primes below two million.
 library euler.problem_011;
 
-final grid = [
+const List<List<int>> grid = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [
     49,
@@ -301,13 +301,13 @@ final grid = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-final offsetX = [
+const List<List<int>> offsetX = [
   [0, 1, 2, 3],
   [0, 0, 0, 0],
   [0, 1, 2, 3],
   [0, 1, 2, 3]
 ];
-final offsetY = [
+const List<List<int>> offsetY = [
   [0, 0, 0, 0],
   [0, 1, 2, 3],
   [0, 1, 2, 3],

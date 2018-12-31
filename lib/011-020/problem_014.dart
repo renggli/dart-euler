@@ -22,7 +22,7 @@ library euler.problem_014;
 
 import 'dart:typed_data';
 
-final max = 1000000;
+const int max = 1000000;
 
 final List<int> cache = Uint16List(4 * max);
 

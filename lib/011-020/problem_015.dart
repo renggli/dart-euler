@@ -9,7 +9,7 @@ library euler.problem_015;
 
 import 'package:more/int_math.dart';
 
-final grid = 20;
+const int grid = 20;
 
 void main() {
   assert(binomial(2 * grid, grid) == 137846528820);

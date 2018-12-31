@@ -19,7 +19,7 @@ import 'package:more/ordering.dart';
 
 final Ordering<int> ordering = Ordering.natural();
 final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
-final primes = primesUpTo(9999).skipWhile((x) => x <= 1487).toList();
+final List<int> primes = primesUpTo(9999).skipWhile((x) => x <= 1487).toList();
 
 bool isPermutation(int a, int b) {
   final ad = digits(a).toList()..sort();

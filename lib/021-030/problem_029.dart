@@ -17,8 +17,8 @@
 /// 2 <= a <= 100 and 2 <= b <= 100?
 library euler.problem_029;
 
-final min = 2;
-final max = 100;
+const int min = 2;
+const int max = 100;
 
 void main() {
   final t = Set<BigInt>();

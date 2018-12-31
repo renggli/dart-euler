@@ -17,7 +17,7 @@ library euler.problem_028;
 
 import 'package:more/collection.dart';
 
-final max = 1001;
+const int max = 1001;
 
 void main() {
   final sum =

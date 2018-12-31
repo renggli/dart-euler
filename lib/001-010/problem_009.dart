@@ -10,7 +10,7 @@
 /// Find the product abc.
 library euler.problem_009;
 
-final sum = 1000;
+const int sum = 1000;
 
 void main() {
   for (var a = 1; a <= sum - 2; a++) {

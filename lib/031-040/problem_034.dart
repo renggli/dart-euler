@@ -13,7 +13,7 @@ import 'package:more/iterable.dart';
 
 void main() {
   var t = 0;
-  final m = 100000;
+  const m = 100000;
   for (var i = 3; i <= m; i++) {
     final s = digits(i).map(factorial).reduce((a, b) => a + b);
     if (i == s) {

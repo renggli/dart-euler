@@ -11,7 +11,7 @@ library euler.problem_020;
 
 import 'package:more/collection.dart';
 
-final number = 100;
+const int number = 100;
 
 void main() {
   final val =
