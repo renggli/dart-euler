@@ -17,7 +17,6 @@ library euler.problem_070;
 
 import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
-import 'package:more/ordering.dart';
 
 int phi(int n) {
   var r = 0;
@@ -29,23 +28,26 @@ int phi(int n) {
   return r;
 }
 
-final Ordering<int> ordering = Ordering.natural();
-final Ordering<Iterable<int>> listOrdering = ordering.lexicographical;
-
 bool isPermutation(int a, int b) {
   final ad = digits(a).toList()..sort();
   final bd = digits(b).toList()..sort();
-  return listOrdering.compare(ad, bd) == 0;
+  return ad.join() == bd.join();
 }
 
-const double max = 10e7;
+const int max = 10000000;
 
 void main() {
   assert(false);
-//  for (var n = 2; n < max; n++) {
-//    var p = phi(n);
-//    if (isPermutation(n, p)) {
-//      print('$n      $p      ${n/p}');
-//    }
-//  }
+  var minr = 2.0;
+  var minn = 0;
+  for (var n = 2; n < max; n++) {
+    final p = phi(n);
+    final r = n / p;
+    if (r < minr && isPermutation(n, p)) {
+      print('$n $p $r');
+      minr = r;
+      minn = n;
+    }
+  }
+  print('$minn $minr');
 }
