@@ -1196,7 +1196,7 @@ void main() {
   ];
   var firstWins = 0;
   for (var input in inputs) {
-    final ranks = partition(input.split(splitter), 5)
+    final ranks = chunked(input.split(splitter), 5)
         .map((hand) => Hand(hand).rank)
         .toList();
     if (ranks.first > ranks.last) {

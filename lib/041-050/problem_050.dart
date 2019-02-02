@@ -17,7 +17,7 @@ library euler.problem_050;
 import 'package:more/int_math.dart';
 import 'package:more/ordering.dart';
 
-final Ordering<int> ordering = Ordering.natural();
+final Ordering<num> ordering = Ordering.natural();
 final List<int> primes = primesUpTo(1000000);
 
 void main() {

@@ -10,8 +10,8 @@ library euler.problem_052;
 import 'package:more/iterable.dart';
 import 'package:more/ordering.dart';
 
-final Ordering<Iterable<int>> comparator =
-    Ordering<int>.natural().lexicographical;
+final Ordering<Iterable<num>> comparator =
+    Ordering.natural<num>().lexicographical;
 
 void main() {
   for (var x = 1;; x++) {
