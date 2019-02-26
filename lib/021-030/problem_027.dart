@@ -24,7 +24,7 @@
 /// starting with n = 0.
 library euler.problem_027;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int limit = 999;
 

@@ -21,7 +21,7 @@
 /// both diagonals first falls below 10%?
 library euler.problem_058;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 final List<int> primes = primesUpTo(30000);
 

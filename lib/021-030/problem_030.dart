@@ -16,7 +16,7 @@
 library euler.problem_030;
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int power = 5;
 const int upper = 200000;

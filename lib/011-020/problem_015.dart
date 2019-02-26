@@ -7,7 +7,7 @@
 /// How many such routes are there through a 20 x 20 grid?
 library euler.problem_015;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int grid = 20;
 

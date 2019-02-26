@@ -18,7 +18,7 @@ library euler.problem_046;
 
 import 'dart:math';
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 final List<int> primes = primesUpTo(10000);
 final Set<int> primeSet = primes.toSet();

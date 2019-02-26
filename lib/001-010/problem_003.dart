@@ -7,7 +7,7 @@ library euler.problem_003;
 
 import 'dart:math';
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int value = 600851475143;
 

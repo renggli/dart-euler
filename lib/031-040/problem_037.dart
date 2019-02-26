@@ -11,8 +11,8 @@
 /// NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 library euler.problem_037;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 final List<int> primes = primesUpTo(800000);
 final Set<int> primeSet = primes.toSet();

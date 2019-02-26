@@ -10,8 +10,8 @@ library euler.problem_041;
 import 'dart:math';
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 const int max = 7654321;
 final List<int> primes = primesUpTo(sqrt(max).ceil());

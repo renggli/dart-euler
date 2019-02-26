@@ -10,7 +10,7 @@
 /// concatenate to produce another prime.
 library euler.problem_060;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 final List<int> primes = primesUpTo(10000);
 

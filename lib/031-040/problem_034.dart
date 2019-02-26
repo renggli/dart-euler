@@ -8,8 +8,8 @@
 /// Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 library euler.problem_034;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 void main() {
   var t = 0;

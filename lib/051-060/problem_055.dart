@@ -32,8 +32,8 @@
 library euler.problem_055;
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 bool isPalindromic(List<int> n) {
   for (var a = 0, b = n.length - 1; a < b; a++, b--) {

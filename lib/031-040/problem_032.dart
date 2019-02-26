@@ -27,7 +27,7 @@ bool isPandigitalProduct(int a, int b) {
 }
 
 void main() {
-  final products = Set();
+  final products = <int>{};
   for (var a = 1; a <= 98; a++) {
     for (var b = 123; b <= 9876; b++) {
       if (isPandigitalProduct(a, b)) {

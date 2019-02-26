@@ -14,7 +14,7 @@
 /// consecutive primes?
 library euler.problem_050;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 import 'package:more/ordering.dart';
 
 final Ordering<num> ordering = Ordering.natural();

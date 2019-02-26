@@ -17,8 +17,8 @@
 /// the concatenated product of an integer with (1,2, ... , n) where n > 1?
 library euler.problem_038;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 int number(int n, int x) {
   final result = <int>[];

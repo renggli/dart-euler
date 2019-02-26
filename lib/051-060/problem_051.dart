@@ -14,8 +14,8 @@
 /// value family.
 library euler.problem_051;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 void main() {
   for (var prime in primesUpTo(1000000)) {

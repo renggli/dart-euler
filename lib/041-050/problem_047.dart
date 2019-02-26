@@ -20,7 +20,7 @@ const int size = 4;
 
 int count(int n) {
   var d = 2;
-  final distinct = Set();
+  final distinct = <int>{};
   while (n > 1) {
     while (n % d == 0) {
       distinct.add(d);

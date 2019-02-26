@@ -21,7 +21,7 @@
 /// Find the value of n ≤ 1,000,000 for which n/φ(n) is a maximum.
 library euler.problem_069;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 void main() {
   // A small phi will maximize n/phi(n), find the product of the first

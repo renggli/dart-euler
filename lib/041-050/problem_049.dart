@@ -13,8 +13,8 @@
 /// sequence?
 library euler.problem_049;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 import 'package:more/ordering.dart';
 
 final Ordering<num> ordering = Ordering.natural();

@@ -15,13 +15,12 @@
 /// the ratio n/φ(n) produces a minimum.
 library euler.problem_070;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 int phi(int n) {
   var r = 0;
   for (var k = 1; k <= n; k++) {
-    if (gcd(n, k) == 1) {
+    if (n.gcd(k) == 1) {
       r++;
     }
   }

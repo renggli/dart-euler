@@ -6,7 +6,7 @@
 /// What is the 10001st prime number?
 library euler.problem_007;
 
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int ith = 10001;
 

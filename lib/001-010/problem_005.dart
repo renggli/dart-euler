@@ -8,7 +8,7 @@
 library euler.problem_005;
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
+import 'package:more/math.dart';
 
 const int min = 1;
 const int max = 20;

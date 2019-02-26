@@ -19,8 +19,8 @@
 library euler.problem_043;
 
 import 'package:more/collection.dart';
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 const List<int> divisors = [2, 3, 5, 7, 11, 13, 17];
 

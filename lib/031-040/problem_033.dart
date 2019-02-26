@@ -14,7 +14,6 @@
 /// find the value of the denominator.
 library euler.problem_033;
 
-import 'package:more/int_math.dart';
 import 'package:more/iterable.dart';
 
 void main() {
@@ -22,7 +21,7 @@ void main() {
   var nump = 1, denp = 1;
   for (var num = 11; num <= 99; num++) {
     for (var den = num + 1; den <= 99; den++) {
-      final gcd1 = gcd(num, den);
+      final gcd1 = num.gcd(den);
       if (gcd1 > 1 && num % 10 > 0 && den % 10 > 0) {
         final nums = digits(num).toList();
         final dens = digits(den).toList();
@@ -34,7 +33,7 @@ void main() {
           dens.remove(com);
           final numx = nums[0];
           final denx = dens[0];
-          final gcdx = gcd(numx, denx);
+          final gcdx = numx.gcd(denx);
           if (num ~/ gcd1 == numx ~/ gcdx && den ~/ gcd1 == denx ~/ gcdx) {
             nump *= num;
             denp *= den;
@@ -43,6 +42,6 @@ void main() {
       }
     }
   }
-  final gcdp = gcd(nump, denp);
+  final gcdp = nump.gcd(denp);
   assert(denp ~/ gcdp == 100);
 }
