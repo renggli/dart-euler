@@ -7,7 +7,7 @@ void main() {
   for (var problem in problems) {
     test(
         'Problem ${problem.number}',
-        () => problem.execute(arguments: ['--checked']).then((result) {
+        () => problem.execute(arguments: ['--enable-asserts']).then((result) {
               if (result.exitCode != 0) {
                 fail(result.stderr);
               }

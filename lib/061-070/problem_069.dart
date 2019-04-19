@@ -24,7 +24,7 @@ library euler.problem_069;
 import 'package:more/math.dart';
 
 void main() {
-  // A small phi will maximize n/phi(n), find the product of the first
+  // A small phi will maximize n/φ(n), find the product of the first
   // few primes smaller than 1000000.
   var p = 1;
   for (var i = 2; p * i <= 1000000; i++) {
