@@ -43,7 +43,7 @@ void main() {
   var mc = 0, mp = 0;
   final bs = primesUpTo(limit).takeWhile((x) => x < limit).toList();
   for (var a = -limit; a <= limit; a++) {
-    for (var b in bs) {
+    for (final b in bs) {
       final c = consecutivePrimes(a, b);
       if (c > mc) {
         mc = c;

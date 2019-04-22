@@ -1195,7 +1195,7 @@ void main() {
     'AS KD 3D JD 8H 7C 8C 5C QD 6C',
   ];
   var firstWins = 0;
-  for (var input in inputs) {
+  for (final input in inputs) {
     final ranks = chunked(input.split(splitter), 5)
         .map((hand) => Hand(hand).rank)
         .toList();

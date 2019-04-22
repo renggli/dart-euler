@@ -53,11 +53,11 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
   if (indexes.isEmpty) {
     chains.add(<int>[]);
   } else {
-    for (var index in indexes) {
+    for (final index in indexes) {
       final newIndexes = indexes.where((value) => value != index).toList();
-      for (var number in types[index]) {
+      for (final number in types[index]) {
         if (prefix == -1 || number ~/ 100 == prefix) {
-          for (var chain in findChains(newIndexes, number % 100)) {
+          for (final chain in findChains(newIndexes, number % 100)) {
             chains.add(chain..insert(0, number));
           }
         }
@@ -68,7 +68,7 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
 }
 
 void main() {
-  for (var chain in findChains([0, 1, 2, 3, 4, 5], -1)) {
+  for (final chain in findChains([0, 1, 2, 3, 4, 5], -1)) {
     if (chain.first ~/ 100 == chain.last % 100) {
       assert(chain.reduce((a, b) => a + b) == 28684);
       return;

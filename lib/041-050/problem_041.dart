@@ -17,7 +17,7 @@ const int max = 7654321;
 final List<int> primes = primesUpTo(sqrt(max).ceil());
 
 bool isPrime(int value) {
-  for (var prime in primes) {
+  for (final prime in primes) {
     if (value % prime == 0) {
       return false;
     }

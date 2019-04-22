@@ -29,7 +29,7 @@ bool isPermutation(int a, int b) {
 
 void main() {
   for (var step = 2; step < 5000; step += 2) {
-    for (var a in primes) {
+    for (final a in primes) {
       final b = a + step, c = b + step;
       if (ordering.binarySearch(primes, b) > 0 &&
           ordering.binarySearch(primes, c) > 0 &&

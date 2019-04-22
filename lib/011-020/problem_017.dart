@@ -32,7 +32,7 @@ final List<String> cardinals = [
   'sixteen',
   'seventeen',
   'eighteen',
-  'nineteen'
+  'nineteen',
 ];
 final List<String> decimals = [
   'zero',
@@ -44,39 +44,34 @@ final List<String> decimals = [
   'sixty',
   'seventy',
   'eighty',
-  'ninety'
+  'ninety',
 ];
 
 List<String> spell(int value) {
   if (value < cardinals.length) {
-    return []..add(cardinals[value]);
+    return [cardinals[value]];
   } else if (value < 100) {
     if (value % 10 == 0) {
-      return []..add(decimals[value ~/ 10]);
+      return [decimals[value ~/ 10]];
     } else {
-      return []..add(decimals[value ~/ 10])..add(cardinals[value % 10]);
+      return [decimals[value ~/ 10], cardinals[value % 10]];
     }
   } else if (value < 1000) {
     if (value % 100 == 0) {
-      return []
-        ..addAll(spell(value ~/ 100))
-        ..add('hundred');
+      return [...spell(value ~/ 100), 'hundred'];
     } else {
-      return []
-        ..addAll(spell(value ~/ 100))
-        ..addAll(['hundred', 'and'])
-        ..addAll(spell(value % 100));
+      return [...spell(value ~/ 100), 'hundred', 'and', ...spell(value % 100)];
     }
   } else if (value < 1000000) {
     if (value % 1000 == 0) {
-      return []
-        ..addAll(spell(value ~/ 1000))
-        ..add('thousand');
+      return [...spell(value ~/ 1000), 'thousand'];
     } else {
-      return []
-        ..addAll(spell(value ~/ 1000))
-        ..addAll(['thousand', 'and'])
-        ..addAll(spell(value % 1000));
+      return [
+        ...spell(value ~/ 1000),
+        'thousand',
+        'and',
+        ...spell(value % 1000)
+      ];
     }
   }
   throw ArgumentError('Unable to spell $value');

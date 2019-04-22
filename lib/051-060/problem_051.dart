@@ -18,7 +18,7 @@ import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 void main() {
-  for (var prime in primesUpTo(1000000)) {
+  for (final prime in primesUpTo(1000000)) {
     if (prime > 100000) {
       final primeDigits = digits(prime);
       // need to check only repeating digits 0, 1, 2

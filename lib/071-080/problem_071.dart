@@ -16,7 +16,7 @@ library euler.problem_071;
 
 import 'package:more/number.dart';
 
-const double maxD = 1e6;
+const int maxD = 1000000;
 
 final Fraction target = Fraction(3, 7);
 final double targetFloat = target.toDouble();
