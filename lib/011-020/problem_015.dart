@@ -12,5 +12,5 @@ import 'package:more/math.dart';
 const int grid = 20;
 
 void main() {
-  assert(binomial(2 * grid, grid) == 137846528820);
+  assert((2 * grid).binomial(grid) == 137846528820);
 }

@@ -10,12 +10,12 @@
 library euler.problem_020;
 
 import 'package:more/collection.dart';
+import 'package:more/math.dart';
 
 const int number = 100;
 
 void main() {
-  final val =
-      IntegerRange(1, 100).fold(BigInt.one, (a, b) => a * BigInt.from(b));
-  final sum = string(val).fold(0, (a, b) => a + int.parse(b));
+  final val = 1.to(100).fold<BigInt>(BigInt.one, (a, b) => a * BigInt.from(b));
+  final sum = val.digits().fold(0, (a, b) => a + b);
   assert(sum == 648);
 }

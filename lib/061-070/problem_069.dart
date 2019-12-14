@@ -28,7 +28,7 @@ void main() {
   // few primes smaller than 1000000.
   var p = 1;
   for (var i = 2; p * i <= 1000000; i++) {
-    if (isProbablyPrime(i)) {
+    if (i.isProbablyPrime) {
       p *= i;
     }
   }

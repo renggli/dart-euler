@@ -11,7 +11,7 @@
 library euler.problem_036;
 
 import 'package:more/collection.dart';
-import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 const int max = 1000000;
 
@@ -27,8 +27,8 @@ bool isPalindrom(List<int> digits) {
 void main() {
   assert(IntegerRange(max)
           .where((value) =>
-              isPalindrom(digits(value, 10).toList()) &&
-              isPalindrom(digits(value, 2).toList()))
+              isPalindrom(value.digits(10).toList()) &&
+              isPalindrom(value.digits(2).toList()))
           .reduce((a, b) => a + b) ==
       872187);
 }

@@ -9,7 +9,16 @@
 /// exceed four million, find the sum of the even-valued terms.
 library euler.problem_002;
 
-import 'package:more/iterable.dart';
+Iterable<int> fibonacci(int n0, int n1) sync* {
+  yield n0;
+  yield n1;
+  for (;;) {
+    final n2 = n0 + n1;
+    yield n2;
+    n0 = n1;
+    n1 = n2;
+  }
+}
 
 const int max = 4000000;
 

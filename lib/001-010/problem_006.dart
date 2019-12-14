@@ -20,7 +20,7 @@ import 'package:more/collection.dart';
 const int max = 100;
 
 num sum(int start, int stop, num Function(int) callback) =>
-    IntegerRange(start, stop + 1).map(callback).reduce((a, b) => a + b);
+    start.to(stop + 1).map(callback).reduce((a, b) => a + b);
 
 void main() {
   final sumOfSquares = sum(1, max, (i) => i * i);

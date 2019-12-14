@@ -36,7 +36,7 @@
 /// continued fraction for e.
 library euler.problem_065;
 
-import 'package:more/collection.dart';
+import 'package:more/math.dart';
 
 void main() {
   var n0 = BigInt.one, n1 = BigInt.two;
@@ -45,5 +45,5 @@ void main() {
     n0 = n1;
     n1 = n;
   }
-  assert(string(n1).fold(0, (a, b) => a + int.parse(b)) == 272);
+  assert(n1.digits().reduce((a, b) => a + b) == 272);
 }

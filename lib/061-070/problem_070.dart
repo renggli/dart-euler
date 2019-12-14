@@ -15,7 +15,7 @@
 /// the ratio n/φ(n) produces a minimum.
 library euler.problem_070;
 
-import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 int phi(int n) {
   var r = 0;
@@ -28,8 +28,8 @@ int phi(int n) {
 }
 
 bool isPermutation(int a, int b) {
-  final ad = digits(a).toList()..sort();
-  final bd = digits(b).toList()..sort();
+  final ad = a.digits().toList()..sort();
+  final bd = b.digits().toList()..sort();
   return ad.join() == bd.join();
 }
 

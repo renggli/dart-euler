@@ -14,13 +14,12 @@
 /// value family.
 library euler.problem_051;
 
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 void main() {
-  for (final prime in primesUpTo(1000000)) {
+  for (final prime in 1000000.primes) {
     if (prime > 100000) {
-      final primeDigits = digits(prime);
+      final primeDigits = prime.digits();
       // need to check only repeating digits 0, 1, 2
       for (var repeating = 0; repeating < 3; repeating++) {
         // need to check only for digits that have 3 repeating digits
@@ -30,8 +29,8 @@ void main() {
           for (var replacement = 0; replacement < 10; replacement++) {
             final replacedDigits = primeDigits
                 .map((digit) => digit == repeating ? replacement : digit);
-            final replaced = polynomial(replacedDigits);
-            if (replaced > 100000 && isProbablyPrime(replaced)) {
+            final replaced = replacedDigits.polynomial().toInt();
+            if (replaced > 100000 && replaced.isProbablyPrime) {
               count++;
             }
           }

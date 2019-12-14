@@ -14,13 +14,13 @@
 /// include it once in your sum.
 library euler.problem_032;
 
-import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 bool isPandigitalProduct(int a, int b) {
   final list = <int>[];
-  list.addAll(digits(a));
-  list.addAll(digits(b));
-  list.addAll(digits(a * b));
+  list.addAll(a.digits());
+  list.addAll(b.digits());
+  list.addAll((a * b).digits());
   return list.length == 9 &&
       !list.contains(0) &&
       Set.from(list).length == list.length;

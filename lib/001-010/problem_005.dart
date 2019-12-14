@@ -14,6 +14,6 @@ const int min = 1;
 const int max = 20;
 
 void main() {
-  final result = IntegerRange(min, max + 1).fold(1, lcm);
+  final result = min.to(max + 1).fold<int>(1, (p, c) => p.lcm(c));
   assert(result == 232792560);
 }

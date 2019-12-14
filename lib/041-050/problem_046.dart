@@ -20,7 +20,7 @@ import 'dart:math';
 
 import 'package:more/math.dart';
 
-final List<int> primes = primesUpTo(10000);
+final List<int> primes = 10000.primes.toList();
 final Set<int> primeSet = primes.toSet();
 
 bool verifySquare(int n) {

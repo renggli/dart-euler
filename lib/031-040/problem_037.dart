@@ -11,17 +11,16 @@
 /// NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 library euler.problem_037;
 
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
-final List<int> primes = primesUpTo(800000);
+final List<int> primes = 800000.primes.toList();
 final Set<int> primeSet = primes.toSet();
 
 bool isTruncable(int prime) {
-  final expanded = digits(prime).toList();
+  final expanded = prime.digits().toList();
   for (var i = 1; i < expanded.length; i++) {
-    if (!primeSet.contains(polynomial(expanded.sublist(0, i))) ||
-        !primeSet.contains(polynomial(expanded.sublist(i, expanded.length)))) {
+    if (!primeSet.contains(expanded.sublist(0, i).polynomial()) ||
+        !primeSet.contains(expanded.sublist(i, expanded.length).polynomial())) {
       return false;
     }
   }

@@ -5,14 +5,12 @@
 /// What is the largest prime factor of the number 600851475143 ?
 library euler.problem_003;
 
-import 'dart:math';
-
 import 'package:more/math.dart';
 
 const int value = 600851475143;
 
 void main() {
   final factor =
-      primesUpTo(sqrt(value).ceil()).lastWhere((each) => value % each == 0);
+      value.sqrt().ceil().primes.lastWhere((each) => value % each == 0);
   assert(factor == 6857);
 }

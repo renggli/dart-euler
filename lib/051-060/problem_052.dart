@@ -7,7 +7,7 @@
 /// contain the same digits.
 library euler.problem_052;
 
-import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 import 'package:more/ordering.dart';
 
 final Ordering<Iterable<num>> comparator =
@@ -15,9 +15,9 @@ final Ordering<Iterable<num>> comparator =
 
 void main() {
   for (var x = 1;; x++) {
-    final xd = digits(x).toList()..sort();
+    final xd = x.digits().toList()..sort();
     for (var n = 2; n <= 6; n++) {
-      final nd = digits(n * x).toList()..sort();
+      final nd = (n * x).digits().toList()..sort();
       if (nd.length > xd.length || comparator.compare(xd, nd) != 0) {
         break;
       }

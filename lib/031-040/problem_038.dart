@@ -17,19 +17,18 @@
 /// the concatenated product of an integer with (1,2, ... , n) where n > 1?
 library euler.problem_038;
 
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 int number(int n, int x) {
   final result = <int>[];
   for (var i = n; i > 0; i--) {
-    result.addAll(digits(i * x));
+    result.addAll((i * x).digits());
   }
-  return polynomial(result);
+  return result.polynomial();
 }
 
 bool isPandigital(int x) {
-  final decimals = digits(x);
+  final decimals = x.digits();
   if (decimals.length != 9) {
     return false;
   }

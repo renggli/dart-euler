@@ -11,5 +11,5 @@ import 'package:more/math.dart';
 const int ith = 10001;
 
 void main() {
-  assert(primesUpTo(1000000)[ith - 1] == 104743);
+  assert(1000000.primes.elementAt(ith - 1) == 104743);
 }

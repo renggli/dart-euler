@@ -13,17 +13,16 @@
 /// sequence?
 library euler.problem_049;
 
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 import 'package:more/ordering.dart';
 
 final Ordering<num> ordering = Ordering.natural();
 final Ordering<Iterable<num>> listOrdering = ordering.lexicographical;
-final List<int> primes = primesUpTo(9999).skipWhile((x) => x <= 1487).toList();
+final List<int> primes = 9999.primes.skipWhile((x) => x <= 1487).toList();
 
 bool isPermutation(int a, int b) {
-  final ad = digits(a).toList()..sort();
-  final bd = digits(b).toList()..sort();
+  final ad = a.digits().toList()..sort();
+  final bd = b.digits().toList()..sort();
   return listOrdering.compare(ad, bd) == 0;
 }
 

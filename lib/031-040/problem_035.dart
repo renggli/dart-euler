@@ -9,17 +9,16 @@
 /// How many circular primes are there below one million?
 library euler.problem_035;
 
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 const int max = 1000000;
-final Set<int> primes = primesUpTo(max).toSet();
+final Set<int> primes = max.primes.toSet();
 
 bool isCircular(int prime) {
-  final rotation = digits(prime).toList();
+  final rotation = prime.digits().toList();
   for (var round = 1; round < rotation.length; round++) {
     rotation.insert(0, rotation.removeLast());
-    if (!primes.contains(polynomial(rotation))) {
+    if (!primes.contains(rotation.polynomial())) {
       return false;
     }
   }

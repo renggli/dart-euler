@@ -24,16 +24,23 @@
 /// What is the first term in the Fibonacci sequence to contain 1000 digits?
 library euler.problem_025;
 
-import 'package:more/iterable.dart';
-
-Iterable<BigInt> fibonacci() =>
-    fold([BigInt.one, BigInt.one], (e) => e[0] + e[1]);
+Iterable<BigInt> fibonacci(BigInt n0, BigInt n1) sync* {
+  yield n0;
+  yield n1;
+  for (;;) {
+    final n2 = n0 + n1;
+    yield n2;
+    n0 = n1;
+    n1 = n2;
+  }
+}
 
 const int digits = 1000;
 
 void main() {
   final limit = BigInt.from(10).pow(digits - 1);
-  final count =
-      fibonacci().takeWhile((v) => v < limit).fold(1, (a, b) => a + 1);
+  final count = fibonacci(BigInt.one, BigInt.one)
+      .takeWhile((v) => v < limit)
+      .fold(1, (a, b) => a + 1);
   assert(count == 4782);
 }

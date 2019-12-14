@@ -32,7 +32,6 @@
 library euler.problem_055;
 
 import 'package:more/collection.dart';
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 bool isPalindromic(List<int> n) {
@@ -45,10 +44,10 @@ bool isPalindromic(List<int> n) {
 }
 
 bool isLychrel(int n) {
-  var np = digits(n).toList();
+  var np = n.digits().toList();
   for (var i = 0; i < 50; i++) {
-    n += polynomial(np.reversed);
-    np = digits(n).toList();
+    n += np.reversed.polynomial();
+    np = n.digits().toList();
     if (isPalindromic(np)) {
       return false;
     }

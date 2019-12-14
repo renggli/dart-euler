@@ -13,13 +13,13 @@
 ///   d_1 * d_10 * d_100 * d_1000 * d_10000 * d_100000 * d_1000000
 library euler.problem_040;
 
-import 'package:more/iterable.dart';
+import 'package:more/math.dart';
 
 void main() {
   var n = 1;
   final d = <int>[];
   while (d.length < 1000000) {
-    d.addAll(digits(n++).toList().reversed);
+    d.addAll((n++).digits().toList().reversed);
   }
   assert(d[0] * d[9] * d[99] * d[999] * d[9999] * d[99999] * d[999999] == 210);
 }

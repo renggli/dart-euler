@@ -12,13 +12,13 @@ library euler.problem_060;
 
 import 'package:more/math.dart';
 
-final List<int> primes = primesUpTo(10000);
+final List<int> primes = 10000.primes.toList();
 
 bool allPrime(List<List<num>> pairs) {
   for (final pair in pairs) {
     final s1 = pair[0].toString(), s2 = pair[1].toString();
-    if (!isProbablyPrime(int.parse('$s1$s2')) ||
-        !isProbablyPrime(int.parse('$s2$s1'))) {
+    if (!int.parse('$s1$s2').isProbablyPrime ||
+        !int.parse('$s2$s1').isProbablyPrime) {
       return false;
     }
   }

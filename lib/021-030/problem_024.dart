@@ -17,6 +17,6 @@ const List<int> list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const int index = 1000000;
 
 void main() {
-  final permutation = permutations(list).elementAt(index - 1).join();
+  final permutation = list.permutations().elementAt(index - 1).join();
   assert(permutation == '2783915460');
 }
