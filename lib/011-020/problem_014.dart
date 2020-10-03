@@ -32,7 +32,9 @@ int collatz(int value) {
   }
   final result = value.isEven
       ? 1 + collatz(value ~/ 2)
-      : value != 1 ? 1 + collatz(3 * value + 1) : value;
+      : value != 1
+          ? 1 + collatz(3 * value + 1)
+          : value;
   if (value < cache.length) {
     cache[value] = result;
   }

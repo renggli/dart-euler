@@ -27,7 +27,9 @@ void main() {
         final dens = den.digits().toList();
         final com = nums.contains(dens[0])
             ? dens[0]
-            : nums.contains(dens[1]) ? dens[1] : 0;
+            : nums.contains(dens[1])
+                ? dens[1]
+                : 0;
         if (com > 0) {
           nums.remove(com);
           dens.remove(com);
