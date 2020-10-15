@@ -1,12 +1,10 @@
-library euler.test.all_test;
-
-import 'package:euler/euler.dart';
+import 'package:euler/all.dart';
 import 'package:test/test.dart';
 
 void main() {
   for (final problem in problems) {
     test(
-        'Problem ${problem.number}',
+        '${problem.label}',
         () => problem.execute(arguments: ['--enable-asserts']).then((result) {
               if (result.exitCode != 0) {
                 fail(result.stderr);
