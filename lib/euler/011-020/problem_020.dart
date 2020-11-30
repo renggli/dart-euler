@@ -14,6 +14,6 @@ const int number = 100;
 
 void main() {
   final val = 1.to(100).fold<BigInt>(BigInt.one, (a, b) => a * BigInt.from(b));
-  final sum = val.digits().fold(0, (a, b) => a + b);
+  final sum = val.digits().fold<int>(0, (a, b) => a + b);
   assert(sum == 648);
 }

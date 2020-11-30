@@ -44,7 +44,7 @@ bool isPalindromic(List<int> n) {
 bool isLychrel(int n) {
   var np = n.digits().toList();
   for (var i = 0; i < 50; i++) {
-    n += np.reversed.polynomial();
+    n += np.reversed.polynomial().toInt();
     np = n.digits().toList();
     if (isPalindromic(np)) {
       return false;

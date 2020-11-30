@@ -22,7 +22,7 @@ int number(int n, int x) {
   for (var i = n; i > 0; i--) {
     result.addAll((i * x).digits());
   }
-  return result.polynomial();
+  return result.polynomial().toInt();
 }
 
 bool isPandigital(int x) {

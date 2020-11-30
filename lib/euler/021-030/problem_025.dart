@@ -39,6 +39,6 @@ void main() {
   final limit = BigInt.from(10).pow(digits - 1);
   final count = fibonacci(BigInt.one, BigInt.one)
       .takeWhile((v) => v < limit)
-      .fold(1, (a, b) => a + 1);
+      .fold<int>(1, (a, b) => a + 1);
   assert(count == 4782);
 }

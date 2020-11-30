@@ -19,6 +19,6 @@ const int max = 1001;
 
 void main() {
   final sum =
-      3.to(max + 1, step: 2).fold(1, (a, b) => a + 4 * b * b - 6 * b + 6);
+      3.to(max + 1, step: 2).fold<int>(1, (a, b) => a + 4 * b * b - 6 * b + 6);
   assert(sum == 669171001);
 }

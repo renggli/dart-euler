@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:io';
 
 /// Matches the filename of a problem.
-final RegExp pattern = RegExp(r'problem_(\d+)\.dart$');
+final RegExp pattern = RegExp(r'\w+\d+\.dart$');
 
 /// Encapsulate a problem.
 class Problem {
-  /// Constructs a problem from a path.
-  Problem(this.file);
-
   /// File of the problem.
   final File file;
+
+  /// Constructs a problem from a path.
+  Problem(this.file);
 
   /// File path of the problem.
   String get path => file.path;
@@ -32,6 +32,7 @@ class Problem {
 /// Iterator over all the Euler problems.
 Iterable<Problem> get problems => Directory.current.parent
     .listSync(recursive: true, followLinks: false)
+    .whereType<File>()
     .where((file) => pattern.hasMatch(file.path))
     .map((file) => Problem(file));
 

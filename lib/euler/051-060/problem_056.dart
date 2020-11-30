@@ -12,7 +12,7 @@ void main() {
   var ms = 0;
   for (var a = BigInt.one; a < BigInt.from(100); a += BigInt.one) {
     for (var b = 1; b < 100; b++) {
-      final s = a.pow(b).digits().fold(0, (a, b) => a + b);
+      final s = a.pow(b).digits().fold<int>(0, (a, b) => a + b);
       if (s > ms) {
         ms = s;
       }
