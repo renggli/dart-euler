@@ -9,3 +9,6 @@ environment:
 dependencies:
   more: ^3.0.0-nullsafety
   test: ^1.16.0-nullsafety
+dependency_overrides:
+  more:
+    path: ../MoreDart

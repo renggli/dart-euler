@@ -4,6 +4,9 @@ import 'dart:io';
 /// Matches the filename of a problem.
 final RegExp pattern = RegExp(r'\w+\d+\.dart$');
 
+/// Arguments
+final defaults = ['run', '--enable-asserts'];
+
 /// Encapsulate a problem.
 class Problem {
   /// File of the problem.
@@ -22,11 +25,11 @@ class Problem {
 
   /// Executes the problem synchronously.
   ProcessResult executeSync({List<String> arguments = const []}) =>
-      Process.runSync(Platform.executable, [...arguments, path]);
+      Process.runSync(Platform.executable, [...defaults, ...arguments, path]);
 
   /// Executes the problem asynchronously.
   Future<ProcessResult> execute({List<String> arguments = const []}) =>
-      Process.run(Platform.executable, [...arguments, path]);
+      Process.run(Platform.executable, [...defaults, ...arguments, path]);
 }
 
 /// Iterator over all the Euler problems.
