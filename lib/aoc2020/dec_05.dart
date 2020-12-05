@@ -69,7 +69,7 @@ import 'dart:io';
 import 'package:more/more.dart';
 
 int binarySearch(String values, int min, int max, bool lower) {
-  for (final value in values.toList()) {
+  for (final value in values.split('')) {
     final mid = min + (max - min) ~/ 2;
     if (value == 'F' || value == 'L') {
       max = mid;

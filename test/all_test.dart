@@ -5,7 +5,7 @@ void main() {
   for (final problem in problems) {
     test(
         '${problem.label}',
-        () => problem.execute(arguments: ['--enable-asserts']).then((result) {
+        () => problem.execute().then((result) {
               if (result.exitCode != 0) {
                 fail(result.stderr);
               }

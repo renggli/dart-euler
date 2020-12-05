@@ -56,8 +56,6 @@
 
 import 'dart:io';
 
-import 'package:more/more.dart';
-
 class Value {
   final int first;
   final int second;
@@ -79,7 +77,7 @@ class Value {
   }
 
   int get letterCount =>
-      password.toList().where((each) => each == letter).length;
+      password.split('').where((each) => each == letter).length;
 }
 
 bool isValid1(Value value) =>
