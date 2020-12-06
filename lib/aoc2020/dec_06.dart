@@ -94,6 +94,8 @@
 
 import 'dart:io';
 
+import 'package:more/more.dart';
+
 final groups = File('lib/aoc2020/dec_06.txt')
     .readAsStringSync()
     .split('\n\n')
@@ -102,15 +104,15 @@ final groups = File('lib/aoc2020/dec_06.txt')
 
 void main() {
   assert(groups
-          .map((group) => group
-              .reduce((a, b) => a.union(b))
-              .fold<int>(0, (a, b) => a + b.length))
-          .reduce((a, b) => a + b) ==
+          .map((group) =>
+              group.reduce((a, b) => a.union(b)).map((a) => a.length).sum())
+          .sum() ==
       6565);
   assert(groups
           .map((group) => group
               .reduce((a, b) => a.intersection(b))
-              .fold<int>(0, (a, b) => a + b.length))
-          .reduce((a, b) => a + b) ==
+              .map((a) => a.length)
+              .sum())
+          .sum() ==
       3137);
 }
