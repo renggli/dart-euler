@@ -106,7 +106,8 @@
 // What is the encryption weakness in your XMAS-encrypted list of numbers?
 
 import 'dart:io';
-import 'package:more/more.dart';
+import 'package:more/iterable.dart';
+import 'package:data/stats.dart';
 
 const size = 25;
 final values =

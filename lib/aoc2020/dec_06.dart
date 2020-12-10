@@ -94,7 +94,7 @@
 
 import 'dart:io';
 
-import 'package:more/more.dart';
+import 'package:data/stats.dart';
 
 final groups = File('lib/aoc2020/dec_06.txt')
     .readAsStringSync()
