@@ -38,7 +38,7 @@ linter:
     - avoid_single_cascade_in_expression_statements
     - avoid_slow_async_io
     - avoid_types_as_parameter_names
-    - avoid_types_on_closure_parameters
+    # - avoid_types_on_closure_parameters
     - avoid_unnecessary_containers
     - avoid_unused_constructor_parameters
     - avoid_void_async
@@ -95,7 +95,7 @@ linter:
     - prefer_contains
     # - prefer_double_quotes
     - prefer_equal_for_default_values
-    - prefer_expression_function_bodies
+    # - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
