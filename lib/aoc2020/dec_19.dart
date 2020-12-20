@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:more/more.dart';
 
 final input = File('lib/aoc2020/dec_19.txt').readAsStringSync().split('\n\n');
