@@ -7,12 +7,7 @@ homepage: https://github.com/renggli/dart-euler
 environment:
   sdk: '>=2.12.0-0 <3.0.0'
 dependencies:
-  data: ^0.6.0-nullsafety
-  more: ^3.0.0-nullsafety
+  data: ^0.6.0-nullsafety.2
+  more: ^3.0.0-nullsafety.6
   petitparser: ^4.0.0-nullsafety
   test: ^1.16.0-nullsafety
-dependency_overrides:
-  data:
-    path: ../Data
-  more:
-    path: ../MoreDart
