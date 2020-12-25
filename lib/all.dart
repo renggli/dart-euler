@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:more/more.dart';
+
 /// Matches the filename of a problem.
 final RegExp pattern = RegExp(r'\w+\d+\.dart$');
 
@@ -19,9 +21,10 @@ class Problem {
   String get path => file.path;
 
   /// Label of the problem.
-  String get label => path.startsWith(Directory.current.path)
-      ? path.substring(Directory.current.path.length + 1)
-      : path;
+  String get label => path.removePrefix('${Directory.current.path}/lib/');
+
+  /// Tests if this is a valid filename.
+  bool get isValid => pattern.hasMatch(label) && file.existsSync();
 
   /// Executes the problem synchronously.
   ProcessResult executeSync({List<String> arguments = const []}) =>
@@ -33,11 +36,11 @@ class Problem {
 }
 
 /// Iterator over all the Euler problems.
-Iterable<Problem> get problems => Directory.current.parent
+Iterable<Problem> get problems => Directory.current
     .listSync(recursive: true, followLinks: false)
     .whereType<File>()
-    .where((file) => pattern.hasMatch(file.path))
-    .map((file) => Problem(file));
+    .map((file) => Problem(file))
+    .where((problem) => problem.isValid);
 
 void main() {
   for (final problem in problems) {
