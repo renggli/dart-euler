@@ -6,35 +6,53 @@ import 'package:data/type.dart';
 import 'package:data/vector.dart';
 import 'package:more/more.dart';
 
+// Warning: Ugly code ahead, solution inspired by others.
 class Tile {
   final int title;
   Matrix<String> data;
 
   Tile(this.title, this.data);
 
-  String get top => id(data.rows.first);
-
-  String get right => id(data.columns.last);
-
-  String get bottom => id(data.rows.last);
-
-  String get left => id(data.columns.first);
-
-  Iterable<String> get edges => {top, right, bottom, left};
-
-  Iterable<Tile> get variations => [
+  List<Tile> get variations => [
         Tile(title, data),
-        Tile(title, data.rotated(count: 1)),
+        Tile(title, data.flippedVertical),
+        Tile(title, data.flippedHorizontal),
+        Tile(title, data.rotated()),
+        Tile(title, data.rotated().flippedVertical),
+        Tile(title, data.rotated().flippedHorizontal),
         Tile(title, data.rotated(count: 2)),
         Tile(title, data.rotated(count: 3)),
-        Tile(title, data.flippedHorizontal),
-        Tile(title, data.flippedVertical),
       ];
 
-  static String id(Vector<String> vector) {
-    final first = vector.format(limit: false, separator: '');
-    final second = vector.reversed.format(limit: false, separator: '');
-    return first.compareTo(second) < 0 ? first : second;
+  Tile get withoutEdges =>
+      Tile(title, data.range(1, data.rowCount - 1, 1, data.columnCount - 1));
+
+  bool matchTop(Tile other) => data.rows.first.compare(other.data.rows.last);
+
+  bool matchRight(Tile other) =>
+      data.columns.last.compare(other.data.columns.first);
+
+  bool matchBottom(Tile other) => data.rows.last.compare(other.data.rows.first);
+
+  bool matchLeft(Tile other) =>
+      data.columns.first.compare(other.data.columns.last);
+
+  int count(Matrix<String> pattern) {
+    var found = 0;
+    for (var r = 0; r <= data.rowCount - pattern.rowCount; r++) {
+      notFound:
+      for (var c = 0; c <= data.columnCount - pattern.columnCount; c++) {
+        for (var pr = 0; pr < pattern.rowCount; pr++) {
+          for (var pc = 0; pc < pattern.columnCount; pc++) {
+            if (pattern.get(pr, pc) == '#' && data.get(r + pr, c + pc) != '#') {
+              continue notFound;
+            }
+          }
+        }
+        found++;
+      }
+    }
+    return found;
   }
 }
 
@@ -45,38 +63,70 @@ final tiles = File('lib/aoc2020/dec_20.txt')
     .map((lines) => lines.split('\n'))
     .map((lines) => Tile(
         int.parse(title.matchAsPrefix(lines[0])!.group(1)!),
-        Matrix.fromColumns(DataType.string,
+        Matrix.fromRows(DataType.string,
             lines.sublist(1).map((row) => row.split('')).toList())))
     .toList();
-final uniqueEdgeCounts = tiles.flatMap((tile) => tile.edges).toMultiset();
-
-int problem1() {
-  final corners = tiles
-      .where((tile) =>
-          tile.edges.where((edge) => uniqueEdgeCounts[edge] > 1).length == 2)
-      .map((tile) => tile.title)
-      .toList();
-  return corners.reduce((a, b) => a * b);
-}
-
-final nullMatrix = Matrix.constant(DataType.string, 0, 0);
-final nullTile = Tile(0, nullMatrix);
-
-int problem2() {
-  final count = sqrt(tiles.length).floor();
-  final master = Matrix<Tile>(DataType.object(nullTile), count, count);
-  // First tile
-  master[0][0] = tiles
-      .firstWhere((tile) =>
-          tile.edges.where((edge) => uniqueEdgeCounts[edge] > 1).length == 2)
-      .variations
-      .firstWhere((tile) =>
-          uniqueEdgeCounts[tile.top] == 1 && uniqueEdgeCounts[tile.left] == 1);
-  // Fuck it: I can't be bothered!
-  return -1;
-}
+final monster = Matrix.fromRows(
+    DataType.string,
+    ['                  # ', '#    ##    ##    ###', ' #  #  #  #  #  #   ']
+        .map((row) => row.split(''))
+        .toList());
 
 void main() {
-  assert(problem1() == 17148689442341);
-  assert(problem2() == -1);
+  final unassigned = [...tiles];
+  final root = unassigned.removeLast();
+  final positions = <Point<int>, Tile>{const Point(0, 0): root};
+  while (unassigned.isNotEmpty) {
+    next:
+    for (final tile in unassigned) {
+      for (final variation in tile.variations) {
+        for (final entry in positions.entries) {
+          if (entry.value.matchTop(variation)) {
+            positions[entry.key + const Point(0, -1)] = variation;
+            unassigned.remove(tile);
+            break next;
+          } else if (entry.value.matchRight(variation)) {
+            positions[entry.key + const Point(1, 0)] = variation;
+            unassigned.remove(tile);
+            break next;
+          } else if (entry.value.matchBottom(variation)) {
+            positions[entry.key + const Point(0, 1)] = variation;
+            unassigned.remove(tile);
+            break next;
+          } else if (entry.value.matchLeft(variation)) {
+            positions[entry.key + const Point(-1, 0)] = variation;
+            unassigned.remove(tile);
+            break next;
+          }
+        }
+      }
+    }
+  }
+
+  // Problem 1
+  final minx = positions.keys.map((point) => point.x).min();
+  final maxx = positions.keys.map((point) => point.x).max();
+  final miny = positions.keys.map((point) => point.y).min();
+  final maxy = positions.keys.map((point) => point.y).max();
+  final problem1 = positions[Point(minx, miny)]!.title *
+      positions[Point(maxx, miny)]!.title *
+      positions[Point(minx, maxy)]!.title *
+      positions[Point(maxx, maxy)]!.title;
+  assert(problem1 == 17148689442341);
+
+  // Problem 2
+  final horizontals = <Matrix<String>>[];
+  for (var x = minx; x <= maxx; x++) {
+    final verticals = <Matrix<String>>[];
+    for (var y = miny; y <= maxy; y++) {
+      verticals.add(positions[Point(x, y)]!.withoutEdges.data);
+    }
+    horizontals.add(Matrix.concatVertical(DataType.string, verticals));
+  }
+  final master = Tile(
+      666, Matrix.concatHorizontal(DataType.string, horizontals).toMatrix());
+  int count(Matrix<String> data) =>
+      data.columnMajor.where((each) => each == '#').length;
+  final target = master.variations.max(key: (tile) => tile.count(monster));
+  assert(count(target.data) - target.count(monster) * count(monster) == 2009);
 }
