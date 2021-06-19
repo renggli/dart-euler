@@ -15,7 +15,7 @@ int run(
   var mask = '';
   final memory = <int, int>{};
   for (final value in values) {
-    final match = command.matchAsPrefix(value, 0);
+    final match = command.matchAsPrefix(value);
     if (match == null) {
       throw StateError('Invalid command: $value');
     } else if (match.group(2) == 'mask') {

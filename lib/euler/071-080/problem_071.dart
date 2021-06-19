@@ -20,7 +20,7 @@ final Fraction target = Fraction(3, 7);
 final double targetFloat = target.toDouble();
 
 void main() {
-  var best = Fraction(0, 1);
+  var best = Fraction.zero;
   var bestFloat = best.toDouble();
   for (var d = 1; d <= maxD; d++) {
     for (var n = (d * targetFloat).floor(); n < d * targetFloat; n++) {

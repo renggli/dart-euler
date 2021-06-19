@@ -38,7 +38,7 @@ List<int> run({required int moveCount, int? cupCount}) {
   var current = ring.first;
   for (var i = 0; i < moveCount; i++) {
     // (1) Pick up next 3 cups.
-    final threeCups = [];
+    final threeCups = <Cup>[];
     for (var j = 0; j < 3; j++) {
       threeCups.add(current.next..unlink());
     }

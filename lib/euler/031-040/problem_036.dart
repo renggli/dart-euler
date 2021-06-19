@@ -25,7 +25,7 @@ bool isPalindrom(List<int> digits) {
 void main() {
   assert(IntegerRange(max)
           .where((value) =>
-              isPalindrom(value.digits(10).toList()) &&
+              isPalindrom(value.digits().toList()) &&
               isPalindrom(value.digits(2).toList()))
           .reduce((a, b) => a + b) ==
       872187);
