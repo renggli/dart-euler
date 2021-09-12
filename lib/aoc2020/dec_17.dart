@@ -40,7 +40,7 @@ class Cell {
       w == other.w;
 
   @override
-  int get hashCode => hash4(x, y, z, w);
+  int get hashCode => Object.hash(x, y, z, w);
 }
 
 final initialState = File('lib/aoc2020/dec_17.txt')

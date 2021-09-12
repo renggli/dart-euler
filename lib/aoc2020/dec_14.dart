@@ -44,9 +44,13 @@ void problem2(Map<int, int> memory, String mask, int address, int value) {
   final addresses = [binaryAddress];
   for (var i = 0; i < bitSize; i++) {
     if (mask[i] == '1') {
-      addresses.forEach((address) => address[i] = '1');
+      for (final address in addresses) {
+        address[i] = '1';
+      }
     } else if (mask[i] == 'X') {
-      addresses.forEach((address) => address[i] = '0');
+      for (final address in addresses) {
+        address[i] = '0';
+      }
       addresses.addAll(addresses.map((address) {
         final copy = address.toList();
         copy[i] = '1';

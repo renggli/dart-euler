@@ -10,7 +10,7 @@ final lines = File('lib/aoc2020/dec_21.txt')
 void main() {
   final ingredients = <String>[];
   final allergens = SetMultimap<String, String>();
-  lines.forEach((pair) {
+  for (final pair in lines) {
     final ingredientLine = pair.first.split(' ').toSet();
     final allergenLine = pair.last.split(', ').toSet();
     ingredients.addAll(ingredientLine);
@@ -21,7 +21,7 @@ void main() {
               ? ingredientLine
               : allergens[allergen].intersection(ingredientLine));
     }
-  });
+  }
 
   final ingredientToAllergen = BiMap<String, String>();
   while (allergens.isNotEmpty) {
