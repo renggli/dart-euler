@@ -11,11 +11,11 @@ final defaults = ['run', '--enable-asserts'];
 
 /// Encapsulate a problem.
 class Problem {
-  /// File of the problem.
-  final File file;
-
   /// Constructs a problem from a path.
   Problem(this.file);
+
+  /// File of the problem.
+  final File file;
 
   /// File path of the problem.
   String get path => file.path;

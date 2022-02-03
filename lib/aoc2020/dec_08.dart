@@ -1,15 +1,15 @@
 import 'dart:io';
 
 class Code {
-  final String name;
-  final int value;
-
   Code(this.name, this.value);
 
   factory Code.parse(String line) {
     final parts = line.split(' ');
     return Code(parts[0], int.parse(parts[1]));
   }
+
+  final String name;
+  final int value;
 
   State run(State state) {
     switch (name) {
@@ -29,10 +29,10 @@ class Code {
 }
 
 class State {
+  State([this.pc = 0, this.acc = 0]);
+
   final int pc;
   final int acc;
-
-  State([this.pc = 0, this.acc = 0]);
 
   @override
   String toString() => 'pc: $pc, acc: $acc';

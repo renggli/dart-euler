@@ -1,14 +1,7 @@
 import 'dart:io';
 
 class Value {
-  final int first;
-  final int second;
-  final String letter;
-  final String password;
-
   Value(this.first, this.second, this.letter, this.password);
-
-  static final pattern = RegExp(r'(\d+)-(\d+) (\w): (\w+)');
 
   factory Value.fromString(String input) {
     final match = pattern.matchAsPrefix(input)!;
@@ -19,6 +12,13 @@ class Value {
       match.group(4)!,
     );
   }
+
+  final int first;
+  final int second;
+  final String letter;
+  final String password;
+
+  static final pattern = RegExp(r'(\d+)-(\d+) (\w): (\w+)');
 
   int get letterCount =>
       password.split('').where((each) => each == letter).length;

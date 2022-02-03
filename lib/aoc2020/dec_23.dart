@@ -10,9 +10,9 @@ final values = File('lib/aoc2020/dec_23.txt')
     .toList();
 
 class Cup extends LinkedListEntry<Cup> {
-  final int value;
-
   Cup(this.value);
+
+  final int value;
 
   @override
   Cup get next => super.next ?? list!.first;

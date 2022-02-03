@@ -6,9 +6,9 @@ import 'package:more/more.dart';
 
 @immutable
 class Cell {
-  final int x, y, z, w;
-
   const Cell(this.x, this.y, [this.z = 0, this.w = 0]);
+
+  final int x, y, z, w;
 
   Iterable<Cell> get neighbours sync* {
     const offsets = [-1, 0, 1];

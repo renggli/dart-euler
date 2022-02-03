@@ -75,10 +75,6 @@ const List<String> values = [
 const List<String> suits = ['C', 'D', 'H', 'S'];
 
 class Card implements Comparable<Card> {
-  final String input;
-  final int value;
-  final int suit;
-
   factory Card(String input) {
     if (input.length != 2) {
       throw ArgumentError('Invalid card: $input');
@@ -94,6 +90,10 @@ class Card implements Comparable<Card> {
 
   Card._(this.input, this.value, this.suit);
 
+  final String input;
+  final int value;
+  final int suit;
+
   @override
   String toString() => input;
 
@@ -102,11 +102,6 @@ class Card implements Comparable<Card> {
 }
 
 class Hand {
-  final String input;
-  final List<Card> cards;
-  final Multiset<int> values;
-  final Multiset<int> suits;
-
   factory Hand(Iterable<String> input) {
     if (input.length != 5) {
       throw ArgumentError('Invalid hand: $input');
@@ -119,6 +114,11 @@ class Hand {
   }
 
   Hand._(this.input, this.cards, this.values, this.suits);
+
+  final String input;
+  final List<Card> cards;
+  final Multiset<int> values;
+  final Multiset<int> suits;
 
   int get rank {
     var rank = 0.0;

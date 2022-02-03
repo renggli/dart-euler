@@ -8,10 +8,10 @@ import 'package:more/more.dart';
 
 // Warning: Ugly code ahead, solution inspired by others.
 class Tile {
+  Tile(this.title, this.data);
+
   final int title;
   Matrix<String> data;
-
-  Tile(this.title, this.data);
 
   List<Tile> get variations => [
         Tile(title, data),

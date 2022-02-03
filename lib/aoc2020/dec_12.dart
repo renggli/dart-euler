@@ -17,10 +17,10 @@ Point<int> rotate(Point<int> point, int degrees) {
 }
 
 class State {
+  const State(this.pos, this.dir);
+
   final Point<int> pos;
   final Point<int> dir;
-
-  const State(this.pos, this.dir);
 
   State update1(Tuple2<String, int> command) {
     switch (command.first) {
