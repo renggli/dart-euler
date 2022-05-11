@@ -4,19 +4,19 @@ import 'package:data/stats.dart';
 import 'package:petitparser/petitparser.dart';
 
 Parser<int> createParser(int problem) {
-  final builder = ExpressionBuilder();
+  final builder = ExpressionBuilder<int>();
   builder.group().primitive(digit().plus().flatten().trim().map(int.parse));
   builder.group().wrapper(
       char('(').trim(), char(')').trim(), (left, value, right) => value);
   if (problem == 1) {
     // Addition and multiplication have same priority: Smalltalk :-)
     builder.group()
-      ..left(char('+').trim(), (int a, op, int b) => a + b)
-      ..left(char('*').trim(), (int a, op, int b) => a * b);
+      ..left(char('+').trim(), (a, op, b) => a + b)
+      ..left(char('*').trim(), (a, op, b) => a * b);
   } else if (problem == 2) {
     // Addition has higher priority than multiplication.
-    builder.group().left(char('+').trim(), (int a, op, int b) => a + b);
-    builder.group().left(char('*').trim(), (int a, op, int b) => a * b);
+    builder.group().left(char('+').trim(), (a, op, b) => a + b);
+    builder.group().left(char('*').trim(), (a, op, b) => a * b);
   }
   return builder.build().cast<int>().end();
 }
