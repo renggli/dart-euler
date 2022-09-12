@@ -11,7 +11,7 @@
 /// would obtain a score of 938 x 53 = 49714.
 ///
 /// What is the total of all the name scores in the file?
-const names = [
+final names = [
   'MARY',
   'PATRICIA',
   'LINDA',
