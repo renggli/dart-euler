@@ -20,13 +20,13 @@ int getSeat(String input) {
   return row * 8 + col;
 }
 
-final ordering = Ordering.natural<int>();
+final comparator = naturalComparator<int>();
 final seats =
     File('lib/aoc2020/dec_05.txt').readAsLinesSync().map(getSeat).toSet();
 
 void main() {
-  final maxSeat = ordering.maxOf(seats);
-  final minSeat = ordering.minOf(seats);
+  final maxSeat = comparator.maxOf(seats);
+  final minSeat = comparator.minOf(seats);
   assert(maxSeat == 926);
 
   final freeSeats = minSeat.to(maxSeat).toSet().difference(seats);

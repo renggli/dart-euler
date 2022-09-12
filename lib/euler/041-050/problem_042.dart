@@ -17,7 +17,7 @@
 /// 2000 common english words, how many are triangle words.
 import 'package:more/collection.dart';
 
-const List<String> words = [
+const words = [
   'A',
   'ABILITY',
   'ABLE',
@@ -1806,7 +1806,7 @@ const List<String> words = [
   'YOUTH'
 ];
 
-final int baseOffset = 'A'.codeUnitAt(0) - 1;
+final baseOffset = 'A'.codeUnitAt(0) - 1;
 
 int wordValue(String word) => word
     .toUpperCase()
@@ -1814,7 +1814,7 @@ int wordValue(String word) => word
     .map((each) => each - baseOffset)
     .reduce((a, b) => a + b);
 
-final Set<int> traingleNumbers =
+final traingleNumbers =
     IntegerRange(1000).map((value) => value * (value + 1) ~/ 2).toSet();
 
 void main() {

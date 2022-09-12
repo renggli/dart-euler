@@ -31,7 +31,7 @@ int sqrt(int n) {
   return root * root == n ? root : -1;
 }
 
-const int searchMaxD = 7;
+const searchMaxD = 7;
 
 void main() {
   var maxX = 0, maxD = 0;

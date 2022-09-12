@@ -127,6 +127,8 @@ void main() {
       666, Matrix.concatHorizontal(DataType.string, horizontals).toMatrix());
   int count(Matrix<String> data) =>
       data.columnMajor.where((each) => each == '#').length;
-  final target = master.variations.max(key: (tile) => tile.count(monster));
+  final target = master.variations.max(
+      comparator: naturalComparator<int>()
+          .onResultOf<Tile>((tile) => tile.count(monster)));
   assert(count(target.data) - target.count(monster) * count(monster) == 2009);
 }

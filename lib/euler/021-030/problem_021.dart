@@ -11,7 +11,7 @@
 /// 71 and 142; so d(284) = 220.
 ///
 /// Evaluate the sum of all the amicable numbers under 10000.
-const int max = 10000;
+const max = 10000;
 
 int sumOfProperDivisors(int n) {
   var s = 1, d = 2;

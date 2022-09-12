@@ -18,7 +18,7 @@
 /// and requires a clever method! ;o)
 import 'dart:math';
 
-final List<List<int>> triangle = [
+const triangle = [
   [75],
   [95, 64],
   [17, 47, 82],

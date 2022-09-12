@@ -16,8 +16,8 @@
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
-const int power = 5;
-const int upper = 200000;
+const power = 5;
+const upper = 200000;
 
 int sumOfDigitPowers(int number, int power) => number
     .toString()

@@ -11,7 +11,7 @@
 /// would obtain a score of 938 x 53 = 49714.
 ///
 /// What is the total of all the name scores in the file?
-final List<String> names = [
+const names = [
   'MARY',
   'PATRICIA',
   'LINDA',

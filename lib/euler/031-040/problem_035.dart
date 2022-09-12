@@ -9,8 +9,8 @@
 /// How many circular primes are there below one million?
 import 'package:more/math.dart';
 
-const int max = 1000000;
-final Set<int> primes = max.primes.toSet();
+const max = 1000000;
+final primes = max.primes.toSet();
 
 bool isCircular(int prime) {
   final rotation = prime.digits().toList();

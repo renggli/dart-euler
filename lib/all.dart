@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:more/more.dart';
 
 /// Matches the filename of a problem.
-final RegExp pattern = RegExp(r'\w+\d+\.dart$');
+final pattern = RegExp(r'\w+\d+\.dart$');
 
 /// Arguments
 final defaults = ['run', '--enable-asserts'];

@@ -31,7 +31,7 @@ bool isPermutation(int a, int b) {
   return ad.join() == bd.join();
 }
 
-const int max = 10000000;
+const max = 10000000;
 
 void main() {
   assert(false);

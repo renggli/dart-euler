@@ -15,7 +15,7 @@
 /// formed in the same way?
 import 'package:more/collection.dart';
 
-const int max = 1001;
+const max = 1001;
 
 void main() {
   final sum =

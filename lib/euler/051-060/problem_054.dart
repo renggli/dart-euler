@@ -57,7 +57,7 @@
 import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 
-const List<String> values = [
+const values = [
   '2',
   '3',
   '4',
@@ -72,7 +72,7 @@ const List<String> values = [
   'K',
   'A'
 ];
-const List<String> suits = ['C', 'D', 'H', 'S'];
+const suits = ['C', 'D', 'H', 'S'];
 
 class Card implements Comparable<Card> {
   factory Card(String input) {

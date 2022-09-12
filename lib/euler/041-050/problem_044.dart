@@ -16,11 +16,10 @@
 /// value of D?
 import 'package:more/collection.dart';
 
-const int max = 10000;
+const max = 10000;
 
-final List<int> pentagonalNumbers =
-    1.to(max).map((n) => n * (3 * n - 1) ~/ 2).toList();
-final Set<int> pentagonalNumbersSet = pentagonalNumbers.toSet();
+final pentagonalNumbers = 1.to(max).map((n) => n * (3 * n - 1) ~/ 2).toList();
+final pentagonalNumbersSet = pentagonalNumbers.toSet();
 
 void main() {
   for (var i = 1; i < pentagonalNumbers.length; i++) {

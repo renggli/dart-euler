@@ -6,8 +6,8 @@
 /// Find the largest palindrome made from the product of two 3-digit numbers.
 import 'package:more/collection.dart';
 
-const int min = 100;
-const int max = 999;
+const min = 100;
+const max = 999;
 
 bool isPalindrome(int p) {
   final s = p.toString();

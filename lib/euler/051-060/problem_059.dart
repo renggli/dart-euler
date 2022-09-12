@@ -26,7 +26,7 @@
 /// As...'), a file containing the encrypted ASCII codes, and the knowledge that
 /// the plain text must contain common English words, decrypt the message and
 /// find the sum of the ASCII values in the original text.
-const List<int> codes = [
+const codes = [
   79,
   59,
   12,
@@ -1229,7 +1229,7 @@ const List<int> codes = [
   22,
   73
 ];
-final String input = String.fromCharCodes(codes);
+final input = String.fromCharCodes(codes);
 
 final _a = 'a'.codeUnitAt(0);
 final _z = 'z'.codeUnitAt(0);

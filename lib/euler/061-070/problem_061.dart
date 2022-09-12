@@ -37,7 +37,7 @@ List<int> generate(int Function(int) callback) {
   return List.from(result, growable: false);
 }
 
-final List<List<int>> types = [
+final types = [
   generate((n) => n * (n + 1) ~/ 2),
   generate((n) => n * n),
   generate((n) => n * (3 * n - 1) ~/ 2),

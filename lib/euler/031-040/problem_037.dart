@@ -11,8 +11,8 @@
 /// NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 import 'package:more/math.dart';
 
-final List<int> primes = 800000.primes.toList();
-final Set<int> primeSet = primes.toSet();
+final primes = 800000.primes.toList();
+final primeSet = primes.toSet();
 
 bool isTruncable(int prime) {
   final expanded = prime.digits().toList();

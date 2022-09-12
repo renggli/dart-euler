@@ -15,7 +15,7 @@
 /// natural numbers and the square of the sum.
 import 'package:more/collection.dart';
 
-const int max = 100;
+const max = 100;
 
 num sum(int start, int stop, num Function(int) callback) =>
     start.to(stop + 1).map(callback).reduce((a, b) => a + b);

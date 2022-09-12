@@ -5,7 +5,7 @@
 /// What is the largest prime factor of the number 600851475143 ?
 import 'package:more/math.dart';
 
-const int value = 600851475143;
+const value = 600851475143;
 
 void main() {
   final factor =

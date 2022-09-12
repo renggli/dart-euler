@@ -18,8 +18,8 @@ import 'dart:math';
 
 import 'package:more/math.dart';
 
-final List<int> primes = 10000.primes.toList();
-final Set<int> primeSet = primes.toSet();
+final primes = 10000.primes.toList();
+final primeSet = primes.toSet();
 
 bool verifySquare(int n) {
   if (n.isOdd) {

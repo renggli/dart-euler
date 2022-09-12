@@ -5,7 +5,7 @@
 /// Find the sum of all the primes below two million.
 import 'package:more/math.dart';
 
-const int max = 2000000;
+const max = 2000000;
 
 void main() {
   final sum = max.primes.reduce((a, b) => a + b);

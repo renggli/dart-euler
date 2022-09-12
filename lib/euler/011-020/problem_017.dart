@@ -10,7 +10,7 @@
 /// forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20
 /// letters. The use of "and" when writing out numbers is in compliance with
 /// British usage.
-final List<String> cardinals = [
+const cardinals = [
   'zero',
   'one',
   'two',
@@ -32,7 +32,7 @@ final List<String> cardinals = [
   'eighteen',
   'nineteen',
 ];
-final List<String> decimals = [
+const decimals = [
   'zero',
   'ten',
   'twenty',

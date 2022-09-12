@@ -20,9 +20,9 @@
 /// NOTE: Once the chain starts the terms are allowed to go above one million.
 import 'dart:typed_data';
 
-const int max = 1000000;
+const max = 1000000;
 
-final List<int> cache = Uint16List(4 * max);
+final cache = Uint16List(4 * max);
 
 int collatz(int value) {
   if (value < cache.length && cache[value] > 0) {

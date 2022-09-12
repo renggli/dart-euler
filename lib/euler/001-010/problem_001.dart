@@ -6,7 +6,7 @@
 /// Find the sum of all the multiples of 3 or 5 below 1000.
 import 'package:more/collection.dart';
 
-const int max = 1000;
+const max = 1000;
 
 void main() {
   final sum = IntegerRange(max)

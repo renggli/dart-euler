@@ -14,7 +14,7 @@
 ///
 /// Find the first four consecutive integers to have four distinct prime
 /// factors. What is the first of these numbers?
-const int size = 4;
+const size = 4;
 
 int count(int n) {
   var d = 2;

@@ -5,7 +5,7 @@
 /// Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 import 'package:more/collection.dart';
 
-const int max = 1000;
+const max = 1000;
 
 void main() {
   final sum =

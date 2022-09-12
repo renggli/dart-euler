@@ -6,7 +6,7 @@
 /// What is the 10001st prime number?
 import 'package:more/math.dart';
 
-const int ith = 10001;
+const ith = 10001;
 
 void main() {
   assert(1000000.primes.elementAt(ith - 1) == 104743);

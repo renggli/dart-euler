@@ -21,7 +21,7 @@
 /// both diagonals first falls below 10%?
 import 'package:more/math.dart';
 
-final List<int> primes = 30000.primes.toList();
+final primes = 30000.primes.toList();
 
 bool isPrime(int x) {
   assert(x < primes.last * primes.last);

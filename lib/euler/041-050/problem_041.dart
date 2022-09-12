@@ -10,8 +10,8 @@ import 'dart:math';
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
-const int max = 7654321;
-final List<int> primes = sqrt(max).ceil().primes.toList();
+const max = 7654321;
+final primes = sqrt(max).ceil().primes.toList();
 
 bool isPrime(int value) {
   for (final prime in primes) {

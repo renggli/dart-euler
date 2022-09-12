@@ -7,7 +7,7 @@
 /// How many such routes are there through a 20 x 20 grid?
 import 'package:more/math.dart';
 
-const int grid = 20;
+const grid = 20;
 
 void main() {
   assert((2 * grid).binomial(grid) == 137846528820);

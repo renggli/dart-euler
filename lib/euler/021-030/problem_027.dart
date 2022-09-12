@@ -24,9 +24,9 @@
 /// starting with n = 0.
 import 'package:more/math.dart';
 
-const int limit = 999;
+const limit = 999;
 
-final Set<int> primes = 1000000.primes.toSet();
+final primes = 1000000.primes.toSet();
 
 int consecutivePrimes(int a, int b) {
   for (var n = 0; n < 90; n++) {

@@ -14,10 +14,10 @@
 /// the left of 3/7.
 import 'package:more/number.dart';
 
-const int maxD = 1000000;
+const maxD = 1000000;
 
-final Fraction target = Fraction(3, 7);
-final double targetFloat = target.toDouble();
+final target = Fraction(3, 7);
+final targetFloat = target.toDouble();
 
 void main() {
   var best = Fraction.zero;

@@ -33,7 +33,7 @@ Iterable<BigInt> fibonacci(BigInt n0, BigInt n1) sync* {
   }
 }
 
-const int digits = 1000;
+const digits = 1000;
 
 void main() {
   final limit = BigInt.from(10).pow(digits - 1);

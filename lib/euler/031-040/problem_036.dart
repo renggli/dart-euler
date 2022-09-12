@@ -11,7 +11,7 @@
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
-const int max = 1000000;
+const max = 1000000;
 
 bool isPalindrom(List<int> digits) {
   for (var i = 0, j = digits.length - 1; i < j; i++, j--) {

@@ -18,7 +18,7 @@ Iterable<int> fibonacci(int n0, int n1) sync* {
   }
 }
 
-const int max = 4000000;
+const max = 4000000;
 
 void main() {
   final sum = fibonacci(1, 2)

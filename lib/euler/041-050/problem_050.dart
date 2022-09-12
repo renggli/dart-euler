@@ -12,11 +12,11 @@
 ///
 /// Which prime, below one-million, can be written as the sum of the most
 /// consecutive primes?
+import 'package:more/comparator.dart';
 import 'package:more/math.dart';
-import 'package:more/ordering.dart';
 
-final Ordering<num> ordering = Ordering.natural();
-final List<int> primes = 1000000.primes.toList();
+final comparator = naturalComparator<num>();
+final primes = 1000000.primes.toList();
 
 void main() {
   var length = 0, prime = 0;
@@ -24,11 +24,11 @@ void main() {
     var sum = 0;
     for (var stop = start; stop < primes.length; stop++) {
       sum += primes[stop];
-      final index = ordering.binarySearch(primes, sum);
-      if (-index > primes.length) {
+      final index = comparator.binarySearchLower(primes, sum);
+      if (primes.length <= index) {
         break; // sum too large
       }
-      if (stop - start > length && index >= 0) {
+      if (stop - start > length && primes[index] == sum) {
         length = stop - start + 1;
         prime = sum;
       }

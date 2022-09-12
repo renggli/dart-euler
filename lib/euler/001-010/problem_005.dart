@@ -8,8 +8,8 @@
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
-const int min = 1;
-const int max = 20;
+const min = 1;
+const max = 20;
 
 void main() {
   final result = min.to(max + 1).fold<int>(1, (p, c) => p.lcm(c));

@@ -20,7 +20,7 @@
 /// efficient algorithm to solve it. ;o)
 import 'dart:math';
 
-final List<List<int>> triangle = [
+final triangle = [
   [59],
   [73, 41],
   [52, 40, 09],

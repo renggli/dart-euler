@@ -20,7 +20,7 @@ import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
-const List<int> divisors = [2, 3, 5, 7, 11, 13, 17];
+const divisors = [2, 3, 5, 7, 11, 13, 17];
 
 bool isDivisible(List<int> digits) {
   for (var i = 0; i < divisors.length; i++) {

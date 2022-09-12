@@ -20,7 +20,7 @@
 ///
 /// What is the value of the first triangle number to have over five hundred
 /// divisors?
-const int divisors = 500;
+const divisors = 500;
 
 int numberOfDivisors(int n) {
   var c = 0, d = 1;
