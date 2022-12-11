@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:more/more.dart';
@@ -32,7 +33,8 @@ class Problem {
 
   /// Executes the problem asynchronously.
   Future<ProcessResult> execute({List<String> arguments = const []}) =>
-      Process.run(Platform.executable, [...defaults, ...arguments, path]);
+      Process.run(Platform.executable, [...defaults, ...arguments, path],
+          stdoutEncoding: utf8, stderrEncoding: utf8);
 }
 
 /// Iterator over all the Euler problems.

@@ -7,7 +7,7 @@ void main() {
         problem.label,
         () => problem.execute().then((result) {
               if (result.exitCode != 0) {
-                fail(result.stderr);
+                fail(result.stderr as String);
               }
               expect(result.exitCode, 0, reason: 'Exit code');
             }));

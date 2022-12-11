@@ -10,7 +10,7 @@ final command = RegExp(r'((mask) = ([X10]{36})|(mem)\[(\d+)\] = (\d+))');
 const bitSize = 36;
 
 int run(
-    Function(Map<int, int> memory, String mask, int address, int value)
+    void Function(Map<int, int> memory, String mask, int address, int value)
         callback) {
   var mask = '';
   final memory = <int, int>{};

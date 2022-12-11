@@ -21,7 +21,7 @@ bool isPandigitalProduct(int a, int b) {
   list.addAll((a * b).digits());
   return list.length == 9 &&
       !list.contains(0) &&
-      Set.from(list).length == list.length;
+      Set.of(list).length == list.length;
 }
 
 void main() {
