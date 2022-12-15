@@ -15,6 +15,7 @@
 ///
 /// Using words.txt (right click and save), a 16K text file containing nearly
 /// 2000 common english words, how many are triangle words.
+import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 
 const words = [
@@ -1808,11 +1809,8 @@ const words = [
 
 final baseOffset = 'A'.codeUnitAt(0) - 1;
 
-int wordValue(String word) => word
-    .toUpperCase()
-    .codeUnits
-    .map((each) => each - baseOffset)
-    .reduce((a, b) => a + b);
+int wordValue(String word) =>
+    word.toUpperCase().codeUnits.map((each) => each - baseOffset).sum();
 
 final traingleNumbers =
     IntegerRange(1000).map((value) => value * (value + 1) ~/ 2).toSet();

@@ -16,6 +16,7 @@
 ///    d_8, d_9, d_10 = 289 is divisible by 17
 ///
 /// Find the sum of all 0 to 9 pandigitial numbers with this property.
+import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 import 'package:more/iterable.dart';
 import 'package:more/math.dart';
@@ -38,6 +39,6 @@ void main() {
       .permutations()
       .where(isDivisible)
       .map((a) => a.polynomial())
-      .reduce((a, b) => a + b);
+      .sum();
   assert(sum == 16695334890);
 }

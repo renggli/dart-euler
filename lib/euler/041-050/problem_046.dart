@@ -18,7 +18,7 @@ import 'dart:math';
 
 import 'package:more/math.dart';
 
-final primes = 10000.primes.toList();
+final primes = EratosthenesPrimeSieve(10000).primes.toList();
 final primeSet = primes.toSet();
 
 bool verifySquare(int n) {

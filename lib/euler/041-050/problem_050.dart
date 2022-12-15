@@ -15,8 +15,8 @@
 import 'package:more/comparator.dart';
 import 'package:more/math.dart';
 
-final comparator = naturalComparator<num>();
-final primes = 1000000.primes.toList();
+const Comparator<int> comparator = naturalComparable<num>;
+final primes = EratosthenesPrimeSieve(1000000).primes.toList();
 
 void main() {
   var length = 0, prime = 0;

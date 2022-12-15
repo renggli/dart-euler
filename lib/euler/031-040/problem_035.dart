@@ -10,7 +10,7 @@
 import 'package:more/math.dart';
 
 const max = 1000000;
-final primes = max.primes.toSet();
+final primes = EratosthenesPrimeSieve(max).primes.toSet();
 
 bool isCircular(int prime) {
   final rotation = prime.digits().toList();

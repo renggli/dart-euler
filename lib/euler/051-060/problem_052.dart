@@ -8,7 +8,7 @@
 import 'package:more/comparator.dart';
 import 'package:more/math.dart';
 
-final comparator = naturalComparator<int>().lexicographical;
+final comparator = naturalComparable<num>.lexicographical;
 
 void main() {
   for (var x = 1;; x++) {

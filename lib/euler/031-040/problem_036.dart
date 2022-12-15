@@ -8,6 +8,7 @@
 ///
 /// (Please note that the palindromic number, in either base, may not include
 /// leading zeros.)
+import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
@@ -27,6 +28,6 @@ void main() {
           .where((value) =>
               isPalindrom(value.digits().toList()) &&
               isPalindrom(value.digits(2).toList()))
-          .reduce((a, b) => a + b) ==
+          .sum() ==
       872187);
 }

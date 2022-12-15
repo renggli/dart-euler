@@ -15,7 +15,7 @@
 import 'package:more/math.dart';
 
 void main() {
-  for (final prime in 1000000.primes) {
+  for (final prime in EratosthenesPrimeSieve(1000000).primes) {
     if (prime > 100000) {
       final primeDigits = prime.digits();
       // need to check only repeating digits 0, 1, 2

@@ -9,5 +9,5 @@ import 'package:more/math.dart';
 const ith = 10001;
 
 void main() {
-  assert(1000000.primes.elementAt(ith - 1) == 104743);
+  assert(EratosthenesPrimeSieve(1000000).primes.elementAt(ith - 1) == 104743);
 }

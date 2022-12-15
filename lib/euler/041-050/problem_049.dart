@@ -14,9 +14,10 @@
 import 'package:more/comparator.dart';
 import 'package:more/math.dart';
 
-final comparator = naturalComparator<int>();
+const Comparator<int> comparator = naturalComparable<num>;
 final listComparator = comparator.lexicographical;
-final primes = 9999.primes.skipWhile((x) => x <= 1487).toList();
+final primes =
+    EratosthenesPrimeSieve(9999).primes.skipWhile((x) => x <= 1487).toList();
 
 bool isPermutation(int a, int b) {
   final ad = a.digits().toList()..sort();

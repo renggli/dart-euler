@@ -10,7 +10,7 @@
 /// concatenate to produce another prime.
 import 'package:more/math.dart';
 
-final primes = 10000.primes.toList();
+final primes = EratosthenesPrimeSieve(10000).primes.toList();
 
 bool allPrime(List<List<num>> pairs) {
   for (final pair in pairs) {

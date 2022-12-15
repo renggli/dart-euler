@@ -13,12 +13,13 @@
 ///
 /// Find the difference between the sum of the squares of the first one hundred
 /// natural numbers and the square of the sum.
+import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 
 const max = 100;
 
 num sum(int start, int stop, num Function(int) callback) =>
-    start.to(stop + 1).map(callback).reduce((a, b) => a + b);
+    start.to(stop + 1).map(callback).sum();
 
 void main() {
   final sumOfSquares = sum(1, max, (i) => i * i);

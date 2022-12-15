@@ -1,3 +1,5 @@
+import 'package:data/stats.dart';
+
 /// Problem 17: Number letter counts
 ///
 /// If the numbers 1 to 5 are written out in words: one, two, three, four, five,
@@ -78,7 +80,7 @@ List<String> spell(int value) {
 void main() {
   var total = 0;
   for (var i = 1; i <= 1000; i++) {
-    total += spell(i).map((a) => a.length).reduce((a, b) => a + b);
+    total += spell(i).map((a) => a.length).sum();
   }
   assert(total == 21124);
 }

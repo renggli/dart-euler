@@ -1,3 +1,5 @@
+import 'package:data/stats.dart';
+
 /// Problem 61: Cyclical figurate numbers
 ///
 /// Triangle, square, pentagonal, hexagonal, heptagonal, and octagonal numbers
@@ -68,7 +70,7 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
 void main() {
   for (final chain in findChains([0, 1, 2, 3, 4, 5], -1)) {
     if (chain.first ~/ 100 == chain.last % 100) {
-      assert(chain.reduce((a, b) => a + b) == 28684);
+      assert(chain.sum() == 28684);
       return;
     }
   }

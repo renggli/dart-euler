@@ -1,3 +1,5 @@
+import 'package:data/stats.dart';
+
 /// Problem 59: XOR decryption
 ///
 /// Each character on a computer is assigned a unique code and the preferred
@@ -1244,7 +1246,7 @@ void main() {
       for (var c = _a; c <= _z; c++) {
         final output = crypt(input, String.fromCharCodes([a, b, c]));
         if (output.contains('because')) {
-          assert(output.codeUnits.reduce((a, b) => a + b) == 107359);
+          assert(output.codeUnits.sum() == 107359);
           return;
         }
       }

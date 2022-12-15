@@ -13,6 +13,7 @@
 ///
 /// Find the sum of all the numbers that can be written as the sum of
 /// fifth powers of their digits.
+import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
@@ -25,9 +26,6 @@ int sumOfDigitPowers(int number, int power) => number
     .fold(0, (sum, each) => sum + (each - 48).pow(power).toInt());
 
 void main() {
-  final sum = 2
-      .to(upper)
-      .where((i) => sumOfDigitPowers(i, power) == i)
-      .reduce((a, b) => a + b);
+  final sum = 2.to(upper).where((i) => sumOfDigitPowers(i, power) == i).sum();
   assert(sum == 443839);
 }

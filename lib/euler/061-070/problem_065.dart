@@ -34,6 +34,7 @@
 ///
 /// Find the sum of digits in the numerator of the 100th convergent of the
 /// continued fraction for e.
+import 'package:data/stats.dart';
 import 'package:more/math.dart';
 
 void main() {
@@ -43,5 +44,5 @@ void main() {
     n0 = n1;
     n1 = n;
   }
-  assert(n1.digits().reduce((a, b) => a + b) == 272);
+  assert(n1.digits().sum() == 272);
 }

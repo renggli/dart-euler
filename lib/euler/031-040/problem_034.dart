@@ -6,13 +6,14 @@
 /// their digits.
 ///
 /// Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+import 'package:data/stats.dart';
 import 'package:more/math.dart';
 
 void main() {
   var t = 0;
   const m = 100000;
   for (var i = 3; i <= m; i++) {
-    final s = i.digits().map((a) => a.factorial()).reduce((a, b) => a + b);
+    final s = i.digits().map((a) => a.factorial()).sum();
     if (i == s) {
       t += s;
     }

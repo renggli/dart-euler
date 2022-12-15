@@ -1,3 +1,5 @@
+import 'package:data/stats.dart';
+
 /// Problem 22: Names scores
 ///
 /// Using names.txt (right click and 'Save Link/Target As...'), a 46K text file
@@ -5177,14 +5179,12 @@ final names = [
   'ALONSO'
 ];
 
-int score(String name) => name.runes
-    .map((value) => value - 'A'.runes.first + 1)
-    .reduce((a, b) => a + b);
+int score(String name) =>
+    name.runes.map((value) => value - 'A'.runes.first + 1).sum();
 
 void main() {
   names.sort();
   var index = 0;
-  final total =
-      names.map((each) => ++index * score(each)).reduce((a, b) => a + b);
+  final total = names.map((each) => ++index * score(each)).sum();
   assert(total == 871198282);
 }

@@ -9,9 +9,10 @@
 /// to right and right to left.
 ///
 /// NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
+import 'package:data/stats.dart';
 import 'package:more/math.dart';
 
-final primes = 800000.primes.toList();
+final primes = EratosthenesPrimeSieve(800000).primes.toList();
 final primeSet = primes.toSet();
 
 bool isTruncable(int prime) {
@@ -26,6 +27,5 @@ bool isTruncable(int prime) {
 }
 
 void main() {
-  assert(primes.where((x) => x > 9 && isTruncable(x)).reduce((a, b) => a + b) ==
-      748317);
+  assert(primes.where((x) => x > 9 && isTruncable(x)).sum() == 748317);
 }

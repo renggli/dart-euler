@@ -12,6 +12,7 @@
 ///
 /// HINT: Some products can be obtained in more than one way so be sure to only
 /// include it once in your sum.
+import 'package:data/stats.dart';
 import 'package:more/math.dart';
 
 bool isPandigitalProduct(int a, int b) {
@@ -33,5 +34,5 @@ void main() {
       }
     }
   }
-  assert(products.reduce((a, b) => a + b) == 45228);
+  assert(products.sum() == 45228);
 }
