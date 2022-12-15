@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:more/iterable.dart';
 import 'package:data/stats.dart';
+import 'package:more/iterable.dart';
 
 final caloriesPerElf = File('lib/aoc2022/dec_01.txt')
     .readAsStringSync()

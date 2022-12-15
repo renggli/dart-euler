@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:data/stats.dart';
 import 'package:more/char_matcher.dart';
 import 'package:more/collection.dart';
-import 'package:data/stats.dart';
 import 'package:more/iterable.dart';
 
 extension on String {
@@ -21,11 +21,11 @@ final input = File('lib/aoc2022/dec_03.txt').readAsLinesSync();
 
 void main() {
   final solution1 = input
-      .map((line) => [line.take(line.length ~/ 2), line.skip(line.length ~/ 2)])
-      .map((rucksack) =>
-          rucksack.map((compartment) => compartment.split('').toSet()).toList())
-      .map((compartment) => compartment[0]
-          .intersection(compartment[1])
+      .map((line) => [line.take(line.length ~/ 2), line.skip(line.length ~/ 2)]
+          .map((compartment) => compartment.split('').toSet())
+          .toList())
+      .map((compartments) => compartments[0]
+          .intersection(compartments[1])
           .map((each) => each.priority)
           .sum())
       .sum();
