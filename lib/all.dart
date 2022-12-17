@@ -2,52 +2,44 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:more/more.dart';
+import 'package:collection/collection.dart';
+import 'package:more/collection.dart';
 
-/// Matches the filename of a problem.
-final pattern = RegExp(r'\w+\d+\.dart$');
+final pattern = RegExp(r'\w+_\d+');
 
-/// Arguments
-final defaults = ['run', '--enable-asserts'];
+class Group {
+  Group(this.directory);
 
-/// Encapsulate a problem.
+  final Directory directory;
+
+  String get name => directory.path.takeLastTo('/');
+
+  Iterable<Group> get groups => directory
+      .listSync()
+      .whereType<Directory>()
+      .map((directory) => Group(directory))
+      .sortedBy((group) => group.name);
+
+  Iterable<Problem> get problems => directory
+      .listSync()
+      .whereType<File>()
+      .where((file) => file.path.endsWith('.dart'))
+      .map((file) => Problem(file))
+      .where((problem) => pattern.matchAsPrefix(problem.name) != null)
+      .sortedBy((problem) => problem.name);
+}
+
 class Problem {
-  /// Constructs a problem from a path.
   Problem(this.file);
 
-  /// File of the problem.
   final File file;
 
-  /// File path of the problem.
-  String get path => file.path;
+  String get name => file.path.takeLastTo('/').removeSuffix('.dart');
 
-  /// Label of the problem.
-  String get label => path.removePrefix('${Directory.current.path}/lib/');
-
-  /// Tests if this is a valid filename.
-  bool get isValid => pattern.hasMatch(label) && file.existsSync();
-
-  /// Executes the problem synchronously.
-  ProcessResult executeSync({List<String> arguments = const []}) =>
-      Process.runSync(Platform.executable, [...defaults, ...arguments, path]);
-
-  /// Executes the problem asynchronously.
   Future<ProcessResult> execute({List<String> arguments = const []}) =>
-      Process.run(Platform.executable, [...defaults, ...arguments, path],
+      Process.run(Platform.executable,
+          ['run', '--enable-asserts', ...arguments, file.path],
           stdoutEncoding: utf8, stderrEncoding: utf8);
 }
 
-/// Iterator over all the Euler problems.
-Iterable<Problem> get problems => Directory.current
-    .listSync(recursive: true, followLinks: false)
-    .whereType<File>()
-    .map((file) => Problem(file))
-    .where((problem) => problem.isValid);
-
-void main() {
-  for (final problem in problems) {
-    stdout.write(problem.label);
-    final result = problem.executeSync();
-    stdout.writeln(result.exitCode == 0 ? '' : ' [FAILURE]');
-  }
-}
+final all = Group(Directory('${Directory.current.path}/lib'));

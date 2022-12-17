@@ -1,15 +1,20 @@
 import 'package:euler/all.dart';
-import 'package:test/test.dart';
+import 'package:test/test.dart' as test;
+
+void createGroup(Group group) {
+  test.group(group.name, () {
+    group.groups.forEach(createGroup);
+    for (final problem in group.problems) {
+      test.test(problem.name, () async {
+        final result = await problem.execute();
+        if (result.exitCode != 0) {
+          test.fail(result.stderr as String);
+        }
+      });
+    }
+  });
+}
 
 void main() {
-  for (final problem in problems) {
-    test(
-        problem.label,
-        () => problem.execute().then((result) {
-              if (result.exitCode != 0) {
-                fail(result.stderr as String);
-              }
-              expect(result.exitCode, 0, reason: 'Exit code');
-            }));
-  }
+  all.groups.forEach(createGroup);
 }
