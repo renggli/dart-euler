@@ -18,7 +18,7 @@ void main() {
       }).length ==
       547);
   assert(intervals
-          .where((group) => !group[0].intersection(group[1]).isEmpty)
+          .where((group) => group[0].intersection(group[1]).isNotEmpty)
           .length ==
       843);
 }
