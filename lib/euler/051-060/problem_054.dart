@@ -55,7 +55,6 @@
 ///
 /// How many hands does Player 1 win?
 import 'package:more/collection.dart';
-import 'package:more/iterable.dart';
 
 const values = [
   '2',

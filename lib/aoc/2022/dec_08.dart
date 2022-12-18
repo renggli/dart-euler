@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:data/matrix.dart';
 import 'package:data/type.dart';
 import 'package:data/vector.dart';
-import 'package:more/iterable.dart';
+import 'package:more/collection.dart';
 
 final input = File('lib/aoc/2022/dec_08.txt').readAsLinesSync();
 final matrix = Matrix.generate(DataType.int32, input.length, input[0].length,

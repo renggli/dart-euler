@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:data/stats.dart';
 import 'package:more/char_matcher.dart';
 import 'package:more/collection.dart';
-import 'package:more/iterable.dart';
 
 extension on String {
   int get priority {

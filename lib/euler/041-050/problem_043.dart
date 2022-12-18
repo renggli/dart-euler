@@ -18,7 +18,6 @@
 /// Find the sum of all 0 to 9 pandigitial numbers with this property.
 import 'package:data/stats.dart';
 import 'package:more/collection.dart';
-import 'package:more/iterable.dart';
 import 'package:more/math.dart';
 
 const divisors = [2, 3, 5, 7, 11, 13, 17];

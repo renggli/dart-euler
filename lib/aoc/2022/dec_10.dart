@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:data/stats.dart';
-import 'package:more/iterable.dart';
+import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
 final instructions = File('lib/aoc/2022/dec_10.txt')
