@@ -25,7 +25,7 @@ class Tile {
       ];
 
   Tile get withoutEdges =>
-      Tile(title, data.range(1, data.rowCount - 1, 1, data.columnCount - 1));
+      Tile(title, data.range(1, data.rowCount - 1, 1, data.colCount - 1));
 
   bool matchTop(Tile other) => data.rows.first.compare(other.data.rows.last);
 
@@ -41,9 +41,9 @@ class Tile {
     var found = 0;
     for (var r = 0; r <= data.rowCount - pattern.rowCount; r++) {
       notFound:
-      for (var c = 0; c <= data.columnCount - pattern.columnCount; c++) {
+      for (var c = 0; c <= data.colCount - pattern.colCount; c++) {
         for (var pr = 0; pr < pattern.rowCount; pr++) {
-          for (var pc = 0; pc < pattern.columnCount; pc++) {
+          for (var pc = 0; pc < pattern.colCount; pc++) {
             if (pattern.get(pr, pc) == '#' && data.get(r + pr, c + pc) != '#') {
               continue notFound;
             }

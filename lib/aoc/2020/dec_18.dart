@@ -5,7 +5,7 @@ import 'package:petitparser/petitparser.dart';
 
 Parser<int> createParser(int problem) {
   final builder = ExpressionBuilder<int>();
-  builder.group().primitive(digit().plus().flatten().trim().map(int.parse));
+  builder.primitive(digit().plus().flatten().trim().map(int.parse));
   builder.group().wrapper(
       char('(').trim(), char(')').trim(), (left, value, right) => value);
   if (problem == 1) {

@@ -45,7 +45,7 @@ int score(int r, int c) {
   }
 
   var right = 0;
-  for (var cc = c + 1; cc < matrix.columnCount; cc++) {
+  for (var cc = c + 1; cc < matrix.colCount; cc++) {
     right++;
     if (matrix.get(r, cc) >= height) break;
   }

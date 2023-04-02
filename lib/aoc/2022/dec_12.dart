@@ -9,8 +9,8 @@ final input = File('lib/aoc/2022/dec_12.txt').readAsLinesSync();
 final source = Matrix.generate(DataType.string, input.length, input[0].length,
     (row, column) => input[row][column],
     format: MatrixFormat.columnMajor);
-final height = Matrix.generate(
-    DataType.int32, source.rowCount, source.columnCount, (row, column) {
+final height = Matrix.generate(DataType.int32, source.rowCount, source.colCount,
+    (row, column) {
   var char = source.get(row, column);
   if (char == 'S') char = 'a';
   if (char == 'E') char = 'z';
@@ -21,7 +21,7 @@ final end = findPoints(source, 'E').single;
 
 Iterable<Point<int>> findPoints<T>(Matrix<T> matrix, T value) sync* {
   for (var r = 0; r < matrix.rowCount; r++) {
-    for (var c = 0; c < matrix.columnCount; c++) {
+    for (var c = 0; c < matrix.colCount; c++) {
       if (matrix.get(r, c) == value) {
         yield Point(r, c);
       }
@@ -97,5 +97,8 @@ int findStepCount(Point<int> start) =>
 
 void main() {
   assert(findStepCount(start) == 319);
-  print(findPoints(source, 'a').map((start) => findStepCount(start)).toList().min);
+  print(findPoints(source, 'a')
+      .map((start) => findStepCount(start))
+      .toList()
+      .min);
 }
