@@ -9,7 +9,7 @@ final values = File('lib/aoc/2020/dec_23.txt')
     .map(int.parse)
     .toList();
 
-class Cup extends LinkedListEntry<Cup> {
+base class Cup extends LinkedListEntry<Cup> {
   Cup(this.value);
 
   final int value;

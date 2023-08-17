@@ -30,15 +30,15 @@ int game1() {
   return score(deck1.length > deck2.length ? deck1 : deck2);
 }
 
-Tuple2<int, List<int>> play2(List<int> deck1, List<int> deck2) {
+(int, List<int>) play2(List<int> deck1, List<int> deck2) {
   final seen = <String>{};
   for (;;) {
     if (!seen.add(deck1.join()) || !seen.add(deck2.join())) {
-      return Tuple2(1, deck1);
+      return (1, deck1);
     } else if (deck1.isEmpty) {
-      return Tuple2(2, deck2);
+      return (2, deck2);
     } else if (deck2.isEmpty) {
-      return Tuple2(1, deck1);
+      return (1, deck1);
     }
     final card1 = deck1.removeAt(0);
     final card2 = deck2.removeAt(0);

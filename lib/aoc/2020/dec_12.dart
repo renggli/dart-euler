@@ -5,7 +5,7 @@ import 'package:more/more.dart';
 
 final values = File('lib/aoc/2020/dec_12.txt')
     .readAsLinesSync()
-    .map((value) => Tuple2(value[0], int.parse(value.substring(1))))
+    .map((value) => (value[0], int.parse(value.substring(1))))
     .toList();
 
 Point<int> rotate(Point<int> point, int degrees) {
@@ -22,7 +22,7 @@ class State {
   final Point<int> pos;
   final Point<int> dir;
 
-  State update1(Tuple2<String, int> command) {
+  State update1((String, int) command) {
     switch (command.first) {
       case 'N':
         return State(Point(pos.x, pos.y + command.second), dir);
@@ -48,7 +48,7 @@ class State {
     }
   }
 
-  State update2(Tuple2<String, int> command) {
+  State update2((String, int) command) {
     switch (command.first) {
       case 'N':
         return State(pos, Point(dir.x, dir.y + command.second));
