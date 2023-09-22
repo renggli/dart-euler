@@ -70,7 +70,7 @@ List<T> search<T>({
     if (isGoal(currentNode.state)) {
       return currentNode.path;
     }
-    for (var next in expand(currentNode.state)) {
+    for (final next in expand(currentNode.state)) {
       final nextCost = currentNode.cost + cost(currentNode.state, next);
       if (!reached.containsKey(next) || nextCost < reached[next]!.cost) {
         final nextNode = Node<T>(next, parent: currentNode, cost: nextCost);
@@ -98,7 +98,7 @@ int findStepCount(Point<int> start) =>
 void main() {
   assert(findStepCount(start) == 319);
   print(findPoints(source, 'a')
-      .map((start) => findStepCount(start))
+      .map(findStepCount)
       .toList()
       .min);
 }

@@ -32,7 +32,7 @@ class Move {
 Set<Point> run(Iterable<Move> moves, int knots) {
   final tails = <Point<int>>{};
   final rope = List.generate(knots, (_) => const Point(0, 0));
-  for (var move in moves) {
+  for (final move in moves) {
     for (var i = 0; i < move.count; i++) {
       rope[0] += move.direction.offset;
       for (var j = 1; j < knots; j++) {
@@ -49,7 +49,7 @@ Set<Point> run(Iterable<Move> moves, int knots) {
 }
 
 final moves =
-    File('lib/aoc/2022/dec_09.txt').readAsLinesSync().map((line) => Move(line));
+    File('lib/aoc/2022/dec_09.txt').readAsLinesSync().map(Move.new);
 
 void main() {
   assert(run(moves, 2).length == 5930);

@@ -6,7 +6,7 @@ final stream =
     File('lib/aoc/2022/dec_06.txt').readAsStringSync().split('').toList();
 
 int firstDistinctIndex(int count) {
-  var queue = QueueList<String>(count);
+  final queue = QueueList<String>(count);
   for (var i = 0; i < stream.length; i++) {
     final value = stream[i];
     if (queue.length == count && queue.toSet().length == count) {

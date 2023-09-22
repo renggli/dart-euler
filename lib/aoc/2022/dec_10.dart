@@ -15,13 +15,11 @@ List<int> run() {
     switch (instruction[0]) {
       case 'noop':
         cycles.add(value);
-        break;
       case 'addx':
         cycles
           ..add(value)
           ..add(value);
         value += int.parse(instruction[1]);
-        break;
       default:
         throw StateError('Invalid instruction: ${instruction[0]}');
     }

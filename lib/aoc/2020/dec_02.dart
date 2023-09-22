@@ -37,7 +37,7 @@ bool isValid2(Value value) =>
 
 final values = File('lib/aoc/2020/dec_02.txt')
     .readAsLinesSync()
-    .map((line) => Value.fromString(line));
+    .map(Value.fromString);
 
 void main() {
   assert(values.where(isValid1).length == 458);

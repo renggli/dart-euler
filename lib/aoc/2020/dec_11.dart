@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:data/stats.dart';
 
 const outside = ' ';
-const floor = '.';
 const empty = 'L';
 const occupied = '#';
 

@@ -66,7 +66,7 @@ int switchNopJmp(List<Code> codes) {
 
 final codes = File('lib/aoc/2020/dec_08.txt')
     .readAsLinesSync()
-    .map((line) => Code.parse(line))
+    .map(Code.parse)
     .toList();
 
 void main() {

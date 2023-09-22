@@ -39,14 +39,14 @@ class Monkey {
 final monkeys = File('lib/aoc/2022/dec_11.txt')
     .readAsStringSync()
     .split('\n\n')
-    .map((input) => Monkey(input))
+    .map(Monkey.new)
     .toList();
 
 void round(List<List<int>> monkeyItems, List<int> monkeyInspections, int modulo,
     int divisor) {
   for (final monkey in monkeys) {
     final items = monkeyItems[monkey.index];
-    for (var item in items) {
+    for (final item in items) {
       final value = monkey.operation(item, monkey.operator ?? item) ~/ divisor;
       final target =
           value % monkey.divisor == 0 ? monkey.trueTarget : monkey.falseTarget;

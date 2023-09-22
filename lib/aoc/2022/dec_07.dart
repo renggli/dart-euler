@@ -47,7 +47,7 @@ class DirEntry extends Entry {
 final root = () {
   final root = DirEntry(null, '/');
   var current = root;
-  for (var line in File('lib/aoc/2022/dec_07.txt').readAsLinesSync()) {
+  for (final line in File('lib/aoc/2022/dec_07.txt').readAsLinesSync()) {
     final token = line.split(' ');
     if (token[0] == '\$') {
       if (token[1] == 'cd') {

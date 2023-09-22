@@ -20,7 +20,6 @@ int getSeat(String input) {
   return row * 8 + col;
 }
 
-const Comparator<int> comparator = naturalComparable<num>;
 final seats =
     File('lib/aoc/2020/dec_05.txt').readAsLinesSync().map(getSeat).toSet();
 

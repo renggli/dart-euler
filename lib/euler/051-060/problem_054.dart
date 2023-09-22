@@ -105,7 +105,7 @@ class Hand {
     if (input.length != 5) {
       throw ArgumentError('Invalid hand: $input');
     }
-    final cards = input.map((input) => Card(input)).toList(growable: false)
+    final cards = input.map(Card.new).toList(growable: false)
       ..sort();
     final values = Multiset.from(cards.map((card) => card.value));
     final suits = Multiset.from(cards.map((each) => each.suit));

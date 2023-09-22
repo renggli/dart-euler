@@ -32,7 +32,7 @@ void allAtOnce(Operation operation, List<List<String>> stacks) {
 String run(void Function(Operation, List<List<String>>) perform) {
   final stacks = <List<String>>[];
   final operations = <Operation>[];
-  for (var line in lines) {
+  for (final line in lines) {
     final matches = operation.matchAsPrefix(line);
     if (matches != null) {
       operations.add(Operation(int.parse(matches.group(1)!),
@@ -48,7 +48,7 @@ String run(void Function(Operation, List<List<String>>) perform) {
       }
     }
   }
-  for (var operation in operations) {
+  for (final operation in operations) {
     perform(operation, stacks);
   }
   return stacks.map((stack) => stack.last).join('');

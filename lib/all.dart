@@ -17,14 +17,14 @@ class Group {
   Iterable<Group> get groups => directory
       .listSync()
       .whereType<Directory>()
-      .map((directory) => Group(directory))
+      .map(Group.new)
       .sortedBy((group) => group.name);
 
   Iterable<Problem> get problems => directory
       .listSync()
       .whereType<File>()
       .where((file) => file.path.endsWith('.dart'))
-      .map((file) => Problem(file))
+      .map(Problem.new)
       .where((problem) => pattern.matchAsPrefix(problem.name) != null)
       .sortedBy((problem) => problem.name);
 }
