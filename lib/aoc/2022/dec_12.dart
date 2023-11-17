@@ -97,8 +97,5 @@ int findStepCount(Point<int> start) =>
 
 void main() {
   assert(findStepCount(start) == 319);
-  print(findPoints(source, 'a')
-      .map(findStepCount)
-      .toList()
-      .min);
+  print(findPoints(source, 'a').map(findStepCount).toList().min);
 }

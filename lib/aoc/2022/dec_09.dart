@@ -48,8 +48,7 @@ Set<Point> run(Iterable<Move> moves, int knots) {
   return tails;
 }
 
-final moves =
-    File('lib/aoc/2022/dec_09.txt').readAsLinesSync().map(Move.new);
+final moves = File('lib/aoc/2022/dec_09.txt').readAsLinesSync().map(Move.new);
 
 void main() {
   assert(run(moves, 2).length == 5930);
