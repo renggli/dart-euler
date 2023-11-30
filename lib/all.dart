@@ -5,14 +5,15 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:more/collection.dart';
 
-final pattern = RegExp(r'\w+_\d+');
-
 class Group {
   Group(this.directory);
 
   final Directory directory;
 
-  String get name => directory.path.takeLastTo('/');
+  String get name => directory.path
+      .takeLastTo('/')
+      .replaceAll('_', ' ')
+      .toUpperCaseFirstCharacter();
 
   Iterable<Group> get groups => directory
       .listSync()
@@ -25,7 +26,6 @@ class Group {
       .whereType<File>()
       .where((file) => file.path.endsWith('.dart'))
       .map(Problem.new)
-      .where((problem) => pattern.matchAsPrefix(problem.name) != null)
       .sortedBy((problem) => problem.name);
 }
 
@@ -34,7 +34,11 @@ class Problem {
 
   final File file;
 
-  String get name => file.path.takeLastTo('/').removeSuffix('.dart');
+  String get name => file.path
+      .takeLastTo('/')
+      .removeSuffix('.dart')
+      .replaceAll('_', ' ')
+      .toUpperCaseFirstCharacter();
 
   Future<ProcessResult> execute({List<String> arguments = const []}) =>
       Process.run(Platform.executable,

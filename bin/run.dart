@@ -15,7 +15,8 @@ Future<void> runGroup(Group parent, {int level = 0}) async {
     final result = await problem.execute();
     stopwatch.stop();
     stdout.write(result.exitCode == 0 ? 'SUCCESS' : 'FAILURE');
-    stdout.writeln(' [${stopwatch.elapsedMilliseconds}ms]');
+    final timeMs = stopwatch.elapsedMilliseconds;
+    stdout.writeln(' [${timeMs.toString().padLeft(4)}ms]');
   }
 }
 
