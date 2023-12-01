@@ -1,47 +1,55 @@
 import 'dart:io';
 
 import 'package:data/stats.dart';
-import 'package:more/char_matcher.dart';
 
-List<int> extractDigits(String input, {Map<String, int> mapping = const {}}) {
+List<int> extractDigits(String input, Map<String, int> mapping) {
   final result = <int>[];
   for (var i = 0; i < input.length; i++) {
-    if (const CharMatcher.digit().everyOf(input[i])) {
-      result.add(int.parse(input[i]));
-    } else {
-      for (final prefix in mapping.keys) {
-        if (input.startsWith(prefix, i)) {
-          result.add(mapping[prefix]!);
-        }
+    for (final MapEntry(:key, :value) in mapping.entries) {
+      if (input.startsWith(key, i)) {
+        result.add(value);
       }
     }
   }
   return result;
 }
 
-final value1 = File('lib/aoc/2023/dec_01.txt')
-    .readAsLinesSync()
-    .map(extractDigits)
-    .map((digits) => 10 * digits.first + digits.last)
-    .sum();
+const digitMapping = {
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  '6': 6,
+  '7': 7,
+  '8': 8,
+  '9': 9,
+};
 
-final value2 = File('lib/aoc/2023/dec_01.txt')
-    .readAsLinesSync()
-    .map((line) => extractDigits(line, mapping: {
-          'one': 1,
-          'two': 2,
-          'three': 3,
-          'four': 4,
-          'five': 5,
-          'six': 6,
-          'seven': 7,
-          'eight': 8,
-          'nine': 9,
-        }))
-    .map((digits) => 10 * digits.first + digits.last)
-    .sum();
+const digitAndWordMapping = {
+  ...digitMapping,
+  'one': 1,
+  'two': 2,
+  'three': 3,
+  'four': 4,
+  'five': 5,
+  'six': 6,
+  'seven': 7,
+  'eight': 8,
+  'nine': 9,
+};
 
 void main() {
-  assert(value1 == 55834);
-  assert(value2 == 53221);
+  assert(File('lib/aoc/2023/dec_01.txt')
+          .readAsLinesSync()
+          .map((line) => extractDigits(line, digitMapping))
+          .map((digits) => 10 * digits.first + digits.last)
+          .sum() ==
+      55834);
+  assert(File('lib/aoc/2023/dec_01.txt')
+          .readAsLinesSync()
+          .map((line) => extractDigits(line, digitAndWordMapping))
+          .map((digits) => 10 * digits.first + digits.last)
+          .sum() ==
+      53221);
 }
