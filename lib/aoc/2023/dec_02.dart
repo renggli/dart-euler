@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:data/data.dart';
 import 'package:more/more.dart';
@@ -27,8 +28,10 @@ void main() {
           .sum() ==
       2085);
   assert(data.entries
-          .map((entry) =>
-              entry.values.reduce((a, b) => a.maximum(b)).counts.product())
+          .map((entry) => entry.values
+              .reduce((a, b) => a.combine(b, (_, a, b) => max(a, b)))
+              .counts
+              .product())
           .sum() ==
       79315);
 }
