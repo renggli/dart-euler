@@ -1,64 +1,54 @@
 import 'dart:io';
-import 'dart:math';
+import 'dart:typed_data';
 
-import 'package:data/data.dart';
+import 'package:collection/collection.dart';
 import 'package:more/more.dart';
 
 final data = File('lib/aoc/2023/dec_05.txt')
     .readAsStringSync()
     .split('\n\n')
-    .toMap(
-    key: (block) => block.takeTo(':'),
-    value: (block) =>
-        block
-            .skipTo(':')
-            .trim()
-            .split(RegExp(r'\s+'))
-            .map(int.parse)
-            .toList());
+    .map((block) =>
+        block.skipTo(':').trim().split(RegExp(r'\s+')).map(int.parse).toList())
+    .toList();
+final initialSeeds = data[0];
+final mappings =
+    data.skip(1).map((block) => block.chunked(3).toList()).toList();
 
-List<int> transform(List<int> seeds, List<int> mapping) =>
-    seeds.map((each) {
-      for (var i = 0; i < mapping.length; i += 3) {
-        if (each.between(mapping[i + 1], mapping[i + 1] + mapping[i + 2])) {
-          return each - mapping[i + 1] + mapping[i];
-        }
-      }
-      return each;
-    }).toList();
-
-
-void main() {
-  // var seeds = [...data['seeds']!];
-  //
-  // for (final MapEntry(:key, :value) in data.entries) {
-  //   if (key != 'seeds') {
-  //     seeds = transform(seeds, value);
-  //   }
-  // }
-  // print(seeds.min() == 910845529);
-
-  final seeds = [...data['seeds']!];
-  final mins = <int>[];
-  for (var i = 0; i < seeds.length; i += 2) {
-    var part = List.generate(seeds[i+1], (index) => seeds[i] + index);
-    for (final MapEntry(:key, :value) in data.entries) {
-      if (key != 'seeds') {
-        part = transform(part, value);
+void transform(List<int> seeds, List<List<int>> ranges) {
+  for (var i = 0; i < seeds.length; i++) {
+    for (final range in ranges) {
+      if (seeds[i].between(range[1], range[1] + range[2])) {
+        seeds[i] += range[0] - range[1];
+        break;
       }
     }
-    mins.add(part.min());
   }
-  print(mins.min());
+}
 
-  // print(ranges);
-  // for (final MapEntry(:key, :value) in data.entries) {
-  //   if (key != 'seeds') {
-  //
-  //
-  //     print(seeds2.length);
-  //     seeds2 = transform(seeds2, value);
-  //   }
-  // }
-  // print(seeds2.min());
+int problem1() {
+  final seeds = Uint32List.fromList(initialSeeds);
+  for (final mapping in mappings) {
+    transform(seeds, mapping);
+  }
+  return seeds.min;
+}
+
+int problem2() {
+  final mins = <int>[];
+  for (final range in initialSeeds.chunked(2)) {
+    final seeds = Uint32List(range[1]);
+    for (var i = 0; i < seeds.length; i++) {
+      seeds[i] = range[0] + i;
+    }
+    for (final mapping in mappings) {
+      transform(seeds, mapping);
+    }
+    mins.add(seeds.min);
+  }
+  return mins.min;
+}
+
+void main() {
+  assert(problem1() == 910845529);
+  assert(problem2() == 77435348);
 }
