@@ -41,7 +41,7 @@ String render() {
 void main() {
   const interesting = {20, 60, 100, 140, 180, 220};
   assert(run()
-          .indexed(offset: 1)
+          .indexed(start: 1)
           .where((each) => interesting.contains(each.index))
           .map((each) => each.index * each.value)
           .sum() ==

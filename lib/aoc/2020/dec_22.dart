@@ -11,7 +11,7 @@ final values = File('lib/aoc/2020/dec_22.txt')
 
 int score(List<int> deck) => deck.reversed
     .toList()
-    .indexed(offset: 1)
+    .indexed(start: 1)
     .map((each) => each.value * each.index)
     .sum();
 

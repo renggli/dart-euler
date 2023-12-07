@@ -68,21 +68,21 @@ HandType handStrength(Hand hand, {bool withJokers = false}) {
 }
 
 int problem1() => data
-    .sorted(explicitComparator(HandType.values.reversed)
+    .sorted(explicitComparator(HandType.values)
         .onResultOf(handStrength)
-        .thenCompare(explicitComparator('AKQJT98765432'.split('').reversed)
+        .thenCompare(explicitComparator('AKQJT98765432'.split(''))
             .lexicographical
             .onResultOf((hand) => hand.cards)))
-    .indexed(offset: 1)
+    .indexed(start: data.length, step: -1)
     .fold(0, (result, entry) => result + entry.index * entry.value.bid);
 
 int problem2() => data
-    .sorted(explicitComparator(HandType.values.reversed)
+    .sorted(explicitComparator(HandType.values)
         .onResultOf<Hand>((hand) => handStrength(hand, withJokers: true))
-        .thenCompare(explicitComparator('AKQT98765432J'.split('').reversed)
+        .thenCompare(explicitComparator('AKQT98765432J'.split(''))
             .lexicographical
             .onResultOf((hand) => hand.cards)))
-    .indexed(offset: 1)
+    .indexed(start: data.length, step: -1)
     .fold(0, (result, entry) => result + entry.index * entry.value.bid);
 
 void main() {
