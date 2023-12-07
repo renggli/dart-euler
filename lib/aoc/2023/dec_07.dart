@@ -3,12 +3,6 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:more/more.dart';
 
-final data = File('lib/aoc/2023/dec_07.txt')
-    .readAsLinesSync()
-    .map((line) => line.split(RegExp(r'\s+')).toList())
-    .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
-    .toList();
-
 typedef Hand = ({List<String> cards, int bid});
 
 enum HandType {
@@ -21,7 +15,7 @@ enum HandType {
   highCard,
 }
 
-HandType handStrength(Hand hand, {bool withJokers = false}) {
+HandType handStrength(Hand hand, bool withJokers) {
   final cards = hand.cards.toMultiset();
   final hasJoker = withJokers && hand.cards.contains('J');
   // Five of a kind, where all five cards have the same label: AAAAA
@@ -67,25 +61,22 @@ HandType handStrength(Hand hand, {bool withJokers = false}) {
   throw StateError('Invalid strength: $hand');
 }
 
-int problem1() => data
-    .sorted(explicitComparator(HandType.values)
-        .onResultOf(handStrength)
-        .thenCompare(explicitComparator('AKQJT98765432'.split(''))
-            .lexicographical
-            .onResultOf((hand) => hand.cards)))
-    .indexed(start: data.length, step: -1)
-    .fold(0, (result, entry) => result + entry.index * entry.value.bid);
+final hands = File('lib/aoc/2023/dec_07.txt')
+    .readAsLinesSync()
+    .map((line) => line.split(RegExp(r'\s+')).toList())
+    .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
+    .toList();
 
-int problem2() => data
+int problem(String values, bool withJokers) => hands
     .sorted(explicitComparator(HandType.values)
-        .onResultOf<Hand>((hand) => handStrength(hand, withJokers: true))
-        .thenCompare(explicitComparator('AKQT98765432J'.split(''))
+        .onResultOf<Hand>((hand) => handStrength(hand, withJokers))
+        .thenCompare(explicitComparator(values.split(''))
             .lexicographical
-            .onResultOf((hand) => hand.cards)))
-    .indexed(start: data.length, step: -1)
+            .onResultOf<Hand>((hand) => hand.cards)))
+    .indexed(start: hands.length, step: -1)
     .fold(0, (result, entry) => result + entry.index * entry.value.bid);
 
 void main() {
-  assert(problem1() == 250951660);
-  assert(problem2() == 251481660);
+  assert(problem('AKQJT98765432', false) == 250951660);
+  assert(problem('AKQT98765432J', true) == 251481660);
 }
