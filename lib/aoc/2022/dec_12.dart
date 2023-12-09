@@ -2,32 +2,8 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:data/matrix.dart';
-import 'package:data/type.dart';
-
-final input = File('lib/aoc/2022/dec_12.txt').readAsLinesSync();
-final source = Matrix.generate(DataType.string, input.length, input[0].length,
-    (row, column) => input[row][column],
-    format: MatrixFormat.columnMajor);
-final height = Matrix.generate(DataType.int32, source.rowCount, source.colCount,
-    (row, column) {
-  var char = source.get(row, column);
-  if (char == 'S') char = 'a';
-  if (char == 'E') char = 'z';
-  return char.codeUnitAt(0) - 'a'.codeUnitAt(0);
-});
-final start = findPoints(source, 'S').single;
-final end = findPoints(source, 'E').single;
-
-Iterable<Point<int>> findPoints<T>(Matrix<T> matrix, T value) sync* {
-  for (var r = 0; r < matrix.rowCount; r++) {
-    for (var c = 0; c < matrix.colCount; c++) {
-      if (matrix.get(r, c) == value) {
-        yield Point(r, c);
-      }
-    }
-  }
-}
+import 'package:more/graph.dart';
+import 'package:more/math.dart';
 
 const directions = <Point<int>>[
   Point(-1, 0),
@@ -36,66 +12,55 @@ const directions = <Point<int>>[
   Point(0, 1),
 ];
 
-class Node<T> implements Comparable<Node<T>> {
-  Node(this.state, {this.parent, this.cost = 0});
-
-  final T state;
-  Node<T>? parent;
-  num cost;
-
-  List<T> get path {
-    final path = <T>[];
-    for (Node<T>? current = this; current != null; current = current.parent) {
-      path.add(current.state);
-    }
-    path.reverseRange(0, path.length);
-    return path;
-  }
-
-  @override
-  int compareTo(Node<T> other) => cost.compareTo(other.cost);
+String getName(Point<int> position) {
+  final char = input[position.x][position.y];
+  if (char == 'S' || char == 'E') return char;
+  return '(${position.x}, ${position.y})';
 }
 
-List<T> search<T>({
-  required T start,
-  required bool Function(T node) isGoal,
-  required Iterable<T> Function(T node) expand,
-  required num Function(T source, T target) cost,
-}) {
-  final startNode = Node<T>(start);
-  final reached = <T, Node<T>>{startNode.state: startNode};
-  final frontier = PriorityQueue<Node<T>>()..add(startNode);
-  while (frontier.isNotEmpty) {
-    final currentNode = frontier.removeFirst();
-    if (isGoal(currentNode.state)) {
-      return currentNode.path;
-    }
-    for (final next in expand(currentNode.state)) {
-      final nextCost = currentNode.cost + cost(currentNode.state, next);
-      if (!reached.containsKey(next) || nextCost < reached[next]!.cost) {
-        final nextNode = Node<T>(next, parent: currentNode, cost: nextCost);
-        reached[next] = nextNode;
-        frontier.add(nextNode);
+int getElevation(Point<int> position) {
+  var char = input[position.x][position.y];
+  if (char == 'S') char = 'a';
+  if (char == 'E') char = 'z';
+  return char.codeUnitAt(0) - 'a'.codeUnitAt(0);
+}
+
+final input = File('lib/aoc/2022/dec_12.txt').readAsLinesSync();
+final graph = () {
+  final graph = Graph<String, void>.directed();
+  for (var x = 0; x < input.length; x++) {
+    for (var y = 0; y < input[x].length; y++) {
+      final source = Point(x, y);
+      for (final direction in directions) {
+        final target = source + direction;
+        if (target.x.between(0, input.length - 1) &&
+            target.y.between(0, input[x].length - 1)) {
+          final difference = getElevation(target) - getElevation(source);
+          if (difference <= 1) graph.addEdge(getName(source), getName(target));
+        }
       }
     }
   }
-  return [];
+  return graph;
+}();
+
+int problem1() => graph.shortestPath('S', 'E')!.edges.length;
+
+int problem2() {
+  final lengths = <int>[];
+  for (var x = 0; x < input.length; x++) {
+    for (var y = 0; y < input[x].length; y++) {
+      final source = Point(x, y);
+      if (getElevation(source) == 0) {
+        final path = graph.shortestPath(getName(source), 'E');
+        if (path != null) lengths.add(path.edges.length);
+      }
+    }
+  }
+  return lengths.min;
 }
 
-int findStepCount(Point<int> start) =>
-    search(
-        start: start,
-        isGoal: (point) => point == end,
-        expand: (point) => directions
-            .map((each) => each + point)
-            .where((each) => height.isWithinBounds(each.x, each.y)),
-        cost: (a, b) {
-          final diff = height.get(b.x, b.y) - height.get(a.x, a.y);
-          return diff == 0 || diff == 1 ? 1 : double.infinity;
-        }).length -
-    1;
-
 void main() {
-  assert(findStepCount(start) == 319);
-  print(findPoints(source, 'a').map(findStepCount).toList().min);
+  assert(problem1() == 425);
+  assert(problem2() == 418);
 }
