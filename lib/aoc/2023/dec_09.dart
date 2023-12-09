@@ -7,33 +7,16 @@ final data = File('lib/aoc/2023/dec_09.txt')
     .map((each) => each.split(' ').map(int.parse).toList())
     .toList();
 
-List<int> expandLast(List<int> input) {
-  if (input.every((each) => each == 0)) {
-    return [...input, 0];
-  } else {
-    final differential =
-        List.generate(input.length - 1, (i) => input[i + 1] - input[i]);
-    final parent = expandLast(differential);
-    return [...input, input.last + parent.last];
-  }
-}
+List<int> diff(List<int> input) =>
+    List.generate(input.length - 1, (i) => input[i + 1] - input[i]);
 
-int problem1() => data.map((each) => expandLast(each).last).sum();
+int diffLast(List<int> input) =>
+    input.every((each) => each == 0) ? 0 : input.last + diffLast(diff(input));
 
-List<int> expandFirst(List<int> input) {
-  if (input.every((each) => each == 0)) {
-    return [0, ...input];
-  } else {
-    final differential =
-        List.generate(input.length - 1, (i) => input[i + 1] - input[i]);
-    final parent = expandFirst(differential);
-    return [input.first - parent.first, ...input];
-  }
-}
-
-int problem2() => data.map((each) => expandFirst(each).first).sum();
+int diffFirst(List<int> input) =>
+    input.every((each) => each == 0) ? 0 : input.first - diffFirst(diff(input));
 
 void main() {
-  assert(problem1() == 1995001648);
-  assert(problem2() == 988);
+  assert(data.map(diffLast).sum() == 1995001648);
+  assert(data.map(diffFirst).sum() == 988);
 }
