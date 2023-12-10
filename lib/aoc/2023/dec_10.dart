@@ -10,7 +10,7 @@ const south = Point(1, 0);
 const west = Point(0, -1);
 const east = Point(0, 1);
 
-const symbols = {
+const directions = {
   '|': [north, south],
   '-': [east, west],
   'L': [north, east],
@@ -20,16 +20,14 @@ const symbols = {
   'S': [north, south, west, east],
 };
 
-List<Point<int>> getNeighbours(Point<int> point, {bool other = false}) {
-  final offsets = symbols[data[point.x][point.y]] ?? [];
-  return offsets
-      .map((offset) => point + offset)
-      .where((neighbour) =>
-          neighbour.x.between(0, data.length - 1) &&
-          neighbour.y.between(0, data[point.x].length - 1) &&
-          (other || getNeighbours(neighbour, other: true).contains(point)))
-      .toList();
-}
+List<Point<int>> getNeighbours(Point<int> point, {bool other = false}) =>
+    (directions[data[point.x][point.y]] ?? [])
+        .map((offset) => point + offset)
+        .where((neighbour) =>
+            neighbour.x.between(0, data.length - 1) &&
+            neighbour.y.between(0, data[point.x].length - 1) &&
+            (other || getNeighbours(neighbour, other: true).contains(point)))
+        .toList();
 
 final graph = () {
   final graph = Graph<Point<int>, void>.undirected();
@@ -50,7 +48,7 @@ final start = () {
       if (data[x][y] == 'S') return Point(x, y);
     }
   }
-  throw StateError('Start point not found');
+  throw StateError('No starting point found');
 }();
 
 int problem1() => graph
