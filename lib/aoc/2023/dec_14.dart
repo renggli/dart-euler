@@ -1,40 +1,35 @@
 import 'dart:io';
+
+import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-List<List<String>> read() => File('lib/aoc/2023/dec_14.txt')
-    .readAsLinesSync()
-    .map((line) => line.toList(mutable: true))
-    .toList();
+final data = File('lib/aoc/2023/dec_14.txt').readAsLinesSync().also((rows) =>
+    Matrix.fromPackedRows(DataType.string, rows.length, rows[0].length,
+        rows.expand((line) => line.split('')).toList()));
 
-void tilt(List<List<String>> data, final int dx, final int dy) {
-  final rx = 0.to(data.length), ry = 0.to(data[0].length);
-  for (final x in dx != 1 ? rx : rx.reversed) {
-    for (final y in dy != 1 ? ry : ry.reversed) {
-      if (data[x][y] == 'O') {
-        var ox = x, oy = y;
-        while (0 <= ox + dx &&
-            ox + dx < data.length &&
-            0 <= oy + dy &&
-            oy + dy < data[0].length &&
-            data[ox + dx][oy + dy] == '.') {
-          ox += dx;
-          oy += dy;
+void tilt(Matrix<String> matrix) {
+  for (var r = 1; r < matrix.rowCount; r++) {
+    for (var c = 0; c < matrix.colCount; c++) {
+      if (matrix.get(r, c) == 'O') {
+        var t = r;
+        while (0 < t && matrix.get(t - 1, c) == '.') {
+          t--;
         }
-        if (x != ox || y != oy) {
-          data[x][y] = '.';
-          data[ox][oy] = 'O';
+        if (t < r) {
+          matrix.set(r, c, '.');
+          matrix.set(t, c, 'O');
         }
       }
     }
   }
 }
 
-int load(List<List<String>> data) {
+int computeLoad(Matrix<String> matrix) {
   var result = 0;
-  for (var x = 0; x < data.length; x++) {
-    for (var y = 0; y < data[x].length; y++) {
-      if (data[x][y] == 'O') {
-        result += data.length - x;
+  for (var r = 0; r < matrix.rowCount; r++) {
+    for (var c = 0; c < matrix.colCount; c++) {
+      if (matrix.get(r, c) == 'O') {
+        result += matrix.rowCount - r;
       }
     }
   }
@@ -42,29 +37,28 @@ int load(List<List<String>> data) {
 }
 
 int problem1() {
-  final data = read();
-  tilt(data, -1, 0); // north
-  return load(data);
+  final matrix = data.toMatrix();
+  tilt(matrix);
+  return computeLoad(matrix);
 }
 
 int problem2({int cycles = 1000000000}) {
-  final data = read();
+  final matrix = data.toMatrix();
   final seen = <String, int>{};
   for (var i = 0; i < cycles; i++) {
-    tilt(data, -1, 0); // north
-    tilt(data, 0, -1); // west
-    tilt(data, 1, 0); // south
-    tilt(data, 0, 1); // east
-    final string = data.join('\n');
+    tilt(matrix); // north
+    tilt(matrix.rotated(count: 1)); // west
+    tilt(matrix.rotated(count: 2)); // south
+    tilt(matrix.rotated(count: 3)); // east
+    final string = matrix.rowMajor.join('');
     final last = seen[string];
     if (last != null) {
       // Jump to the last cycle
-      final diff = i - last;
-      i += (cycles - i) ~/ diff * diff;
+      i += (cycles - i) ~/ (i - last) * (i - last);
     }
     seen[string] = i;
   }
-  return load(data);
+  return computeLoad(matrix);
 }
 
 void main() {
