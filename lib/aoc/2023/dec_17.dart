@@ -51,18 +51,12 @@ Path<State, num> problem2() => solve(minBlocks: 4, maxBlocks: 10);
 
 // ignore: unreachable_from_main
 void visualize() {
+  const coloring = {
+    false: {false: '\u001b[0m', true: '\u001b[106m'},
+    true: {false: '\u001b[103m', true: '\u001b[102m'},
+  };
   final path1 = problem1().vertices.map((state) => state.pos).toSet();
   final path2 = problem2().vertices.map((state) => state.pos).toSet();
-  final coloring = {
-    false: {
-      false: '\u001b[0m',
-      true: '\u001b[106m',
-    },
-    true: {
-      false: '\u001b[103m',
-      true: '\u001b[102m',
-    }
-  };
   for (var x = 0; x <= stop.x; x++) {
     for (var y = 0; y <= stop.y; y++) {
       final point = Point(x, y);
