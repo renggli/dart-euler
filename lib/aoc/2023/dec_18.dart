@@ -26,6 +26,7 @@ int solve(Point<int> Function(Match) direction, int Function(Match) count) {
   final points = data.map((line) => regex.matchAsPrefix(line)!).fold(
       [const Point<int>(0, 0)],
       (list, match) => list..add(list.last + direction(match) * count(match)));
+  assert(points.first == points.last, 'Shoelace formula requires closed path');
   return area(points).abs() + border(points) ~/ 2 + 1;
 }
 
