@@ -28,7 +28,7 @@ int problem1() => cycleLength('AAA', (each) => each == 'ZZZ');
 int problem2() => network.keys
     .where((each) => each.endsWith('A'))
     .map((each) => cycleLength(each, (each) => each.endsWith('Z')))
-    .reduce((a, b) => a.lcm(b));
+    .lcm();
 
 void main() {
   assert(problem1() == 12169);

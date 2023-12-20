@@ -17,7 +17,6 @@ void run(List<int> memory) {
       case 2:
         memory[memory[ip + 3]] =
             memory[memory[ip + 1]] * memory[memory[ip + 2]];
-        ;
         ip += 4;
       case 99:
         return;
