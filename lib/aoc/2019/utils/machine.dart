@@ -1,29 +1,28 @@
 import 'dart:io';
 
+import 'inputs.dart';
+import 'outputs.dart';
+
 class Machine {
-  factory Machine.fromFile(File file, {Iterable<int> input = const []}) =>
-      Machine(file.readAsStringSync().split(',').map(int.parse), input: input);
+  factory Machine.fromFile(File file, {Input? input, Output? output}) =>
+      Machine(file.readAsStringSync().split(',').map(int.parse),
+          input: input, output: output);
 
-  Machine(Iterable<int> memory, {Iterable<int> input = const []})
+  Machine(Iterable<int> memory, {Input? input, Output? output})
       : memory = memory.toList(),
-        input = input.toList(growable: false);
+        input = input ?? NullInput(),
+        output = output ?? NullOutput();
 
-  final List<int> memory;
+  List<int> memory;
   int instructionPointer = 0;
   int relativeBase = 0;
 
-  final List<int> input;
-  int inputPointer = 0;
-
-  final List<int> output = [];
+  Input input;
+  Output output;
 
   /// Runs the program to completion, and returns the output.
-  List<int> run() {
-    while (true) {
-      if (!step()) {
-        return output;
-      }
-    }
+  void run() {
+    while (step()) {}
   }
 
   /// Performs a single execution step. Returns `false` if the program terminated.
@@ -36,10 +35,10 @@ class Machine {
         _write(3, _read(1) * _read(2));
         instructionPointer += 4;
       case 3: // input
-        _write(1, input[inputPointer++]);
+        _write(1, input.get());
         instructionPointer += 2;
       case 4: // output
-        output.add(_read(1));
+        output.put(_read(1));
         instructionPointer += 2;
       case 5: // jump-if-true
         instructionPointer = _read(1) != 0 ? _read(2) : instructionPointer + 3;

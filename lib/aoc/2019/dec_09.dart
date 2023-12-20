@@ -1,12 +1,20 @@
 import 'dart:io';
 
+import 'utils/inputs.dart';
 import 'utils/machine.dart';
+import 'utils/outputs.dart';
 
 final file = File('lib/aoc/2019/dec_09.txt');
 
-int problem1() => Machine.fromFile(file, input: [1]).run().single;
+Iterable<int> run(int value) {
+  final input = ListInput([value]), output = ListOutput();
+  Machine.fromFile(file, input: input, output: output).run();
+  return output.list;
+}
 
-int problem2() => Machine.fromFile(file, input: [2]).run().single;
+int problem1() => run(1).single;
+
+int problem2() => run(2).single;
 
 void main() {
   assert(problem1() == 2377080455);
