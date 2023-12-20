@@ -74,4 +74,21 @@ void main() {
       expect(Machine(memory, input: [9]).run(), [1001]);
     });
   });
+  group('dec 09', () {
+    test('copy of itself', () {
+      final code = [
+        109, 1, 204, -1, 1001, 100, 1, 100, //
+        1008, 100, 16, 101, 1006, 101, 0, 99,
+      ];
+      expect(Machine(code).run(), code);
+    });
+    test('16 digit number', () {
+      final memory = [1102, 34915192, 34915192, 7, 4, 7, 99, 0];
+      expect(Machine(memory).run(), [1219070632396864]);
+    });
+    test('large number', () {
+      final memory = [104, 1125899906842624, 99];
+      expect(Machine(memory).run(), [memory[1]]);
+    });
+  });
 }
