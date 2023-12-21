@@ -21,7 +21,7 @@ void main() {
       const memory = [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50];
       expect(decode(memory), [
         '0000 add [9], [10], [3]',
-        '0004 multiply [3], [11], [0]',
+        '0004 mul [3], [11], [0]',
         '0008 exit',
         '0009 ?30',
         '0010 ?40',
@@ -40,7 +40,7 @@ void main() {
     test('other example 2', () {
       const memory = [2, 3, 0, 3, 99];
       expect(decode(memory), [
-        '0000 multiply [3], [0], [3]',
+        '0000 mul [3], [0], [3]',
         '0004 exit',
       ]);
       expect(run(memory), [2, 3, 0, 6, 99]);
@@ -48,7 +48,7 @@ void main() {
     test('other example 3', () {
       const memory = [2, 4, 4, 5, 99, 0];
       expect(decode(memory), [
-        '0000 multiply [4], [4], [5]',
+        '0000 mul [4], [4], [5]',
         '0004 exit',
         '0005 ?0',
       ]);
@@ -75,8 +75,8 @@ void main() {
     test('output whatever we got as input', () {
       const memory = [3, 0, 4, 0, 99];
       expect(decode(memory), [
-        '0000 input [0]',
-        '0002 output [0]',
+        '0000 get [0]',
+        '0002 put [0]',
         '0004 exit',
       ]);
       final random = Random(42);
@@ -88,9 +88,9 @@ void main() {
     test('position mode: equal to 8', () {
       final memory = [3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8];
       expect(decode(memory, end: 9), [
-        '0000 input [9]',
+        '0000 get [9]',
         '0002 equals [9], [10], [9]',
-        '0006 output [9]',
+        '0006 put [9]',
         '0008 exit',
       ]);
       expect(run(memory, [7]), [0]);
@@ -100,9 +100,9 @@ void main() {
     test('position mode: less than 8', () {
       final memory = [3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8];
       expect(decode(memory, end: 9), [
-        '0000 input [9]',
+        '0000 get [9]',
         '0002 less-than [9], [10], [9]',
-        '0006 output [9]',
+        '0006 put [9]',
         '0008 exit',
       ]);
       expect(run(memory, [7]), [1]);
@@ -112,10 +112,10 @@ void main() {
     test('position mode: test for non-zero', () {
       final memory = [3, 12, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9];
       expect(decode(memory, end: 12), [
-        '0000 input [12]',
+        '0000 get [12]',
         '0002 jump-if-false [12], [15]',
         '0005 add [13], [14], [13]',
-        '0009 output [13]',
+        '0009 put [13]',
         '0011 exit',
       ]);
       expect(run(memory, [-3]), [1]);
@@ -125,9 +125,9 @@ void main() {
     test('immediate mode: equal to 8', () {
       final memory = [3, 3, 1108, -1, 8, 3, 4, 3, 99];
       expect(decode(memory), [
-        '0000 input [3]',
+        '0000 get [3]',
         '0002 equals -1, 8, [3]',
-        '0006 output [3]',
+        '0006 put [3]',
         '0008 exit',
       ]);
       expect(run(memory, [7]), [0]);
@@ -137,9 +137,9 @@ void main() {
     test('immediate mode: less than 8', () {
       final memory = [3, 3, 1107, -1, 8, 3, 4, 3, 99];
       expect(decode(memory), [
-        '0000 input [3]',
+        '0000 get [3]',
         '0002 less-than -1, 8, [3]',
-        '0006 output [3]',
+        '0006 put [3]',
         '0008 exit',
       ]);
       expect(run(memory, [7]), [1]);
@@ -149,10 +149,10 @@ void main() {
     test('immediate mode: test for non-zero', () {
       final memory = [3, 3, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1];
       expect(decode(memory, end: 12), [
-        '0000 input [3]',
+        '0000 get [3]',
         '0002 jump-if-true -1, 9',
         '0005 add 0, 0, [12]',
-        '0009 output [12]',
+        '0009 put [12]',
         '0011 exit',
       ]);
       expect(run(memory, [-3]), [1]);
@@ -166,7 +166,7 @@ void main() {
         999, 1105, 1, 46, 1101, 1000, 1, 20, 4, 20, 1105, 1, 46, 98, 99,
       ];
       expect(decode(memory), [
-        '0000 input [21]',
+        '0000 get [21]',
         '0002 equals [21], 8, [20]',
         '0006 jump-if-true [20], 22',
         '0009 less-than 8, [21], [20]',
@@ -175,13 +175,13 @@ void main() {
         '0019 ?98',
         '0020 ?0',
         '0021 ?0',
-        '0022 multiply [21], 125, [20]',
-        '0026 output [20]',
+        '0022 mul [21], 125, [20]',
+        '0026 put [20]',
         '0028 jump-if-true 1, 46',
-        '0031 output 999',
+        '0031 put 999',
         '0033 jump-if-true 1, 46',
         '0036 add 1000, 1, [20]',
-        '0040 output [20]',
+        '0040 put [20]',
         '0042 jump-if-true 1, 46',
         '0045 ?98',
         '0046 exit',
@@ -205,7 +205,7 @@ void main() {
       ];
       expect(decode(memory), [
         '0000 adjust-relative-base 1',
-        '0002 output [rb-1]',
+        '0002 put [rb-1]',
         '0004 add [100], 1, [100]',
         '0008 equals [100], 16, [101]',
         '0012 jump-if-false [101], 0',
@@ -216,8 +216,8 @@ void main() {
     test('16 digit number', () {
       final memory = [1102, 34915192, 34915192, 7, 4, 7, 99, 0];
       expect(decode(memory), [
-        '0000 multiply 34915192, 34915192, [7]',
-        '0004 output [7]',
+        '0000 mul 34915192, 34915192, [7]',
+        '0004 put [7]',
         '0006 exit',
         '0007 ?0',
       ]);
@@ -226,7 +226,7 @@ void main() {
     test('large number', () {
       final memory = [104, 1125899906842624, 99];
       expect(decode(memory), [
-        '0000 output 1125899906842624',
+        '0000 put 1125899906842624',
         '0002 exit',
       ]);
       expect(run(memory), [memory[1]]);

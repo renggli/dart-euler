@@ -32,13 +32,13 @@ class Machine {
       case OpCode.add:
         _write(3, _read(1) + _read(2));
         instructionPointer += 4;
-      case OpCode.multiply:
+      case OpCode.mul:
         _write(3, _read(1) * _read(2));
         instructionPointer += 4;
-      case OpCode.input:
+      case OpCode.get:
         _write(1, input.get());
         instructionPointer += 2;
-      case OpCode.output:
+      case OpCode.put:
         output.put(_read(1));
         instructionPointer += 2;
       case OpCode.jumpIfTrue:

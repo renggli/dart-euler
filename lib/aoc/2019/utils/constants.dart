@@ -1,8 +1,8 @@
 class OpCode {
   static const add = 1;
-  static const multiply = 2;
-  static const input = 3;
-  static const output = 4;
+  static const mul = 2;
+  static const get = 3;
+  static const put = 4;
   static const jumpIfTrue = 5;
   static const jumpIfFalse = 6;
   static const lessThan = 7;
@@ -15,9 +15,9 @@ const opMask = 100;
 
 const opLength = {
   OpCode.add: 4,
-  OpCode.multiply: 4,
-  OpCode.input: 2,
-  OpCode.output: 2,
+  OpCode.mul: 4,
+  OpCode.get: 2,
+  OpCode.put: 2,
   OpCode.jumpIfTrue: 3,
   OpCode.jumpIfFalse: 3,
   OpCode.lessThan: 4,
@@ -28,9 +28,9 @@ const opLength = {
 
 const opName = {
   OpCode.add: 'add',
-  OpCode.multiply: 'multiply',
-  OpCode.input: 'input',
-  OpCode.output: 'output',
+  OpCode.mul: 'mul',
+  OpCode.get: 'get',
+  OpCode.put: 'put',
   OpCode.jumpIfTrue: 'jump-if-true',
   OpCode.jumpIfFalse: 'jump-if-false',
   OpCode.lessThan: 'less-than',
