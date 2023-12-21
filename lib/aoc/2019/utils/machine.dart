@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'constants.dart';
 import 'inputs.dart';
 import 'outputs.dart';
 
@@ -27,56 +28,55 @@ class Machine {
 
   /// Performs a single execution step. Returns `false` if the program terminated.
   bool step() {
-    switch (memory[instructionPointer] % 100) {
-      case 1: // plus
+    switch (memory[instructionPointer] % opMask) {
+      case OpCode.add:
         _write(3, _read(1) + _read(2));
         instructionPointer += 4;
-      case 2: // multiply
+      case OpCode.multiply:
         _write(3, _read(1) * _read(2));
         instructionPointer += 4;
-      case 3: // input
+      case OpCode.input:
         _write(1, input.get());
         instructionPointer += 2;
-      case 4: // output
+      case OpCode.output:
         output.put(_read(1));
         instructionPointer += 2;
-      case 5: // jump-if-true
+      case OpCode.jumpIfTrue:
         instructionPointer = _read(1) != 0 ? _read(2) : instructionPointer + 3;
-      case 6: // jump-if-false
-        instructionPointer = _read(1) == 0 ? _read(2) : instructionPointer += 3;
-      case 7: // less than
+      case OpCode.jumpIfFalse:
+        instructionPointer = _read(1) == 0 ? _read(2) : instructionPointer + 3;
+      case OpCode.lessThan:
         _write(3, _read(1) < _read(2) ? 1 : 0);
         instructionPointer += 4;
-      case 8: // equals
+      case OpCode.equals:
         _write(3, _read(1) == _read(2) ? 1 : 0);
         instructionPointer += 4;
-      case 9: // adjust-relative-base
+      case OpCode.adjustRelativeBase:
         relativeBase += _read(1);
         instructionPointer += 2;
-      case 99: // exit
+      case OpCode.exit:
         instructionPointer += 1;
         return false;
       default:
-        throw StateError('Invalid op code ${memory[instructionPointer]} '
-            'at $instructionPointer');
+        throw StateError('Invalid op code at $instructionPointer: '
+            '${decodePoint(instructionPointer)}');
     }
     return true;
   }
 
   /// Decodes the address pointer of a parameter at the current instruction.
   int _address(int param) {
-    const params = {1: 100, 2: 1000, 3: 10000};
-    final mode = memory[instructionPointer] ~/ params[param]!;
-    switch (mode % 10) {
-      case 0: // position mode
+    final mode = memory[instructionPointer] ~/ addressModes[param]!;
+    switch (mode % addressModeMask) {
+      case AddressMode.position:
         return memory[instructionPointer + param];
-      case 1: // immediate mode
+      case AddressMode.immediate:
         return instructionPointer + param;
-      case 2: // relative mode
+      case AddressMode.relative:
         return memory[instructionPointer + param] + relativeBase;
       default:
-        throw StateError('Invalid op code ${memory[instructionPointer]} '
-            'at $instructionPointer: invalid address mode of param $param');
+        throw StateError('Invalid address at $instructionPointer param $param:'
+            '${decodePoint(instructionPointer)}');
     }
   }
 
@@ -94,10 +94,59 @@ class Machine {
     return memory[address];
   }
 
-  // Write a value of a parameter at the current instruction.
+  /// Write a value of a parameter at the current instruction.
   void _write(int param, int value) {
     final address = _address(param);
     _grow(address);
     memory[address] = value;
+  }
+
+  /// Decodes to a list of strings.
+  List<String> decode({int start = 0, int? end}) => decodeRange(
+          start: start, end: end)
+      .entries
+      .map((entry) => '${entry.key.toString().padLeft(4, '0')} ${entry.value}')
+      .toList();
+
+  /// Decodes (part of) the memory.
+  Map<int, String> decodeRange({int start = 0, int? end}) {
+    end ??= memory.length;
+    final result = <int, String>{};
+    for (var index = start; index < end && index < memory.length;) {
+      result[index] = decodePoint(index);
+      index += opLength[memory[index] % opMask] ?? 1;
+    }
+    return result;
+  }
+
+  /// Decodes a single operation at the provided index.
+  String decodePoint(int index) {
+    final instruction = memory[index];
+    final operation = instruction % opMask;
+    final name = opName[operation];
+    if (name == null) return '?$instruction';
+    final buffer = StringBuffer(name);
+    for (var param = 1; param < opLength[operation]!; param++) {
+      buffer.write(param == 1 ? ' ' : ', ');
+      buffer.write(decodeParam(index, param));
+    }
+    return buffer.toString();
+  }
+
+  /// Decodes a single parameter at the provided index.
+  String decodeParam(int index, int param) {
+    final mode = memory[index] ~/ addressModes[param]!;
+    final value =
+        index + param < memory.length ? '${memory[index + param]}' : '?';
+    switch (mode % addressModeMask) {
+      case AddressMode.position:
+        return '[$value]';
+      case AddressMode.immediate:
+        return value;
+      case AddressMode.relative:
+        return value.startsWith('-') ? '[rb$value]' : '[rb+$value]';
+      default:
+        return '$mode?$value';
+    }
   }
 }
