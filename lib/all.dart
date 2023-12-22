@@ -24,7 +24,7 @@ class Group {
   Iterable<Problem> get problems => directory
       .listSync()
       .whereType<File>()
-      .where((file) => file.path.endsWith('.dart'))
+      .where((file) => file.path.contains(Problem.filePattern))
       .map(Problem.new)
       .sortedBy((problem) => problem.name);
 }
@@ -44,6 +44,8 @@ class Problem {
       Process.run(Platform.executable,
           ['run', '--enable-asserts', ...arguments, file.path],
           stdoutEncoding: utf8, stderrEncoding: utf8);
+
+  static final filePattern = RegExp(r'(.*_\d+)\.dart');
 }
 
 final all = Group(Directory('${Directory.current.path}/lib'));
