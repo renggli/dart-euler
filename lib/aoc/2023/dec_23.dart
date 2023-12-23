@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:more/more.dart';
 import 'package:data/data.dart';
+import 'package:more/more.dart';
 
 final matrix = File('lib/aoc/2023/dec_23.txt').readAsLinesSync().also((rows) =>
     Matrix.fromPackedRows(DataType.string, rows.length, rows[0].length,
@@ -36,7 +36,7 @@ Graph<Point<int>, int> compress(
     changed = false;
     for (final vertex in [...graph.vertices]) {
       if (!preserve.contains(vertex)) {
-        final neighbours = [...graph.neighboursOf(vertex).unique()];
+        final neighbours = graph.neighboursOf(vertex).unique().toList();
         if (neighbours.length == 2) {
           final a = graph.getEdge(neighbours[0], vertex);
           final b = graph.getEdge(vertex, neighbours[1]);
@@ -46,9 +46,9 @@ Graph<Point<int>, int> compress(
             graph.addEdge(a.source, b.target, value: a.value + b.value);
             changed = true;
           }
-          if (graph.neighboursOf(vertex).isEmpty) {
-            graph.removeVertex(vertex);
-          }
+        }
+        if (graph.neighboursOf(vertex).length <= 1) {
+          graph.removeVertex(vertex);
         }
       }
     }
