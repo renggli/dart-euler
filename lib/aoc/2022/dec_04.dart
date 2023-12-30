@@ -7,7 +7,7 @@ final intervals = File('lib/aoc/2022/dec_04.txt')
     .map((line) => line
         .split(',')
         .map((range) => range.split('-').map(int.parse).toList())
-        .map((range) => Interval<int>.closed(range[0], range[1]))
+        .map((range) => Interval<num>(range[0], range[1]))
         .toList())
     .toList();
 
@@ -18,7 +18,7 @@ void main() {
       }).length ==
       547);
   assert(intervals
-          .where((group) => group[0].intersection(group[1]).isNotEmpty)
+          .where((group) => group[0].intersection(group[1]) != null)
           .length ==
       843);
 }
