@@ -10,9 +10,9 @@ class NullInput implements Input {
 }
 
 class ListInput implements Input {
-  ListInput([this.input = const []]) : iterator = input.iterator;
+  ListInput([this.iterable = const []]) : iterator = iterable.iterator;
 
-  final Iterable<int> input;
+  final Iterable<int> iterable;
   final Iterator<int> iterator;
 
   @override
