@@ -3,6 +3,8 @@ abstract interface class Input {
 }
 
 class NullInput implements Input {
+  const NullInput();
+
   @override
   int get() => throw StateError('No input provided');
 }

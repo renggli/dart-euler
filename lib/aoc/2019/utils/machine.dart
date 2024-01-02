@@ -11,15 +11,15 @@ class Machine {
 
   Machine(Iterable<int> memory, {Input? input, Output? output})
       : memory = memory.toList(),
-        input = input ?? NullInput(),
-        output = output ?? NullOutput();
+        input = input ?? const NullInput(),
+        output = output ?? const NullOutput();
 
-  List<int> memory;
+  final List<int> memory;
   int instructionPointer = 0;
   int relativeBase = 0;
 
-  Input input;
-  Output output;
+  final Input input;
+  final Output output;
 
   /// Runs the program to completion, and returns the output.
   void run() {

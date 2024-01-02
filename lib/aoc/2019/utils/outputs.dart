@@ -3,6 +3,8 @@ abstract interface class Output {
 }
 
 class NullOutput implements Output {
+  const NullOutput();
+
   @override
   void put(int value) {}
 }
@@ -12,4 +14,11 @@ class ListOutput implements Output {
 
   @override
   void put(int value) => list.add(value);
+}
+
+class StringOutput implements Output {
+  final buffer = StringBuffer();
+
+  @override
+  void put(int value) => buffer.writeCharCode(value);
 }
