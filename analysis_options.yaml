@@ -7,6 +7,7 @@ analyzer:
 linter:
   rules:
     avoid_dynamic_calls: true
+    avoid_final_parameters: true
     avoid_print: false
     avoid_unused_constructor_parameters: true
     camel_case_types: true
@@ -26,6 +27,7 @@ linter:
     prefer_final_locals: true
     prefer_if_elements_to_conditional_expressions: true
     prefer_relative_imports: true
+    prefer_single_quotes: true
     unnecessary_await_in_return: true
     unnecessary_breaks: true
     unnecessary_lambdas: true
@@ -33,4 +35,3 @@ linter:
     unnecessary_null_checks: true
     unnecessary_parenthesis: true
     unnecessary_statements: true
-    unreachable_from_main: true
