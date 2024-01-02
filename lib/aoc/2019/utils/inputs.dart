@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract interface class Input {
   int get();
 }
@@ -20,4 +22,9 @@ class ListInput implements Input {
     if (iterator.moveNext()) return iterator.current;
     throw StateError('No more input available');
   }
+}
+
+class StdinInput implements Input {
+  @override
+  int get() => stdin.readByteSync();
 }

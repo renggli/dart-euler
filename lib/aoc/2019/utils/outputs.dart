@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract interface class Output {
   void put(int value);
 }
@@ -21,4 +23,9 @@ class StringOutput implements Output {
 
   @override
   void put(int value) => buffer.writeCharCode(value);
+}
+
+class StdoutOutput implements Output {
+  @override
+  void put(int value) => stdout.writeCharCode(value);
 }
