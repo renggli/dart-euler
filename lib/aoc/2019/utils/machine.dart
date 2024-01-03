@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:more/char_matcher.dart';
+
 import 'constants.dart';
 import 'inputs.dart';
 import 'outputs.dart';
@@ -121,14 +123,21 @@ class Machine {
 
   /// Decodes a single operation at the provided index.
   String decodePoint(int index) {
-    final instruction = memory[index];
-    final operation = instruction % opMask;
+    final code = memory[index];
+    final operation = code % opMask;
     final name = opName[operation];
-    if (name == null) return '?$instruction';
-    final buffer = StringBuffer(name);
-    for (var param = 1; param < opLength[operation]!; param++) {
-      buffer.write(param == 1 ? ' ' : ', ');
-      buffer.write(decodeParam(index, param));
+    final buffer = StringBuffer();
+    if (name != null) {
+      buffer.write(name);
+      for (var param = 1; param < opLength[operation]!; param++) {
+        buffer.write(param == 1 ? ' ' : ', ');
+        buffer.write(decodeParam(index, param));
+      }
+    } else {
+      buffer.write('?$code');
+      if (_printable.match(code)) {
+        buffer.write(' "${String.fromCharCode(code)}"');
+      }
     }
     return buffer.toString();
   }
@@ -150,3 +159,8 @@ class Machine {
     }
   }
 }
+
+final _printable = const CharMatcher.letter() |
+    const CharMatcher.digit() |
+    const CharMatcher.punctuation() |
+    CharMatcher.isChar(' ');
