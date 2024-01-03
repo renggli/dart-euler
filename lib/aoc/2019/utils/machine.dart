@@ -20,8 +20,8 @@ class Machine {
   int instructionPointer = 0;
   int relativeBase = 0;
 
-  final Input input;
-  final Output output;
+  Input input;
+  Output output;
 
   /// Runs the program to completion.
   void run() {

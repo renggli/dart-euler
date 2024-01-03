@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:collection/collection.dart';
+
 abstract interface class Output {
   void put(int value);
 }
@@ -12,10 +14,10 @@ class NullOutput implements Output {
 }
 
 class ListOutput implements Output {
-  final List<int> list = [];
+  final list = QueueList<int>();
 
   @override
-  void put(int value) => list.add(value);
+  void put(int value) => list.addLast(value);
 }
 
 class StringOutput implements Output {

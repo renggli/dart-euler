@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 
 abstract interface class Input {
@@ -12,15 +13,16 @@ class NullInput implements Input {
 }
 
 class ListInput implements Input {
-  ListInput([this.iterable = const []]) : iterator = iterable.iterator;
+  ListInput([Iterable<int> iterable = const []]) {
+    list.addAll(iterable);
+  }
 
-  final Iterable<int> iterable;
-  final Iterator<int> iterator;
+  final list = ListQueue<int>();
 
   @override
   int get() {
-    if (iterator.moveNext()) return iterator.current;
-    throw StateError('No more input available');
+    if (list.isEmpty) throw StateError('No input available');
+    return list.removeFirst();
   }
 }
 
