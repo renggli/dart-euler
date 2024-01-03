@@ -32,8 +32,7 @@ class Computer implements Input, Output {
   @override
   void put(int value) {
     outgoing.addLast(value);
-    if (outgoing.length == 3) {
-      final [addr, x, y] = outgoing;
+    if (outgoing case [final addr, final x, final y]) {
       final queue = addr == 255 ? nat : computers[addr].incoming;
       queue.addAll([x, y]);
       outgoing.clear();
