@@ -21,7 +21,7 @@ class Machine {
   final Input input;
   final Output output;
 
-  /// Runs the program to completion, and returns the output.
+  /// Runs the program to completion.
   void run() {
     while (step()) {}
   }
