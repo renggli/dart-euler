@@ -5,7 +5,7 @@ description: My advances on Project Euler.
 homepage: https://github.com/renggli/dart-euler
 
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.3.0
 dependencies:
   collection: ^1.18.0
   data: ^0.12.0

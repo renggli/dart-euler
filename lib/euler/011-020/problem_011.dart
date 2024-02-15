@@ -1,8 +1,8 @@
-/// Problem 11: Summation of primes
-///
-/// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
-///
-/// Find the sum of all the primes below two million.
+// Problem 11: Summation of primes
+//
+// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+//
+// Find the sum of all the primes below two million.
 const grid = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [

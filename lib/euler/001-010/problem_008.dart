@@ -1,7 +1,7 @@
-/// Problem 8: Largest product in a series
-///
-/// Find the greatest product of five consecutive digits in the 1000-digit
-/// number.
+// Problem 8: Largest product in a series
+//
+// Find the greatest product of five consecutive digits in the 1000-digit
+// number.
 const consec = 5;
 const number = '73167176531330624919225119674426574742355349194934'
     '96983520312774506326239578318016984801869478851843'
