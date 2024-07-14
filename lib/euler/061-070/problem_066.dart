@@ -23,35 +23,46 @@
 //
 // Find the value of D ≤ 1000 in minimal solutions of x for which the largest
 // value of x is obtained.
+
 import 'dart:math' as math;
 
-// The integer square root of `n` or `-1`.
-int sqrt(int n) {
-  final root = math.sqrt(n).round();
-  return root * root == n ? root : -1;
+bool isSquare(int value) {
+  final root = math.sqrt(value).toInt();
+  return root * root == value;
 }
 
-const searchMaxD = 7;
+// http://en.wikipedia.org/wiki/Pell%27s_equation
+// http://en.wikipedia.org/wiki/Chakravala_method
+BigInt minimalSolution(int value) {
+  final D = BigInt.from(value);
+  final a0 = BigInt.from(math.sqrt(value).toInt());
+
+  var m = BigInt.zero, d = BigInt.one, a = a0;
+  var num1 = BigInt.one, num2 = a;
+  var den1 = BigInt.zero, den2 = BigInt.one;
+
+  while (num2 * num2 - D * den2 * den2 != BigInt.one) {
+    m = d * a - m;
+    d = (D - m * m) ~/ d;
+    a = (a0 + m) ~/ d;
+    (num1, num2) = (num2, a * num2 + num1);
+    (den1, den2) = (den2, a * den2 + den1);
+  }
+
+  return num2;
+}
 
 void main() {
-  var maxX = 0, maxD = 0;
-  for (var d = 2; d <= searchMaxD; d++) {
-    if (sqrt(d) == -1) {
-      for (var x = 2;; x++) {
-        final upper = x * x - 1;
-        if (upper % d == 0) {
-          final y = sqrt(upper ~/ d);
-          if (y > 0) {
-            if (x > maxX) {
-              maxX = x;
-              maxD = d;
-            }
-            break;
-          }
-        }
+  var maxX = BigInt.zero;
+  var maxD = 0;
+  for (var d = 2; d <= 1000; d++) {
+    if (!isSquare(d)) {
+      final x = minimalSolution(d);
+      if (x > maxX) {
+        maxX = x;
+        maxD = d;
       }
     }
   }
-  assert(maxD == 0);
-  assert(false);
+  assert(maxD == 661);
 }

@@ -1,4 +1,5 @@
 import 'package:data/stats.dart';
+import 'package:more/collection.dart';
 
 // Problem 61: Cyclical figurate numbers
 //
@@ -29,23 +30,20 @@ import 'package:data/stats.dart';
 // Find the sum of the only ordered set of six cyclic 4-digit numbers for which
 // each polygonal type: triangle, square, pentagonal, hexagonal, heptagonal,
 // and octagonal, is represented by a different number in the set.
-List<int> generate(int Function(int) callback) {
-  final result = <int>[];
-  for (var n = 1, v = 1; v < 10000; n++, v = callback(n)) {
-    if (v > 999) {
-      result.add(v);
-    }
-  }
-  return List.from(result, growable: false);
-}
 
-final types = [
-  generate((n) => n * (n + 1) ~/ 2),
-  generate((n) => n * n),
-  generate((n) => n * (3 * n - 1) ~/ 2),
-  generate((n) => n * (2 * n - 1)),
-  generate((n) => n * (5 * n - 3) ~/ 2),
-  generate((n) => n * (3 * n - 2))
+List<int> generate4(int Function(int) callback) => iterate(0, (n) => n + 1)
+    .map(callback)
+    .skipWhile((value) => value <= 1000)
+    .takeWhile((value) => value <= 9999)
+    .toList();
+
+final candidates = [
+  generate4((n) => n * (n + 1) ~/ 2), // Triangle
+  generate4((n) => n * n), // Square
+  generate4((n) => n * (3 * n - 1) ~/ 2), // Pentagonal
+  generate4((n) => n * (2 * n - 1)), // Hexagonal
+  generate4((n) => n * (5 * n - 3) ~/ 2), // Heptagonal
+  generate4((n) => n * (3 * n - 2)), //Octagonal
 ];
 
 List<List<int>> findChains(List<int> indexes, int prefix) {
@@ -55,7 +53,7 @@ List<List<int>> findChains(List<int> indexes, int prefix) {
   } else {
     for (final index in indexes) {
       final newIndexes = indexes.where((value) => value != index).toList();
-      for (final number in types[index]) {
+      for (final number in candidates[index]) {
         if (prefix == -1 || number ~/ 100 == prefix) {
           for (final chain in findChains(newIndexes, number % 100)) {
             chains.add(chain..insert(0, number));
