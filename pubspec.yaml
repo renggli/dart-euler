@@ -5,19 +5,17 @@ description: My advances on Project Euler.
 homepage: https://github.com/renggli/dart-euler
 
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.5.0
 dependencies:
-  collection: ^1.18.0
+  collection: ^1.19.0
   data: ^0.12.0
-  meta: ^1.9.0
-  more: ^4.1.0
+  meta: ^1.15.0
+  more: ^4.3.0
   petitparser: ^6.0.0
-  test: ^1.24.0
+  test: ^1.25.0
   z3: ^0.1.0
 dev_dependencies:
   lints: ^4.0.0
 dependency_overrides:
-  more:
-    git: https://github.com/renggli/dart-more.git
   data:
     git: https://github.com/renggli/dart-data.git
