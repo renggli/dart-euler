@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:more/functional.dart';
 import 'package:more/math.dart';
+import 'package:more/printer.dart';
+import 'package:more/temporal.dart';
 
 final session = File('bin/.session').also((file) {
   if (!file.existsSync()) {
@@ -12,54 +14,71 @@ final session = File('bin/.session').also((file) {
   return file.readAsStringSync();
 });
 
+final now = DateTime.now().truncateTo(TimeUnit.day);
+final dateFormatter = DateTimePrinter.date();
 final argParser = ArgParser()
-  ..addOption(
-    'day',
-    abbr: 'd',
-    help: 'day of the month (defaults to today)',
+  ..addFlag(
+    'help',
+    abbr: '?',
+    hide: true,
   )
   ..addOption(
-    'year',
-    abbr: 'y',
-    help: 'day of the year (defaults to this year)',
+    'date',
+    abbr: 'd',
+    defaultsTo: dateFormatter.print(now),
+    help: 'date in the format YYYY-MM-DD',
   );
 
-Never printUsage() {
+void printUsage() {
   stdout.writeln('Usage: aoc [options]');
   stdout.writeln();
   stdout.writeln(argParser.usage);
-  exit(1);
 }
 
 Future<void> main(List<String> arguments) async {
   // Parse the arguments.
-  final now = DateTime.now();
   final args = argParser.parse(arguments);
-  final year = int.tryParse(args.option('year') ?? '') ?? now.year;
-  final day = int.tryParse(args.option('day') ?? '') ?? now.day;
-  final date = DateTime(year, DateTime.december, day);
+  final date = DateTime.parse(args.option('date')!).truncateTo(TimeUnit.day);
 
-  // Validate the params.
-  if (!year.between(2015, now.year)) {
-    stderr.writeln('invalid year: $date');
+  // Asking for help.
+  if (args.wasParsed('help')) {
+    printUsage();
     exit(1);
   }
-  if (!day.between(1, 25) || !date.isBefore(now)) {
-    stderr.writeln('invalid day: $date');
+
+  // Validate the date.
+  if (!date.year.between(2015, now.year)) {
+    stderr.writeln('invalid year: ${dateFormatter.print(date)}');
     exit(2);
   }
+  if (date.month != DateTime.december) {
+    stderr.writeln('invalid month: ${dateFormatter.print(date)}');
+    exit(3);
+  }
+  if (!date.day.between(1, 25)) {
+    stderr.writeln('invalid day: ${dateFormatter.print(date)}');
+    exit(4);
+  }
+  if (date.isAfter(now)) {
+    stderr.writeln('invalid date: ${dateFormatter.print(date)}');
+    exit(5);
+  }
 
-  final path = 'lib/aoc/$year/dec_${day.toString().padLeft(2, '0')}';
+  // Define helper constants.
+  final path =
+      'lib/aoc/${date.year}/dec_${date.day.toString().padLeft(2, '0')}';
+  final url = 'https://adventofcode.com/${date.year}/day/${date.day}';
 
   // Download the puzzle input.
   final dataFile = File('$path.txt');
   if (!await dataFile.exists()) {
-    final url = Uri.parse('https://adventofcode.com/$year/day/$day/input');
-    stdout.writeln('Downloading $url ...');
-    final request = await HttpClient().getUrl(url);
+    final inputUrl = Uri.parse('$url/input');
+    stdout.writeln('Downloading $inputUrl ...');
+    final request = await HttpClient().getUrl(inputUrl);
     request.cookies.add(Cookie('session', session));
     request.headers.add('CONTENT_TYPE', 'text/plain');
     final response = await request.close();
+    await dataFile.create(recursive: true);
     await response.pipe(dataFile.openWrite());
   }
 
@@ -80,6 +99,7 @@ Future<void> main(List<String> arguments) async {
     out.writeln('int problem2() => 0;');
     out.writeln();
     out.writeln('void main() {');
+    out.writeln('  // $url');
     out.writeln('  print(\'Problem 1: \${problem1()}\');');
     out.writeln('  print(\'Problem 2: \${problem2()}\');');
     out.writeln('}');
