@@ -13,10 +13,8 @@ final input = File('lib/aoc/2024/dec_01.txt')
 int problem1() =>
     input.zip().map((values) => (values[0] - values[1]).abs()).sum();
 
-int problem2() {
-  final counts = input[1].toMultiset();
-  return input[0].map((each) => each * counts[each]).sum();
-}
+int problem2() =>
+    input[0].map((each) => each * input[1].occurrences(each)).sum();
 
 void main() {
   assert(problem1() == 765748);
