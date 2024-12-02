@@ -65,8 +65,8 @@ Future<void> main(List<String> arguments) async {
   }
 
   // Define helper constants.
-  final path =
-      'lib/aoc/${date.year}/dec_${date.day.toString().padLeft(2, '0')}';
+  final base = 'lib/aoc/${date.year}';
+  final path = '$base/dec_${date.day.toString().padLeft(2, '0')}';
   final url = 'https://adventofcode.com/${date.year}/day/${date.day}';
 
   // Download the puzzle input.
@@ -82,6 +82,11 @@ Future<void> main(List<String> arguments) async {
     await response.pipe(dataFile.openWrite());
   }
 
+  // Create an empty example file.
+  final exampleFile = File('$base/.example.txt');
+  final out = exampleFile.openWrite();
+  await out.close();
+
   // Generate dart template.
   final dartFile = File('$path.dart');
   if (!await dartFile.exists()) {
@@ -93,10 +98,13 @@ Future<void> main(List<String> arguments) async {
     out.writeln('import \'package:data/data.dart\';');
     out.writeln('import \'package:more/more.dart\';');
     out.writeln();
-    out.writeln('final input = File(\'$path.txt\').readAsLinesSync();');
+    out.writeln(
+        'final input = File(\'$base/.example.txt\').readAsLinesSync();');
+    out.writeln('// final input = File(\'$path.txt\').readAsLinesSync();');
     out.writeln();
-    out.writeln('int problem1() => 0;');
-    out.writeln('int problem2() => 0;');
+    out.writeln('int problem1() { return 0; }');
+    out.writeln();
+    out.writeln('int problem2() { return 0; }');
     out.writeln();
     out.writeln('void main() {');
     out.writeln('  // $url');
