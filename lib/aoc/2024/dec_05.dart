@@ -14,7 +14,7 @@ final updates = rulesAndUpdates.last
     .map((line) => line.split(',').map(int.parse).toList())
     .toList();
 
-int comparator(int a, int b) => rules.containsKeyAndValue(a, b) ? -1 : 1;
+int comparator(int a, int b) => rules.containsEntry(a, b) ? -1 : 1;
 
 int problem1() => updates
     .where(comparator.isStrictlyOrdered)
