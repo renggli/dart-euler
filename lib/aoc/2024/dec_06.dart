@@ -7,19 +7,19 @@ import 'package:more/more.dart';
 const dirs = <Point<int>>[Point(-1, 0), Point(0, 1), Point(1, 0), Point(0, -1)];
 
 final input = File('lib/aoc/2024/dec_06.txt').readAsStringSync();
-final matrix = Matrix.fromString(DataType.string, input, columnSplitter: '');
-final start = (0.to(matrix.rowCount), 0.to(matrix.colCount))
+final grid = Matrix.fromString(DataType.string, input, columnSplitter: '');
+final start = (0.to(grid.rowCount), 0.to(grid.colCount))
     .product()
     .map((pos) => Point(pos.first, pos.last))
-    .firstWhere((point) => matrix.getUnchecked(point.x, point.y) == '^');
+    .firstWhere((point) => grid.getUnchecked(point.x, point.y) == '^');
 
 ListMultimap<Point<int>, int>? run(
     {Point<int> obstacle = const Point(-1, -1)}) {
   var point = start;
   var dir = 0;
   final seen = ListMultimap<Point<int>, int>();
-  while (matrix.isWithinBounds(point.x, point.y)) {
-    if (matrix.getUnchecked(point.x, point.y) == '#' || point == obstacle) {
+  while (grid.isWithinBounds(point.x, point.y)) {
+    if (grid.getUnchecked(point.x, point.y) == '#' || point == obstacle) {
       point -= dirs[dir];
       dir = (dir + 1) % dirs.length;
     } else {
