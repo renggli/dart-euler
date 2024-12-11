@@ -122,12 +122,12 @@ class Hand {
     var rank = 0.0;
 
     // Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-    if (suits.distinct.length == 1 && cards[0].value == 8) {
+    if (suits.elementSet.length == 1 && cards[0].value == 8) {
       rank += 1e10;
     }
 
     // Straight Flush: All cards are consecutive values of same suit.
-    if (suits.distinct.length == 1 &&
+    if (suits.elementSet.length == 1 &&
         cards[0].value + 1 == cards[1].value &&
         cards[1].value + 1 == cards[2].value &&
         cards[2].value + 1 == cards[3].value &&
@@ -149,7 +149,7 @@ class Hand {
     }
 
     // Flush: All cards of the same suit.
-    if (suits.distinct.length == 1) {
+    if (suits.elementSet.length == 1) {
       rank += 1e6;
     }
 

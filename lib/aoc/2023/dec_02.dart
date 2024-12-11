@@ -30,7 +30,8 @@ void main() {
   assert(data.entries
           .map((entry) => entry.values
               .reduce((a, b) => a.combine(b, (_, a, b) => max(a, b)))
-              .counts
+              .entrySet
+              .map((entry) => entry.value)
               .product())
           .sum() ==
       79315);
