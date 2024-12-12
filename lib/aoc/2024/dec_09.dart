@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:collection/collection.dart';
+import 'package:collection/collection.dart' show ListExtensions;
+import 'package:data/data.dart';
 import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_09.txt').readAsStringSync().trim();
@@ -8,10 +9,8 @@ final blocks = input.split('').indexed().flatMap((each) => repeat(
     each.index.isEven ? each.index ~/ 2 : null,
     count: int.parse(each.value)));
 
-int computeChecksum(List<int?> blocks) => blocks
-    .indexed()
-    .map((each) => each.index * (each.value ?? 0))
-    .reduce((a, b) => a + b);
+int computeChecksum(List<int?> blocks) =>
+    blocks.indexed().map((each) => each.index * (each.value ?? 0)).sum();
 
 int problem1(List<int?> blocks) {
   for (var i = 0, j = blocks.length - 1; i < j;) {

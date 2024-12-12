@@ -15,7 +15,8 @@ enum HandType {
   highCard,
 }
 
-bool hasCount<T>(Multiset<T> cards, int count) => cards.entrySet.map((entry) => entry.value).contains(count);
+bool hasCount<T>(Multiset<T> cards, int count) =>
+    cards.entrySet.map((entry) => entry.value).contains(count);
 
 HandType handStrength(Hand hand, bool withJokers) {
   final cards = hand.cards.toMultiset();

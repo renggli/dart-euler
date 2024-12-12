@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:collection/collection.dart';
+import 'package:collection/collection.dart' show IterableExtension;
+import 'package:data/data.dart';
 import 'package:more/more.dart';
 
 final rulesAndUpdates =
@@ -19,13 +20,13 @@ int comparator(int a, int b) => rules.containsEntry(a, b) ? -1 : 1;
 int problem1() => updates
     .where(comparator.isStrictlyOrdered)
     .map((update) => update[update.length ~/ 2])
-    .reduce((a, b) => a + b);
+    .sum();
 
 int problem2() => updates
     .whereNot(comparator.isStrictlyOrdered)
     .map((update) => update.sorted(comparator))
     .map((update) => update[update.length ~/ 2])
-    .reduce((a, b) => a + b);
+    .sum();
 
 void main() {
   assert(problem1() == 3608);
