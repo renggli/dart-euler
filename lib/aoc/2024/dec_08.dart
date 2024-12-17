@@ -8,12 +8,11 @@ import 'package:more/more.dart';
 final input = File('lib/aoc/2024/dec_08.txt').readAsStringSync();
 
 final grid = Matrix.fromString(DataType.string, input, columnSplitter: '');
-final groups = (0.to(grid.rowCount), 0.to(grid.colCount))
-    .product()
-    .map((pos) => Point(pos.first, pos.last))
-    .where((point) => grid.getUnchecked(point.x, point.y) != '.')
-    .groupListsBy((point) => grid.getUnchecked(point.x, point.y))
-    .values;
+final groups = grid.rowMajor
+    .where((cell) => cell.value != '.')
+    .groupListsBy((cell) => cell.value)
+    .values
+    .map((cells) => cells.map((cell) => Point(cell.row, cell.col)));
 
 int problem1() {
   final antinodes = <Point<int>>{};

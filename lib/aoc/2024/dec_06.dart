@@ -8,10 +8,9 @@ const dirs = <Point<int>>[Point(-1, 0), Point(0, 1), Point(1, 0), Point(0, -1)];
 
 final input = File('lib/aoc/2024/dec_06.txt').readAsStringSync();
 final grid = Matrix.fromString(DataType.string, input, columnSplitter: '');
-final start = (0.to(grid.rowCount), 0.to(grid.colCount))
-    .product()
-    .map((pos) => Point(pos.first, pos.last))
-    .firstWhere((point) => grid.getUnchecked(point.x, point.y) == '^');
+final start = grid.rowMajor
+    .singleWhere((cell) => cell.value == '^')
+    .also((cell) => Point(cell.row, cell.col));
 
 ListMultimap<Point<int>, int>? run(
     {Point<int> obstacle = const Point(-1, -1)}) {

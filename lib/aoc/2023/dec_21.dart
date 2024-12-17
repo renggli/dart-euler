@@ -14,16 +14,9 @@ const directions = [
 final matrix = File('lib/aoc/2023/dec_21.txt').readAsLinesSync().also((rows) =>
     Matrix.fromPackedRows(DataType.string, rows.length, rows[0].length,
         rows.expand((line) => line.split('')).toList()));
-final start = () {
-  for (var x = 0; x < matrix.rowCount; x++) {
-    for (var y = 0; y < matrix.colCount; y++) {
-      if (matrix.get(x, y) == 'S') {
-        return Point(x, y);
-      }
-    }
-  }
-  throw StateError('Start point not found');
-}();
+final start = matrix.rowMajor
+    .singleWhere((cell) => cell.value == 'S')
+    .also((cell) => Point(cell.row, cell.col));
 
 int problem1() {
   var gardens = <Point<int>>{start};

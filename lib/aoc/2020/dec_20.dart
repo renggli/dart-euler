@@ -126,7 +126,7 @@ void main() {
   final master = Tile(
       666, Matrix.concatHorizontal(DataType.string, horizontals).toMatrix());
   int count(Matrix<String> data) =>
-      data.columnMajor.where((each) => each == '#').length;
+      data.columnMajor.where((each) => each.value == '#').length;
   final target = master.variations.max(
       comparator: naturalComparable<num>
           .onResultOf<Tile>((tile) => tile.count(monster)));

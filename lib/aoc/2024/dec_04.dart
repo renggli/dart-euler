@@ -21,18 +21,16 @@ int problem1() {
 
   var found = 0;
   for (final direction in directions) {
-    for (var r = 0; r < grid.rowCount; r++) {
-      for (var c = 0; c < grid.colCount; c++) {
-        var point = Point(r, c);
-        final letters = <String>[];
-        for (var l = 0; l < word.length; l++) {
-          if (!grid.isWithinBounds(point.x, point.y)) break;
-          letters.add(grid.getUnchecked(point.x, point.y));
-          point += direction;
-        }
-        if (letters.join() == word) {
-          found++;
-        }
+    for (final (row: r, col: c, value: _) in grid.rowMajor) {
+      var point = Point(r, c);
+      final letters = <String>[];
+      for (var l = 0; l < word.length; l++) {
+        if (!grid.isWithinBounds(point.x, point.y)) break;
+        letters.add(grid.getUnchecked(point.x, point.y));
+        point += direction;
+      }
+      if (letters.join() == word) {
+        found++;
       }
     }
   }

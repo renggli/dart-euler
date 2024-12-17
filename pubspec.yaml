@@ -20,8 +20,10 @@ dev_dependencies:
 
 dependency_overrides:
   more:
-    git: https://github.com/renggli/dart-more.git
+    path: ../MoreDart
+    # git: https://github.com/renggli/dart-more.git
   data:
-    git: https://github.com/renggli/dart-data.git
+    path: ../Data
+    # git: https://github.com/renggli/dart-data.git
   petitparser:
     git: https://github.com/petitparser/dart-petitparser.git

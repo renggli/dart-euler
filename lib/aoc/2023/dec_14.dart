@@ -50,7 +50,7 @@ int problem2({int cycles = 1000000000}) {
     tilt(matrix.rotated(count: 1)); // west
     tilt(matrix.rotated(count: 2)); // south
     tilt(matrix.rotated(count: 3)); // east
-    final string = matrix.rowMajor.join('');
+    final string = matrix.rowMajor.map((cell) => cell.value).join('');
     final last = seen[string];
     if (last != null) {
       // Jump to the last cycle

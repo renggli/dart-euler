@@ -57,10 +57,14 @@ void main() {
   assert(matrix
           .map((row, col, value) => isVisible(row, col))
           .rowMajor
-          .where((each) => each)
+          .where((cell) => cell.value)
           .length ==
       1647);
 
-  assert(matrix.map((row, col, value) => score(row, col)).rowMajor.max() ==
+  assert(matrix
+          .map((row, col, value) => score(row, col))
+          .rowMajor
+          .map((cell) => cell.value)
+          .max() ==
       392080);
 }

@@ -26,16 +26,9 @@ const moveChars = {
 };
 const boxChars = [boxChar, boxOpenChar, boxCloseChar];
 
-Point<int> findPoint(Matrix<String> grid, String char) {
-  for (var x = 0; x < grid.rowCount; x++) {
-    for (var y = 0; y < grid.colCount; y++) {
-      if (grid.getUnchecked(x, y) == char) {
-        return Point(x, y);
-      }
-    }
-  }
-  throw StateError('Point with $char not found.');
-}
+Point<int> findPoint(Matrix<String> grid, String char) => grid.rowMajor
+    .singleWhere((cell) => cell.value == char)
+    .also((cell) => Point(cell.row, cell.col));
 
 /// Try to move `start` in the given `direction`, return the possibly updated
 /// `start` position.

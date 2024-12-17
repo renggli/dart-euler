@@ -31,14 +31,12 @@ Set<Point<int>> floodFill(Point<int> start) {
 List<Set<Point<int>>> areas() {
   final seen = <Point<int>>{};
   final areas = <Set<Point<int>>>[];
-  for (final x in 0.to(grid.rowCount)) {
-    for (final y in 0.to(grid.colCount)) {
-      final point = Point(x, y);
-      if (!seen.contains(point)) {
-        final area = floodFill(point);
-        seen.addAll(area);
-        areas.add(area);
-      }
+  for (final (:row, :col, value: _) in grid.rowMajor) {
+    final point = Point(row, col);
+    if (!seen.contains(point)) {
+      final area = floodFill(point);
+      seen.addAll(area);
+      areas.add(area);
     }
   }
   return areas;
