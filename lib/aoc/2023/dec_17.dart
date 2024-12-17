@@ -19,11 +19,7 @@ Path<State, num> solve({
   required int minBlocks, // before turning left or right
   required int maxBlocks, // allowed to go in one direction
 }) =>
-    AStarSearchIterable<State>(
-      startVertices: const [
-        (pos: Point(0, 0), dir: Point(0, 1), count: 0),
-        (pos: Point(0, 0), dir: Point(1, 0), count: 0),
-      ],
+    AStarSearch<State>(
       successorsOf: (state) {
         final left = Point(-state.dir.y, state.dir.x);
         final right = Point(state.dir.y, -state.dir.x);
@@ -38,12 +34,17 @@ Path<State, num> solve({
             state.pos.y.between(0, stop.y) &&
             state.count <= maxBlocks);
       },
-      targetPredicate: (state) =>
-          state.pos == stop && state.count.between(minBlocks, maxBlocks),
       edgeCost: (source, target) => blocks[target.pos.x][target.pos.y],
       costEstimate: (source) =>
           (stop.x - source.pos.x) + (stop.y - source.pos.y),
-    ).first;
+    ).find(
+        startVertices: const [
+          (pos: Point(0, 0), dir: Point(0, 1), count: 0),
+          (pos: Point(0, 0), dir: Point(1, 0), count: 0),
+        ],
+        targetPredicate: (state) =>
+            state.pos == stop &&
+            state.count.between(minBlocks, maxBlocks)).first;
 
 Path<State, num> problem1() => solve(minBlocks: 0, maxBlocks: 3);
 

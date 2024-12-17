@@ -105,22 +105,22 @@ final state = () {
   throw StateError('Should not happen');
 }();
 
-int problem1() => DijkstraSearchIterable<Point<int>>(
-        startVertices: [state.start],
-        targetPredicate: (target) => target == state.goal,
+int problem1() => DijkstraSearch<Point<int>>(
         successorsOf: (source) => directions.values
             .map((offset) => source + offset)
             .where((target) => state.visited[target] != Type.wall))
+    .find(
+        startVertices: [state.start],
+        targetPredicate: (target) => target == state.goal)
     .first
     .values
     .length;
 
-int problem2() => DijkstraSearchIterable<Point<int>>(
-        startVertices: [state.goal],
-        targetPredicate: (target) => true,
+int problem2() => DijkstraSearch<Point<int>>(
         successorsOf: (source) => directions.values
             .map((offset) => source + offset)
             .where((target) => state.visited[target] != Type.wall))
+    .find(startVertices: [state.goal], targetPredicate: (target) => true)
     .map((path) => path.values.length)
     .max();
 

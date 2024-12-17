@@ -51,16 +51,11 @@ final start = () {
   throw StateError('No starting point found');
 }();
 
-int problem1() => graph
-    .shortestPathAll(start, (target) => true)
-    .map((path) => path.values.length)
-    .max();
+int problem1() =>
+    graph.shortestPathAll(start).map((path) => path.values.length).max();
 
 int problem2() {
-  final cycle = graph
-      .shortestPathAll(start, (target) => true)
-      .map((path) => path.target)
-      .toSet();
+  final cycle = graph.shortestPathAll(start).map((path) => path.target).toSet();
   var area = 0;
   for (var x = 0; x < data.length; x++) {
     var windingNumber = 0;
