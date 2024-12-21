@@ -107,7 +107,6 @@ Future<void> main(List<String> arguments) async {
     out.writeln('int problem2() { return 0; }');
     out.writeln();
     out.writeln('void main() {');
-    out.writeln('  // $url');
     out.writeln('  print(\'Problem 1: \${problem1()}\');');
     out.writeln('  print(\'Problem 2: \${problem2()}\');');
     out.writeln('}');
