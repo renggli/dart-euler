@@ -47,8 +47,4 @@ class AddressMode {
 
 const addressModeMask = 10;
 
-const addressModes = {
-  1: 100,
-  2: 1000,
-  3: 10000,
-};
+const addressModes = {1: 100, 2: 1000, 3: 10000};

@@ -28,9 +28,10 @@ int collatz(int value) {
   if (value < cache.length && cache[value] > 0) {
     return cache[value];
   }
-  final result = value.isEven
-      ? 1 + collatz(value ~/ 2)
-      : value != 1
+  final result =
+      value.isEven
+          ? 1 + collatz(value ~/ 2)
+          : value != 1
           ? 1 + collatz(3 * value + 1)
           : value;
   if (value < cache.length) {

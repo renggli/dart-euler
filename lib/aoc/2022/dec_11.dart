@@ -15,17 +15,18 @@ class Monkey {
   Monkey(String input) : this._(monkeyPattern.matchAsPrefix(input)!);
 
   Monkey._(Match match)
-      : index = int.parse(match.group(1)!),
-        startItems = match.group(2)!.split(',').map(int.parse),
-        operation = match.group(3) == '+'
-            ? ((a, b) => a + b)
-            : match.group(3) == '*'
-                ? ((a, b) => a * b)
-                : throw ArgumentError(),
-        operator = int.tryParse(match.group(4) ?? ''),
-        divisor = int.parse(match.group(5)!),
-        trueTarget = int.parse(match.group(6)!),
-        falseTarget = int.parse(match.group(7)!);
+    : index = int.parse(match.group(1)!),
+      startItems = match.group(2)!.split(',').map(int.parse),
+      operation =
+          match.group(3) == '+'
+              ? ((a, b) => a + b)
+              : match.group(3) == '*'
+              ? ((a, b) => a * b)
+              : throw ArgumentError(),
+      operator = int.tryParse(match.group(4) ?? ''),
+      divisor = int.parse(match.group(5)!),
+      trueTarget = int.parse(match.group(6)!),
+      falseTarget = int.parse(match.group(7)!);
 
   final int index;
   final Iterable<int> startItems;
@@ -36,14 +37,17 @@ class Monkey {
   final int falseTarget;
 }
 
-final monkeys = File('lib/aoc/2022/dec_11.txt')
-    .readAsStringSync()
-    .split('\n\n')
-    .map(Monkey.new)
-    .toList();
+final monkeys =
+    File(
+      'lib/aoc/2022/dec_11.txt',
+    ).readAsStringSync().split('\n\n').map(Monkey.new).toList();
 
-void round(List<List<int>> monkeyItems, List<int> monkeyInspections, int modulo,
-    int divisor) {
+void round(
+  List<List<int>> monkeyItems,
+  List<int> monkeyInspections,
+  int modulo,
+  int divisor,
+) {
   for (final monkey in monkeys) {
     final items = monkeyItems[monkey.index];
     for (final item in items) {
@@ -58,8 +62,10 @@ void round(List<List<int>> monkeyItems, List<int> monkeyInspections, int modulo,
 }
 
 int run(int rounds, int divisor) {
-  final monkeyItems =
-      List.generate(monkeys.length, (i) => monkeys[i].startItems.toList());
+  final monkeyItems = List.generate(
+    monkeys.length,
+    (i) => monkeys[i].startItems.toList(),
+  );
   final monkeyInspections = List.filled(monkeys.length, 0);
   final modulo = monkeys.map((monkey) => monkey.divisor).product();
   for (var i = 0; i < rounds; i++) {

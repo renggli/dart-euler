@@ -40,16 +40,20 @@ const digitAndWordMapping = {
 };
 
 void main() {
-  assert(File('lib/aoc/2023/dec_01.txt')
-          .readAsLinesSync()
-          .map((line) => extractDigits(line, digitMapping))
-          .map((digits) => 10 * digits.first + digits.last)
-          .sum() ==
-      55834);
-  assert(File('lib/aoc/2023/dec_01.txt')
-          .readAsLinesSync()
-          .map((line) => extractDigits(line, digitAndWordMapping))
-          .map((digits) => 10 * digits.first + digits.last)
-          .sum() ==
-      53221);
+  assert(
+    File('lib/aoc/2023/dec_01.txt')
+            .readAsLinesSync()
+            .map((line) => extractDigits(line, digitMapping))
+            .map((digits) => 10 * digits.first + digits.last)
+            .sum() ==
+        55834,
+  );
+  assert(
+    File('lib/aoc/2023/dec_01.txt')
+            .readAsLinesSync()
+            .map((line) => extractDigits(line, digitAndWordMapping))
+            .map((digits) => 10 * digits.first + digits.last)
+            .sum() ==
+        53221,
+  );
 }

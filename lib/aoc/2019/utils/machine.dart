@@ -8,13 +8,16 @@ import 'outputs.dart';
 
 class Machine {
   factory Machine.fromFile(File file, {Input? input, Output? output}) =>
-      Machine(file.readAsStringSync().split(',').map(int.parse),
-          input: input, output: output);
+      Machine(
+        file.readAsStringSync().split(',').map(int.parse),
+        input: input,
+        output: output,
+      );
 
   Machine(Iterable<int> memory, {Input? input, Output? output})
-      : memory = memory.toList(),
-        input = input ?? const NullInput(),
-        output = output ?? const NullOutput();
+    : memory = memory.toList(),
+      input = input ?? const NullInput(),
+      output = output ?? const NullOutput();
 
   final List<int> memory;
   int instructionPointer = 0;
@@ -60,8 +63,10 @@ class Machine {
         instructionPointer += 1;
         return false;
       default:
-        throw StateError('Invalid op code at $instructionPointer: '
-            '${decodePoint(instructionPointer)}');
+        throw StateError(
+          'Invalid op code at $instructionPointer: '
+          '${decodePoint(instructionPointer)}',
+        );
     }
     return true;
   }
@@ -77,8 +82,10 @@ class Machine {
       case AddressMode.relative:
         return memory[instructionPointer + param] + relativeBase;
       default:
-        throw StateError('Invalid address at $instructionPointer param $param:'
-            '${decodePoint(instructionPointer)}');
+        throw StateError(
+          'Invalid address at $instructionPointer param $param:'
+          '${decodePoint(instructionPointer)}',
+        );
     }
   }
 
@@ -104,11 +111,12 @@ class Machine {
   }
 
   /// Decodes to a list of strings.
-  List<String> decode({int start = 0, int? end}) => decodeRange(
-          start: start, end: end)
-      .entries
-      .map((entry) => '${entry.key.toString().padLeft(4, '0')} ${entry.value}')
-      .toList();
+  List<String> decode({int start = 0, int? end}) =>
+      decodeRange(start: start, end: end).entries
+          .map(
+            (entry) => '${entry.key.toString().padLeft(4, '0')} ${entry.value}',
+          )
+          .toList();
 
   /// Decodes (part of) the memory.
   Map<int, String> decodeRange({int start = 0, int? end}) {
@@ -160,7 +168,8 @@ class Machine {
   }
 }
 
-final _printable = const CharMatcher.letter() |
+final _printable =
+    const CharMatcher.letter() |
     const CharMatcher.digit() |
     const CharMatcher.punctuation() |
     CharMatcher.isChar(' ');

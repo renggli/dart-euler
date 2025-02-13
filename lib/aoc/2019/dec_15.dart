@@ -17,18 +17,14 @@ const directions = {
   4: Point(0, 1), // east
 };
 
-enum Type {
-  wall,
-  seen,
-  goal;
-}
+enum Type { wall, seen, goal }
 
 class Complete extends Error {}
 
 class State implements Input, Output {
   State([this.start = const Point(0, 0)])
-      : visited = {start: Type.seen},
-        path = [start];
+    : visited = {start: Type.seen},
+      path = [start];
 
   final Point<int> start;
   late final Point<int> goal;
@@ -105,24 +101,25 @@ final state = () {
   throw StateError('Should not happen');
 }();
 
-int problem1() => dijkstraSearch<Point<int>>(
-        startVertices: [state.start],
-        targetPredicate: (target) => target == state.goal,
-        successorsOf: (source) => directions.values
-            .map((offset) => source + offset)
-            .where((target) => state.visited[target] != Type.wall))
-    .first
-    .values
-    .length;
+int problem1() =>
+    dijkstraSearch<Point<int>>(
+      startVertices: [state.start],
+      targetPredicate: (target) => target == state.goal,
+      successorsOf:
+          (source) => directions.values
+              .map((offset) => source + offset)
+              .where((target) => state.visited[target] != Type.wall),
+    ).first.values.length;
 
-int problem2() => dijkstraSearch<Point<int>>(
-        startVertices: [state.goal],
-        targetPredicate: (target) => true,
-        successorsOf: (source) => directions.values
-            .map((offset) => source + offset)
-            .where((target) => state.visited[target] != Type.wall))
-    .map((path) => path.values.length)
-    .max();
+int problem2() =>
+    dijkstraSearch<Point<int>>(
+      startVertices: [state.goal],
+      targetPredicate: (target) => true,
+      successorsOf:
+          (source) => directions.values
+              .map((offset) => source + offset)
+              .where((target) => state.visited[target] != Type.wall),
+    ).map((path) => path.values.length).max();
 
 void main() {
   assert(problem1() == 300);

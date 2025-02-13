@@ -3,17 +3,19 @@ import 'dart:io';
 import 'package:data/stats.dart';
 import 'package:more/more.dart';
 
-final values = File('lib/aoc/2020/dec_22.txt')
-    .readAsStringSync()
-    .split('\n\n')
-    .map((player) => player.split('\n').sublist(1).map(int.parse).toList())
-    .toList();
+final values =
+    File('lib/aoc/2020/dec_22.txt')
+        .readAsStringSync()
+        .split('\n\n')
+        .map((player) => player.split('\n').sublist(1).map(int.parse).toList())
+        .toList();
 
-int score(List<int> deck) => deck.reversed
-    .toList()
-    .indexed(start: 1)
-    .map((each) => each.value * each.index)
-    .sum();
+int score(List<int> deck) =>
+    deck.reversed
+        .toList()
+        .indexed(start: 1)
+        .map((each) => each.value * each.index)
+        .sum();
 
 int game1() {
   final deck1 = [...values[0]];

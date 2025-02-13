@@ -70,7 +70,7 @@ List<String> spell(int value) {
         ...spell(value ~/ 1000),
         'thousand',
         'and',
-        ...spell(value % 1000)
+        ...spell(value % 1000),
       ];
     }
   }

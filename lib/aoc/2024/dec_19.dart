@@ -15,11 +15,14 @@ int count(String desired, {int start = 0, Map<int, int>? cache}) {
   if (start == desired.length) {
     return cache[start] = 1;
   }
-  return cache[start] = availablePattern
-      .where((available) => desired.startsWith(available, start))
-      .map((available) =>
-          count(desired, start: start + available.length, cache: cache))
-      .sum();
+  return cache[start] =
+      availablePattern
+          .where((available) => desired.startsWith(available, start))
+          .map(
+            (available) =>
+                count(desired, start: start + available.length, cache: cache),
+          )
+          .sum();
 }
 
 int problem1() => desiredPattern.where((desired) => count(desired) > 0).length;

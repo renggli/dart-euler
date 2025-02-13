@@ -33,11 +33,12 @@ bool isDivisible(List<int> digits) {
 }
 
 void main() {
-  final sum = 0
-      .to(10)
-      .permutations()
-      .where(isDivisible)
-      .map((a) => a.polynomial())
-      .sum();
+  final sum =
+      0
+          .to(10)
+          .permutations()
+          .where(isDivisible)
+          .map((a) => a.polynomial())
+          .sum();
   assert(sum == 16695334890);
 }

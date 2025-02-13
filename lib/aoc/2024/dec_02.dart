@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final reports = File('lib/aoc/2024/dec_02.txt')
-    .readAsLinesSync()
-    .map((line) => line.split(' ').map(int.parse).toList())
-    .toList();
+final reports =
+    File('lib/aoc/2024/dec_02.txt')
+        .readAsLinesSync()
+        .map((line) => line.split(' ').map(int.parse).toList())
+        .toList();
 
 bool isSafe(List<int> report) {
   final (:min, :max) =
@@ -15,8 +16,10 @@ bool isSafe(List<int> report) {
 
 int problem1() => reports.count(isSafe);
 
-int problem2() => reports.count((report) =>
-    report.indices().any((index) => isSafe([...report]..removeAt(index))));
+int problem2() => reports.count(
+  (report) =>
+      report.indices().any((index) => isSafe([...report]..removeAt(index))),
+);
 
 void main() {
   assert(problem1() == 220);

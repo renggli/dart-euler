@@ -8,18 +8,20 @@ final values =
 final cache = <int, int>{};
 
 int arrangements(int index) => cache.putIfAbsent(index, () {
-      if (index < values.length - 1) {
-        var count = 0;
-        for (var i = index + 1;
-            i < values.length && values[i] - values[index] <= 3;
-            i++) {
-          count += arrangements(i);
-        }
-        return count;
-      } else {
-        return 1;
-      }
-    });
+  if (index < values.length - 1) {
+    var count = 0;
+    for (
+      var i = index + 1;
+      i < values.length && values[i] - values[index] <= 3;
+      i++
+    ) {
+      count += arrangements(i);
+    }
+    return count;
+  } else {
+    return 1;
+  }
+});
 
 void main() {
   // preparation

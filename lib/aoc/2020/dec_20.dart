@@ -14,15 +14,15 @@ class Tile {
   Matrix<String> data;
 
   List<Tile> get variations => [
-        Tile(title, data),
-        Tile(title, data.flippedVertical),
-        Tile(title, data.flippedHorizontal),
-        Tile(title, data.rotated()),
-        Tile(title, data.rotated().flippedVertical),
-        Tile(title, data.rotated().flippedHorizontal),
-        Tile(title, data.rotated(count: 2)),
-        Tile(title, data.rotated(count: 3)),
-      ];
+    Tile(title, data),
+    Tile(title, data.flippedVertical),
+    Tile(title, data.flippedHorizontal),
+    Tile(title, data.rotated()),
+    Tile(title, data.rotated().flippedVertical),
+    Tile(title, data.rotated().flippedHorizontal),
+    Tile(title, data.rotated(count: 2)),
+    Tile(title, data.rotated(count: 3)),
+  ];
 
   Tile get withoutEdges =>
       Tile(title, data.range(1, data.rowCount - 1, 1, data.colCount - 1));
@@ -57,20 +57,29 @@ class Tile {
 }
 
 final title = RegExp(r'Tile (\d+):');
-final tiles = File('lib/aoc/2020/dec_20.txt')
-    .readAsStringSync()
-    .split('\n\n')
-    .map((lines) => lines.split('\n'))
-    .map((lines) => Tile(
-        int.parse(title.matchAsPrefix(lines[0])!.group(1)!),
-        Matrix.fromRows(DataType.string,
-            lines.sublist(1).map((row) => row.split('')).toList())))
-    .toList();
+final tiles =
+    File('lib/aoc/2020/dec_20.txt')
+        .readAsStringSync()
+        .split('\n\n')
+        .map((lines) => lines.split('\n'))
+        .map(
+          (lines) => Tile(
+            int.parse(title.matchAsPrefix(lines[0])!.group(1)!),
+            Matrix.fromRows(
+              DataType.string,
+              lines.sublist(1).map((row) => row.split('')).toList(),
+            ),
+          ),
+        )
+        .toList();
 final monster = Matrix.fromRows(
-    DataType.string,
-    ['                  # ', '#    ##    ##    ###', ' #  #  #  #  #  #   ']
-        .map((row) => row.split(''))
-        .toList());
+  DataType.string,
+  [
+    '                  # ',
+    '#    ##    ##    ###',
+    ' #  #  #  #  #  #   ',
+  ].map((row) => row.split('')).toList(),
+);
 
 void main() {
   final unassigned = [...tiles];
@@ -108,7 +117,8 @@ void main() {
   final maxx = positions.keys.map((point) => point.x).max();
   final miny = positions.keys.map((point) => point.y).min();
   final maxy = positions.keys.map((point) => point.y).max();
-  final problem1 = positions[Point(minx, miny)]!.title *
+  final problem1 =
+      positions[Point(minx, miny)]!.title *
       positions[Point(maxx, miny)]!.title *
       positions[Point(minx, maxy)]!.title *
       positions[Point(maxx, maxy)]!.title;
@@ -124,11 +134,15 @@ void main() {
     horizontals.add(Matrix.concatVertical(DataType.string, verticals));
   }
   final master = Tile(
-      666, Matrix.concatHorizontal(DataType.string, horizontals).toMatrix());
+    666,
+    Matrix.concatHorizontal(DataType.string, horizontals).toMatrix(),
+  );
   int count(Matrix<String> data) =>
       data.columnMajor.where((each) => each.value == '#').length;
   final target = master.variations.max(
-      comparator: naturalComparable<num>
-          .onResultOf<Tile>((tile) => tile.count(monster)));
+    comparator: naturalComparable<num>.onResultOf<Tile>(
+      (tile) => tile.count(monster),
+    ),
+  );
   assert(count(target.data) - target.count(monster) * count(monster) == 2009);
 }

@@ -1804,7 +1804,7 @@ const words = [
   'YOUNG',
   'YOUR',
   'YOURSELF',
-  'YOUTH'
+  'YOUTH',
 ];
 
 final baseOffset = 'A'.codeUnitAt(0) - 1;

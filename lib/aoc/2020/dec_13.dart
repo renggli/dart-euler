@@ -12,7 +12,7 @@ final buses = values[1]
     .toMap(key: (each) => each.index, value: (each) => int.parse(each.value));
 
 int solution1() {
-  for (var t = start;; t++) {
+  for (var t = start; ; t++) {
     for (final bus in buses.values) {
       if (t % bus == 0) {
         return bus * (t - start);

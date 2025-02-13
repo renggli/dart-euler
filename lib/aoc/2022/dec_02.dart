@@ -56,9 +56,7 @@ const results = <State, Map<State, Result>>{
 };
 
 class Move1 {
-  Move1(String move)
-      : a = stateChars[move[0]]!,
-        b = stateChars[move[2]]!;
+  Move1(String move) : a = stateChars[move[0]]!, b = stateChars[move[2]]!;
 
   final State a;
   final State b;
@@ -67,9 +65,7 @@ class Move1 {
 }
 
 class Move2 {
-  Move2(String move)
-      : a = stateChars[move[0]]!,
-        o = resultChars[move[2]]!;
+  Move2(String move) : a = stateChars[move[0]]!, o = resultChars[move[2]]!;
 
   final State a;
   final Result o;

@@ -24,10 +24,14 @@ bool isPalindrom(List<int> digits) {
 }
 
 void main() {
-  assert(IntegerRange(max)
-          .where((value) =>
-              isPalindrom(value.digits().toList()) &&
-              isPalindrom(value.digits(2).toList()))
-          .sum() ==
-      872187);
+  assert(
+    IntegerRange(max)
+            .where(
+              (value) =>
+                  isPalindrom(value.digits().toList()) &&
+                  isPalindrom(value.digits(2).toList()),
+            )
+            .sum() ==
+        872187,
+  );
 }

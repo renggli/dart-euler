@@ -33,9 +33,11 @@ bool isPandigital(int x) {
 }
 
 void main() {
-  assert(max
-          .to(0, step: -1)
-          .where((value) => isPrime(value) && isPandigital(value))
-          .first ==
-      7652413);
+  assert(
+    max
+            .to(0, step: -1)
+            .where((value) => isPrime(value) && isPandigital(value))
+            .first ==
+        7652413,
+  );
 }

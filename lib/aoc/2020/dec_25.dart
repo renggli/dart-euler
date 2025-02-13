@@ -5,7 +5,7 @@ final values =
 
 int loopSize(int publicKey) {
   var value = 1;
-  for (var size = 1;; size++) {
+  for (var size = 1; ; size++) {
     value = (value * 7) % 20201227;
     if (value == publicKey) {
       return size;

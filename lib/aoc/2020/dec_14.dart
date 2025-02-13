@@ -10,8 +10,9 @@ final command = RegExp(r'((mask) = ([X10]{36})|(mem)\[(\d+)\] = (\d+))');
 const bitSize = 36;
 
 int run(
-    void Function(Map<int, int> memory, String mask, int address, int value)
-        callback) {
+  void Function(Map<int, int> memory, String mask, int address, int value)
+  callback,
+) {
   var mask = '';
   final memory = <int, int>{};
   for (final value in values) {
@@ -31,16 +32,21 @@ int run(
 
 void problem1(Map<int, int> memory, String mask, int address, int value) {
   final binaryValue = value.toRadixString(2).padLeft(bitSize, '0').split('');
-  final transformed = binaryValue
-      .indexed()
-      .map((each) => mask[each.index] != 'X' ? mask[each.index] : each.value)
-      .join();
+  final transformed =
+      binaryValue
+          .indexed()
+          .map(
+            (each) => mask[each.index] != 'X' ? mask[each.index] : each.value,
+          )
+          .join();
   memory[address] = int.parse(transformed, radix: 2);
 }
 
 void problem2(Map<int, int> memory, String mask, int address, int value) {
-  final binaryAddress =
-      address.toRadixString(2).padLeft(bitSize, '0').split('');
+  final binaryAddress = address
+      .toRadixString(2)
+      .padLeft(bitSize, '0')
+      .split('');
   final addresses = [binaryAddress];
   for (var i = 0; i < bitSize; i++) {
     if (mask[i] == '1') {
@@ -51,11 +57,13 @@ void problem2(Map<int, int> memory, String mask, int address, int value) {
       for (final address in addresses) {
         address[i] = '0';
       }
-      addresses.addAll(addresses.map((address) {
-        final copy = address.toList();
-        copy[i] = '1';
-        return copy;
-      }).toList());
+      addresses.addAll(
+        addresses.map((address) {
+          final copy = address.toList();
+          copy[i] = '1';
+          return copy;
+        }).toList(),
+      );
     }
   }
   addresses

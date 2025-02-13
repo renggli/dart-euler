@@ -69,7 +69,7 @@ const values = [
   'J',
   'Q',
   'K',
-  'A'
+  'A',
 ];
 const suits = ['C', 'D', 'H', 'S'];
 
@@ -1192,11 +1192,12 @@ void main() {
   ];
   var firstWins = 0;
   for (final input in inputs) {
-    final ranks = input
-        .split(splitter)
-        .chunked(5)
-        .map((hand) => Hand(hand).rank)
-        .toList();
+    final ranks =
+        input
+            .split(splitter)
+            .chunked(5)
+            .map((hand) => Hand(hand).rank)
+            .toList();
     if (ranks.first > ranks.last) {
       firstWins++;
     }

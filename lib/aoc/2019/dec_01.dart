@@ -7,7 +7,8 @@ final data =
 
 int problem1() => data.map((each) => each ~/ 3 - 2).sum();
 
-int problem2() => data.map((each) {
+int problem2() =>
+    data.map((each) {
       var result = 0, last = each ~/ 3 - 2;
       while (last > 0) {
         result += last;

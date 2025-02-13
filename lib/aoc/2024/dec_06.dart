@@ -12,8 +12,9 @@ final start = grid.rowMajor
     .singleWhere((cell) => cell.value == '^')
     .also((cell) => Point(cell.row, cell.col));
 
-ListMultimap<Point<int>, int>? run(
-    {Point<int> obstacle = const Point(-1, -1)}) {
+ListMultimap<Point<int>, int>? run({
+  Point<int> obstacle = const Point(-1, -1),
+}) {
   var point = start;
   var dir = 0;
   final seen = ListMultimap<Point<int>, int>();

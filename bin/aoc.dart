@@ -16,18 +16,15 @@ final session = File('bin/.session').also((file) {
 
 final now = DateTime.now().truncateTo(TimeUnit.day);
 final dateFormatter = DateTimePrinter.date();
-final argParser = ArgParser()
-  ..addFlag(
-    'help',
-    abbr: '?',
-    hide: true,
-  )
-  ..addOption(
-    'date',
-    abbr: 'd',
-    defaultsTo: dateFormatter.print(now),
-    help: 'date in the format YYYY-MM-DD',
-  );
+final argParser =
+    ArgParser()
+      ..addFlag('help', abbr: '?', hide: true)
+      ..addOption(
+        'date',
+        abbr: 'd',
+        defaultsTo: dateFormatter.print(now),
+        help: 'date in the format YYYY-MM-DD',
+      );
 
 void printUsage() {
   stdout.writeln('Usage: aoc [options]');
@@ -99,7 +96,8 @@ Future<void> main(List<String> arguments) async {
     out.writeln('import \'package:more/more.dart\';');
     out.writeln();
     out.writeln(
-        'final input = File(\'$base/.example.txt\').readAsLinesSync();');
+      'final input = File(\'$base/.example.txt\').readAsLinesSync();',
+    );
     out.writeln('// final input = File(\'$path.txt\').readAsLinesSync();');
     out.writeln();
     out.writeln('int problem1() { return 0; }');

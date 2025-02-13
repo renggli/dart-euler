@@ -19,8 +19,12 @@ int problem1() {
   for (final group in groups) {
     for (final antennas in group.combinations(2)) {
       final delta = antennas[1] - antennas[0];
-      antinodes.addAll([antennas[0] - delta, antennas[1] + delta]
-          .where((point) => grid.isWithinBounds(point.x, point.y)));
+      antinodes.addAll(
+        [
+          antennas[0] - delta,
+          antennas[1] + delta,
+        ].where((point) => grid.isWithinBounds(point.x, point.y)),
+      );
     }
   }
   return antinodes.length;
@@ -31,14 +35,18 @@ int problem2() {
   for (final group in groups) {
     for (final antennas in group.combinations(2)) {
       final delta = antennas.last - antennas.first;
-      for (var antinode = antennas.first;
-          grid.isWithinBounds(antinode.x, antinode.y);
-          antinode -= delta) {
+      for (
+        var antinode = antennas.first;
+        grid.isWithinBounds(antinode.x, antinode.y);
+        antinode -= delta
+      ) {
         antinodes.add(antinode);
       }
-      for (var antinode = antennas.last;
-          grid.isWithinBounds(antinode.x, antinode.y);
-          antinode += delta) {
+      for (
+        var antinode = antennas.last;
+        grid.isWithinBounds(antinode.x, antinode.y);
+        antinode += delta
+      ) {
         antinodes.add(antinode);
       }
     }

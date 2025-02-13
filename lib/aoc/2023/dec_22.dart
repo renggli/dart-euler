@@ -22,7 +22,7 @@ class Brick {
   }
 
   Brick(this.index, Iterable<Cube> cubes)
-      : cubes = cubes.toList(growable: false);
+    : cubes = cubes.toList(growable: false);
 
   final int index;
   final List<Cube> cubes;
@@ -39,10 +39,10 @@ class Brick {
   toString() => 'Blocks($index: ${cubes.join(', ')})';
 }
 
-final bricks = File('lib/aoc/2023/dec_22.txt')
-    .readAsLinesSync()
-    .mapIndexed(Brick.fromString)
-    .toList();
+final bricks =
+    File(
+      'lib/aoc/2023/dec_22.txt',
+    ).readAsLinesSync().mapIndexed(Brick.fromString).toList();
 
 List<Brick> drop(List<Brick> bricks) {
   final blocked = <Cube>{};
@@ -61,8 +61,9 @@ void main() {
   final indexed = dropped.sortedBy<num>((brick) => brick.index);
   for (var i = 0; i < dropped.length; i++) {
     final updated = drop(dropped.toList()..removeAt(i));
-    final moved =
-        updated.count((brick) => indexed[brick.index].min != brick.min);
+    final moved = updated.count(
+      (brick) => indexed[brick.index].min != brick.min,
+    );
     if (moved == 0) problem1++;
     problem2 += moved;
   }

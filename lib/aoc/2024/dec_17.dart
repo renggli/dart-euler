@@ -5,8 +5,9 @@ import 'package:collection/collection.dart';
 import 'utils/machine.dart';
 
 final input = File('lib/aoc/2024/dec_17.txt').readAsStringSync();
-final values =
-    RegExp(r'\d+').allMatches(input).map((each) => each[0]!).map(int.parse);
+final values = RegExp(
+  r'\d+',
+).allMatches(input).map((each) => each[0]!).map(int.parse);
 final registers = values.take(3).toList();
 final program = values.skip(3).toList();
 

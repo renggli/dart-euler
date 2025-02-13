@@ -64,18 +64,23 @@ HandType handStrength(Hand hand, bool withJokers) {
   throw StateError('Invalid strength: $hand');
 }
 
-final hands = File('lib/aoc/2023/dec_07.txt')
-    .readAsLinesSync()
-    .map((line) => line.split(RegExp(r'\s+')).toList())
-    .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
-    .toList();
+final hands =
+    File('lib/aoc/2023/dec_07.txt')
+        .readAsLinesSync()
+        .map((line) => line.split(RegExp(r'\s+')).toList())
+        .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
+        .toList();
 
 int problem(String values, bool withJokers) => hands
-    .sorted(explicitComparator(HandType.values)
-        .onResultOf<Hand>((hand) => handStrength(hand, withJokers))
-        .thenCompare(explicitComparator(values.split(''))
-            .lexicographical
-            .onResultOf<Hand>((hand) => hand.cards)))
+    .sorted(
+      explicitComparator(HandType.values)
+          .onResultOf<Hand>((hand) => handStrength(hand, withJokers))
+          .thenCompare(
+            explicitComparator(
+              values.split(''),
+            ).lexicographical.onResultOf<Hand>((hand) => hand.cards),
+          ),
+    )
     .indexed(start: hands.length, step: -1)
     .fold(0, (result, entry) => result + entry.index * entry.value.bid);
 

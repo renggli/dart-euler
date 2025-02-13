@@ -19,8 +19,9 @@ Set<Point<int>> initialize(Iterable<String> instructions) {
   for (var instruction in instructions) {
     var position = const Point<int>(0, 0);
     while (instruction.isNotEmpty) {
-      final offset = offsets.entries
-          .firstWhere((entry) => instruction.startsWith(entry.key));
+      final offset = offsets.entries.firstWhere(
+        (entry) => instruction.startsWith(entry.key),
+      );
       instruction = instruction.substring(offset.key.length);
       position += offset.value;
     }
@@ -38,19 +39,25 @@ Set<Point<int>> flip(Set<Point<int>> flipped) {
     }
   }
   return adjacent.entries
-      .where((adjacent) =>
-          (flipped.contains(adjacent.key) && adjacent.value.between(1, 2)) ||
-          (!flipped.contains(adjacent.key) && adjacent.value == 2))
+      .where(
+        (adjacent) =>
+            (flipped.contains(adjacent.key) && adjacent.value.between(1, 2)) ||
+            (!flipped.contains(adjacent.key) && adjacent.value == 2),
+      )
       .map((adjacent) => adjacent.key)
       .toSet();
 }
 
 int problem1() => initialize(instructions).length;
 
-int problem2() => 0
-    .to(100)
-    .fold<Set<Point<int>>>(initialize(instructions), (prev, i) => flip(prev))
-    .length;
+int problem2() =>
+    0
+        .to(100)
+        .fold<Set<Point<int>>>(
+          initialize(instructions),
+          (prev, i) => flip(prev),
+        )
+        .length;
 
 void main() {
   assert(problem1() == 312);

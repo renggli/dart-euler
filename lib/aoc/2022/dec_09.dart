@@ -21,8 +21,8 @@ const directions = {
 
 class Move {
   Move(String input)
-      : direction = directions[input[0]]!,
-        count = int.parse(input.substring(2));
+    : direction = directions[input[0]]!,
+      count = int.parse(input.substring(2));
 
   final Direction direction;
 

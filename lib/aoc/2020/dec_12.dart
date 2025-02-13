@@ -3,10 +3,11 @@ import 'dart:math';
 
 import 'package:more/more.dart';
 
-final values = File('lib/aoc/2020/dec_12.txt')
-    .readAsLinesSync()
-    .map((value) => (value[0], int.parse(value.substring(1))))
-    .toList();
+final values =
+    File('lib/aoc/2020/dec_12.txt')
+        .readAsLinesSync()
+        .map((value) => (value[0], int.parse(value.substring(1))))
+        .toList();
 
 Point<int> rotate(Point<int> point, int degrees) {
   final radian = 2.0 * pi * degrees / 360;
@@ -38,11 +39,9 @@ class State {
         return State(pos, rotate(dir, -command.second));
       case 'F':
         return State(
-            Point(
-              pos.x + command.second * dir.x,
-              pos.y + command.second * dir.y,
-            ),
-            dir);
+          Point(pos.x + command.second * dir.x, pos.y + command.second * dir.y),
+          dir,
+        );
       default:
         throw StateError('Invalid command: $command');
     }
@@ -64,11 +63,9 @@ class State {
         return State(pos, rotate(dir, -command.second));
       case 'F':
         return State(
-            Point(
-              pos.x + command.second * dir.x,
-              pos.y + command.second * dir.y,
-            ),
-            dir);
+          Point(pos.x + command.second * dir.x, pos.y + command.second * dir.y),
+          dir,
+        );
       default:
         throw StateError('Invalid command: $command');
     }

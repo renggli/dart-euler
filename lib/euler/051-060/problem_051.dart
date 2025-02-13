@@ -25,8 +25,9 @@ void main() {
           // find if this is a family of 8
           var count = 0;
           for (var replacement = 0; replacement < 10; replacement++) {
-            final replacedDigits = primeDigits
-                .map((digit) => digit == repeating ? replacement : digit);
+            final replacedDigits = primeDigits.map(
+              (digit) => digit == repeating ? replacement : digit,
+            );
             final replaced = replacedDigits.polynomial().toInt();
             if (replaced > 100000 && replaced.isProbablyPrime) {
               count++;

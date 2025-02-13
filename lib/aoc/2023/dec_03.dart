@@ -37,11 +37,13 @@ final neighbours = () {
 
 void main() {
   assert(neighbours.values.sum() == 535235);
-  assert(neighbours
-          .asMap()
-          .entries
-          .where((entry) => entry.key.char == '*' && entry.values.length == 2)
-          .map((entry) => entry.values.product())
-          .sum() ==
-      79844424);
+  assert(
+    neighbours
+            .asMap()
+            .entries
+            .where((entry) => entry.key.char == '*' && entry.values.length == 2)
+            .map((entry) => entry.values.product())
+            .sum() ==
+        79844424,
+  );
 }

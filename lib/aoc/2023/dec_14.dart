@@ -3,9 +3,14 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final data = File('lib/aoc/2023/dec_14.txt').readAsLinesSync().also((rows) =>
-    Matrix.fromPackedRows(DataType.string, rows.length, rows[0].length,
-        rows.expand((line) => line.split('')).toList()));
+final data = File('lib/aoc/2023/dec_14.txt').readAsLinesSync().also(
+  (rows) => Matrix.fromPackedRows(
+    DataType.string,
+    rows.length,
+    rows[0].length,
+    rows.expand((line) => line.split('')).toList(),
+  ),
+);
 
 void tilt(Matrix<String> matrix) {
   for (var r = 1; r < matrix.rowCount; r++) {

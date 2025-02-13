@@ -7,31 +7,40 @@ import 'package:petitparser/petitparser.dart';
 final data = File('lib/aoc/2023/dec_19.txt').readAsStringSync().split('\n\n');
 
 final workflowOperation = seq2(
-        seq4(letter().plus().flatten(), anyOf('<>'),
-                digit().plus().flatten().map(int.parse), char(':'))
-            .map4((a, op, b, _) => (a: a, op: op, b: b))
-            .optional(),
-        letter().plus().flatten())
-    .map2((cond, then) => (cond: cond, then: then));
-final workflowParser = seq4(letter().plus().flatten(), char('{'),
-        workflowOperation.starSeparated(char(',')), char('}'))
-    .map4((id, _, ops, __) => MapEntry(id, ops.elements))
-    .starSeparated(char('\n'))
-    .map((list) => Map.fromEntries(list.elements))
-    .end();
+  seq4(
+    letter().plus().flatten(),
+    anyOf('<>'),
+    digit().plus().flatten().map(int.parse),
+    char(':'),
+  ).map4((a, op, b, _) => (a: a, op: op, b: b)).optional(),
+  letter().plus().flatten(),
+).map2((cond, then) => (cond: cond, then: then));
+final workflowParser =
+    seq4(
+          letter().plus().flatten(),
+          char('{'),
+          workflowOperation.starSeparated(char(',')),
+          char('}'),
+        )
+        .map4((id, _, ops, __) => MapEntry(id, ops.elements))
+        .starSeparated(char('\n'))
+        .map((list) => Map.fromEntries(list.elements))
+        .end();
 final workflows = workflowParser.parse(data.first).value;
 
-final ratingParser = seq3(
-        char('{'),
-        seq3(any(), char('='), digit().plus().flatten().map(int.parse))
-            .map3((name, _, value) => MapEntry(name, value))
-            .starSeparated(char(','))
-            .map((list) => Map.fromEntries(list.elements)),
-        char('}'))
-    .map3((_, value, __) => value)
-    .starSeparated(char('\n'))
-    .map((list) => list.elements)
-    .end();
+final ratingParser =
+    seq3(
+          char('{'),
+          seq3(any(), char('='), digit().plus().flatten().map(int.parse))
+              .map3((name, _, value) => MapEntry(name, value))
+              .starSeparated(char(','))
+              .map((list) => Map.fromEntries(list.elements)),
+          char('}'),
+        )
+        .map3((_, value, __) => value)
+        .starSeparated(char('\n'))
+        .map((list) => list.elements)
+        .end();
 final ratings = ratingParser.parse(data.last).value;
 
 String eval(String state, Map<String, int> rating) {
@@ -51,10 +60,11 @@ String eval(String state, Map<String, int> rating) {
   return state;
 }
 
-int problem1() => ratings
-    .where((rating) => eval('in', rating) == 'A')
-    .map((rating) => rating.values.sum())
-    .sum();
+int problem1() =>
+    ratings
+        .where((rating) => eval('in', rating) == 'A')
+        .map((rating) => rating.values.sum())
+        .sum();
 
 int count(String state, Map<String, List<int>> rating) {
   final total = rating.values.map((each) => each.length).product();

@@ -29,20 +29,20 @@ void main() {
     for (var pi2 = pi1 + 1; pi2 < primes.length; pi2++) {
       final p2 = primes[pi2];
       if (allPrime([
-        [p1, p2]
+        [p1, p2],
       ])) {
         for (var pi3 = pi2 + 1; pi3 < primes.length; pi3++) {
           final p3 = primes[pi3];
           if (allPrime([
             [p1, p3],
-            [p2, p3]
+            [p2, p3],
           ])) {
             for (var pi4 = pi3 + 1; pi4 < primes.length; pi4++) {
               final p4 = primes[pi4];
               if (allPrime([
                 [p1, p4],
                 [p2, p4],
-                [p3, p4]
+                [p3, p4],
               ])) {
                 for (var pi5 = pi4 + 1; pi5 < primes.length; pi5++) {
                   final p5 = primes[pi5];
@@ -50,7 +50,7 @@ void main() {
                     [p1, p5],
                     [p2, p5],
                     [p3, p5],
-                    [p4, p5]
+                    [p4, p5],
                   ])) {
                     assert(p1 + p2 + p3 + p4 + p5 == 26033);
                     return;

@@ -8,28 +8,30 @@ const bytes = 1024;
 
 final input = File('lib/aoc/2024/dec_18.txt').readAsLinesSync();
 
-final coordinates = input
-    .map((each) => each.split(',').map(int.parse))
-    .map((each) => Point(each.first, each.last))
-    .toList();
+final coordinates =
+    input
+        .map((each) => each.split(',').map(int.parse))
+        .map((each) => Point(each.first, each.last))
+        .toList();
 
-const directions = [
-  Point(0, 1),
-  Point(1, 0),
-  Point(0, -1),
-  Point(-1, 0),
-];
+const directions = [Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)];
 
-Iterable<Path<Point<int>, num>> searchPath(int size,
-        {Set<Point<int>> corrupt = const {}}) =>
-    dijkstraSearch<Point<int>>(
-        startVertices: const [Point(0, 0)],
-        targetPredicate: (target) => target.x == size && target.y == size,
-        successorsOf: (point) => directions.map((dir) => point + dir).where(
+Iterable<Path<Point<int>, num>> searchPath(
+  int size, {
+  Set<Point<int>> corrupt = const {},
+}) => dijkstraSearch<Point<int>>(
+  startVertices: const [Point(0, 0)],
+  targetPredicate: (target) => target.x == size && target.y == size,
+  successorsOf:
+      (point) => directions
+          .map((dir) => point + dir)
+          .where(
             (point) =>
                 point.x.between(0, size) &&
                 point.y.between(0, size) &&
-                !corrupt.contains(point)));
+                !corrupt.contains(point),
+          ),
+);
 
 int problem1() {
   final corrupt = coordinates.take(bytes).toSet();

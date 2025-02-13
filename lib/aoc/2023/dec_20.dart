@@ -27,9 +27,10 @@ final modules = File('lib/aoc/2023/dec_20.txt')
     .map((line) {
       final name = line.takeTo(' -> ').removePrefix(CharMatcher.charSet('%&'));
       final outgoing = line.skipTo(' -> ').split(', ');
-      final module = line.startsWith('%')
-          ? FlipFlop(name, outgoing)
-          : line.startsWith('&')
+      final module =
+          line.startsWith('%')
+              ? FlipFlop(name, outgoing)
+              : line.startsWith('&')
               ? Conjunction(name, outgoing)
               : Module(name, outgoing);
       return MapEntry(name, module);
@@ -47,8 +48,9 @@ final modules = File('lib/aoc/2023/dec_20.txt')
     });
 
 final broadcaster = modules['broadcaster']!;
-final rx = modules.values.singleWhere((each) => each.outgoing.contains('rx'))
-    as Conjunction;
+final rx =
+    modules.values.singleWhere((each) => each.outgoing.contains('rx'))
+        as Conjunction;
 
 var lowCount = 0, highCount = 0, pressCount = 0;
 final rxPresses = <String, int>{};
@@ -83,7 +85,6 @@ void press() {
       targetModule.state = !targetModule.state;
       outgoingSignal = targetModule.state;
     }
-
     // Conjunction.
     else if (targetModule is Conjunction) {
       targetModule.states[sourceName] = incomingSignal;

@@ -7,7 +7,10 @@ Parser<int> createParser(int problem) {
   final builder = ExpressionBuilder<int>();
   builder.primitive(digit().plus().flatten().trim().map(int.parse));
   builder.group().wrapper(
-      char('(').trim(), char(')').trim(), (left, value, right) => value);
+    char('(').trim(),
+    char(')').trim(),
+    (left, value, right) => value,
+  );
   if (problem == 1) {
     // Addition and multiplication have same priority: Smalltalk :-)
     builder.group()

@@ -31,18 +31,12 @@ void main() {
     });
     test('other example 1', () {
       const memory = [1, 0, 0, 0, 99];
-      expect(decode(memory), [
-        '0000 add [0], [0], [0]',
-        '0004 exit',
-      ]);
+      expect(decode(memory), ['0000 add [0], [0], [0]', '0004 exit']);
       expect(run(memory), [2, 0, 0, 0, 99]);
     });
     test('other example 2', () {
       const memory = [2, 3, 0, 3, 99];
-      expect(decode(memory), [
-        '0000 mul [3], [0], [3]',
-        '0004 exit',
-      ]);
+      expect(decode(memory), ['0000 mul [3], [0], [3]', '0004 exit']);
       expect(run(memory), [2, 3, 0, 6, 99]);
     });
     test('other example 3', () {
@@ -74,11 +68,7 @@ void main() {
 
     test('output whatever we got as input', () {
       const memory = [3, 0, 4, 0, 99];
-      expect(decode(memory), [
-        '0000 get [0]',
-        '0002 put [0]',
-        '0004 exit',
-      ]);
+      expect(decode(memory), ['0000 get [0]', '0002 put [0]', '0004 exit']);
       final random = Random(42);
       for (var i = 0; i < 100; i++) {
         final value = random.nextInt(10000) - 5000;
@@ -209,7 +199,7 @@ void main() {
         '0004 add [100], 1, [100]',
         '0008 equals [100], 16, [101]',
         '0012 jump-if-false [101], 0',
-        '0015 exit'
+        '0015 exit',
       ]);
       expect(run(memory), memory);
     });
@@ -225,10 +215,7 @@ void main() {
     });
     test('large number', () {
       final memory = [104, 1125899906842624, 99];
-      expect(decode(memory), [
-        '0000 put 1125899906842624',
-        '0002 exit',
-      ]);
+      expect(decode(memory), ['0000 put 1125899906842624', '0002 exit']);
       expect(run(memory), [memory[1]]);
     });
   });

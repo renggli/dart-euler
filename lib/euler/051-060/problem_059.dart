@@ -1229,16 +1229,19 @@ const codes = [
   15,
   10,
   22,
-  73
+  73,
 ];
 final input = String.fromCharCodes(codes);
 
 final _a = 'a'.codeUnitAt(0);
 final _z = 'z'.codeUnitAt(0);
 
-String crypt(String input, String password) =>
-    String.fromCharCodes(List.generate(input.length,
-        (i) => input.codeUnitAt(i) ^ password.codeUnitAt(i % password.length)));
+String crypt(String input, String password) => String.fromCharCodes(
+  List.generate(
+    input.length,
+    (i) => input.codeUnitAt(i) ^ password.codeUnitAt(i % password.length),
+  ),
+);
 
 void main() {
   for (var a = _a; a <= _z; a++) {

@@ -5,19 +5,30 @@ import 'package:data/data.dart';
 import 'package:more/more.dart';
 import 'package:z3/z3.dart';
 
-final stones = File('lib/aoc/2023/dec_24.txt')
-    .readAsLinesSync()
-    .map((line) => line.partition(' @ '))
-    .map((part) => (
-          p: Vector.fromIterable(
-              DataType.float, part[0].split(', ').map(double.parse)),
-          v: Vector.fromIterable(
-              DataType.float, part[2].split(', ').map(double.parse)),
-        ))
-    .toList();
+final stones =
+    File('lib/aoc/2023/dec_24.txt')
+        .readAsLinesSync()
+        .map((line) => line.partition(' @ '))
+        .map(
+          (part) => (
+            p: Vector.fromIterable(
+              DataType.float,
+              part[0].split(', ').map(double.parse),
+            ),
+            v: Vector.fromIterable(
+              DataType.float,
+              part[2].split(', ').map(double.parse),
+            ),
+          ),
+        )
+        .toList();
 
-double intersection2D(Vector<double> a1, Vector<double> a2, Vector<double> b1,
-    Vector<double> b2) {
+double intersection2D(
+  Vector<double> a1,
+  Vector<double> a2,
+  Vector<double> b1,
+  Vector<double> b2,
+) {
   final t1 =
       (a1[0] - b1[0]) * (b1[1] - b2[1]) - (a1[1] - b1[1]) * (b1[0] - b2[0]);
   final t2 =
@@ -78,20 +89,26 @@ int problem2b() {
       ]);
 
   final a = Matrix(DataType.float, 6, 6);
-  (crossMatrix(stones[0].v) - crossMatrix(stones[1].v))
-      .copyInto(a.range(0, 3, 0, 3));
-  (crossMatrix(stones[0].v) - crossMatrix(stones[2].v))
-      .copyInto(a.range(3, 6, 0, 3));
-  (crossMatrix(stones[1].p) - crossMatrix(stones[0].p))
-      .copyInto(a.range(0, 3, 3, 6));
-  (crossMatrix(stones[2].p) - crossMatrix(stones[0].p))
-      .copyInto(a.range(3, 6, 3, 6));
+  (crossMatrix(stones[0].v) - crossMatrix(stones[1].v)).copyInto(
+    a.range(0, 3, 0, 3),
+  );
+  (crossMatrix(stones[0].v) - crossMatrix(stones[2].v)).copyInto(
+    a.range(3, 6, 0, 3),
+  );
+  (crossMatrix(stones[1].p) - crossMatrix(stones[0].p)).copyInto(
+    a.range(0, 3, 3, 6),
+  );
+  (crossMatrix(stones[2].p) - crossMatrix(stones[0].p)).copyInto(
+    a.range(3, 6, 3, 6),
+  );
 
   final b = Vector(DataType.float, 6);
-  (stones[1].p.cross(stones[1].v) - stones[0].p.cross(stones[0].v))
-      .copyInto(b.range(0, 3));
-  (stones[2].p.cross(stones[2].v) - stones[0].p.cross(stones[0].v))
-      .copyInto(b.range(3, 6));
+  (stones[1].p.cross(stones[1].v) - stones[0].p.cross(stones[0].v)).copyInto(
+    b.range(0, 3),
+  );
+  (stones[2].p.cross(stones[2].v) - stones[0].p.cross(stones[0].v)).copyInto(
+    b.range(3, 6),
+  );
 
   final x = a.inverse.mulVector(b);
   return x.range(0, 3).sum.round();
@@ -100,8 +117,12 @@ int problem2b() {
 // Using linear algebra following this idea:
 // https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/kepu26z/
 int problem2c() {
-  (Vector<double>, double) findPlane(Vector<double> p1, Vector<double> v1,
-      Vector<double> p2, Vector<double> v2) {
+  (Vector<double>, double) findPlane(
+    Vector<double> p1,
+    Vector<double> v1,
+    Vector<double> p2,
+    Vector<double> v2,
+  ) {
     final p12 = p1 - p2, v12 = v1 - v2;
     return (p12.cross(v12), p12.dot(v1.cross(v2)));
   }
@@ -110,7 +131,8 @@ int problem2c() {
   final (b, bt) = findPlane(stones[1].p, stones[1].v, stones[3].p, stones[3].v);
   final (c, ct) = findPlane(stones[2].p, stones[2].v, stones[3].p, stones[3].v);
 
-  final w = b.cross(c).mulScalar(at) +
+  final w =
+      b.cross(c).mulScalar(at) +
       c.cross(a).mulScalar(bt) +
       a.cross(b).mulScalar(ct);
   final t = a.dot(b.cross(c));

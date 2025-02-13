@@ -1,7 +1,7 @@
 class Machine {
   Machine(Iterable<int> registers, Iterable<int> program)
-      : registers = registers.toList(growable: false),
-        program = program.toList(growable: false) {
+    : registers = registers.toList(growable: false),
+      program = program.toList(growable: false) {
     assert(registers.length == 3, 'Exactly 3 registers expected');
   }
 
@@ -47,9 +47,10 @@ class Machine {
     _ip += 2;
   }
 
-  int _combo(int operand) => operand <= 3
-      ? operand // literal
-      : operand <= 6
+  int _combo(int operand) =>
+      operand <= 3
+          ? operand // literal
+          : operand <= 6
           ? registers[operand - 4] // register
           : throw AssertionError('Invalid operand: $operand');
 

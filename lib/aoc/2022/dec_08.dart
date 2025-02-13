@@ -6,9 +6,13 @@ import 'package:data/vector.dart';
 import 'package:more/collection.dart';
 
 final input = File('lib/aoc/2022/dec_08.txt').readAsLinesSync();
-final matrix = Matrix.generate(DataType.int32, input.length, input[0].length,
-    (row, column) => int.parse(input[row][column]),
-    format: MatrixFormat.rowMajor);
+final matrix = Matrix.generate(
+  DataType.int32,
+  input.length,
+  input[0].length,
+  (row, column) => int.parse(input[row][column]),
+  format: MatrixFormat.rowMajor,
+);
 
 bool isVisible(int r, int c) {
   final height = matrix.get(r, c);
@@ -54,17 +58,21 @@ int score(int r, int c) {
 }
 
 void main() {
-  assert(matrix
-          .map((row, col, value) => isVisible(row, col))
-          .rowMajor
-          .where((cell) => cell.value)
-          .length ==
-      1647);
+  assert(
+    matrix
+            .map((row, col, value) => isVisible(row, col))
+            .rowMajor
+            .where((cell) => cell.value)
+            .length ==
+        1647,
+  );
 
-  assert(matrix
-          .map((row, col, value) => score(row, col))
-          .rowMajor
-          .map((cell) => cell.value)
-          .max() ==
-      392080);
+  assert(
+    matrix
+            .map((row, col, value) => score(row, col))
+            .rowMajor
+            .map((cell) => cell.value)
+            .max() ==
+        392080,
+  );
 }

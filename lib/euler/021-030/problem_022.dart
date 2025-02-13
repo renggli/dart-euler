@@ -5176,7 +5176,7 @@ final names = [
   'DORSEY',
   'DARELL',
   'BRODERICK',
-  'ALONSO'
+  'ALONSO',
 ];
 
 int score(String name) =>

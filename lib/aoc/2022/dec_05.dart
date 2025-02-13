@@ -35,8 +35,13 @@ String run(void Function(Operation, List<List<String>>) perform) {
   for (final line in lines) {
     final matches = operation.matchAsPrefix(line);
     if (matches != null) {
-      operations.add(Operation(int.parse(matches.group(1)!),
-          int.parse(matches.group(2)!) - 1, int.parse(matches.group(3)!) - 1));
+      operations.add(
+        Operation(
+          int.parse(matches.group(1)!),
+          int.parse(matches.group(2)!) - 1,
+          int.parse(matches.group(3)!) - 1,
+        ),
+      );
     } else {
       final matches = stack.allMatches(line).toList();
       while (stacks.length < matches.length) {

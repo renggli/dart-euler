@@ -4,9 +4,9 @@ import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 import 'package:more/math.dart';
 
-final instructions = File('lib/aoc/2022/dec_10.txt')
-    .readAsLinesSync()
-    .map((line) => line.split(' '));
+final instructions = File(
+  'lib/aoc/2022/dec_10.txt',
+).readAsLinesSync().map((line) => line.split(' '));
 
 List<int> run() {
   var value = 1;
@@ -40,19 +40,23 @@ String render() {
 
 void main() {
   const interesting = {20, 60, 100, 140, 180, 220};
-  assert(run()
-          .indexed(start: 1)
-          .where((each) => interesting.contains(each.index))
-          .map((each) => each.index * each.value)
-          .sum() ==
-      14360);
+  assert(
+    run()
+            .indexed(start: 1)
+            .where((each) => interesting.contains(each.index))
+            .map((each) => each.index * each.value)
+            .sum() ==
+        14360,
+  );
 
   // BGKAEREZ
-  assert(render() ==
-      '###...##..#..#..##..####.###..####.####.\n'
-          '#..#.#..#.#.#..#..#.#....#..#.#.......#.\n'
-          '###..#....##...#..#.###..#..#.###....#..\n'
-          '#..#.#.##.#.#..####.#....###..#.....#...\n'
-          '#..#.#..#.#.#..#..#.#....#.#..#....#....\n'
-          '###...###.#..#.#..#.####.#..#.####.####.\n');
+  assert(
+    render() ==
+        '###...##..#..#..##..####.###..####.####.\n'
+            '#..#.#..#.#.#..#..#.#....#..#.#.......#.\n'
+            '###..#....##...#..#.###..#..#.###....#..\n'
+            '#..#.#.##.#.#..####.#....###..#.....#...\n'
+            '#..#.#..#.#.#..#..#.#....#.#..#....#....\n'
+            '###...###.#..#.#..#.####.#..#.####.####.\n',
+  );
 }

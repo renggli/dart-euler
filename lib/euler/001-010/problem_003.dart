@@ -8,8 +8,8 @@ import 'package:more/math.dart';
 const value = 600851475143;
 
 void main() {
-  final factor = EratosthenesPrimeSieve(value.sqrt().ceil())
-      .primes
-      .lastWhere((each) => value % each == 0);
+  final factor = EratosthenesPrimeSieve(
+    value.sqrt().ceil(),
+  ).primes.lastWhere((each) => value % each == 0);
   assert(factor == 6857);
 }

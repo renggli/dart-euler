@@ -3,13 +3,21 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final data = File('lib/aoc/2023/dec_12.txt').readAsLinesSync().map((line) => (
-      springs: line.takeTo(' ').split(''),
-      damaged: line.skipTo(' ').split(',').map(int.parse).toList(),
-    ));
+final data = File('lib/aoc/2023/dec_12.txt').readAsLinesSync().map(
+  (line) => (
+    springs: line.takeTo(' ').split(''),
+    damaged: line.skipTo(' ').split(',').map(int.parse).toList(),
+  ),
+);
 
-int arrangements(List<String> springs, List<int> damaged,
-    [int s = 0, int d = 0, int l = 0, Map<(int, int, int), int>? cache]) {
+int arrangements(
+  List<String> springs,
+  List<int> damaged, [
+  int s = 0,
+  int d = 0,
+  int l = 0,
+  Map<(int, int, int), int>? cache,
+]) {
   // Check if we already computed the arrangement count at this position.
   final cacheKey = (s, d, l), cacheMap = cache ?? {};
   if (cacheMap.containsKey(cacheKey)) return cacheMap[cacheKey]!;
@@ -46,14 +54,18 @@ int arrangements(List<String> springs, List<int> damaged,
 int problem1() =>
     data.map((each) => arrangements(each.springs, each.damaged)).sum();
 
-int problem2() => data
-    .map((each) => arrangements(
-        repeat(each.springs, count: 5)
-            .separatedBy(() => ['?'])
-            .flatten()
-            .toList(),
-        each.damaged.repeat(count: 5).toList()))
-    .sum();
+int problem2() =>
+    data
+        .map(
+          (each) => arrangements(
+            repeat(
+              each.springs,
+              count: 5,
+            ).separatedBy(() => ['?']).flatten().toList(),
+            each.damaged.repeat(count: 5).toList(),
+          ),
+        )
+        .sum();
 
 void main() {
   assert(problem1() == 7670);

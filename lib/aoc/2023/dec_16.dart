@@ -5,9 +5,14 @@ import 'dart:math';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final data = File('lib/aoc/2023/dec_16.txt').readAsLinesSync().also((rows) =>
-    Matrix.fromPackedRows(DataType.string, rows.length, rows[0].length,
-        rows.expand((line) => line.split('')).toList()));
+final data = File('lib/aoc/2023/dec_16.txt').readAsLinesSync().also(
+  (rows) => Matrix.fromPackedRows(
+    DataType.string,
+    rows.length,
+    rows[0].length,
+    rows.expand((line) => line.split('')).toList(),
+  ),
+);
 
 typedef Beam = ({Point<int> pos, Point<int> dir});
 
@@ -45,7 +50,8 @@ int solve(Beam start) {
 
 int problem1() => solve(const (pos: Point(0, 0), dir: Point(0, 1)));
 
-int problem2() => [
+int problem2() =>
+    [
       for (var x = 0; x < data.rowCount; x++)
         (pos: Point(x, 0), dir: const Point(0, 1)),
       for (var x = 0; x < data.rowCount; x++)

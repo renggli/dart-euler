@@ -25,11 +25,19 @@ class Cell {
     }
   }
 
-  Cell min(Cell other) => Cell(math.min(x, other.x), math.min(y, other.y),
-      math.min(z, other.z), math.min(w, other.w));
+  Cell min(Cell other) => Cell(
+    math.min(x, other.x),
+    math.min(y, other.y),
+    math.min(z, other.z),
+    math.min(w, other.w),
+  );
 
-  Cell max(Cell other) => Cell(math.max(x, other.x), math.max(y, other.y),
-      math.max(z, other.z), math.max(w, other.w));
+  Cell max(Cell other) => Cell(
+    math.max(x, other.x),
+    math.max(y, other.y),
+    math.max(z, other.z),
+    math.max(w, other.w),
+  );
 
   @override
   bool operator ==(Object other) =>
@@ -43,15 +51,18 @@ class Cell {
   int get hashCode => Object.hash(x, y, z, w);
 }
 
-final initialState = File('lib/aoc/2020/dec_17.txt')
-    .readAsLinesSync()
-    .indexed()
-    .flatMap((row) => row.value
-        .split('')
+final initialState =
+    File('lib/aoc/2020/dec_17.txt')
+        .readAsLinesSync()
         .indexed()
-        .where((cell) => cell.value == '#')
-        .map((cell) => Cell(row.index, cell.index)))
-    .toSet();
+        .flatMap(
+          (row) => row.value
+              .split('')
+              .indexed()
+              .where((cell) => cell.value == '#')
+              .map((cell) => Cell(row.index, cell.index)),
+        )
+        .toSet();
 
 Set<Cell> step(Set<Cell> active, bool is4d) {
   final result = <Cell>{};
@@ -63,9 +74,10 @@ Set<Cell> step(Set<Cell> active, bool is4d) {
         for (var w = min.w - 1; w <= max.w + 1; w++) {
           final point = Cell(x, y, z, is4d ? w : 0);
           final isActive = active.contains(point);
-          final activeNeighbours = point.neighbours
-              .where((neighbour) => active.contains(neighbour))
-              .length;
+          final activeNeighbours =
+              point.neighbours
+                  .where((neighbour) => active.contains(neighbour))
+                  .length;
           if ((isActive && activeNeighbours.between(2, 3)) ||
               (!isActive && activeNeighbours == 3)) {
             result.add(point);

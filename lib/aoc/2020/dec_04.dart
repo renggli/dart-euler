@@ -5,10 +5,12 @@ import 'package:more/more.dart';
 final passports = File('lib/aoc/2020/dec_04.txt')
     .readAsStringSync()
     .split('\n\n')
-    .map((line) => line
-        .split(RegExp(r'\s+'))
-        .map((pair) => pair.split(':'))
-        .toMap(key: (list) => list[0], value: (list) => list[1]));
+    .map(
+      (line) => line
+          .split(RegExp(r'\s+'))
+          .map((pair) => pair.split(':'))
+          .toMap(key: (list) => list[0], value: (list) => list[1]),
+    );
 
 final validation = <String, bool Function(String data)>{
   // (Birth Year) - four digits; at least 1920 and at most 2002.
@@ -46,8 +48,9 @@ void main() {
     final isPassport = validation.keys.every(passport.containsKey);
     if (isPassport) {
       count++;
-      final isValid =
-          validation.entries.every((each) => each.value(passport[each.key]!));
+      final isValid = validation.entries.every(
+        (each) => each.value(passport[each.key]!),
+      );
       if (isValid) {
         valid++;
       }

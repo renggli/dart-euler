@@ -11,7 +11,7 @@ import 'package:more/math.dart';
 final comparator = naturalComparable<num>.lexicographical;
 
 void main() {
-  for (var x = 1;; x++) {
+  for (var x = 1; ; x++) {
     final xd = x.digits().toList()..sort();
     for (var n = 2; n <= 6; n++) {
       final nd = (n * x).digits().toList()..sort();

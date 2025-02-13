@@ -17,33 +17,43 @@ final numericKeypad = Matrix.fromRows(DataType.string, [
   ['7', '8', '9'],
   ['4', '5', '6'],
   ['1', '2', '3'],
-  [' ', '0', 'A']
+  [' ', '0', 'A'],
 ]);
 final directionalKeypad = Matrix.fromRows(DataType.string, [
   [' ', '^', 'A'],
-  ['<', 'v', '>']
+  ['<', 'v', '>'],
 ]);
 
-Point<int> findPosition(Matrix<String> keypad, String key) => keypad.rowMajor
-    .where((cell) => cell.value == key)
-    .map((cell) => Point(cell.row, cell.col))
-    .single;
+Point<int> findPosition(Matrix<String> keypad, String key) =>
+    keypad.rowMajor
+        .where((cell) => cell.value == key)
+        .map((cell) => Point(cell.row, cell.col))
+        .single;
 
 Iterable<String> findPaths(
-        Matrix<String> keypad, String source, String target) =>
-    dijkstraSearch(
-            startVertices: [findPosition(keypad, source)],
-            targetPredicate: (each) => keypad.get(each.x, each.y) == target,
-            successorsOf: (each) => directions.keys
-                .map((offset) => each + offset)
-                .where((each) =>
+  Matrix<String> keypad,
+  String source,
+  String target,
+) => dijkstraSearch(
+      startVertices: [findPosition(keypad, source)],
+      targetPredicate: (each) => keypad.get(each.x, each.y) == target,
+      successorsOf:
+          (each) => directions.keys
+              .map((offset) => each + offset)
+              .where(
+                (each) =>
                     keypad.isWithinBounds(each.x, each.y) &&
-                    keypad.get(each.x, each.y) != ' '),
-            includeAlternativePaths: true)
-        .map((path) => path.edges
-            .map((edge) => directions[edge.target - edge.source]!)
-            .join())
-        .map((path) => '${path}A');
+                    keypad.get(each.x, each.y) != ' ',
+              ),
+      includeAlternativePaths: true,
+    )
+    .map(
+      (path) =>
+          path.edges
+              .map((edge) => directions[edge.target - edge.source]!)
+              .join(),
+    )
+    .map((path) => '${path}A');
 
 final cache = <String, int>{};
 

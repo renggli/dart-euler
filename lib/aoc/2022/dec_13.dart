@@ -9,22 +9,28 @@ class PacketGrammar extends GrammarDefinition {
   Parser start() => ref0(value).end();
   Parser value() => ref0(number) | ref0(list);
   Parser number() => digit().plus().flatten().map(int.parse);
-  Parser list() =>
-      seq3(char('['), ref0(value).starSeparated(char(',')), char(']'))
-          .map3((_, value, __) => value.elements);
+  Parser list() => seq3(
+    char('['),
+    ref0(value).starSeparated(char(',')),
+    char(']'),
+  ).map3((_, value, __) => value.elements);
 }
 
 final parser = PacketGrammar().build();
 
-final input = File('lib/aoc/2022/dec_13.txt')
-    .readAsStringSync()
-    .split('\n\n')
-    .map((block) => block
-        .split('\n')
-        .map(parser.parse)
-        .map((result) => result.value)
-        .toList())
-    .toList();
+final input =
+    File('lib/aoc/2022/dec_13.txt')
+        .readAsStringSync()
+        .split('\n\n')
+        .map(
+          (block) =>
+              block
+                  .split('\n')
+                  .map(parser.parse)
+                  .map((result) => result.value)
+                  .toList(),
+        )
+        .toList();
 
 int compare(dynamic a, dynamic b) {
   if (a is int && b is int) {
@@ -49,20 +55,21 @@ int compare(dynamic a, dynamic b) {
   throw UnsupportedError('Not supposed to be here');
 }
 
-int problem1() => input
-    .indexed(start: 1)
-    .where((entry) => compare(entry.value.first, entry.value.last) < 0)
-    .map((entry) => entry.index)
-    .sum;
+int problem1() =>
+    input
+        .indexed(start: 1)
+        .where((entry) => compare(entry.value.first, entry.value.last) < 0)
+        .map((entry) => entry.index)
+        .sum;
 
 int problem2() {
   final markers = [
     [
-      [2]
+      [2],
     ],
     [
-      [6]
-    ]
+      [6],
+    ],
   ];
   final packages = [...input.flatten(), ...markers].sorted(compare);
   return (packages.indexOf(markers.first) + 1) *

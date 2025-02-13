@@ -58,8 +58,9 @@ final root = () {
         } else if (token[2] == '..') {
           current = current.parent!;
         } else {
-          current = current.children.firstWhere((each) => each.name == token[2])
-              as DirEntry;
+          current =
+              current.children.firstWhere((each) => each.name == token[2])
+                  as DirEntry;
         }
       } else if (token[1] == 'ls') {
         // nothing to do
@@ -78,18 +79,22 @@ final root = () {
 }();
 
 void main() {
-  assert(root.all
-          .whereType<DirEntry>()
-          .where((dir) => dir.size <= 100000)
-          .map((dir) => dir.size)
-          .sum() ==
-      919137);
+  assert(
+    root.all
+            .whereType<DirEntry>()
+            .where((dir) => dir.size <= 100000)
+            .map((dir) => dir.size)
+            .sum() ==
+        919137,
+  );
 
   final required = root.size - 70000000 + 30000000;
-  assert(root.all
-          .whereType<DirEntry>()
-          .map((dir) => dir.size)
-          .where((size) => size >= required)
-          .min() ==
-      2877389);
+  assert(
+    root.all
+            .whereType<DirEntry>()
+            .map((dir) => dir.size)
+            .where((size) => size >= required)
+            .min() ==
+        2877389,
+  );
 }

@@ -31,11 +31,12 @@ import 'package:more/collection.dart';
 // each polygonal type: triangle, square, pentagonal, hexagonal, heptagonal,
 // and octagonal, is represented by a different number in the set.
 
-List<int> generate4(int Function(int) callback) => iterate(0, (n) => n + 1)
-    .map(callback)
-    .skipWhile((value) => value <= 1000)
-    .takeWhile((value) => value <= 9999)
-    .toList();
+List<int> generate4(int Function(int) callback) =>
+    iterate(0, (n) => n + 1)
+        .map(callback)
+        .skipWhile((value) => value <= 1000)
+        .takeWhile((value) => value <= 9999)
+        .toList();
 
 final candidates = [
   generate4((n) => n * (n + 1) ~/ 2), // Triangle

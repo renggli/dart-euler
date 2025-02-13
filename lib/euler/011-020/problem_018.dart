@@ -33,14 +33,16 @@ final triangle = [
   [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
   [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
   [63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
-  [04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
+  [04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23],
 ];
 
 void main() {
   for (var row = triangle.length - 2; row >= 0; row--) {
     for (var col = 0; col < triangle[row].length; col++) {
-      triangle[row][col] = max(triangle[row][col] + triangle[row + 1][col],
-          triangle[row][col] + triangle[row + 1][col + 1]);
+      triangle[row][col] = max(
+        triangle[row][col] + triangle[row + 1][col],
+        triangle[row][col] + triangle[row + 1][col + 1],
+      );
     }
   }
   assert(triangle[0][0] == 1074);

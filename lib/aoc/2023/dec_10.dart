@@ -23,10 +23,12 @@ const directions = {
 List<Point<int>> getNeighbours(Point<int> point, {bool other = false}) =>
     (directions[data[point.x][point.y]] ?? [])
         .map((offset) => point + offset)
-        .where((neighbour) =>
-            neighbour.x.between(0, data.length - 1) &&
-            neighbour.y.between(0, data[point.x].length - 1) &&
-            (other || getNeighbours(neighbour, other: true).contains(point)))
+        .where(
+          (neighbour) =>
+              neighbour.x.between(0, data.length - 1) &&
+              neighbour.y.between(0, data[point.x].length - 1) &&
+              (other || getNeighbours(neighbour, other: true).contains(point)),
+        )
         .toList();
 
 final graph = () {

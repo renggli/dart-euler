@@ -37,8 +37,9 @@ const digits = 1000;
 
 void main() {
   final limit = BigInt.from(10).pow(digits - 1);
-  final count = fibonacci(BigInt.one, BigInt.one)
-      .takeWhile((v) => v < limit)
-      .fold<int>(1, (a, b) => a + 1);
+  final count = fibonacci(
+    BigInt.one,
+    BigInt.one,
+  ).takeWhile((v) => v < limit).fold<int>(1, (a, b) => a + 1);
   assert(count == 4782);
 }

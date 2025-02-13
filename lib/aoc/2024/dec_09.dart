@@ -5,9 +5,15 @@ import 'package:data/data.dart';
 import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_09.txt').readAsStringSync().trim();
-final blocks = input.split('').indexed().flatMap((each) => repeat(
-    each.index.isEven ? each.index ~/ 2 : null,
-    count: int.parse(each.value)));
+final blocks = input
+    .split('')
+    .indexed()
+    .flatMap(
+      (each) => repeat(
+        each.index.isEven ? each.index ~/ 2 : null,
+        count: int.parse(each.value),
+      ),
+    );
 
 int computeChecksum(List<int?> blocks) =>
     blocks.indexed().map((each) => each.index * (each.value ?? 0)).sum();

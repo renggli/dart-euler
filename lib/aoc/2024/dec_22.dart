@@ -30,8 +30,12 @@ int problem2() {
         .pairwise()
         .map((pair) => (pair.last, pair.last % 10 - pair.first % 10))
         .window(4)
-        .map((seq) =>
-            (seq.map((each) => each.last).join('*'), seq.last.first % 10))) {
+        .map(
+          (seq) => (
+            seq.map((each) => each.last).join('*'),
+            seq.last.first % 10,
+          ),
+        )) {
       if (sequences.add(key)) {
         sequenceValues.add(key, count);
       }

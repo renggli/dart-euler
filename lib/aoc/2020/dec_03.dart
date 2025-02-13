@@ -20,10 +20,12 @@ int countTrees(int slopeX, int slopeY) {
 
 void main() {
   assert(countTrees(3, 1) == 220);
-  assert(countTrees(1, 1) *
-          countTrees(3, 1) *
-          countTrees(5, 1) *
-          countTrees(7, 1) *
-          countTrees(1, 2) ==
-      2138320800);
+  assert(
+    countTrees(1, 1) *
+            countTrees(3, 1) *
+            countTrees(5, 1) *
+            countTrees(7, 1) *
+            countTrees(1, 2) ==
+        2138320800,
+  );
 }

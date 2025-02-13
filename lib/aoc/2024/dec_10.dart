@@ -4,13 +4,17 @@ import 'dart:math';
 import 'package:data/data.dart';
 
 final input = File('lib/aoc/2024/dec_10.txt').readAsStringSync();
-final grid = Matrix.fromString(DataType.int8, input,
-    columnSplitter: '',
-    converter: (input) => input == '.' ? -1 : int.parse(input));
-final starts = grid.rowMajor
-    .where((cell) => cell.value == 0)
-    .map((cell) => Point(cell.row, cell.col))
-    .toList();
+final grid = Matrix.fromString(
+  DataType.int8,
+  input,
+  columnSplitter: '',
+  converter: (input) => input == '.' ? -1 : int.parse(input),
+);
+final starts =
+    grid.rowMajor
+        .where((cell) => cell.value == 0)
+        .map((cell) => Point(cell.row, cell.col))
+        .toList();
 
 const directions = [Point(-1, 0), Point(1, 0), Point(0, -1), Point(0, 1)];
 

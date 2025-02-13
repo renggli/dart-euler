@@ -6,10 +6,10 @@ const outside = ' ';
 const empty = 'L';
 const occupied = '#';
 
-final values = File('lib/aoc/2020/dec_11.txt')
-    .readAsLinesSync()
-    .map((line) => line.split(''))
-    .toList();
+final values =
+    File(
+      'lib/aoc/2020/dec_11.txt',
+    ).readAsLinesSync().map((line) => line.split('')).toList();
 
 String seatAt(List<List<String>> input, int x, int y) =>
     0 <= x && x < input.length && 0 <= y && y < input[x].length
@@ -33,7 +33,7 @@ int indirectlyOccupied(List<List<String>> input, int x, int y) {
   for (final dx in [-1, 0, 1]) {
     for (final dy in [-1, 0, 1]) {
       if (!(dx == 0 && dy == 0)) {
-        for (var i = 1;; i++) {
+        for (var i = 1; ; i++) {
           final seat = seatAt(input, x + dx * i, y + dy * i);
           if (seat == outside || seat == empty) {
             break;
@@ -49,9 +49,10 @@ int indirectlyOccupied(List<List<String>> input, int x, int y) {
 }
 
 List<List<String>>? run(
-    List<List<String>> input,
-    int Function(List<List<String>>, int, int) occupancyCounter,
-    int maxOccupancy) {
+  List<List<String>> input,
+  int Function(List<List<String>>, int, int) occupancyCounter,
+  int maxOccupancy,
+) {
   var hasChanged = false;
   final output = input.map((row) => row.toList()).toList();
   for (var x = 0; x < input.length; x++) {

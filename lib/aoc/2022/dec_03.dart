@@ -19,24 +19,36 @@ extension on String {
 final input = File('lib/aoc/2022/dec_03.txt').readAsLinesSync();
 
 void main() {
-  final solution1 = input
-      .map((line) => [line.take(line.length ~/ 2), line.skip(line.length ~/ 2)]
-          .map((compartment) => compartment.split('').toSet())
-          .toList())
-      .map((compartments) => compartments[0]
-          .intersection(compartments[1])
-          .map((each) => each.priority)
-          .sum())
-      .sum();
+  final solution1 =
+      input
+          .map(
+            (line) =>
+                [
+                  line.take(line.length ~/ 2),
+                  line.skip(line.length ~/ 2),
+                ].map((compartment) => compartment.split('').toSet()).toList(),
+          )
+          .map(
+            (compartments) =>
+                compartments[0]
+                    .intersection(compartments[1])
+                    .map((each) => each.priority)
+                    .sum(),
+          )
+          .sum();
   assert(solution1 == 8185);
 
-  final solution2 = input
-      .map((line) => line.split('').toSet())
-      .chunked(3)
-      .map((group) => group
-          .reduce((a, b) => a.intersection(b))
-          .map((each) => each.priority)
-          .sum())
-      .sum();
+  final solution2 =
+      input
+          .map((line) => line.split('').toSet())
+          .chunked(3)
+          .map(
+            (group) =>
+                group
+                    .reduce((a, b) => a.intersection(b))
+                    .map((each) => each.priority)
+                    .sum(),
+          )
+          .sum();
   assert(solution2 == 2817);
 }

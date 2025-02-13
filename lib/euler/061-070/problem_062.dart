@@ -8,10 +8,11 @@
 // cube.
 void main() {
   final permutations = <String, List<int>>{};
-  for (var base = 1;; base++) {
+  for (var base = 1; ; base++) {
     final cube = base * base * base;
-    final key =
-        String.fromCharCodes(List.from(cube.toString().codeUnits)..sort());
+    final key = String.fromCharCodes(
+      List.from(cube.toString().codeUnits)..sort(),
+    );
     final values = permutations.putIfAbsent(key, () => <int>[])..add(cube);
     if (values.length == 5) {
       assert(values.first == 127035954683);

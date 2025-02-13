@@ -20,10 +20,10 @@ import 'package:more/math.dart';
 const power = 5;
 const upper = 200000;
 
-int sumOfDigitPowers(int number, int power) => number
-    .toString()
-    .codeUnits
-    .fold(0, (sum, each) => sum + (each - 48).pow(power).toInt());
+int sumOfDigitPowers(int number, int power) => number.toString().codeUnits.fold(
+  0,
+  (sum, each) => sum + (each - 48).pow(power).toInt(),
+);
 
 void main() {
   final sum = 2.to(upper).where((i) => sumOfDigitPowers(i, power) == i).sum();

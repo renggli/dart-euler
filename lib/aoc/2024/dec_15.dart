@@ -6,11 +6,12 @@ import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_15.txt').readAsStringSync().split('\n\n');
 final warehouse = input.first;
-final moves = input.last
-    .split('')
-    .map((char) => moveChars[char])
-    .whereType<Point<int>>()
-    .toList();
+final moves =
+    input.last
+        .split('')
+        .map((char) => moveChars[char])
+        .whereType<Point<int>>()
+        .toList();
 
 const robotChar = '@';
 const boxChar = 'O';
@@ -33,7 +34,10 @@ Point<int> findPoint(Matrix<String> grid, String char) => grid.rowMajor
 /// Try to move `start` in the given `direction`, return the possibly updated
 /// `start` position.
 Point<int> tryMove(
-    Matrix<String> grid, Point<int> start, Point<int> direction) {
+  Matrix<String> grid,
+  Point<int> start,
+  Point<int> direction,
+) {
   var currentMoves = {start};
   final allMoves = [currentMoves];
   final isUpDown = direction.x != 0;
@@ -41,13 +45,15 @@ Point<int> tryMove(
     final candidateMoves =
         currentMoves.map((point) => point + direction).toList();
     // A wall in the candidates is obstructing us.
-    if (candidateMoves
-        .any((point) => grid.getUnchecked(point.x, point.y) == wallChar)) {
+    if (candidateMoves.any(
+      (point) => grid.getUnchecked(point.x, point.y) == wallChar,
+    )) {
       return start;
     }
     // Everything in the candidates can be moved.
-    if (candidateMoves
-        .every((point) => grid.getUnchecked(point.x, point.y) == floorChar)) {
+    if (candidateMoves.every(
+      (point) => grid.getUnchecked(point.x, point.y) == floorChar,
+    )) {
       for (final source in allMoves.reversed.flatten()) {
         final sourceObj = grid.getUnchecked(source.x, source.y);
         final target = source + direction;
@@ -97,21 +103,25 @@ void run(Matrix<String> grid) {
 }
 
 int problem1() {
-  final grid =
-      Matrix.fromString(DataType.string, warehouse, columnSplitter: '');
+  final grid = Matrix.fromString(
+    DataType.string,
+    warehouse,
+    columnSplitter: '',
+  );
   run(grid);
   return gpsSum(grid, boxChar);
 }
 
 int problem2() {
   final grid = Matrix.fromString(
-      DataType.string,
-      warehouse
-          .replaceAll(wallChar, '$wallChar$wallChar')
-          .replaceAll(floorChar, '$floorChar$floorChar')
-          .replaceAll(boxChar, '$boxOpenChar$boxCloseChar')
-          .replaceAll(robotChar, '$robotChar$floorChar'),
-      columnSplitter: '');
+    DataType.string,
+    warehouse
+        .replaceAll(wallChar, '$wallChar$wallChar')
+        .replaceAll(floorChar, '$floorChar$floorChar')
+        .replaceAll(boxChar, '$boxOpenChar$boxCloseChar')
+        .replaceAll(robotChar, '$robotChar$floorChar'),
+    columnSplitter: '',
+  );
   run(grid);
   return gpsSum(grid, boxOpenChar);
 }

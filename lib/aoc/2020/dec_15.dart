@@ -2,15 +2,15 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final values = File('lib/aoc/2020/dec_15.txt')
-    .readAsStringSync()
-    .split(',')
-    .map(int.parse);
+final values = File(
+  'lib/aoc/2020/dec_15.txt',
+).readAsStringSync().split(',').map(int.parse);
 
 int run(int count) {
-  final lastSpoken = values
-      .indexed()
-      .toMap(key: (each) => each.value, value: (each) => each.index + 1);
+  final lastSpoken = values.indexed().toMap(
+    key: (each) => each.value,
+    value: (each) => each.index + 1,
+  );
   var lastValue = values.last;
   for (var i = values.length; i < count; i++) {
     final value =

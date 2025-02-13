@@ -8,23 +8,34 @@ final input = File('lib/aoc/2024/dec_24.txt').readAsLinesSync();
 
 final identifier = word().times(3).flatten();
 final boolean = pattern('01').map((char) => char == '1');
-final valueParser = seq3(identifier, char(':').trim(), boolean)
-    .map3((id, _, value) => MapEntry<String, Wire>(id, ValueWire(value)));
-final operation = [
-  string('AND').map((_) => Operation.and),
-  string('OR').map((_) => Operation.or),
-  string('XOR').map((_) => Operation.xor),
-].toChoiceParser();
-final operationParser = seq5(identifier, operation.trim(), identifier,
-        string('->').trim(), identifier)
-    .map5((a, op, b, __, c) =>
-        MapEntry<String, Wire>(c, OperationWire(a, op, b)));
+final valueParser = seq3(
+  identifier,
+  char(':').trim(),
+  boolean,
+).map3((id, _, value) => MapEntry<String, Wire>(id, ValueWire(value)));
+final operation =
+    [
+      string('AND').map((_) => Operation.and),
+      string('OR').map((_) => Operation.or),
+      string('XOR').map((_) => Operation.xor),
+    ].toChoiceParser();
+final operationParser = seq5(
+  identifier,
+  operation.trim(),
+  identifier,
+  string('->').trim(),
+  identifier,
+).map5((a, op, b, __, c) => MapEntry<String, Wire>(c, OperationWire(a, op, b)));
 final parser = [valueParser, operationParser].toChoiceParser();
 
 final wirePrinter = FixedNumberPrinter().padLeft(2, '0');
 final decimalPrinter = FixedNumberPrinter(padding: 20);
-final binaryPrinter =
-    FixedNumberPrinter(base: 2, padding: 64, separator: ' ', separatorWidth: 8);
+final binaryPrinter = FixedNumberPrinter(
+  base: 2,
+  padding: 64,
+  separator: ' ',
+  separatorWidth: 8,
+);
 
 final wires = input
     .where((line) => line.isNotEmpty)
@@ -33,13 +44,13 @@ final wires = input
     .also(Map.fromEntries);
 
 bool eval(String id) => switch (wires[id]!) {
-      ValueWire(value: final value) => value,
-      OperationWire(a: final a, op: final op, b: final b) => switch (op) {
-          Operation.and => eval(a) && eval(b),
-          Operation.or => eval(a) || eval(b),
-          Operation.xor => eval(a) != eval(b),
-        }
-    };
+  ValueWire(value: final value) => value,
+  OperationWire(a: final a, op: final op, b: final b) => switch (op) {
+    Operation.and => eval(a) && eval(b),
+    Operation.or => eval(a) || eval(b),
+    Operation.xor => eval(a) != eval(b),
+  },
+};
 
 void export() {
   final out = File('lib/aoc/2024/dec_24.dot').openWrite();
@@ -56,12 +67,16 @@ void export() {
           Operation.xor => '#ffffaa',
         };
         final idColor = id.startsWith('z') ? '#aaffaa' : '#ffffff';
-        out.writeln('  ${id}_op [label="$opName", fillcolor="$opColor", '
-            'style="filled", shape=box]');
+        out.writeln(
+          '  ${id}_op [label="$opName", fillcolor="$opColor", '
+          'style="filled", shape=box]',
+        );
         out.writeln('  $a -> ${id}_op');
         out.writeln('  $b -> ${id}_op');
-        out.writeln('  $id [label="$id", fillcolor="$idColor", '
-            'style="filled"]');
+        out.writeln(
+          '  $id [label="$id", fillcolor="$idColor", '
+          'style="filled"]',
+        );
         out.writeln('  ${id}_op -> $id');
     }
   }
