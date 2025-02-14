@@ -25,7 +25,7 @@ final operationParser = seq5(
   identifier,
   string('->').trim(),
   identifier,
-).map5((a, op, b, __, c) => MapEntry<String, Wire>(c, OperationWire(a, op, b)));
+).map5((a, op, b, _, c) => MapEntry<String, Wire>(c, OperationWire(a, op, b)));
 final parser = [valueParser, operationParser].toChoiceParser();
 
 final wirePrinter = FixedNumberPrinter().padLeft(2, '0');

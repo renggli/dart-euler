@@ -13,7 +13,7 @@ class PacketGrammar extends GrammarDefinition {
     char('['),
     ref0(value).starSeparated(char(',')),
     char(']'),
-  ).map3((_, value, __) => value.elements);
+  ).map3((_, value, _) => value.elements);
 }
 
 final parser = PacketGrammar().build();

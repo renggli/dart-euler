@@ -12,7 +12,7 @@ final mul = seq5(
   char(','),
   number,
   char(')'),
-).map5((_, a, __, b, ___) => (a, b));
+).map5((_, a, _, b, _) => (a, b));
 final enable = string('do()').map((_) => true);
 final disable = string('don\'t()').map((_) => false);
 

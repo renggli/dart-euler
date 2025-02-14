@@ -39,7 +39,7 @@ int run([int offset = 0]) =>
           input.target + Matrix.constant(DataType.integer, 2, 1, value: offset);
       final solution = input.buttons
           .solve(target)
-          .map((_, __, value) => value.round(), DataType.integer);
+          .map((_, _, value) => value.round(), DataType.integer);
       return (input.buttons * solution).compare(target)
           ? tokens.dot(solution.column(0))
           : 0;

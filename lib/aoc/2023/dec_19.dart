@@ -22,7 +22,7 @@ final workflowParser =
           workflowOperation.starSeparated(char(',')),
           char('}'),
         )
-        .map4((id, _, ops, __) => MapEntry(id, ops.elements))
+        .map4((id, _, ops, _) => MapEntry(id, ops.elements))
         .starSeparated(char('\n'))
         .map((list) => Map.fromEntries(list.elements))
         .end();
@@ -37,7 +37,7 @@ final ratingParser =
               .map((list) => Map.fromEntries(list.elements)),
           char('}'),
         )
-        .map3((_, value, __) => value)
+        .map3((_, value, _) => value)
         .starSeparated(char('\n'))
         .map((list) => list.elements)
         .end();
