@@ -1,12 +1,18 @@
 import 'dart:io';
 
+import 'package:characters/characters.dart';
+
 int run(String filename) {
-  final input = File(filename).readAsStringSync();
-  // TODO: solve the puzzle
-  return input.length;
+  var poop = 0, index = 0;
+  for (final line in File(filename).readAsLinesSync()) {
+    final characters = line.characters;
+    if (characters.elementAt(index % characters.length) == '💩') poop++;
+    index += 2;
+  }
+  return poop;
 }
 
 void main() {
-  print(run('lib/i18n/05-test.txt'));
-  print(run('lib/i18n/05-input.txt'));
+  assert(run('lib/i18n/05-test.txt') == 2);
+  assert(run('lib/i18n/05-input.txt') == 74);
 }
