@@ -16,6 +16,7 @@ dependencies:
   petitparser: ^6.0.0
   test: ^1.25.0
   timezone: ^0.10.0
+  string_normalizer: any
   z3: ^0.1.0
 dev_dependencies:
   lints: ^5.1.0
