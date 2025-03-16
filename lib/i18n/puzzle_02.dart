@@ -19,6 +19,6 @@ String run(String filename) {
 }
 
 void main() {
-  assert(run('lib/i18n/02-test.txt') == '2019-06-05T12:15:00+00:00');
-  assert(run('lib/i18n/02-input.txt') == '2020-10-25T01:30:00+00:00');
+  assert(run('lib/i18n/puzzle_02_test.txt') == '2019-06-05T12:15:00+00:00');
+  assert(run('lib/i18n/puzzle_02_input.txt') == '2020-10-25T01:30:00+00:00');
 }

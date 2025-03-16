@@ -59,9 +59,9 @@ String run(String filename) {
 }
 
 void main() {
-  assert(run('lib/i18n/09-test.txt') == 'Margot Peter');
+  assert(run('lib/i18n/puzzle_09_test.txt') == 'Margot Peter');
   assert(
-    run('lib/i18n/09-input.txt') ==
+    run('lib/i18n/puzzle_09_input.txt') ==
         'Amelia Amoura Hugo Jack Jakob Junior Mateo',
   );
 }

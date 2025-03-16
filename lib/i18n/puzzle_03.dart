@@ -12,6 +12,6 @@ bool isValid(String password) =>
 int run(String filename) => File(filename).readAsLinesSync().count(isValid);
 
 void main() {
-  assert(run('lib/i18n/03-test.txt') == 2);
-  assert(run('lib/i18n/03-input.txt') == 509);
+  assert(run('lib/i18n/puzzle_03_test.txt') == 2);
+  assert(run('lib/i18n/puzzle_03_input.txt') == 509);
 }

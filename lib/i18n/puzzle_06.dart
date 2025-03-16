@@ -24,13 +24,12 @@ int run(String filename) {
       (word) => regexp.stringMatch(word) != null,
     );
     if (index == -1) throw StateError(crossword);
-    print('$crossword: ${index + 1}');
     result += index + 1;
   }
   return result;
 }
 
 void main() {
-  assert(run('lib/i18n/06-test.txt') == 50);
-  assert(run('lib/i18n/06-input.txt') == 11252);
+  assert(run('lib/i18n/puzzle_06_test.txt') == 50);
+  assert(run('lib/i18n/puzzle_06_input.txt') == 11252);
 }

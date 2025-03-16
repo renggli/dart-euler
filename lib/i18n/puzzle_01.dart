@@ -24,6 +24,6 @@ int run(String filename) {
 }
 
 void main() {
-  assert(run('lib/i18n/01-test.txt') == 31);
-  assert(run('lib/i18n/01-input.txt') == 107989);
+  assert(run('lib/i18n/puzzle_01_test.txt') == 31);
+  assert(run('lib/i18n/puzzle_01_input.txt') == 107989);
 }

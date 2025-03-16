@@ -37,6 +37,6 @@ int run(String filename) {
 
 void main() async {
   await initializeTimeZone('data/latest_all.tzf');
-  assert(run('lib/i18n/07-test.txt') == 866);
-  assert(run('lib/i18n/07-input.txt') == 32152346);
+  assert(run('lib/i18n/puzzle_07_test.txt') == 866);
+  assert(run('lib/i18n/puzzle_07_input.txt') == 32152346);
 }

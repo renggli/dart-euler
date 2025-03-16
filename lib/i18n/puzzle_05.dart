@@ -13,6 +13,6 @@ int run(String filename) {
 }
 
 void main() {
-  assert(run('lib/i18n/05-test.txt') == 2);
-  assert(run('lib/i18n/05-input.txt') == 74);
+  assert(run('lib/i18n/puzzle_05_test.txt') == 2);
+  assert(run('lib/i18n/puzzle_05_input.txt') == 74);
 }
