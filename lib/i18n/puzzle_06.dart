@@ -20,9 +20,7 @@ int run(String filename) {
   var result = 0;
   for (final crossword in crosswords) {
     final regexp = RegExp('^${crossword.trim()}\$', unicode: true);
-    final index = dictionary.indexWhere(
-      (word) => regexp.stringMatch(word) != null,
-    );
+    final index = dictionary.indexWhere(regexp.hasMatch);
     if (index == -1) throw StateError(crossword);
     result += index + 1;
   }
