@@ -22,7 +22,7 @@ int problem1() =>
 
 String problem2() => graph
     .findCliques()
-    .max(comparator: delegateComparator((list) => list.length as num))
+    .max(comparator: keyOf((list) => list.length as num))
     .toSortedList()
     .join(',');
 

@@ -115,7 +115,7 @@ int run(String filename) {
   }
 
   final (:min, :max) = customers.minMax(
-    comparator: delegateComparator((customer) => customer.overtimeMinutes),
+    comparator: keyOf((customer) => customer.overtimeMinutes),
   );
   return max.overtimeMinutes - min.overtimeMinutes;
 }

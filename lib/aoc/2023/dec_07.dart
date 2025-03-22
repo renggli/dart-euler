@@ -74,11 +74,11 @@ final hands =
 int problem(String values, bool withJokers) => hands
     .sorted(
       explicitComparator(HandType.values)
-          .onResultOf<Hand>((hand) => handStrength(hand, withJokers))
+          .keyOf<Hand>((hand) => handStrength(hand, withJokers))
           .thenCompare(
             explicitComparator(
               values.split(''),
-            ).lexicographical.onResultOf<Hand>((hand) => hand.cards),
+            ).lexicographical.keyOf<Hand>((hand) => hand.cards),
           ),
     )
     .indexed(start: hands.length, step: -1)
