@@ -20,6 +20,7 @@ dependencies:
   test: ^1.25.0
   timezone: ^0.10.0
   z3: ^0.1.0
+  bits: any
 dev_dependencies:
   lints: ^5.1.0
 
