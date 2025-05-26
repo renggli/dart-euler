@@ -38,17 +38,16 @@ Iterable<Path<State, num>> search({bool includeAlternativePaths = false}) =>
           }
         }
       },
-      edgeCost:
-          (source, target) => source.dir == target.dir ? costMove : costRotate,
+      edgeCost: (source, target) =>
+          source.dir == target.dir ? costMove : costRotate,
       includeAlternativePaths: includeAlternativePaths,
     );
 
 int problem1() => search().first.cost.toInt();
 
-int problem2() =>
-    search(
-      includeAlternativePaths: true,
-    ).flatMap((path) => path.vertices.map((state) => state.pos)).toSet().length;
+int problem2() => search(
+  includeAlternativePaths: true,
+).flatMap((path) => path.vertices.map((state) => state.pos)).toSet().length;
 
 void main() {
   assert(problem1() == 130536);

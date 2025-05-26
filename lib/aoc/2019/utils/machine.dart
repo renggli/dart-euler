@@ -153,8 +153,9 @@ class Machine {
   /// Decodes a single parameter at the provided index.
   String decodeParam(int index, int param) {
     final mode = memory[index] ~/ addressModes[param]!;
-    final value =
-        index + param < memory.length ? '${memory[index + param]}' : '?';
+    final value = index + param < memory.length
+        ? '${memory[index + param]}'
+        : '?';
     switch (mode % addressModeMask) {
       case AddressMode.position:
         return '[$value]';

@@ -35,27 +35,23 @@ int run(String filename) {
   final english = sortedEntries(
     entries,
     language: 'en',
-    keyOf:
-        (entry) =>
-            UnicodeCharMatcher.letter()
-                .retainFrom(entry.family.replaceAll('Æ', 'ae'))
-                .toLowerCase(),
+    keyOf: (entry) => UnicodeCharMatcher.letter()
+        .retainFrom(entry.family.replaceAll('Æ', 'ae'))
+        .toLowerCase(),
   );
   final swedish = sortedEntries(
     entries,
     language: 'sv',
-    keyOf:
-        (entry) => UnicodeCharMatcher.letter().retainFrom(
-          entry.family.replaceAll('Æ', 'Ä').replaceAll('Ø', 'Ö'),
-        ),
+    keyOf: (entry) => UnicodeCharMatcher.letter().retainFrom(
+      entry.family.replaceAll('Æ', 'Ä').replaceAll('Ø', 'Ö'),
+    ),
   );
   final dutch = sortedEntries(
     entries,
     language: 'nl',
-    keyOf:
-        (entry) => entry.family.removePrefix(
-          entry.family.takeTo(UnicodeCharMatcher.letterUppercase()),
-        ),
+    keyOf: (entry) => entry.family.removePrefix(
+      entry.family.takeTo(UnicodeCharMatcher.letterUppercase()),
+    ),
   );
   final middle = entries.length ~/ 2;
   return english[middle].phone * swedish[middle].phone * dutch[middle].phone;

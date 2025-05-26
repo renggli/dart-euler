@@ -32,13 +32,10 @@ int run(
 
 void problem1(Map<int, int> memory, String mask, int address, int value) {
   final binaryValue = value.toRadixString(2).padLeft(bitSize, '0').split('');
-  final transformed =
-      binaryValue
-          .indexed()
-          .map(
-            (each) => mask[each.index] != 'X' ? mask[each.index] : each.value,
-          )
-          .join();
+  final transformed = binaryValue
+      .indexed()
+      .map((each) => mask[each.index] != 'X' ? mask[each.index] : each.value)
+      .join();
   memory[address] = int.parse(transformed, radix: 2);
 }
 

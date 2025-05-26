@@ -13,12 +13,11 @@ final valueParser = seq3(
   char(':').trim(),
   boolean,
 ).map3((id, _, value) => MapEntry<String, Wire>(id, ValueWire(value)));
-final operation =
-    [
-      string('AND').map((_) => Operation.and),
-      string('OR').map((_) => Operation.or),
-      string('XOR').map((_) => Operation.xor),
-    ].toChoiceParser();
+final operation = [
+  string('AND').map((_) => Operation.and),
+  string('OR').map((_) => Operation.or),
+  string('XOR').map((_) => Operation.xor),
+].toChoiceParser();
 final operationParser = seq5(
   identifier,
   operation.trim(),

@@ -3,10 +3,9 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final data =
-    File(
-      'lib/aoc/2023/dec_06.txt',
-    ).readAsLinesSync().map((line) => line.skipTo(RegExp(r':\s+'))).toList();
+final data = File(
+  'lib/aoc/2023/dec_06.txt',
+).readAsLinesSync().map((line) => line.skipTo(RegExp(r':\s+'))).toList();
 
 int getWins(int time, int distance) =>
     IntegerRange(time).count((held) => held * (time - held) > distance);

@@ -7,34 +7,32 @@ const down = Point(0, 1);
 const left = Point(-1, 1);
 const right = Point(1, 1);
 
-final lines =
-    File('lib/aoc/2022/dec_14.txt')
-        .readAsLinesSync()
-        .map(
-          (shape) =>
-              shape
-                  .split(' -> ')
-                  .map(
-                    (point) => point
-                        .split(',')
-                        .map(int.parse)
-                        .also((points) => Point(points.first, points.last)),
-                  )
-                  .toList(),
-        )
-        .toList();
-final rocks =
-    <Point>{}..also((data) {
-      for (final line in lines) {
-        for (final [start, stop] in line.window(2)) {
-          final delta = Point((stop.x - start.x).sign, (stop.y - start.y).sign);
-          for (var point = start; point != stop; point += delta) {
-            data.add(point);
-          }
-          data.add(stop);
+final lines = File('lib/aoc/2022/dec_14.txt')
+    .readAsLinesSync()
+    .map(
+      (shape) => shape
+          .split(' -> ')
+          .map(
+            (point) => point
+                .split(',')
+                .map(int.parse)
+                .also((points) => Point(points.first, points.last)),
+          )
+          .toList(),
+    )
+    .toList();
+final rocks = <Point>{}
+  ..also((data) {
+    for (final line in lines) {
+      for (final [start, stop] in line.window(2)) {
+        final delta = Point((stop.x - start.x).sign, (stop.y - start.y).sign);
+        for (var point = start; point != stop; point += delta) {
+          data.add(point);
         }
+        data.add(stop);
       }
-    });
+    }
+  });
 
 int problem1({Point<int> start = const Point(500, 0)}) {
   final heap = Map.fromIterables(rocks, repeat('#', count: rocks.length));

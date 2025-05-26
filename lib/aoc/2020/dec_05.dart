@@ -20,8 +20,9 @@ int getSeat(String input) {
   return row * 8 + col;
 }
 
-final seats =
-    File('lib/aoc/2020/dec_05.txt').readAsLinesSync().map(getSeat).toSet();
+final seats = File(
+  'lib/aoc/2020/dec_05.txt',
+).readAsLinesSync().map(getSeat).toSet();
 
 void main() {
   final maxSeat = seats.max();

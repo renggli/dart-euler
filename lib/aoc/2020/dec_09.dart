@@ -4,8 +4,9 @@ import 'package:data/stats.dart';
 import 'package:more/collection.dart';
 
 const size = 25;
-final values =
-    File('lib/aoc/2020/dec_09.txt').readAsLinesSync().map(int.parse).toList();
+final values = File(
+  'lib/aoc/2020/dec_09.txt',
+).readAsLinesSync().map(int.parse).toList();
 
 bool canSum(List<int> window, int value) {
   for (final a in window) {

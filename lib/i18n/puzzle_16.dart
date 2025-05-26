@@ -78,8 +78,8 @@ int solve(
   var bestSolve = -1, bestRotation = '';
   while (true) {
     final outgoing = connections[currentRotation]!
-      .map((delta) => delta + point)
-      .toList();
+        .map((delta) => delta + point)
+        .toList();
 
     var total = -1;
     for (final next in outgoing) {

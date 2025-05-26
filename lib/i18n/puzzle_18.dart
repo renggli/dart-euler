@@ -1,7 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
-import 'dart:math' as math;
 
 import 'package:more/char_matcher.dart';
 import 'package:more/collection.dart';
@@ -50,11 +47,11 @@ void adjustBidi(List elements, [int level = 0]) {
 
 int run(String filename) {
   final input = File(filename).readAsLinesSync();
-  for (var line in input) {
+  for (final line in input) {
     print('rex:  $line');
     print(' = ${evaluator.parse(asciiMatcher.retainFrom(line)).value}');
 
-    final parts = [];
+    final parts = <dynamic>[];
     final stack = [parts];
     for (final char in line.toList(unicode: true)) {
       if (char == RLI) {

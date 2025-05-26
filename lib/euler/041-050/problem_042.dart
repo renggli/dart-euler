@@ -1812,11 +1812,13 @@ final baseOffset = 'A'.codeUnitAt(0) - 1;
 int wordValue(String word) =>
     word.toUpperCase().codeUnits.map((each) => each - baseOffset).sum();
 
-final traingleNumbers =
-    IntegerRange(1000).map((value) => value * (value + 1) ~/ 2).toSet();
+final traingleNumbers = IntegerRange(
+  1000,
+).map((value) => value * (value + 1) ~/ 2).toSet();
 
 void main() {
-  final tally =
-      words.where((each) => traingleNumbers.contains(wordValue(each))).length;
+  final tally = words
+      .where((each) => traingleNumbers.contains(wordValue(each)))
+      .length;
   assert(tally == 162);
 }

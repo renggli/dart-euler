@@ -7,8 +7,10 @@ typedef Cube = ({int x, int y, int z});
 
 class Brick {
   factory Brick.fromString(int index, String input) {
-    final [x1, y1, z1, x2, y2, z2] =
-        input.split(CharMatcher.charSet(',~')).map(int.parse).toList();
+    final [x1, y1, z1, x2, y2, z2] = input
+        .split(CharMatcher.charSet(',~'))
+        .map(int.parse)
+        .toList();
     assert(x1 <= x2 && y1 <= y2 && z1 <= z2, 'coordinates not sorted');
     final cubes = <Cube>[];
     for (var x = x1; x <= x2; x++) {
@@ -39,10 +41,9 @@ class Brick {
   toString() => 'Blocks($index: ${cubes.join(', ')})';
 }
 
-final bricks =
-    File(
-      'lib/aoc/2023/dec_22.txt',
-    ).readAsLinesSync().mapIndexed(Brick.fromString).toList();
+final bricks = File(
+  'lib/aoc/2023/dec_22.txt',
+).readAsLinesSync().mapIndexed(Brick.fromString).toList();
 
 List<Brick> drop(List<Brick> bricks) {
   final blocked = <Cube>{};

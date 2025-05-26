@@ -8,21 +8,15 @@ final rules = input[0]
     .map((line) => line.split(': '))
     .toMap(
       key: (line) => line[0],
-      value:
-          (line) =>
-              line[1]
-                  .split(' | ')
-                  .map(
-                    (value) =>
-                        value
-                            .split(' ')
-                            .map(
-                              (value) =>
-                                  value.startsWith('"') ? value[1] : value,
-                            )
-                            .toList(),
-                  )
-                  .toList(),
+      value: (line) => line[1]
+          .split(' | ')
+          .map(
+            (value) => value
+                .split(' ')
+                .map((value) => value.startsWith('"') ? value[1] : value)
+                .toList(),
+          )
+          .toList(),
     );
 final messages = input[1].split('\n');
 

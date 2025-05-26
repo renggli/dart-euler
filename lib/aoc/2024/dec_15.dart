@@ -6,12 +6,11 @@ import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_15.txt').readAsStringSync().split('\n\n');
 final warehouse = input.first;
-final moves =
-    input.last
-        .split('')
-        .map((char) => moveChars[char])
-        .whereType<Point<int>>()
-        .toList();
+final moves = input.last
+    .split('')
+    .map((char) => moveChars[char])
+    .whereType<Point<int>>()
+    .toList();
 
 const robotChar = '@';
 const boxChar = 'O';
@@ -42,8 +41,9 @@ Point<int> tryMove(
   final allMoves = [currentMoves];
   final isUpDown = direction.x != 0;
   while (true) {
-    final candidateMoves =
-        currentMoves.map((point) => point + direction).toList();
+    final candidateMoves = currentMoves
+        .map((point) => point + direction)
+        .toList();
     // A wall in the candidates is obstructing us.
     if (candidateMoves.any(
       (point) => grid.getUnchecked(point.x, point.y) == wallChar,

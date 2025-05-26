@@ -12,13 +12,10 @@ bool verifyPassword(String password, String hash) => passwordCache.putIfAbsent(
 
 int run(String filename) {
   final input = File(filename).readAsStringSync();
-  final parts =
-      input
-          .split('\n\n')
-          .map(
-            (part) => part.split('\n').map((line) => line.split(' ')).toList(),
-          )
-          .toList();
+  final parts = input
+      .split('\n\n')
+      .map((part) => part.split('\n').map((line) => line.split(' ')).toList())
+      .toList();
   final passwords = parts.first.toMap(
     key: (line) => line[0],
     value: (line) => line[1],

@@ -9,14 +9,13 @@ final values = File('lib/aoc/2020/dec_07.txt')
     .map((each) => each.split(' contain '))
     .toMap(
       key: (each) => trimmer.trimTailingFrom(each[0]),
-      value:
-          (each) => each[1]
-              .split(', ')
-              .where((each) => !each.startsWith('no other bags'))
-              .toMap(
-                key: (each) => trimmer.trimTailingFrom(each.substring(2)),
-                value: (each) => int.parse(each[0]),
-              ),
+      value: (each) => each[1]
+          .split(', ')
+          .where((each) => !each.startsWith('no other bags'))
+          .toMap(
+            key: (each) => trimmer.trimTailingFrom(each.substring(2)),
+            value: (each) => int.parse(each[0]),
+          ),
     );
 
 void collectContainingBags(String start, Set<String> result) => values.entries

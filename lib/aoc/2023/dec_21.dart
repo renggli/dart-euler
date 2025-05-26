@@ -26,18 +26,17 @@ final start = matrix.rowMajor
 int problem1() {
   var gardens = <Point<int>>{start};
   for (var i = 1; i <= 64; i++) {
-    gardens =
-        gardens
-            .expand(
-              (source) => directions
-                  .map((offset) => source + offset)
-                  .where(
-                    (target) =>
-                        matrix.isWithinBounds(target.x, target.y) &&
-                        matrix.get(target.x, target.y) != '#',
-                  ),
-            )
-            .toSet();
+    gardens = gardens
+        .expand(
+          (source) => directions
+              .map((offset) => source + offset)
+              .where(
+                (target) =>
+                    matrix.isWithinBounds(target.x, target.y) &&
+                    matrix.get(target.x, target.y) != '#',
+              ),
+        )
+        .toSet();
   }
 
   return gardens.length;
@@ -57,17 +56,16 @@ int problem2() {
   var gardens = <Point<int>>{start};
   final xs = <int>[], ys = <int>[];
   for (var i = 1; xs.length < 3; i++) {
-    gardens =
-        gardens
-            .expand(
-              (source) => directions
-                  .map((offset) => source + offset)
-                  .where(
-                    (target) =>
-                        matrix.get(target.x % width, target.y % width) != '#',
-                  ),
-            )
-            .toSet();
+    gardens = gardens
+        .expand(
+          (source) => directions
+              .map((offset) => source + offset)
+              .where(
+                (target) =>
+                    matrix.get(target.x % width, target.y % width) != '#',
+              ),
+        )
+        .toSet();
     if ((i + half) % width == 0) {
       xs.add((i + half) ~/ width);
       ys.add(gardens.length);

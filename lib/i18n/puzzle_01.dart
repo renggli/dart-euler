@@ -10,14 +10,13 @@ int run(String filename) {
     final charSize = line.characters.length;
     final isSms = byteSize <= 160;
     final isTweet = charSize <= 140;
-    final price =
-        isSms && isTweet
-            ? 13
-            : isSms
-            ? 11
-            : isTweet
-            ? 7
-            : 0;
+    final price = isSms && isTweet
+        ? 13
+        : isSms
+        ? 11
+        : isTweet
+        ? 7
+        : 0;
     total += price;
   }
   return total;

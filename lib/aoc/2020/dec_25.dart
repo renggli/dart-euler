@@ -1,7 +1,8 @@
 import 'dart:io';
 
-final values =
-    File('lib/aoc/2020/dec_25.txt').readAsLinesSync().map(int.parse).toList();
+final values = File(
+  'lib/aoc/2020/dec_25.txt',
+).readAsLinesSync().map(int.parse).toList();
 
 int loopSize(int publicKey) {
   var value = 1;

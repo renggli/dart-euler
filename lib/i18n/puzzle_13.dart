@@ -11,17 +11,18 @@ const utf16d = Utf16Decoder();
 
 int run(String filename) {
   final parts = File(filename).readAsStringSync().split('\n\n');
-  final words =
-      parts[0].split('\n').map((line) {
-        final bytes =
-            line.chunked(2).map((each) => int.parse(each, radix: 16)).toList();
-        return [
-          latin1.decode(bytes, allowInvalid: true),
-          utf8.decode(bytes, allowMalformed: true),
-          utf16d.decodeUtf16Be(bytes),
-          utf16d.decodeUtf16Le(bytes),
-        ].where(letter.everyOf).toList();
-      }).toList();
+  final words = parts[0].split('\n').map((line) {
+    final bytes = line
+        .chunked(2)
+        .map((each) => int.parse(each, radix: 16))
+        .toList();
+    return [
+      latin1.decode(bytes, allowInvalid: true),
+      utf8.decode(bytes, allowMalformed: true),
+      utf16d.decodeUtf16Be(bytes),
+      utf16d.decodeUtf16Le(bytes),
+    ].where(letter.everyOf).toList();
+  }).toList();
   return parts[1]
       .split('\n')
       .map((line) => RegExp('^${line.trim()}\$', unicode: true))

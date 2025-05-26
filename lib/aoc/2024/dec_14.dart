@@ -9,18 +9,16 @@ final input = File('lib/aoc/2024/dec_14.txt').readAsLinesSync();
 const xMax = 101, yMax = 103;
 
 final digits = RegExp(r'[0-9-]+');
-final values =
-    input
-        .map(
-          (line) =>
-              digits
-                  .allMatches(line)
-                  .map((value) => int.parse(value[0]!))
-                  .window(2)
-                  .map((values) => Point(values.first, values.last))
-                  .toList(),
-        )
-        .toList();
+final values = input
+    .map(
+      (line) => digits
+          .allMatches(line)
+          .map((value) => int.parse(value[0]!))
+          .window(2)
+          .map((values) => Point(values.first, values.last))
+          .toList(),
+    )
+    .toList();
 final positions = values.map((values) => values.first).toList();
 final velocities = values.map((values) => values.last).toList();
 

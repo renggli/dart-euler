@@ -47,12 +47,11 @@ class Machine {
     _ip += 2;
   }
 
-  int _combo(int operand) =>
-      operand <= 3
-          ? operand // literal
-          : operand <= 6
-          ? registers[operand - 4] // register
-          : throw AssertionError('Invalid operand: $operand');
+  int _combo(int operand) => operand <= 3
+      ? operand // literal
+      : operand <= 6
+      ? registers[operand - 4] // register
+      : throw AssertionError('Invalid operand: $operand');
 
   static const registerA = 0;
   static const registerB = 1;

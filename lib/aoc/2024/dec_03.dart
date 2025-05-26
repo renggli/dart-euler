@@ -18,16 +18,15 @@ final disable = string('don\'t()').map((_) => false);
 
 int problem1() => mul.allMatches(input).map((pair) => pair.$1 * pair.$2).sum();
 
-int problem2() =>
-    (mul | enable | disable).allMatches(input).fold(
-      (true, 0),
-      (state, result) => switch (result) {
-        (final int a, final int b) when state.$1 => (true, state.$2 + a * b),
-        true => (true, state.$2),
-        false => (false, state.$2),
-        _ => state,
-      },
-    ).$2;
+int problem2() => (mul | enable | disable).allMatches(input).fold(
+  (true, 0),
+  (state, result) => switch (result) {
+    (final int a, final int b) when state.$1 => (true, state.$2 + a * b),
+    true => (true, state.$2),
+    false => (false, state.$2),
+    _ => state,
+  },
+).$2;
 
 void main() {
   assert(problem1() == 167650499);

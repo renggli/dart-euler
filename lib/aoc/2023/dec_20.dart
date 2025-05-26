@@ -27,12 +27,11 @@ final modules = File('lib/aoc/2023/dec_20.txt')
     .map((line) {
       final name = line.takeTo(' -> ').removePrefix(CharMatcher.charSet('%&'));
       final outgoing = line.skipTo(' -> ').split(', ');
-      final module =
-          line.startsWith('%')
-              ? FlipFlop(name, outgoing)
-              : line.startsWith('&')
-              ? Conjunction(name, outgoing)
-              : Module(name, outgoing);
+      final module = line.startsWith('%')
+          ? FlipFlop(name, outgoing)
+          : line.startsWith('&')
+          ? Conjunction(name, outgoing)
+          : Module(name, outgoing);
       return MapEntry(name, module);
     })
     .also(Map.fromEntries)

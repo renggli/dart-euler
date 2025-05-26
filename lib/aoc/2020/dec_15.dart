@@ -13,8 +13,9 @@ int run(int count) {
   );
   var lastValue = values.last;
   for (var i = values.length; i < count; i++) {
-    final value =
-        lastSpoken.containsKey(lastValue) ? i - lastSpoken[lastValue]! : 0;
+    final value = lastSpoken.containsKey(lastValue)
+        ? i - lastSpoken[lastValue]!
+        : 0;
     lastSpoken[lastValue] = i;
     lastValue = value;
   }

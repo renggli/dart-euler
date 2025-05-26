@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final values =
-    File('lib/aoc/2020/dec_10.txt').readAsLinesSync().map(int.parse).toList();
+final values = File(
+  'lib/aoc/2020/dec_10.txt',
+).readAsLinesSync().map(int.parse).toList();
 
 final cache = <int, int>{};
 
@@ -31,8 +32,10 @@ void main() {
     ..sort();
 
   // puzzle 1
-  final differences =
-      values.window(2).map((each) => each[1] - each[0]).toMultiset();
+  final differences = values
+      .window(2)
+      .map((each) => each[1] - each[0])
+      .toMultiset();
   assert(differences[1] * differences[3] == 1755);
 
   // puzzle 2

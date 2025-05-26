@@ -57,21 +57,20 @@ class Tile {
 }
 
 final title = RegExp(r'Tile (\d+):');
-final tiles =
-    File('lib/aoc/2020/dec_20.txt')
-        .readAsStringSync()
-        .split('\n\n')
-        .map((lines) => lines.split('\n'))
-        .map(
-          (lines) => Tile(
-            int.parse(title.matchAsPrefix(lines[0])!.group(1)!),
-            Matrix.fromRows(
-              DataType.string,
-              lines.sublist(1).map((row) => row.split('')).toList(),
-            ),
-          ),
-        )
-        .toList();
+final tiles = File('lib/aoc/2020/dec_20.txt')
+    .readAsStringSync()
+    .split('\n\n')
+    .map((lines) => lines.split('\n'))
+    .map(
+      (lines) => Tile(
+        int.parse(title.matchAsPrefix(lines[0])!.group(1)!),
+        Matrix.fromRows(
+          DataType.string,
+          lines.sublist(1).map((row) => row.split('')).toList(),
+        ),
+      ),
+    )
+    .toList();
 final monster = Matrix.fromRows(
   DataType.string,
   [

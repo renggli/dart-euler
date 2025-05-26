@@ -10,11 +10,10 @@ class Group {
 
   final Directory directory;
 
-  String get name =>
-      directory.path
-          .takeLastTo('/')
-          .replaceAll('_', ' ')
-          .toUpperCaseFirstCharacter();
+  String get name => directory.path
+      .takeLastTo('/')
+      .replaceAll('_', ' ')
+      .toUpperCaseFirstCharacter();
 
   Iterable<Group> get groups => directory
       .listSync()
@@ -35,12 +34,11 @@ class Problem {
 
   final File file;
 
-  String get name =>
-      file.path
-          .takeLastTo('/')
-          .removeSuffix('.dart')
-          .replaceAll('_', ' ')
-          .toUpperCaseFirstCharacter();
+  String get name => file.path
+      .takeLastTo('/')
+      .removeSuffix('.dart')
+      .replaceAll('_', ' ')
+      .toUpperCaseFirstCharacter();
 
   Future<ProcessResult> execute({List<String> arguments = const []}) =>
       Process.run(

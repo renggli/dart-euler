@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_07.txt').readAsLinesSync();
-final equations =
-    input
-        .map((line) => line.split(RegExp('[: ]+')).map(int.parse))
-        .map((line) => (result: line.first, values: line.skip(1).toList()))
-        .toList();
+final equations = input
+    .map((line) => line.split(RegExp('[: ]+')).map(int.parse))
+    .map((line) => (result: line.first, values: line.skip(1).toList()))
+    .toList();
 
 int add(int a, int b) => a + b;
 int mul(int a, int b) => a * b;

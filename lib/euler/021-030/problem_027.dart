@@ -39,8 +39,9 @@ int consecutivePrimes(int a, int b) {
 
 void main() {
   var mc = 0, mp = 0;
-  final bs =
-      EratosthenesPrimeSieve(limit).primes.takeWhile((x) => x < limit).toList();
+  final bs = EratosthenesPrimeSieve(
+    limit,
+  ).primes.takeWhile((x) => x < limit).toList();
   for (var a = -limit; a <= limit; a++) {
     for (final b in bs) {
       final c = consecutivePrimes(a, b);

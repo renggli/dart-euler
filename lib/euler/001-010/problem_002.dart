@@ -23,7 +23,9 @@ Iterable<int> fibonacci(int n0, int n1) sync* {
 const max = 4000000;
 
 void main() {
-  final sum =
-      fibonacci(1, 2).takeWhile((v) => v < max).where((v) => v.isEven).sum();
+  final sum = fibonacci(
+    1,
+    2,
+  ).takeWhile((v) => v < max).where((v) => v.isEven).sum();
   assert(sum == 4613732);
 }

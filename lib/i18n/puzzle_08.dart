@@ -5,10 +5,9 @@ import 'package:more/more.dart';
 final vowel = CharMatcher.pattern('aeiou');
 
 bool isValid(String password) {
-  final letters =
-      UnicodeCharMatcher.letter()
-          .retainFrom(password.normalize(form: NormalizationForm.nfd))
-          .toLowerCase();
+  final letters = UnicodeCharMatcher.letter()
+      .retainFrom(password.normalize(form: NormalizationForm.nfd))
+      .toLowerCase();
   return password.length.between(4, 12) &&
       UnicodeCharMatcher.numberDecimalDigit().countIn(password) >= 1 &&
       vowel.countIn(letters) >= 1 &&

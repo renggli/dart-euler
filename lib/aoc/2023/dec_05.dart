@@ -6,37 +6,27 @@ import 'package:more/more.dart';
 typedef Range = ({int start, int end});
 typedef Mapping = ({int target, int source, int length});
 
-final data =
-    File('lib/aoc/2023/dec_05.txt')
-        .readAsStringSync()
-        .split('\n\n')
-        .map(
-          (block) =>
-              block
-                  .skipTo(RegExp(r':\s+'))
-                  .split(RegExp(r'\s+'))
-                  .map(int.parse)
-                  .toList(),
-        )
-        .toList();
+final data = File('lib/aoc/2023/dec_05.txt')
+    .readAsStringSync()
+    .split('\n\n')
+    .map(
+      (block) => block
+          .skipTo(RegExp(r':\s+'))
+          .split(RegExp(r'\s+'))
+          .map(int.parse)
+          .toList(),
+    )
+    .toList();
 final initialSeeds = data[0];
-final mappings =
-    data
-        .skip(1)
-        .map(
-          (block) =>
-              block
-                  .chunked(3)
-                  .map(
-                    (each) => (
-                      target: each[0],
-                      source: each[1],
-                      length: each[2],
-                    ),
-                  )
-                  .toList(),
-        )
-        .toList();
+final mappings = data
+    .skip(1)
+    .map(
+      (block) => block
+          .chunked(3)
+          .map((each) => (target: each[0], source: each[1], length: each[2]))
+          .toList(),
+    )
+    .toList();
 
 List<Range> transform(List<Range> ranges, List<Mapping> mappings) {
   final result = <Range>[];

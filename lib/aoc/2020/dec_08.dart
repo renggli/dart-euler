@@ -64,8 +64,9 @@ int switchNopJmp(List<Code> codes) {
   throw StateError('No terminating mutation found.');
 }
 
-final codes =
-    File('lib/aoc/2020/dec_08.txt').readAsLinesSync().map(Code.parse).toList();
+final codes = File(
+  'lib/aoc/2020/dec_08.txt',
+).readAsLinesSync().map(Code.parse).toList();
 
 void main() {
   assert(run(State(), codes).acc == 2034);

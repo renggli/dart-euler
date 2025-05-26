@@ -54,18 +54,17 @@ int arrangements(
 int problem1() =>
     data.map((each) => arrangements(each.springs, each.damaged)).sum();
 
-int problem2() =>
-    data
-        .map(
-          (each) => arrangements(
-            repeat(
-              each.springs,
-              count: 5,
-            ).separatedBy(() => ['?']).flatten().toList(),
-            each.damaged.repeat(count: 5).toList(),
-          ),
-        )
-        .sum();
+int problem2() => data
+    .map(
+      (each) => arrangements(
+        repeat(
+          each.springs,
+          count: 5,
+        ).separatedBy(() => ['?']).flatten().toList(),
+        each.damaged.repeat(count: 5).toList(),
+      ),
+    )
+    .sum();
 
 void main() {
   assert(problem1() == 7670);

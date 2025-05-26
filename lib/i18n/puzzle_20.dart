@@ -80,25 +80,29 @@ int run(String filename) {
   final utf16le = Utf16Decoder().decodeUtf16Le(bytes);
   print('utf16le: $utf16le');
 
-  final runes =
-      utf16le.runes
-          .map((value) => value.toRadixString(16).padLeft(5, '0'))
-          .join();
+  final runes = utf16le.runes
+      .map((value) => value.toRadixString(16).padLeft(5, '0'))
+      .join();
   print('runes: $runes');
 
-  final regrouped =
-      runes.chunked(2).map((each) => int.parse(each, radix: 16)).toList();
+  final regrouped = runes
+      .chunked(2)
+      .map((each) => int.parse(each, radix: 16))
+      .toList();
   print('regrouped: $regrouped');
 
   final utf8long = decoded(regrouped);
   print('utf8long: $utf8long');
 
-  final runes2 =
-      utf8long.map((value) => value.toRadixString(16).padLeft(7, '0')).join();
+  final runes2 = utf8long
+      .map((value) => value.toRadixString(16).padLeft(7, '0'))
+      .join();
   print('runes2: $runes2');
 
-  final regrouped2 =
-      runes2.chunked(2).map((value) => int.parse(value, radix: 16)).toList();
+  final regrouped2 = runes2
+      .chunked(2)
+      .map((value) => int.parse(value, radix: 16))
+      .toList();
   print('regrouped2: $regrouped2');
 
   print(utf8.decode(regrouped2, allowMalformed: true));

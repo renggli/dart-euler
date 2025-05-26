@@ -5,23 +5,22 @@ import 'package:data/data.dart';
 import 'package:more/more.dart';
 import 'package:z3/z3.dart';
 
-final stones =
-    File('lib/aoc/2023/dec_24.txt')
-        .readAsLinesSync()
-        .map((line) => line.partition(' @ '))
-        .map(
-          (part) => (
-            p: Vector.fromIterable(
-              DataType.float,
-              part[0].split(', ').map(double.parse),
-            ),
-            v: Vector.fromIterable(
-              DataType.float,
-              part[2].split(', ').map(double.parse),
-            ),
-          ),
-        )
-        .toList();
+final stones = File('lib/aoc/2023/dec_24.txt')
+    .readAsLinesSync()
+    .map((line) => line.partition(' @ '))
+    .map(
+      (part) => (
+        p: Vector.fromIterable(
+          DataType.float,
+          part[0].split(', ').map(double.parse),
+        ),
+        v: Vector.fromIterable(
+          DataType.float,
+          part[2].split(', ').map(double.parse),
+        ),
+      ),
+    )
+    .toList();
 
 double intersection2D(
   Vector<double> a1,

@@ -14,19 +14,20 @@ int run(String filename) {
     final date = DateTime.parse(parts[0]);
     final offset = Duration(hours: int.parse(parts[0].substring(23, 26)));
     final halifaxOffset = Duration(
-      milliseconds:
-          halifaxTimezone.timeZone(date.millisecondsSinceEpoch).offset,
+      milliseconds: halifaxTimezone
+          .timeZone(date.millisecondsSinceEpoch)
+          .offset,
     );
     final santiagoOffset = Duration(
-      milliseconds:
-          santiagoTimezone.timeZone(date.millisecondsSinceEpoch).offset,
+      milliseconds: santiagoTimezone
+          .timeZone(date.millisecondsSinceEpoch)
+          .offset,
     );
-    final tzDate =
-        offset == halifaxOffset
-            ? TZDateTime.parse(halifaxTimezone, parts[0])
-            : offset == santiagoOffset
-            ? TZDateTime.parse(santiagoTimezone, parts[0])
-            : throw StateError('Invalid input: ${parts[0]}');
+    final tzDate = offset == halifaxOffset
+        ? TZDateTime.parse(halifaxTimezone, parts[0])
+        : offset == santiagoOffset
+        ? TZDateTime.parse(santiagoTimezone, parts[0])
+        : throw StateError('Invalid input: ${parts[0]}');
     final corrected = tzDate
         .add(-Duration(minutes: int.parse(parts[2])))
         .add(Duration(minutes: int.parse(parts[1])));

@@ -5,10 +5,9 @@ import 'utils/inputs.dart';
 import 'utils/machine.dart';
 import 'utils/outputs.dart';
 
-final memory =
-    File(
-      'lib/aoc/2019/dec_19.txt',
-    ).readAsStringSync().split(',').map(int.parse).toList();
+final memory = File(
+  'lib/aoc/2019/dec_19.txt',
+).readAsStringSync().split(',').map(int.parse).toList();
 
 bool isTractorBeam(Point<int> point) {
   final input = ListInput([point.x, point.y]), output = ListOutput();

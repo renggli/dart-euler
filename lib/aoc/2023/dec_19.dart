@@ -60,11 +60,10 @@ String eval(String state, Map<String, int> rating) {
   return state;
 }
 
-int problem1() =>
-    ratings
-        .where((rating) => eval('in', rating) == 'A')
-        .map((rating) => rating.values.sum())
-        .sum();
+int problem1() => ratings
+    .where((rating) => eval('in', rating) == 'A')
+    .map((rating) => rating.values.sum())
+    .sum();
 
 int count(String state, Map<String, List<int>> rating) {
   final total = rating.values.map((each) => each.length).product();

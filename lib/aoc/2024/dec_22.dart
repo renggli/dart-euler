@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final input =
-    File('lib/aoc/2024/dec_22.txt').readAsLinesSync().map(int.parse).toList();
+final input = File(
+  'lib/aoc/2024/dec_22.txt',
+).readAsLinesSync().map(int.parse).toList();
 
 int next(int value) {
   final step1 = (value ^ value * 64) % 16777216;
@@ -25,17 +26,16 @@ int problem2() {
   final sequenceValues = Multiset<String>();
   for (final start in input) {
     final sequences = <String>{};
-    for (final (key, count) in generate(start)
-        .take(2000)
-        .pairwise()
-        .map((pair) => (pair.last, pair.last % 10 - pair.first % 10))
-        .window(4)
-        .map(
-          (seq) => (
-            seq.map((each) => each.last).join('*'),
-            seq.last.first % 10,
-          ),
-        )) {
+    for (final (key, count)
+        in generate(start)
+            .take(2000)
+            .pairwise()
+            .map((pair) => (pair.last, pair.last % 10 - pair.first % 10))
+            .window(4)
+            .map(
+              (seq) =>
+                  (seq.map((each) => each.last).join('*'), seq.last.first % 10),
+            )) {
       if (sequences.add(key)) {
         sequenceValues.add(key, count);
       }

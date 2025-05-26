@@ -13,26 +13,23 @@ final rules = SetMultimap.fromEntries(
       .map((line) => line.split('|').map(int.parse).toList())
       .map((pair) => MapEntry(pair.first, pair.last)),
 );
-final updates =
-    rulesAndUpdates.last
-        .split('\n')
-        .map((line) => line.split(',').map(int.parse).toList())
-        .toList();
+final updates = rulesAndUpdates.last
+    .split('\n')
+    .map((line) => line.split(',').map(int.parse).toList())
+    .toList();
 
 int comparator(int a, int b) => rules.containsEntry(a, b) ? -1 : 1;
 
-int problem1() =>
-    updates
-        .where(comparator.isStrictlyOrdered)
-        .map((update) => update[update.length ~/ 2])
-        .sum();
+int problem1() => updates
+    .where(comparator.isStrictlyOrdered)
+    .map((update) => update[update.length ~/ 2])
+    .sum();
 
-int problem2() =>
-    updates
-        .whereNot(comparator.isStrictlyOrdered)
-        .map((update) => update.sorted(comparator))
-        .map((update) => update[update.length ~/ 2])
-        .sum();
+int problem2() => updates
+    .whereNot(comparator.isStrictlyOrdered)
+    .map((update) => update.sorted(comparator))
+    .map((update) => update[update.length ~/ 2])
+    .sum();
 
 void main() {
   assert(problem1() == 3608);

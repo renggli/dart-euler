@@ -22,11 +22,10 @@ void main() {
   assert(
     groups
             .map(
-              (group) =>
-                  group
-                      .reduce((a, b) => a.intersection(b))
-                      .map((a) => a.length)
-                      .sum(),
+              (group) => group
+                  .reduce((a, b) => a.intersection(b))
+                  .map((a) => a.length)
+                  .sum(),
             )
             .sum() ==
         3137,

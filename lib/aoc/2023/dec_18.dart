@@ -17,11 +17,10 @@ int area(Iterable<Point<int>> points) =>
     2;
 
 // https://en.wikipedia.org/wiki/Taxicab_geometry
-int border(Iterable<Point<int>> points) =>
-    points
-        .window(2)
-        .map((p) => (p[1].x - p[0].x).abs() + (p[1].y - p[0].y).abs())
-        .sum();
+int border(Iterable<Point<int>> points) => points
+    .window(2)
+    .map((p) => (p[1].x - p[0].x).abs() + (p[1].y - p[0].y).abs())
+    .sum();
 
 int solve(Point<int> Function(Match) direction, int Function(Match) count) {
   final points = data.map((line) => regex.matchAsPrefix(line)!).fold([

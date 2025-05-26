@@ -18,19 +18,17 @@ class PacketGrammar extends GrammarDefinition {
 
 final parser = PacketGrammar().build();
 
-final input =
-    File('lib/aoc/2022/dec_13.txt')
-        .readAsStringSync()
-        .split('\n\n')
-        .map(
-          (block) =>
-              block
-                  .split('\n')
-                  .map(parser.parse)
-                  .map((result) => result.value)
-                  .toList(),
-        )
-        .toList();
+final input = File('lib/aoc/2022/dec_13.txt')
+    .readAsStringSync()
+    .split('\n\n')
+    .map(
+      (block) => block
+          .split('\n')
+          .map(parser.parse)
+          .map((result) => result.value)
+          .toList(),
+    )
+    .toList();
 
 int compare(dynamic a, dynamic b) {
   if (a is int && b is int) {
@@ -55,12 +53,11 @@ int compare(dynamic a, dynamic b) {
   throw UnsupportedError('Not supposed to be here');
 }
 
-int problem1() =>
-    input
-        .indexed(start: 1)
-        .where((entry) => compare(entry.value.first, entry.value.last) < 0)
-        .map((entry) => entry.index)
-        .sum;
+int problem1() => input
+    .indexed(start: 1)
+    .where((entry) => compare(entry.value.first, entry.value.last) < 0)
+    .map((entry) => entry.index)
+    .sum;
 
 int problem2() {
   final markers = [

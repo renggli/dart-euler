@@ -22,24 +22,21 @@ void printBlock(List<List<int>> block) {
 }
 
 int run(String filename) {
-  final blocks =
-      File(filename)
-          .readAsStringSync()
-          .split('\n\n')
-          .map(
-            (block) =>
-                block
-                    .split('\n')
-                    .map(
-                      (line) =>
-                          line
-                              .chunked(2)
-                              .map((byte) => int.parse(byte, radix: 16))
-                              .toList(),
-                    )
-                    .toList(),
-          )
-          .toList();
+  final blocks = File(filename)
+      .readAsStringSync()
+      .split('\n\n')
+      .map(
+        (block) => block
+            .split('\n')
+            .map(
+              (line) => line
+                  .chunked(2)
+                  .map((byte) => int.parse(byte, radix: 16))
+                  .toList(),
+            )
+            .toList(),
+      )
+      .toList();
 
   // identify the upper left corner
   final upperLeft = blocks.singleWhere(
@@ -65,5 +62,5 @@ int run(String filename) {
 
 void main() {
   print(run('lib/i18n/puzzle_17_test.txt'));
- //  print(run('lib/i18n/puzzle_17_input.txt'));
+  //  print(run('lib/i18n/puzzle_17_input.txt'));
 }

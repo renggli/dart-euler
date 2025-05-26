@@ -16,15 +16,14 @@ final session = File('bin/.session').also((file) {
 
 final now = DateTime.now().truncateTo(TimeUnit.day);
 final dateFormatter = DateTimePrinter.date();
-final argParser =
-    ArgParser()
-      ..addFlag('help', abbr: '?', hide: true)
-      ..addOption(
-        'date',
-        abbr: 'd',
-        defaultsTo: dateFormatter.print(now),
-        help: 'date in the format YYYY-MM-DD',
-      );
+final argParser = ArgParser()
+  ..addFlag('help', abbr: '?', hide: true)
+  ..addOption(
+    'date',
+    abbr: 'd',
+    defaultsTo: dateFormatter.print(now),
+    help: 'date in the format YYYY-MM-DD',
+  );
 
 void printUsage() {
   stdout.writeln('Usage: aoc [options]');

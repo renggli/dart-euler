@@ -5,10 +5,9 @@ import 'package:petitparser/petitparser.dart';
 
 // Parser for Japanese numbers.
 
-Parser<T> mappedParser<T>(Map<String, T> mapping) =>
-    mapping.entries
-        .map((entry) => char(entry.key).map((_) => entry.value))
-        .toChoiceParser();
+Parser<T> mappedParser<T>(Map<String, T> mapping) => mapping.entries
+    .map((entry) => char(entry.key).map((_) => entry.value))
+    .toChoiceParser();
 
 Parser<int> japaneseCombiner(Parser<int> a, Parser<int> b) => [
   seq2(a, b).map2((a, b) => a * b),
@@ -45,36 +44,33 @@ final japaneseNumber = japaneseCombiner(
 
 const shaku = 10 / 33;
 
-final japaneseLength =
-    seq2(
-      japaneseNumber,
-      mappedParser({
-        '尺': shaku, // 1 Shaku (尺) = 10/33 m
-        '間': 6 * shaku, // 1 Ken (間) = 6 Shaku (尺)
-        '丈': 10 * shaku, // 1 Jo (丈) = 10 Shaku (尺)
-        '町': 360 * shaku, // 1 Cho (町) = 360 Shaku (尺)
-        '里': 12960 * shaku, // 1 Ri (里) = 12960 Shaku (尺)
-        '毛': shaku / 10000, // 10,000 Mo (毛) = 1 Shaku (尺)
-        '厘': shaku / 1000, // 1000 Rin (厘) = 1 Shaku (尺)
-        '分': shaku / 100, // 100 Bu (分) = 1 Shaku (尺)
-        '寸': shaku / 10, // 10 Sun (寸) = 1 Shaku (尺)
-      }),
-    ).map2((a, b) => a * b).end();
+final japaneseLength = seq2(
+  japaneseNumber,
+  mappedParser({
+    '尺': shaku, // 1 Shaku (尺) = 10/33 m
+    '間': 6 * shaku, // 1 Ken (間) = 6 Shaku (尺)
+    '丈': 10 * shaku, // 1 Jo (丈) = 10 Shaku (尺)
+    '町': 360 * shaku, // 1 Cho (町) = 360 Shaku (尺)
+    '里': 12960 * shaku, // 1 Ri (里) = 12960 Shaku (尺)
+    '毛': shaku / 10000, // 10,000 Mo (毛) = 1 Shaku (尺)
+    '厘': shaku / 1000, // 1000 Rin (厘) = 1 Shaku (尺)
+    '分': shaku / 100, // 100 Bu (分) = 1 Shaku (尺)
+    '寸': shaku / 10, // 10 Sun (寸) = 1 Shaku (尺)
+  }),
+).map2((a, b) => a * b).end();
 
 // Actual Puzzle.
 
-int run(String filename) =>
-    File(filename)
-        .readAsLinesSync()
-        .map(
-          (line) =>
-              line
-                  .split(' × ')
-                  .map((part) => japaneseLength.parse(part).value)
-                  .product(),
-        )
-        .sum()
-        .round();
+int run(String filename) => File(filename)
+    .readAsLinesSync()
+    .map(
+      (line) => line
+          .split(' × ')
+          .map((part) => japaneseLength.parse(part).value)
+          .product(),
+    )
+    .sum()
+    .round();
 
 void main() {
   for (final (input, expected) in [

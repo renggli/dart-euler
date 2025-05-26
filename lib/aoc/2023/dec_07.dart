@@ -64,12 +64,11 @@ HandType handStrength(Hand hand, bool withJokers) {
   throw StateError('Invalid strength: $hand');
 }
 
-final hands =
-    File('lib/aoc/2023/dec_07.txt')
-        .readAsLinesSync()
-        .map((line) => line.split(RegExp(r'\s+')).toList())
-        .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
-        .toList();
+final hands = File('lib/aoc/2023/dec_07.txt')
+    .readAsLinesSync()
+    .map((line) => line.split(RegExp(r'\s+')).toList())
+    .map((pair) => (cards: pair[0].split(''), bid: int.parse(pair[1])))
+    .toList();
 
 int problem(String values, bool withJokers) => hands
     .sorted(

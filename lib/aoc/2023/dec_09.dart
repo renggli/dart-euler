@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:data/data.dart';
 
-final data =
-    File('lib/aoc/2023/dec_09.txt')
-        .readAsLinesSync()
-        .map((each) => each.split(' ').map(int.parse).toList())
-        .toList();
+final data = File('lib/aoc/2023/dec_09.txt')
+    .readAsLinesSync()
+    .map((each) => each.split(' ').map(int.parse).toList())
+    .toList();
 
 List<int> diff(List<int> input) =>
     List.generate(input.length - 1, (i) => input[i + 1] - input[i]);

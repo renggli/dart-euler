@@ -25,20 +25,21 @@ const slopes = {
 Graph<Point<int>, int> buildGraph(
   Matrix<String> matrix, {
   required bool withSlopes,
-}) => GraphFactory<Point<int>, int>(
-  isDirected: true,
-  edgeProvider: constantFunction2(1),
-).fromSuccessorFunction([start], (vertex) {
-  final type = matrix.get(vertex.x, vertex.y);
-  if (withSlopes && slopes[type] != null) return [vertex + slopes[type]!];
-  return slopes.values
-      .map((offset) => vertex + offset)
-      .where(
-        (point) =>
-            matrix.isWithinBounds(point.x, point.y) &&
-            matrix.get(point.x, point.y) != '#',
-      );
-});
+}) =>
+    GraphFactory<Point<int>, int>(
+      isDirected: true,
+      edgeProvider: constantFunction2(1),
+    ).fromSuccessorFunction([start], (vertex) {
+      final type = matrix.get(vertex.x, vertex.y);
+      if (withSlopes && slopes[type] != null) return [vertex + slopes[type]!];
+      return slopes.values
+          .map((offset) => vertex + offset)
+          .where(
+            (point) =>
+                matrix.isWithinBounds(point.x, point.y) &&
+                matrix.get(point.x, point.y) != '#',
+          );
+    });
 
 Graph<Point<int>, int> compress(
   Graph<Point<int>, int> graph,

@@ -51,18 +51,17 @@ class Cell {
   int get hashCode => Object.hash(x, y, z, w);
 }
 
-final initialState =
-    File('lib/aoc/2020/dec_17.txt')
-        .readAsLinesSync()
-        .indexed()
-        .flatMap(
-          (row) => row.value
-              .split('')
-              .indexed()
-              .where((cell) => cell.value == '#')
-              .map((cell) => Cell(row.index, cell.index)),
-        )
-        .toSet();
+final initialState = File('lib/aoc/2020/dec_17.txt')
+    .readAsLinesSync()
+    .indexed()
+    .flatMap(
+      (row) => row.value
+          .split('')
+          .indexed()
+          .where((cell) => cell.value == '#')
+          .map((cell) => Cell(row.index, cell.index)),
+    )
+    .toSet();
 
 Set<Cell> step(Set<Cell> active, bool is4d) {
   final result = <Cell>{};
@@ -74,10 +73,9 @@ Set<Cell> step(Set<Cell> active, bool is4d) {
         for (var w = min.w - 1; w <= max.w + 1; w++) {
           final point = Cell(x, y, z, is4d ? w : 0);
           final isActive = active.contains(point);
-          final activeNeighbours =
-              point.neighbours
-                  .where((neighbour) => active.contains(neighbour))
-                  .length;
+          final activeNeighbours = point.neighbours
+              .where((neighbour) => active.contains(neighbour))
+              .length;
           if ((isActive && activeNeighbours.between(2, 3)) ||
               (!isActive && activeNeighbours == 3)) {
             result.add(point);

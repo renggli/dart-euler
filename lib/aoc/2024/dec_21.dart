@@ -24,36 +24,34 @@ final directionalKeypad = Matrix.fromRows(DataType.string, [
   ['<', 'v', '>'],
 ]);
 
-Point<int> findPosition(Matrix<String> keypad, String key) =>
-    keypad.rowMajor
-        .where((cell) => cell.value == key)
-        .map((cell) => Point(cell.row, cell.col))
-        .single;
+Point<int> findPosition(Matrix<String> keypad, String key) => keypad.rowMajor
+    .where((cell) => cell.value == key)
+    .map((cell) => Point(cell.row, cell.col))
+    .single;
 
 Iterable<String> findPaths(
   Matrix<String> keypad,
   String source,
   String target,
-) => dijkstraSearch(
-      startVertices: [findPosition(keypad, source)],
-      targetPredicate: (each) => keypad.get(each.x, each.y) == target,
-      successorsOf:
-          (each) => directions.keys
+) =>
+    dijkstraSearch(
+          startVertices: [findPosition(keypad, source)],
+          targetPredicate: (each) => keypad.get(each.x, each.y) == target,
+          successorsOf: (each) => directions.keys
               .map((offset) => each + offset)
               .where(
                 (each) =>
                     keypad.isWithinBounds(each.x, each.y) &&
                     keypad.get(each.x, each.y) != ' ',
               ),
-      includeAlternativePaths: true,
-    )
-    .map(
-      (path) =>
-          path.edges
+          includeAlternativePaths: true,
+        )
+        .map(
+          (path) => path.edges
               .map((edge) => directions[edge.target - edge.source]!)
               .join(),
-    )
-    .map((path) => '${path}A');
+        )
+        .map((path) => '${path}A');
 
 final cache = <String, int>{};
 

@@ -15,10 +15,9 @@ const directions = [Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)];
 final pathLengths = dijkstraSearch(
   startVertices: [end],
   targetPredicate: (source) => true,
-  successorsOf:
-      (source) => directions
-          .map((direction) => source + direction)
-          .where((target) => grid.getUnchecked(target.x, target.y) != '#'),
+  successorsOf: (source) => directions
+      .map((direction) => source + direction)
+      .where((target) => grid.getUnchecked(target.x, target.y) != '#'),
 ).toMap(key: (path) => path.target, value: (path) => path.vertices.length - 1);
 
 int run(int cheat) {

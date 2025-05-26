@@ -33,11 +33,10 @@ int problem2() {
   return boxes
       .indexed(start: 1)
       .map(
-        (box) =>
-            box.value.entries
-                .indexed(start: 1)
-                .map((lens) => box.index * lens.index * lens.value.value)
-                .sum(),
+        (box) => box.value.entries
+            .indexed(start: 1)
+            .map((lens) => box.index * lens.index * lens.value.value)
+            .sum(),
       )
       .sum();
 }
