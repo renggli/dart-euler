@@ -17,7 +17,7 @@ void printBlock(List<List<int>> block) {
     if (line.every((byte) => byte == 0)) break;
     final index = line.lastIndexWhere((byte) => byte != 0);
     final string = decode(line.sublist(0, index + 1));
-    print(isValid(string) ? string : '$string <<< INVALID');
+    stdout.writeln(isValid(string) ? string : '$string <<< INVALID');
   }
 }
 
@@ -61,6 +61,6 @@ int run(String filename) {
 }
 
 void main() {
-  print(run('lib/i18n/puzzle_17_test.txt'));
-  //  print(run('lib/i18n/puzzle_17_input.txt'));
+  stdout.writeln(run('lib/i18n/puzzle_17_test.txt'));
+  //  stdout.writeln(run('lib/i18n/puzzle_17_input.txt'));
 }

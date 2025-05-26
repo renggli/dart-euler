@@ -8,11 +8,9 @@ import 'package:petitparser/parser.dart';
 const asciiMatcher = CharMatcher.ascii();
 const digitMatcher = CharMatcher.digit();
 
-const LRI = '\u2066';
-const RLI = '\u2067';
-const PDI = '\u2069';
-
-var embeddingLevel = 0;
+const lri = '\u2066';
+const rli = '\u2067';
+const pdi = '\u2069';
 
 final evaluator = () {
   final builder = ExpressionBuilder<int>();
@@ -27,7 +25,7 @@ final evaluator = () {
   return builder.build().end();
 }();
 
-void adjustBidi(List elements, [int level = 0]) {
+void adjustBidi(List<dynamic> elements, [int level = 0]) {
   for (var i = 0; i < elements.length; i++) {
     final element = elements[i];
     if (element is List) {
@@ -48,32 +46,34 @@ void adjustBidi(List elements, [int level = 0]) {
 int run(String filename) {
   final input = File(filename).readAsLinesSync();
   for (final line in input) {
-    print('rex:  $line');
-    print(' = ${evaluator.parse(asciiMatcher.retainFrom(line)).value}');
+    stdout.writeln('rex:  $line');
+    stdout.writeln(
+      ' = ${evaluator.parse(asciiMatcher.retainFrom(line)).value}',
+    );
 
     final parts = <dynamic>[];
-    final stack = [parts];
+    final stack = <List<dynamic>>[parts];
     for (final char in line.toList(unicode: true)) {
-      if (char == RLI) {
+      if (char == rli) {
         if (stack.length.isOdd) {
           final current = <dynamic>[];
           stack.last.add(current);
           stack.add(current);
         }
-      } else if (char == LRI) {
+      } else if (char == lri) {
         if (stack.length.isEven) {
           final current = <dynamic>[];
           stack.last.add(current);
           stack.add(current);
         }
-      } else if (char == PDI) {
+      } else if (char == pdi) {
         stack.removeLast();
       } else if (digitMatcher.match(char.runes.single) &&
           stack.last.isNotEmpty &&
           stack.last.last is String &&
           (stack.last.last as String).isNotEmpty &&
           digitMatcher.match((stack.last.last as String).runes.first)) {
-        stack.last.last += char;
+        stack.last.last = '${stack.last.last}$char';
       } else {
         stack.last.add(char);
       }
@@ -83,9 +83,9 @@ int run(String filename) {
 
     final corrected = (stack.first as Iterable).deepFlatten<String>().join();
 
-    print('lynx: $corrected');
-    print(' = ${evaluator.parse(corrected).value}');
-    print('');
+    stdout.writeln('lynx: $corrected');
+    stdout.writeln(' = ${evaluator.parse(corrected).value}');
+    stdout.writeln('');
   }
 
   // TODO: solve the puzzle
@@ -93,6 +93,6 @@ int run(String filename) {
 }
 
 void main() {
-  print(run('lib/i18n/puzzle_18_test.txt'));
-  //print(run('lib/i18n/puzzle_18_input.txt'));
+  stdout.writeln(run('lib/i18n/puzzle_18_test.txt'));
+  //stdout.writeln(run('lib/i18n/puzzle_18_input.txt'));
 }

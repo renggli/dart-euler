@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:bits/buffer.dart';
 import 'package:charset/charset.dart';
 import 'package:more/collection.dart';
 
@@ -72,45 +70,45 @@ List<int> decoded(List<int> input) {
 
 int run(String filename) {
   final input = File(filename).readAsLinesSync().join();
-  print('input: $input');
+  stdout.writeln('input: $input');
 
-  final bytes = Base64Decoder().convert(input);
-  print('bytes; $bytes');
+  final bytes = const Base64Decoder().convert(input);
+  stdout.writeln('bytes; $bytes');
 
-  final utf16le = Utf16Decoder().decodeUtf16Le(bytes);
-  print('utf16le: $utf16le');
+  final utf16le = const Utf16Decoder().decodeUtf16Le(bytes);
+  stdout.writeln('utf16le: $utf16le');
 
   final runes = utf16le.runes
       .map((value) => value.toRadixString(16).padLeft(5, '0'))
       .join();
-  print('runes: $runes');
+  stdout.writeln('runes: $runes');
 
   final regrouped = runes
       .chunked(2)
       .map((each) => int.parse(each, radix: 16))
       .toList();
-  print('regrouped: $regrouped');
+  stdout.writeln('regrouped: $regrouped');
 
   final utf8long = decoded(regrouped);
-  print('utf8long: $utf8long');
+  stdout.writeln('utf8long: $utf8long');
 
   final runes2 = utf8long
       .map((value) => value.toRadixString(16).padLeft(7, '0'))
       .join();
-  print('runes2: $runes2');
+  stdout.writeln('runes2: $runes2');
 
   final regrouped2 = runes2
       .chunked(2)
       .map((value) => int.parse(value, radix: 16))
       .toList();
-  print('regrouped2: $regrouped2');
+  stdout.writeln('regrouped2: $regrouped2');
 
-  print(utf8.decode(regrouped2, allowMalformed: true));
+  stdout.writeln(utf8.decode(regrouped2, allowMalformed: true));
 
   return 0;
 }
 
 void main() {
-  print(run('lib/i18n/puzzle_20_test.txt'));
-  print(run('lib/i18n/puzzle_20_input.txt'));
+  stdout.writeln(run('lib/i18n/puzzle_20_test.txt'));
+  stdout.writeln(run('lib/i18n/puzzle_20_input.txt'));
 }

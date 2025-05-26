@@ -1,9 +1,7 @@
-import 'dart:collection';
 import 'dart:io';
 import 'dart:math';
 
 import 'package:charset/charset.dart';
-import 'package:collection/collection.dart';
 import 'package:more/math.dart';
 import 'package:more/more.dart';
 
@@ -54,8 +52,6 @@ const connections = {
   '┼': [Point(-1, 0), Point(0, 1), Point(1, 0), Point(0, -1)],
 };
 
-const all = [Point(-1, 0), Point(0, 1), Point(1, 0), Point(0, -1)];
-
 int solve(
   List<List<String>> grid,
   Set<Point<int>> seen,
@@ -70,7 +66,7 @@ int solve(
   final originalRotation = grid[point.x][point.y];
   if (originalRotation == ' ') return 0;
   if (originalRotation == '│') {
-    print('here');
+    stdout.writeln('here');
   }
 
   var rotationCount = 0;
@@ -130,29 +126,29 @@ int run(
     }
   }
 
-  print('');
-  print('Before:');
-  print(grid.map((line) => line.join()).join('\n'));
+  stdout.writeln('');
+  stdout.writeln('Before:');
+  stdout.writeln(grid.map((line) => line.join()).join('\n'));
 
-  final result = solve(grid, {topLeft}, bottomRight, Point(0, 1));
+  final result = solve(grid, {topLeft}, bottomRight, const Point(0, 1));
 
-  print('');
-  print('After:');
-  print(grid.map((line) => line.join()).join('\n'));
+  stdout.writeln('');
+  stdout.writeln('After:');
+  stdout.writeln(grid.map((line) => line.join()).join('\n'));
 
   return result;
 }
 
 void main() {
-  print(
+  stdout.writeln(
     run(
       'lib/i18n/puzzle_16_test.txt',
       topLeft: const Point(0, 0),
       bottomRight: const Point(7, 11),
     ),
   );
-  // print('');
-  // print(
+  // stdout.writeln('');
+  // stdout.writeln(
   //   run(
   //     'lib/i18n/puzzle_16_input.txt',
   //     topLeft: const Point(4, 7),
