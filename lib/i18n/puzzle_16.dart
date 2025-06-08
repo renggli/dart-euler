@@ -147,12 +147,12 @@ void main() {
       bottomRight: const Point(7, 11),
     ),
   );
-  // stdout.writeln('');
-  // stdout.writeln(
-  //   run(
-  //     'lib/i18n/puzzle_16_input.txt',
-  //     topLeft: const Point(4, 7),
-  //     bottomRight: const Point(19, 72),
-  //   ),
-  // );
+  stdout.writeln(
+    run(
+      'lib/i18n/puzzle_16_input.txt',
+      topLeft: const Point(4, 7),
+      bottomRight: const Point(19, 72),
+    ),
+  );
+  assert(false, 'Add assertions for solved puzzle');
 }

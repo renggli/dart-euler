@@ -1,5 +1,5 @@
 name: euler
-version: 0.0.11
+version: 0.0.12
 
 description: My advances on Project Euler.
 homepage: https://github.com/renggli/dart-euler
@@ -7,28 +7,18 @@ homepage: https://github.com/renggli/dart-euler
 environment:
   sdk: ^3.8.0
 dependencies:
-  args: ^2.6.0
+  args: ^2.7.0
   bcrypt: ^1.1.0
+  bits: ^1.4.0
   characters: ^1.4.0
   charset: ^2.0.0
   collection: ^1.19.0
   data: ^0.14.0
-  intl4x: ^0.11.0
-  meta: ^1.16.0
-  more: ^4.5.0
-  petitparser: ^6.0.0
-  test: ^1.25.0
+  meta: ^1.17.0
+  more: ^4.6.0
+  petitparser: ^6.1.0
+  test: ^1.26.0
   timezone: ^0.10.0
   z3: ^0.1.0
-  bits: any
 dev_dependencies:
   lints: ^6.0.0
-
-dependency_overrides:
-  more:
-    git: git@github.com:renggli/dart-more
-
-hook:
-  intl4x:
-    buildMode: fetch
-    treeshake: true

@@ -111,4 +111,5 @@ int run(String filename) {
 void main() {
   stdout.writeln(run('lib/i18n/puzzle_20_test.txt'));
   stdout.writeln(run('lib/i18n/puzzle_20_input.txt'));
+  assert(false, 'Add assertions for solved puzzle');
 }

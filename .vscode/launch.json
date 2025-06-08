@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run",
+      "type": "dart",
+      "request": "launch",
+      "program": "${file}",
+      "vmAdditionalArgs": ["--enable-experiment=native-assets"],
+    }
+  ]
+}

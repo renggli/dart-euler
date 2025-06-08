@@ -19,6 +19,7 @@ class Group {
       .listSync()
       .whereType<Directory>()
       .map(Group.new)
+      .where((group) => group.groups.isNotEmpty || group.problems.isNotEmpty)
       .sortedBy((group) => group.name);
 
   Iterable<Problem> get problems => directory
