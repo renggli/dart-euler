@@ -111,5 +111,5 @@ Future<void> main(List<String> arguments) async {
   }
 
   // Format the dart template.
-  await Process.run('dart', ['format', '--fix', dartFile.absolute.path]);
+  await Process.run('dart', ['format', dartFile.absolute.path]);
 }
