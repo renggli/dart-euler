@@ -11,7 +11,7 @@ final session = File('bin/.session').also((file) {
     stderr.writeln('$file does not exist');
     exit(1);
   }
-  return file.readAsStringSync();
+  return file.readAsStringSync().trim();
 });
 
 final now = DateTime.now().truncateTo(TimeUnit.day);
