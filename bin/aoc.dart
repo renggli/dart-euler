@@ -78,11 +78,6 @@ Future<void> main(List<String> arguments) async {
     await response.pipe(dataFile.openWrite());
   }
 
-  // Create an empty example file.
-  final exampleFile = File('$base/.example.txt');
-  final out = exampleFile.openWrite();
-  await out.close();
-
   // Generate dart template.
   final dartFile = File('$path.dart');
   if (!await dartFile.exists()) {
@@ -94,10 +89,7 @@ Future<void> main(List<String> arguments) async {
     out.writeln('import \'package:data/data.dart\';');
     out.writeln('import \'package:more/more.dart\';');
     out.writeln();
-    out.writeln(
-      'final input = File(\'$base/.example.txt\').readAsLinesSync();',
-    );
-    out.writeln('// final input = File(\'$path.txt\').readAsLinesSync();');
+    out.writeln('final input = File(\'$path.txt\').readAsLinesSync();');
     out.writeln();
     out.writeln('int problem1() { return 0; }');
     out.writeln();
