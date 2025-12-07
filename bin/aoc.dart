@@ -277,6 +277,9 @@ Future<void> main(List<String> arguments) async {
       buffer.writeln('- Read the puzzle description carefully.');
       buffer.writeln('- Assume the puzzle input is very large.');
       buffer.writeln('- Write readable, efficient, and idiomatic Dart code.');
+      if (part == 2) {
+        buffer.writeln('- Avoid duplicating code between part 1 and 2.');
+      }
       buffer.writeln('- Run `dart run ${dart.path}` to verify your solution.');
       buffer.writeln('- Run `dart analyze ${dart.path}` to check for errors.');
       buffer.writeln();
