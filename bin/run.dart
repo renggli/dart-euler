@@ -1,11 +1,12 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'dart:io';
 
 import 'package:euler/all.dart';
-
-const indent = '  ';
+import 'utils/ansi.dart';
 
 Future<void> runGroup(Group parent, {int level = 0}) async {
-  stdout.writeln('${indent * level}${parent.name}');
+  stdout.writeln('$bold${indent * level}${parent.name}$reset');
   for (final group in parent.groups) {
     await runGroup(group, level: level + 1);
   }
@@ -14,9 +15,11 @@ Future<void> runGroup(Group parent, {int level = 0}) async {
     final stopwatch = Stopwatch()..start();
     final result = await problem.execute();
     stopwatch.stop();
-    stdout.write(result.exitCode == 0 ? 'SUCCESS' : 'FAILURE');
-    final timeMs = stopwatch.elapsedMilliseconds;
-    stdout.writeln(' [${timeMs.toString().padLeft(4)}ms]');
+    stdout.write(
+      result.exitCode == 0 ? '${green}SUCCESS$reset' : '${red}FAILURE$reset',
+    );
+    final timeMs = stopwatch.elapsedMilliseconds.toString().padLeft(4);
+    stdout.writeln(' [${yellow}${timeMs}ms$reset]');
   }
 }
 

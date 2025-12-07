@@ -13,6 +13,7 @@ dependencies:
   characters: ^1.4.0
   charset: ^2.0.0
   collection: ^1.19.0
+  crypto: ^3.0.7
   data: ^0.15.0
   meta: ^1.17.0
   more: ^4.6.0

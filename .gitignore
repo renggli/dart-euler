@@ -5,5 +5,7 @@
 .idea/
 .packages
 bin/.session
+lib/**/*.md
+lib/**/*.html
 pubspec.lock
 .example.txt
