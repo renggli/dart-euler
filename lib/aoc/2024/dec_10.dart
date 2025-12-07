@@ -36,11 +36,11 @@ int countPaths(List<Point<int>> stack, [Set<Point<int>>? seen]) {
   return count;
 }
 
-int problem1() => starts.map((start) => countPaths([start], {})).sum();
+int part1() => starts.map((start) => countPaths([start], {})).sum();
 
-int problem2() => starts.map((start) => countPaths([start])).sum();
+int part2() => starts.map((start) => countPaths([start])).sum();
 
 void main() {
-  assert(problem1() == 744);
-  assert(problem2() == 1651);
+  assert(part1() == 744);
+  assert(part2() == 1651);
 }

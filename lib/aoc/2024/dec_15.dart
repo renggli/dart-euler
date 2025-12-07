@@ -102,7 +102,7 @@ void run(Matrix<String> grid) {
   }
 }
 
-int problem1() {
+int part1() {
   final grid = Matrix.fromString(
     DataType.string,
     warehouse,
@@ -112,7 +112,7 @@ int problem1() {
   return gpsSum(grid, boxChar);
 }
 
-int problem2() {
+int part2() {
   final grid = Matrix.fromString(
     DataType.string,
     warehouse
@@ -127,6 +127,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 1487337);
-  assert(problem2() == 1521952);
+  assert(part1() == 1487337);
+  assert(part2() == 1521952);
 }

@@ -57,7 +57,7 @@ List<Brick> drop(List<Brick> bricks) {
 }
 
 void main() {
-  var problem1 = 0, problem2 = 0;
+  var part1 = 0, part2 = 0;
   final dropped = drop(bricks.sortedBy<num>((brick) => brick.min));
   final indexed = dropped.sortedBy<num>((brick) => brick.index);
   for (var i = 0; i < dropped.length; i++) {
@@ -65,9 +65,9 @@ void main() {
     final moved = updated.count(
       (brick) => indexed[brick.index].min != brick.min,
     );
-    if (moved == 0) problem1++;
-    problem2 += moved;
+    if (moved == 0) part1++;
+    part2 += moved;
   }
-  assert(problem1 == 517);
-  assert(problem2 == 61276);
+  assert(part1 == 517);
+  assert(part2 == 61276);
 }

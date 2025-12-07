@@ -14,7 +14,7 @@ final groups = grid.rowMajor
     .values
     .map((cells) => cells.map((cell) => Point(cell.row, cell.col)));
 
-int problem1() {
+int part1() {
   final antinodes = <Point<int>>{};
   for (final group in groups) {
     for (final antennas in group.combinations(2)) {
@@ -30,7 +30,7 @@ int problem1() {
   return antinodes.length;
 }
 
-int problem2() {
+int part2() {
   final antinodes = <Point<int>>{};
   for (final group in groups) {
     for (final antennas in group.combinations(2)) {
@@ -55,6 +55,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 291);
-  assert(problem2() == 1015);
+  assert(part1() == 291);
+  assert(part2() == 1015);
 }

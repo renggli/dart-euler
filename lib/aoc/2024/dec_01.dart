@@ -11,13 +11,11 @@ final input = File('lib/aoc/2024/dec_01.txt')
     .map((list) => list.toSortedList())
     .toList();
 
-int problem1() =>
-    input.zip().map((values) => (values[0] - values[1]).abs()).sum();
+int part1() => input.zip().map((values) => (values[0] - values[1]).abs()).sum();
 
-int problem2() =>
-    input[0].map((each) => each * input[1].occurrences(each)).sum();
+int part2() => input[0].map((each) => each * input[1].occurrences(each)).sum();
 
 void main() {
-  assert(problem1() == 765748);
-  assert(problem2() == 27732508);
+  assert(part1() == 765748);
+  assert(part2() == 27732508);
 }

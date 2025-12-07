@@ -48,9 +48,9 @@ int solve(Beam start) {
   return energized.length;
 }
 
-int problem1() => solve(const (pos: Point(0, 0), dir: Point(0, 1)));
+int part1() => solve(const (pos: Point(0, 0), dir: Point(0, 1)));
 
-int problem2() => [
+int part2() => [
   for (var x = 0; x < data.rowCount; x++)
     (pos: Point(x, 0), dir: const Point(0, 1)),
   for (var x = 0; x < data.rowCount; x++)
@@ -62,6 +62,6 @@ int problem2() => [
 ].map(solve).max();
 
 void main() {
-  assert(problem1() == 7392);
-  assert(problem2() == 7665);
+  assert(part1() == 7392);
+  assert(part2() == 7665);
 }

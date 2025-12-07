@@ -36,9 +36,9 @@ List<List<int>> profile(bool isKey) => schematics
 bool isFit(List<int> lock, List<int> key) =>
     (lock, key).zip().every((pair) => pair.$1 + pair.$2 <= 5);
 
-int problem1() =>
+int part1() =>
     [locks, keys].product().count((pair) => isFit(pair.first, pair.last));
 
 void main() {
-  assert(problem1() == 3395);
+  assert(part1() == 3395);
 }

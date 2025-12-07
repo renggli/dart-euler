@@ -36,11 +36,11 @@ final ranges = input.first
     .toList();
 final ids = input.last.trim().split('\n').map(int.parse).toList();
 
-int problem1() => ids.count((id) => ranges.any((range) => range.contains(id)));
+int part1() => ids.count((id) => ranges.any((range) => range.contains(id)));
 
-int problem2() => ranges.merged().map((range) => range.length).sum;
+int part2() => ranges.merged().map((range) => range.length).sum;
 
 void main() {
-  assert(problem1() == 681);
-  assert(problem2() == 348820208020395);
+  assert(part1() == 681);
+  assert(part2() == 348820208020395);
 }

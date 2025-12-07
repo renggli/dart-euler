@@ -33,9 +33,9 @@ bool isMatch(String message, [List<String> pending = const ['0']]) {
   }
 }
 
-int problem1() => messages.where(isMatch).length;
+int part1() => messages.where(isMatch).length;
 
-int problem2() {
+int part2() {
   rules['8'] = [
     ['42'],
     ['42', '8'],
@@ -48,6 +48,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 184);
-  assert(problem2() == 389);
+  assert(part1() == 184);
+  assert(part2() == 389);
 }

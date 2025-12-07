@@ -41,13 +41,13 @@ int computeLoad(Matrix<String> matrix) {
   return result;
 }
 
-int problem1() {
+int part1() {
   final matrix = data.toMatrix();
   tilt(matrix);
   return computeLoad(matrix);
 }
 
-int problem2({int cycles = 1000000000}) {
+int part2({int cycles = 1000000000}) {
   final matrix = data.toMatrix();
   final seen = <String, int>{};
   for (var i = 0; i < cycles; i++) {
@@ -67,6 +67,6 @@ int problem2({int cycles = 1000000000}) {
 }
 
 void main() {
-  assert(problem1() == 113486);
-  assert(problem2() == 104409);
+  assert(part1() == 113486);
+  assert(part2() == 104409);
 }

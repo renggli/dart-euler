@@ -35,7 +35,7 @@ double intersection2D(
   return t1 / t2;
 }
 
-int problem1() {
+int part1() {
   var count = 0;
   const min = 200000000000000, max = 400000000000000;
   for (final MapEntry(key: ai, value: a) in stones.indexed()) {
@@ -56,7 +56,7 @@ int problem1() {
 }
 
 // Using Z3 constraints solver.
-int problem2a() {
+int part2a() {
   libz3Override = DynamicLibrary.open('/opt/homebrew/lib/libz3.dylib');
 
   final s = solver();
@@ -79,7 +79,7 @@ int problem2a() {
 
 // Using linear algebra following this idea:
 // https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/kepu26z/
-int problem2b() {
+int part2b() {
   Matrix<double> crossMatrix(Vector<double> vector) =>
       Matrix.fromRows(DataType.float, [
         [0, -vector[2], vector[1]],
@@ -115,7 +115,7 @@ int problem2b() {
 
 // Using linear algebra following this idea:
 // https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/kepu26z/
-int problem2c() {
+int part2c() {
   (Vector<double>, double) findPlane(
     Vector<double> p1,
     Vector<double> v1,
@@ -151,8 +151,8 @@ int problem2c() {
 }
 
 void main() {
-  assert(problem1() == 17776);
-  assert(problem2a() == 948978092202212);
-  assert(problem2b() == 948978092202212);
-  assert(problem2c() == 948978092202212);
+  assert(part1() == 17776);
+  assert(part2a() == 948978092202212);
+  assert(part2b() == 948978092202212);
+  assert(part2c() == 948978092202212);
 }

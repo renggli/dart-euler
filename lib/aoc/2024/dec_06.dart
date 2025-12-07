@@ -31,10 +31,10 @@ ListMultimap<Point<int>, int>? run({
   return seen;
 }
 
-int problem1() => run()!.keys.length;
-int problem2() => run()!.keys.count((point) => run(obstacle: point) == null);
+int part1() => run()!.keys.length;
+int part2() => run()!.keys.count((point) => run(obstacle: point) == null);
 
 void main() {
-  assert(problem1() == 5269);
-  assert(problem2() == 1957);
+  assert(part1() == 5269);
+  assert(part2() == 1957);
 }

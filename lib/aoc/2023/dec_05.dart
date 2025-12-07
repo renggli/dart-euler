@@ -76,10 +76,10 @@ int compute(List<Range> seeds) {
   return seeds.map((range) => range.start).min;
 }
 
-int problem1() =>
+int part1() =>
     compute(initialSeeds.map((each) => (start: each, end: each)).toList());
 
-int problem2() => compute(
+int part2() => compute(
   initialSeeds
       .chunked(2)
       .map((each) => (start: each.first, end: each.first + each.last - 1))
@@ -87,6 +87,6 @@ int problem2() => compute(
 );
 
 void main() {
-  assert(problem1() == 910845529);
-  assert(problem2() == 77435348);
+  assert(part1() == 910845529);
+  assert(part2() == 77435348);
 }

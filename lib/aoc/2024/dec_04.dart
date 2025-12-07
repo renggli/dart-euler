@@ -6,7 +6,7 @@ import 'package:data/data.dart';
 final input = File('lib/aoc/2024/dec_04.txt').readAsStringSync();
 final grid = Matrix.fromString(DataType.string, input, columnSplitter: '');
 
-int problem1() {
+int part1() {
   const word = 'XMAS';
   const directions = [
     Point(-1, -1),
@@ -37,7 +37,7 @@ int problem1() {
   return found;
 }
 
-int problem2() {
+int part2() {
   const words = ['MAS', 'SAM'];
   const directions = [
     Point(-1, -1),
@@ -66,6 +66,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 2603);
-  assert(problem2() == 1965);
+  assert(part1() == 2603);
+  assert(part2() == 1965);
 }

@@ -41,10 +41,10 @@ int run(int blink) {
   return currentStones.length;
 }
 
-int problem1() => run(25);
-int problem2() => run(75);
+int part1() => run(25);
+int part2() => run(75);
 
 void main() {
-  assert(problem1() == 224529);
-  assert(problem2() == 266820198587914);
+  assert(part1() == 224529);
+  assert(part2() == 266820198587914);
 }

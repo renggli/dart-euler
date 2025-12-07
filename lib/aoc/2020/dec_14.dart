@@ -30,7 +30,7 @@ int run(
   return memory.values.sum();
 }
 
-void problem1(Map<int, int> memory, String mask, int address, int value) {
+void part1(Map<int, int> memory, String mask, int address, int value) {
   final binaryValue = value.toRadixString(2).padLeft(bitSize, '0').split('');
   final transformed = binaryValue
       .indexed()
@@ -39,7 +39,7 @@ void problem1(Map<int, int> memory, String mask, int address, int value) {
   memory[address] = int.parse(transformed, radix: 2);
 }
 
-void problem2(Map<int, int> memory, String mask, int address, int value) {
+void part2(Map<int, int> memory, String mask, int address, int value) {
   final binaryAddress = address
       .toRadixString(2)
       .padLeft(bitSize, '0')
@@ -69,6 +69,6 @@ void problem2(Map<int, int> memory, String mask, int address, int value) {
 }
 
 void main() {
-  assert(run(problem1) == 15403588588538);
-  assert(run(problem2) == 3260587250457);
+  assert(run(part1) == 15403588588538);
+  assert(run(part2) == 3260587250457);
 }

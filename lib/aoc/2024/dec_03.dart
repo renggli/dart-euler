@@ -16,9 +16,9 @@ final mul = seq5(
 final enable = string('do()').map((_) => true);
 final disable = string('don\'t()').map((_) => false);
 
-int problem1() => mul.allMatches(input).map((pair) => pair.$1 * pair.$2).sum();
+int part1() => mul.allMatches(input).map((pair) => pair.$1 * pair.$2).sum();
 
-int problem2() => (mul | enable | disable).allMatches(input).fold(
+int part2() => (mul | enable | disable).allMatches(input).fold(
   (true, 0),
   (state, result) => switch (result) {
     (final int a, final int b) when state.$1 => (true, state.$2 + a * b),
@@ -29,6 +29,6 @@ int problem2() => (mul | enable | disable).allMatches(input).fold(
 ).$2;
 
 void main() {
-  assert(problem1() == 167650499);
-  assert(problem2() == 95846796);
+  assert(part1() == 167650499);
+  assert(part2() == 95846796);
 }

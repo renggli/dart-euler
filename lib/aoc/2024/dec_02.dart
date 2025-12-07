@@ -15,14 +15,14 @@ bool isSafe(List<int> report) {
   return (-3 <= min && max <= -1) || (1 <= min && max <= 3);
 }
 
-int problem1() => reports.count(isSafe);
+int part1() => reports.count(isSafe);
 
-int problem2() => reports.count(
+int part2() => reports.count(
   (report) =>
       report.indices().any((index) => isSafe([...report]..removeAt(index))),
 );
 
 void main() {
-  assert(problem1() == 220);
-  assert(problem2() == 296);
+  assert(part1() == 220);
+  assert(part2() == 296);
 }

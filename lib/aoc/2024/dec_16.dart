@@ -43,13 +43,13 @@ Iterable<Path<State, num>> search({bool includeAlternativePaths = false}) =>
       includeAlternativePaths: includeAlternativePaths,
     );
 
-int problem1() => search().first.cost.toInt();
+int part1() => search().first.cost.toInt();
 
-int problem2() => search(
+int part2() => search(
   includeAlternativePaths: true,
 ).flatMap((path) => path.vertices.map((state) => state.pos)).toSet().length;
 
 void main() {
-  assert(problem1() == 130536);
-  assert(problem2() == 1024);
+  assert(part1() == 130536);
+  assert(part2() == 1024);
 }

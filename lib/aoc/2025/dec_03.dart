@@ -25,11 +25,11 @@ int solve(List<int> digits, int count) {
   return result;
 }
 
-int problem1() => input.map((line) => solve(line, 2)).sum;
+int part1() => input.map((line) => solve(line, 2)).sum;
 
-int problem2() => input.map((line) => solve(line, 12)).sum;
+int part2() => input.map((line) => solve(line, 12)).sum;
 
 void main() {
-  assert(problem1() == 17034);
-  assert(problem2() == 168798209663590);
+  assert(part1() == 17034);
+  assert(part2() == 168798209663590);
 }

@@ -10,9 +10,9 @@ int hash(String source) => const AsciiCodec()
     .encode(source)
     .fold(0, (prev, curr) => (prev + curr) * 17 % 256);
 
-int problem1() => data.map(hash).sum();
+int part1() => data.map(hash).sum();
 
-int problem2() {
+int part2() {
   final regexp = RegExp(r'(\w+)(-|=(\d+))$');
   final boxes = List.generate(256, (index) => <String, int>{});
   for (final command in data) {
@@ -42,6 +42,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 514281);
-  assert(problem2() == 244199);
+  assert(part1() == 514281);
+  assert(part2() == 244199);
 }

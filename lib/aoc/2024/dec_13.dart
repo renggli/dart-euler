@@ -42,11 +42,11 @@ int run([int offset = 0]) => machines.map((input) {
       : 0;
 }).sum();
 
-int problem1() => run();
+int part1() => run();
 
-int problem2() => run(10000000000000);
+int part2() => run(10000000000000);
 
 void main() {
-  assert(problem1() == 33921);
-  assert(problem2() == 82261957837868);
+  assert(part1() == 33921);
+  assert(part2() == 82261957837868);
 }

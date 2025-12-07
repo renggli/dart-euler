@@ -116,12 +116,12 @@ void main() {
   final maxx = positions.keys.map((point) => point.x).max();
   final miny = positions.keys.map((point) => point.y).min();
   final maxy = positions.keys.map((point) => point.y).max();
-  final problem1 =
+  final part1 =
       positions[Point(minx, miny)]!.title *
       positions[Point(maxx, miny)]!.title *
       positions[Point(minx, maxy)]!.title *
       positions[Point(maxx, maxy)]!.title;
-  assert(problem1 == 17148689442341);
+  assert(part1 == 17148689442341);
 
   // Problem 2
   final horizontals = <Matrix<String>>[];

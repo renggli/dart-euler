@@ -6,7 +6,7 @@ import 'utils/outputs.dart';
 
 final file = File('lib/aoc/2019/dec_25.txt');
 
-int problem1() {
+int part1() {
   final input = ListInput(
     [
       'south',
@@ -54,5 +54,5 @@ int problem1() {
 }
 
 void main() {
-  assert(problem1() == 2147485856);
+  assert(part1() == 2147485856);
 }

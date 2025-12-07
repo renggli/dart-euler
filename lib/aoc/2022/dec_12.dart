@@ -44,9 +44,9 @@ final graph = () {
   return graph;
 }();
 
-int problem1() => graph.shortestPath('S', 'E')!.edges.length;
+int part1() => graph.shortestPath('S', 'E')!.edges.length;
 
-int problem2() {
+int part2() {
   final lengths = <int>[];
   for (var x = 0; x < input.length; x++) {
     for (var y = 0; y < input[x].length; y++) {
@@ -61,6 +61,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 425);
-  assert(problem2() == 418);
+  assert(part1() == 425);
+  assert(part2() == 418);
 }

@@ -38,7 +38,7 @@ class Computer implements Input, Output {
   }
 }
 
-int problem1() {
+int part1() {
   while (true) {
     for (final computer in computers) {
       computer.machine.step();
@@ -47,7 +47,7 @@ int problem1() {
   }
 }
 
-int problem2() {
+int part2() {
   var previous = -1;
   while (true) {
     while (nat.length >= 2 &&
@@ -65,6 +65,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 21160);
-  assert(problem2() == 14327);
+  assert(part1() == 21160);
+  assert(part2() == 14327);
 }

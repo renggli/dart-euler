@@ -15,7 +15,7 @@ bool isTractorBeam(Point<int> point) {
   return output.list.single == 1;
 }
 
-int problem1() {
+int part1() {
   var count = 0;
   for (var x = 0; x < 50; x++) {
     for (var y = 0; y < 50; y++) {
@@ -25,7 +25,7 @@ int problem1() {
   return count;
 }
 
-int problem2([Point<int> size = const Point<int>(99, 99)]) {
+int part2([Point<int> size = const Point<int>(99, 99)]) {
   var upper = const Point(0, 50);
   while (true) {
     if (isTractorBeam(upper)) {
@@ -39,6 +39,6 @@ int problem2([Point<int> size = const Point<int>(99, 99)]) {
 }
 
 void main() {
-  assert(problem1() == 112);
-  assert(problem2() == 18261982);
+  assert(part1() == 112);
+  assert(part2() == 18261982);
 }

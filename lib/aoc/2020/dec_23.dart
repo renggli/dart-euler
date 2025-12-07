@@ -79,14 +79,14 @@ List<int> run({required int moveCount, int? cupCount}) {
   return result;
 }
 
-int problem1() => int.parse(run(moveCount: 100).join());
+int part1() => int.parse(run(moveCount: 100).join());
 
-int problem2() {
+int part2() {
   final result = run(moveCount: 10000000, cupCount: 1000000);
   return result[0] * result[1];
 }
 
 void main() {
-  assert(problem1() == 35827964);
-  assert(problem2() == 5403610688);
+  assert(part1() == 35827964);
+  assert(part2() == 5403610688);
 }

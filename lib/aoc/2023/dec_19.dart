@@ -60,7 +60,7 @@ String eval(String state, Map<String, int> rating) {
   return state;
 }
 
-int problem1() => ratings
+int part1() => ratings
     .where((rating) => eval('in', rating) == 'A')
     .map((rating) => rating.values.sum())
     .sum();
@@ -83,12 +83,12 @@ int count(String state, Map<String, List<int>> rating) {
   return result;
 }
 
-int problem2() {
+int part2() {
   final values = List.generate(4000, (index) => index + 1);
   return count('in', {'x': values, 'm': values, 'a': values, 's': values});
 }
 
 void main() {
-  assert(problem1() == 348378);
-  assert(problem2() == 121158073425385);
+  assert(part1() == 348378);
+  assert(part2() == 121158073425385);
 }

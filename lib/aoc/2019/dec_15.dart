@@ -101,7 +101,7 @@ final state = () {
   throw StateError('Should not happen');
 }();
 
-int problem1() => dijkstraSearch<Point<int>>(
+int part1() => dijkstraSearch<Point<int>>(
   startVertices: [state.start],
   targetPredicate: (target) => target == state.goal,
   successorsOf: (source) => directions.values
@@ -109,7 +109,7 @@ int problem1() => dijkstraSearch<Point<int>>(
       .where((target) => state.visited[target] != Type.wall),
 ).first.values.length;
 
-int problem2() => dijkstraSearch<Point<int>>(
+int part2() => dijkstraSearch<Point<int>>(
   startVertices: [state.goal],
   targetPredicate: (target) => true,
   successorsOf: (source) => directions.values
@@ -118,6 +118,6 @@ int problem2() => dijkstraSearch<Point<int>>(
 ).map((path) => path.values.length).max();
 
 void main() {
-  assert(problem1() == 300);
-  assert(problem2() == 312);
+  assert(part1() == 300);
+  assert(part2() == 312);
 }

@@ -18,7 +18,7 @@ final blocks = input
 int computeChecksum(List<int?> blocks) =>
     blocks.indexed().map((each) => each.index * (each.value ?? 0)).sum();
 
-int problem1(List<int?> blocks) {
+int part1(List<int?> blocks) {
   for (var i = 0, j = blocks.length - 1; i < j;) {
     while (blocks[i] != null) {
       i++;
@@ -47,7 +47,7 @@ int? firstEmptyRange(List<int?> blocks, int minSize) {
   return null;
 }
 
-int problem2(List<int?> blocks) {
+int part2(List<int?> blocks) {
   var end = blocks.length - 1;
   while (true) {
     while (end > 0 && blocks[end] == null) {
@@ -70,6 +70,6 @@ int problem2(List<int?> blocks) {
 }
 
 void main() {
-  assert(problem1([...blocks]) == 6359213660505);
-  assert(problem2([...blocks]) == 6381624803796);
+  assert(part1([...blocks]) == 6359213660505);
+  assert(part2([...blocks]) == 6381624803796);
 }

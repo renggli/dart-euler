@@ -24,11 +24,11 @@ int count(String desired, {int start = 0, Map<int, int>? cache}) {
       .sum();
 }
 
-int problem1() => desiredPattern.where((desired) => count(desired) > 0).length;
+int part1() => desiredPattern.where((desired) => count(desired) > 0).length;
 
-int problem2() => desiredPattern.map(count).sum();
+int part2() => desiredPattern.map(count).sum();
 
 void main() {
-  assert(problem1() == 296);
-  assert(problem2() == 619970556776002);
+  assert(part1() == 296);
+  assert(part2() == 619970556776002);
 }

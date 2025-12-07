@@ -53,13 +53,13 @@ int compare(dynamic a, dynamic b) {
   throw UnsupportedError('Not supposed to be here');
 }
 
-int problem1() => input
+int part1() => input
     .indexed(start: 1)
     .where((entry) => compare(entry.value.first, entry.value.last) < 0)
     .map((entry) => entry.index)
     .sum;
 
-int problem2() {
+int part2() {
   final markers = [
     [
       [2],
@@ -74,6 +74,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 4894);
-  assert(problem2() == 24180);
+  assert(part1() == 4894);
+  assert(part2() == 24180);
 }

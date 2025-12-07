@@ -37,7 +37,7 @@ const directions1 = {
   'U': Point(-1, 0),
 };
 
-int problem1() => solve(
+int part1() => solve(
   (match) => directions1[match.group(1)]!,
   (match) => int.parse(match.group(2)!),
 );
@@ -49,12 +49,12 @@ const directions2 = {
   '3': Point(-1, 0),
 };
 
-int problem2() => solve(
+int part2() => solve(
   (match) => directions2[match.group(3)!.skip(5)]!,
   (match) => int.parse(match.group(3)!.take(5), radix: 16),
 );
 
 void main() {
-  assert(problem1() == 46334);
-  assert(problem2() == 102000662718092);
+  assert(part1() == 46334);
+  assert(part2() == 102000662718092);
 }

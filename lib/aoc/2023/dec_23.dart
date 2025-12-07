@@ -95,17 +95,17 @@ int findLongestPath(
   return maxLength;
 }
 
-int problem1() => findLongestPath(
+int part1() => findLongestPath(
   compress(buildGraph(matrix, withSlopes: true), {start, stop}),
   start,
 );
 
-int problem2() => findLongestPath(
+int part2() => findLongestPath(
   compress(buildGraph(matrix, withSlopes: false), {start, stop}),
   start,
 );
 
 void main() {
-  assert(problem1() == 1998);
-  assert(problem2() == 6434);
+  assert(part1() == 1998);
+  assert(part2() == 6434);
 }

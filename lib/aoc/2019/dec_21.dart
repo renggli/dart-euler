@@ -6,7 +6,7 @@ import 'utils/outputs.dart';
 
 final file = File('lib/aoc/2019/dec_21.txt');
 
-int problem1() {
+int part1() {
   final input = ListInput(
     ['NOT C T', 'NOT A J', 'AND D T', 'OR T J', 'WALK\n'].join('\n').codeUnits,
   );
@@ -15,7 +15,7 @@ int problem1() {
   return output.list.last;
 }
 
-int problem2() {
+int part2() {
   final input = ListInput(
     [
       'NOT C T',
@@ -36,6 +36,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 19349939);
-  assert(problem2() == 1142412777);
+  assert(part1() == 19349939);
+  assert(part2() == 1142412777);
 }

@@ -33,11 +33,11 @@ int run(List<int Function(int, int)> ops) => equations
     .where((equation) => test(equation.result, equation.values, ops))
     .fold(0, (result, equation) => result + equation.result);
 
-int problem1() => run([add, mul]);
+int part1() => run([add, mul]);
 
-int problem2() => run([add, mul, concat]);
+int part2() => run([add, mul, concat]);
 
 void main() {
-  assert(problem1() == 28730327770375);
-  assert(problem2() == 424977609625985);
+  assert(part1() == 28730327770375);
+  assert(part2() == 424977609625985);
 }

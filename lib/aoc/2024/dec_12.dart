@@ -75,11 +75,11 @@ int corners(Set<Point<int>> area, Point<int> point) {
 int sides(Set<Point<int>> area) =>
     area.map((point) => corners(area, point)).sum();
 
-int problem1() => areas().map((area) => area.length * perimeter(area)).sum();
+int part1() => areas().map((area) => area.length * perimeter(area)).sum();
 
-int problem2() => areas().map((area) => area.length * sides(area)).sum();
+int part2() => areas().map((area) => area.length * sides(area)).sum();
 
 void main() {
-  assert(problem1() == 1486324);
-  assert(problem2() == 898684);
+  assert(part1() == 1486324);
+  assert(part2() == 898684);
 }

@@ -12,11 +12,11 @@ Iterable<int> run(int value) {
   return output.list;
 }
 
-int problem1() => run(1).single;
+int part1() => run(1).single;
 
-int problem2() => run(2).single;
+int part2() => run(2).single;
 
 void main() {
-  assert(problem1() == 2377080455);
-  assert(problem2() == 74917);
+  assert(part1() == 2377080455);
+  assert(part2() == 74917);
 }

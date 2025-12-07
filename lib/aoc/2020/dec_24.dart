@@ -48,14 +48,14 @@ Set<Point<int>> flip(Set<Point<int>> flipped) {
       .toSet();
 }
 
-int problem1() => initialize(instructions).length;
+int part1() => initialize(instructions).length;
 
-int problem2() => 0
+int part2() => 0
     .to(100)
     .fold<Set<Point<int>>>(initialize(instructions), (prev, i) => flip(prev))
     .length;
 
 void main() {
-  assert(problem1() == 312);
-  assert(problem2() == 3733);
+  assert(part1() == 312);
+  assert(part2() == 3733);
 }

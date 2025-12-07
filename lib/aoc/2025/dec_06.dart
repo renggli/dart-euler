@@ -22,9 +22,9 @@ int solve(Iterable<int> Function(List<String>) extract) =>
       return column.last.trim() == '+' ? operands.sum() : operands.product();
     }).sum();
 
-int problem1() => solve((values) => values.map(int.parse));
+int part1() => solve((values) => values.map(int.parse));
 
-int problem2() => solve(
+int part2() => solve(
   (rows) => 0
       .to(rows.first.length)
       .reversed
@@ -32,6 +32,6 @@ int problem2() => solve(
 );
 
 void main() {
-  assert(problem1() == 4364617236318);
-  assert(problem2() == 9077004354241);
+  assert(part1() == 4364617236318);
+  assert(part2() == 9077004354241);
 }

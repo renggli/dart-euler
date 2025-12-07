@@ -43,11 +43,11 @@ int computeAllDistances({required int factor}) => galaxies
     .map((each) => computeDistance(each.first, each.last, factor: factor))
     .sum();
 
-int problem1() => computeAllDistances(factor: 2);
+int part1() => computeAllDistances(factor: 2);
 
-int problem2() => computeAllDistances(factor: 1000000);
+int part2() => computeAllDistances(factor: 1000000);
 
 void main() {
-  assert(problem1() == 10228230);
-  assert(problem2() == 447073334102);
+  assert(part1() == 10228230);
+  assert(part2() == 447073334102);
 }

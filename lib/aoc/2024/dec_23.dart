@@ -10,7 +10,7 @@ final graph = Graph<String, void>.undirected()
     }
   });
 
-int problem1() => graph
+int part1() => graph
     .findCliques()
     .where((clique) => clique.length >= 3)
     .flatMap((clique) => clique.combinations(3))
@@ -19,13 +19,13 @@ int problem1() => graph
     .unique()
     .length;
 
-String problem2() => graph
+String part2() => graph
     .findCliques()
     .max(comparator: keyOf((list) => list.length as num))
     .toSortedList()
     .join(',');
 
 void main() {
-  assert(problem1() == 1154);
-  assert(problem2() == 'aj,ds,gg,id,im,jx,kq,nj,ql,qr,ua,yh,zn');
+  assert(part1() == 1154);
+  assert(part2() == 'aj,ds,gg,id,im,jx,kq,nj,ql,qr,ua,yh,zn');
 }

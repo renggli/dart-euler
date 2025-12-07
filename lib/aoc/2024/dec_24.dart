@@ -94,7 +94,7 @@ int getValue(String prefix) {
   }
 }
 
-int problem1() => getValue('z');
+int part1() => getValue('z');
 
 void swap(String a, String b) {
   final op1 = wires[a]!;
@@ -103,7 +103,7 @@ void swap(String a, String b) {
   wires[a] = op2;
 }
 
-String problem2() {
+String part2() {
   // Swaps to perform.
   final swaps = ['wrm', 'wss', 'z29', 'gbs', 'z08', 'thm', 'z22', 'hwq'];
   for (final [a, b] in swaps.chunked(2)) {
@@ -134,8 +134,8 @@ String problem2() {
 }
 
 void main() {
-  assert(problem1() == 53258032898766);
-  assert(problem2() == 'gbs,hwq,thm,wrm,wss,z08,z22,z29');
+  assert(part1() == 53258032898766);
+  assert(part2() == 'gbs,hwq,thm,wrm,wss,z08,z22,z29');
 }
 
 enum Operation { xor, and, or }

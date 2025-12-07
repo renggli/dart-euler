@@ -26,13 +26,13 @@ Parser<int> createParser(int problem) {
 
 final lines = File('lib/aoc/2020/dec_18.txt').readAsLinesSync();
 
-int problem1() =>
+int part1() =>
     lines.map(createParser(1).parse).map((result) => result.value).sum();
 
-int problem2() =>
+int part2() =>
     lines.map(createParser(2).parse).map((result) => result.value).sum();
 
 void main() {
-  assert(problem1() == 4940631886147);
-  assert(problem2() == 283582817678281);
+  assert(part1() == 4940631886147);
+  assert(part2() == 283582817678281);
 }

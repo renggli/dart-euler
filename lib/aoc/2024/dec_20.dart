@@ -45,11 +45,11 @@ int run(int cheat) {
   return count;
 }
 
-int problem1() => run(2);
+int part1() => run(2);
 
-int problem2() => run(20);
+int part2() => run(20);
 
 void main() {
-  assert(problem1() == 1454);
-  assert(problem2() == 997879);
+  assert(part1() == 1454);
+  assert(part2() == 997879);
 }

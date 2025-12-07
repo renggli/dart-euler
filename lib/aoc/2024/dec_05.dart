@@ -20,18 +20,18 @@ final updates = rulesAndUpdates.last
 
 int comparator(int a, int b) => rules.containsEntry(a, b) ? -1 : 1;
 
-int problem1() => updates
+int part1() => updates
     .where(comparator.isStrictlyOrdered)
     .map((update) => update[update.length ~/ 2])
     .sum();
 
-int problem2() => updates
+int part2() => updates
     .whereNot(comparator.isStrictlyOrdered)
     .map((update) => update.sorted(comparator))
     .map((update) => update[update.length ~/ 2])
     .sum();
 
 void main() {
-  assert(problem1() == 3608);
-  assert(problem2() == 4922);
+  assert(part1() == 3608);
+  assert(part2() == 4922);
 }

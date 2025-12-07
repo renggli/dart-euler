@@ -23,7 +23,7 @@ final start = matrix.rowMajor
     .singleWhere((cell) => cell.value == 'S')
     .also((cell) => Point(cell.row, cell.col));
 
-int problem1() {
+int part1() {
   var gardens = <Point<int>>{start};
   for (var i = 1; i <= 64; i++) {
     gardens = gardens
@@ -44,7 +44,7 @@ int problem1() {
 
 // Solved this part in Google Sheets originally, code below is a lame re-implementation:
 // https://docs.google.com/spreadsheets/d/1J_tTLmUnRwrWvexU6MTLj4z3GGF7vlt2daqtcLcNDKA/edit#gid=0
-int problem2() {
+int part2() {
   const steps = 26501365;
   final width = matrix.rowCount, half = 1 + matrix.rowCount ~/ 2;
 
@@ -81,6 +81,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 3737);
-  assert(problem2() == 625382480005896);
+  assert(part1() == 3737);
+  assert(part2() == 625382480005896);
 }

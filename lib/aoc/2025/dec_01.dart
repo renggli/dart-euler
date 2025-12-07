@@ -5,7 +5,7 @@ final offsets = File('lib/aoc/2025/dec_01.txt')
     .map((line) => (line[0] == 'L' ? -1 : 1) * int.parse(line.substring(1)))
     .toList();
 
-int problem1() {
+int part1() {
   var pos = 50;
   var count = 0;
   for (final offset in offsets) {
@@ -15,7 +15,7 @@ int problem1() {
   return count;
 }
 
-int problem2() {
+int part2() {
   var pos = 50;
   var count = 0;
   for (final offset in offsets) {
@@ -29,6 +29,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 1195);
-  assert(problem2() == 6770);
+  assert(part1() == 1195);
+  assert(part2() == 6770);
 }

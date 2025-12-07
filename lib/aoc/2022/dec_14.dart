@@ -34,7 +34,7 @@ final rocks = <Point>{}
     }
   });
 
-int problem1({Point<int> start = const Point(500, 0)}) {
+int part1({Point<int> start = const Point(500, 0)}) {
   final heap = Map.fromIterables(rocks, repeat('#', count: rocks.length));
   final maxY = rocks.map((point) => point.y).max();
   for (var pos = start; pos.y < maxY;) {
@@ -52,7 +52,7 @@ int problem1({Point<int> start = const Point(500, 0)}) {
   return heap.values.count((each) => each == 'o');
 }
 
-int problem2({Point<int> start = const Point(500, 0)}) {
+int part2({Point<int> start = const Point(500, 0)}) {
   final heap = Map.fromIterables(rocks, repeat('#', count: rocks.length));
   final maxY = rocks.map((point) => point.y).max() + 1;
   for (var pos = start; !heap.containsKey(start);) {
@@ -71,6 +71,6 @@ int problem2({Point<int> start = const Point(500, 0)}) {
 }
 
 void main() {
-  assert(problem1() == 779);
-  assert(problem2() == 27426);
+  assert(part1() == 779);
+  assert(part2() == 27426);
 }

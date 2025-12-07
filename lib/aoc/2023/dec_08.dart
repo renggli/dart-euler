@@ -23,14 +23,14 @@ int cycleLength(String start, bool Function(String) end) {
   return count;
 }
 
-int problem1() => cycleLength('AAA', (each) => each == 'ZZZ');
+int part1() => cycleLength('AAA', (each) => each == 'ZZZ');
 
-int problem2() => network.keys
+int part2() => network.keys
     .where((each) => each.endsWith('A'))
     .map((each) => cycleLength(each, (each) => each.endsWith('Z')))
     .lcm();
 
 void main() {
-  assert(problem1() == 12169);
-  assert(problem2() == 12030780859469);
+  assert(part1() == 12169);
+  assert(part2() == 12030780859469);
 }

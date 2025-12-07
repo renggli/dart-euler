@@ -20,9 +20,9 @@ Iterable<int> generate(int secret) sync* {
   }
 }
 
-int problem1() => input.map((each) => generate(each).elementAt(2000)).sum();
+int part1() => input.map((each) => generate(each).elementAt(2000)).sum();
 
-int problem2() {
+int part2() {
   final sequenceValues = Multiset<String>();
   for (final start in input) {
     final sequences = <String>{};
@@ -45,6 +45,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 17960270302);
-  assert(problem2() == 2042);
+  assert(part1() == 17960270302);
+  assert(part2() == 2042);
 }

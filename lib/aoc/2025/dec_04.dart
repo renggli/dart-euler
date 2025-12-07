@@ -34,9 +34,9 @@ List<Point<int>> findRemovable() {
   return result;
 }
 
-int problem1() => findRemovable().length;
+int part1() => findRemovable().length;
 
-int problem2() {
+int part2() {
   var removed = 0;
   while (true) {
     final removable = findRemovable();
@@ -50,6 +50,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 1537);
-  assert(problem2() == 8707);
+  assert(part1() == 1537);
+  assert(part2() == 8707);
 }

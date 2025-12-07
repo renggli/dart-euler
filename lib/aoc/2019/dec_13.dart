@@ -8,7 +8,7 @@ import 'utils/outputs.dart';
 
 final file = File('lib/aoc/2019/dec_13.txt');
 
-int problem1() {
+int part1() {
   final output = ListOutput();
   Machine.fromFile(file, output: output).run();
   return output.list.chunked(3).count((triple) => triple.last == 2);
@@ -40,7 +40,7 @@ class Game implements Input, Output {
   int get() => ball.compareTo(paddle);
 }
 
-int problem2() {
+int part2() {
   final state = Game();
   final machine = Machine.fromFile(file, input: state, output: state);
   machine.memory[0] = 2; // insert 2 quarters
@@ -49,6 +49,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 291);
-  assert(problem2() == 14204);
+  assert(part1() == 291);
+  assert(part2() == 14204);
 }

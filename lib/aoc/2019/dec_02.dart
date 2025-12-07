@@ -4,7 +4,7 @@ import 'utils/machine.dart';
 
 final file = File('lib/aoc/2019/dec_02.txt');
 
-int problem1() {
+int part1() {
   final machine = Machine.fromFile(file);
   machine.memory[1] = 12;
   machine.memory[2] = 2;
@@ -12,7 +12,7 @@ int problem1() {
   return machine.memory[0];
 }
 
-int problem2() {
+int part2() {
   for (var noun = 0; noun < 100; noun++) {
     for (var verb = 0; verb < 100; verb++) {
       final machine = Machine.fromFile(file);
@@ -28,6 +28,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 8017076);
-  assert(problem2() == 3146);
+  assert(part1() == 8017076);
+  assert(part2() == 3146);
 }

@@ -28,14 +28,14 @@ final validTickets = [
   yourTicket,
 ].followedBy(nearbyTickets).where(allFieldValues.containsAll).toList();
 
-int problem1() => nearbyTickets
+int part1() => nearbyTickets
     .map(
       (ticket) =>
           ticket.where((value) => !allFieldValues.contains(value)).sum(),
     )
     .sum();
 
-int problem2() {
+int part2() {
   final fieldMap = <int, String>{};
   while (fieldMap.length < fields.length) {
     for (var i = 0; i < yourTicket.length; i++) {
@@ -57,6 +57,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 26053);
-  assert(problem2() == 1515506256421);
+  assert(part1() == 26053);
+  assert(part2() == 1515506256421);
 }

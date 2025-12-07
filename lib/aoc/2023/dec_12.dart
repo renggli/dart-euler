@@ -51,10 +51,10 @@ int arrangements(
   return cacheMap[cacheKey] = count;
 }
 
-int problem1() =>
+int part1() =>
     data.map((each) => arrangements(each.springs, each.damaged)).sum();
 
-int problem2() => data
+int part2() => data
     .map(
       (each) => arrangements(
         repeat(
@@ -67,6 +67,6 @@ int problem2() => data
     .sum();
 
 void main() {
-  assert(problem1() == 7670);
-  assert(problem2() == 157383940585037);
+  assert(part1() == 7670);
+  assert(part2() == 157383940585037);
 }

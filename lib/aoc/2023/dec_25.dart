@@ -9,9 +9,9 @@ final graph = File('lib/aoc/2023/dec_25.txt')
     .also(Map.fromEntries)
     .also(GraphFactory<String, void>(isDirected: false).fromSuccessors);
 
-int problem1() =>
+int part1() =>
     graph.minCut().graphs.map((graph) => graph.vertices.length).product();
 
 void main() {
-  assert(problem1() == 555702);
+  assert(part1() == 555702);
 }

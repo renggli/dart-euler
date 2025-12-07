@@ -6,7 +6,7 @@ import 'utils/outputs.dart';
 
 final file = File('lib/aoc/2019/dec_17.txt');
 
-int problem1() {
+int part1() {
   final output = StringOutput();
   Machine.fromFile(file, output: output).run();
   final data = output.buffer.toString().trim().split('\n');
@@ -25,7 +25,7 @@ int problem1() {
   return result;
 }
 
-int problem2() {
+int part2() {
   final output = ListOutput();
   final input = ListInput([
     // main movement routine:
@@ -44,6 +44,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 13580);
-  assert(problem2() == 1063081);
+  assert(part1() == 13580);
+  assert(part2() == 1063081);
 }

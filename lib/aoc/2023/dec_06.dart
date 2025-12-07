@@ -10,7 +10,7 @@ final data = File(
 int getWins(int time, int distance) =>
     IntegerRange(time).count((held) => held * (time - held) > distance);
 
-int problem1() {
+int part1() {
   final times = data[0].split(RegExp(r'\s+')).map(int.parse);
   final distances = data[1].split(RegExp(r'\s+')).map(int.parse);
   final result = <int>[];
@@ -20,13 +20,13 @@ int problem1() {
   return result.product();
 }
 
-int problem2() {
+int part2() {
   final time = int.parse(data[0].replaceAll(' ', ''));
   final distance = int.parse(data[1].replaceAll(' ', ''));
   return getWins(time, distance);
 }
 
 void main() {
-  assert(problem1() == 4811940);
-  assert(problem2() == 30077773);
+  assert(part1() == 4811940);
+  assert(part2() == 30077773);
 }

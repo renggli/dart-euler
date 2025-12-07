@@ -78,11 +78,11 @@ int run(String code, int depth) =>
     int.parse(const CharMatcher.digit().retainFrom(code)) *
     findLength(code, depth);
 
-int problem1() => input.map((code) => run(code, 2)).sum();
+int part1() => input.map((code) => run(code, 2)).sum();
 
-int problem2() => input.map((code) => run(code, 25)).sum();
+int part2() => input.map((code) => run(code, 25)).sum();
 
 void main() {
-  assert(problem1() == 164960);
-  assert(problem2() == 205620604017764);
+  assert(part1() == 164960);
+  assert(part2() == 205620604017764);
 }

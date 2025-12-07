@@ -4,7 +4,7 @@ import 'package:data/data.dart';
 
 final grid = File('lib/aoc/2025/dec_07.txt').readAsLinesSync();
 
-int problem1() {
+int part1() {
   var splits = 0;
   var beams = {grid[0].indexOf('S')};
   for (var row = 1; row < grid.length; row++) {
@@ -23,7 +23,7 @@ int problem1() {
   return splits;
 }
 
-int problem2() {
+int part2() {
   var particles = {grid[0].indexOf('S'): 1};
   for (var row = 1; row < grid.length; row++) {
     final next = <int, int>{};
@@ -41,6 +41,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 1598);
-  assert(problem2() == 4509723641302);
+  assert(part1() == 1598);
+  assert(part2() == 4509723641302);
 }

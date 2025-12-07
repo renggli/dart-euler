@@ -49,11 +49,11 @@ int summary({int smudge = 0}) => patterns
     )
     .sum();
 
-int problem1() => summary();
+int part1() => summary();
 
-int problem2() => summary(smudge: 1);
+int part2() => summary(smudge: 1);
 
 void main() {
-  assert(problem1() == 27742);
-  assert(problem2() == 32728);
+  assert(part1() == 27742);
+  assert(part2() == 32728);
 }

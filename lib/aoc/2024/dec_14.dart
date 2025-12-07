@@ -22,7 +22,7 @@ final values = input
 final positions = values.map((values) => values.first).toList();
 final velocities = values.map((values) => values.last).toList();
 
-int problem1() {
+int part1() {
   const steps = 100;
   final points = positions.mapIndexed(
     (index, point) => Point(
@@ -38,7 +38,7 @@ int problem1() {
       .product();
 }
 
-int problem2() {
+int part2() {
   var step = 1;
   final points = [...positions];
   while (true) {
@@ -54,6 +54,6 @@ int problem2() {
 }
 
 void main() {
-  assert(problem1() == 231782040);
-  assert(problem2() == 6475);
+  assert(part1() == 231782040);
+  assert(part2() == 6475);
 }

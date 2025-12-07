@@ -20,7 +20,7 @@ bool isInvalid1(int id) {
   return str.substring(0, mid) == str.substring(mid);
 }
 
-int problem1() => computeSum(ranges, isInvalid1);
+int part1() => computeSum(ranges, isInvalid1);
 
 bool isInvalid2(int id) {
   final str = id.toString();
@@ -35,9 +35,9 @@ bool isInvalid2(int id) {
   return false;
 }
 
-int problem2() => computeSum(ranges, isInvalid2);
+int part2() => computeSum(ranges, isInvalid2);
 
 void main() {
-  assert(problem1() == 55916882972);
-  assert(problem2() == 76169125915);
+  assert(part1() == 55916882972);
+  assert(part2() == 76169125915);
 }

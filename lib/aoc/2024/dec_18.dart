@@ -31,13 +31,13 @@ Iterable<Path<Point<int>, num>> searchPath(
       ),
 );
 
-int problem1() {
+int part1() {
   final corrupt = coordinates.take(bytes).toSet();
   final visited = searchPath(size, corrupt: corrupt).first.vertices.toSet();
   return visited.length - 1;
 }
 
-String problem2() {
+String part2() {
   final corrupt = <Point<int>>{};
   for (final point in coordinates) {
     corrupt.add(point);
@@ -49,6 +49,6 @@ String problem2() {
 }
 
 void main() {
-  assert(problem1() == 446);
-  assert(problem2() == '39,40');
+  assert(part1() == 446);
+  assert(part2() == '39,40');
 }
