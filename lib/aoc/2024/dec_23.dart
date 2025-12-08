@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:more/more.dart';
 
 final input = File('lib/aoc/2024/dec_23.txt').readAsLinesSync();
-final graph = Graph<String, void>.undirected()
+final graph = Graph<String, void>(isDirected: false)
   ..also((graph) {
     for (final [source, target] in input.map((line) => line.split('-'))) {
       graph.addEdge(source, target);

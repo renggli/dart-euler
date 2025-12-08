@@ -2,7 +2,6 @@ import 'dart:io';
 
 int run(String filename) {
   final input = File(filename).readAsStringSync();
-  // TODO: solve the puzzle
   return input.length;
 }
 

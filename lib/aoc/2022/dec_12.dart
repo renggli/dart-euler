@@ -27,7 +27,7 @@ int getElevation(Point<int> position) {
 
 final input = File('lib/aoc/2022/dec_12.txt').readAsLinesSync();
 final graph = () {
-  final graph = Graph<String, void>.directed();
+  final graph = Graph<String, void>(isDirected: true);
   for (var x = 0; x < input.length; x++) {
     for (var y = 0; y < input[x].length; y++) {
       final source = Point(x, y);

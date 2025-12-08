@@ -88,7 +88,6 @@ int run(String filename) {
     stdout.writeln('');
   }
 
-  // TODO: solve the puzzle
   return input.length;
 }
 

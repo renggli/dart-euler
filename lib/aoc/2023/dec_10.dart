@@ -32,7 +32,7 @@ List<Point<int>> getNeighbours(Point<int> point, {bool other = false}) =>
         .toList();
 
 final graph = () {
-  final graph = Graph<Point<int>, void>.undirected();
+  final graph = Graph<Point<int>, void>(isDirected: false);
   for (var x = 0; x < data.length; x++) {
     for (var y = 0; y < data[x].length; y++) {
       final source = Point(x, y);
