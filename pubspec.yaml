@@ -23,3 +23,9 @@ dependencies:
   z3: ^0.1.0
 dev_dependencies:
   lints: ^6.0.0
+
+dependency_overrides:
+  data:
+    git: https://github.com/renggli/dart-data.git
+  more:
+    git: https://github.com/renggli/dart-more.git
