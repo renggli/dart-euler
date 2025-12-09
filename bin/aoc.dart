@@ -191,7 +191,6 @@ Future<void> runGemini(String prompt) async {
   stdout.writeln('${bold}Gemini is thinking ...$reset');
   final process = await Process.start('gemini', [
     '--output-format=text',
-    '--debug',
     '--yolo',
     prompt,
   ]);

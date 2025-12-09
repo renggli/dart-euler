@@ -25,20 +25,21 @@ int part2() {
   var result = 0;
   for (var i = 0; i < tiles.length; i++) {
     for (var j = i + 1; j < tiles.length; j++) {
-      final (x1, x2) = sorted(tiles[i].x, tiles[j].x);
-      final (y1, y2) = sorted(tiles[i].y, tiles[j].y);
+      final (rx1, rx2) = sorted(tiles[i].x, tiles[j].x);
+      final (ry1, ry2) = sorted(tiles[i].y, tiles[j].y);
       var isInside = true;
       for (var k = 0; k < tiles.length; k++) {
         final l = (k + 1) % tiles.length;
-        final (x3, x4) = sorted(tiles[k].x, tiles[l].x);
-        final (y3, y4) = sorted(tiles[k].y, tiles[l].y);
-        if (x1 < x4 && x2 > x3 && y1 < y4 && y2 > y3) {
+        final (x1, x2) = sorted(tiles[k].x, tiles[l].x);
+        final (y1, y2) = sorted(tiles[k].y, tiles[l].y);
+        assert(x1 == x2 || y1 == y2, 'Not horizontal or vertical line');
+        if (rx1 < x2 && x1 < rx2 && ry1 < y2 && y1 < ry2) {
           isInside = false;
           break;
         }
       }
       if (isInside) {
-        result = max(result, (x2 - x1 + 1) * (y2 - y1 + 1));
+        result = max(result, (rx2 - rx1 + 1) * (ry2 - ry1 + 1));
       }
     }
   }
