@@ -9,7 +9,6 @@ linter:
     - annotate_redeclares
     - avoid_dynamic_calls
     - avoid_final_parameters
-    - avoid_print
     - avoid_unused_constructor_parameters
     - combinators_ordering
     - comment_references

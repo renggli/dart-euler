@@ -146,15 +146,21 @@ Future<File> createTemplate({
     out.writeln('import \'package:data/data.dart\';');
     out.writeln('import \'package:more/more.dart\';');
     out.writeln();
-    out.writeln('final input = File(\'${input.path}\').readAsLinesSync();');
+    out.writeln('final exampleInput = <String>[];');
+    out.writeln(
+      'final puzzleInput = File(\'${input.path}\').readAsLinesSync();',
+    );
     out.writeln();
-    out.writeln('int part1() { return 0; }');
+    out.writeln('int part1(List<String> data) { return 0; }');
     out.writeln();
-    out.writeln('int part2() { return 0; }');
+    out.writeln('int part2(List<String> data) { return 0; }');
     out.writeln();
     out.writeln('void main() {');
-    out.writeln('  print(\'Part 1: \${part1()}\');');
-    out.writeln('  print(\'Part 2: \${part2()}\');');
+    out.writeln('  print(\'Part 1 (Example): \${part1(exampleInput)}\');');
+    out.writeln('  print(\'Part 1 (Puzzle): \${part1(puzzleInput)}\');');
+    out.writeln('  print(\'\');');
+    out.writeln('  print(\'Part 2 (Example): \${part2(exampleInput)}\');');
+    out.writeln('  print(\'Part 2 (Puzzle): \${part2(puzzleInput)}\');');
     out.writeln('}');
     await out.close();
     await Process.run('dart', ['format', file.absolute.path]);
@@ -185,6 +191,7 @@ Future<void> runGemini(String prompt) async {
   stdout.writeln('${bold}Gemini is thinking ...$reset');
   final process = await Process.start('gemini', [
     '--output-format=text',
+    '--debug',
     '--yolo',
     prompt,
   ]);
@@ -202,7 +209,7 @@ Future<void> submitAnswer({
   final file = getImplementation(year: year, day: day);
   final contents = await file.readAsString();
   final solution = RegExp(
-    'assert\\(part$part\\(\\)\\s*==\\s*(\\d+)\\)',
+    'assert\\(part$part\\(.*puzzleInput.*\\)\\s*==\\s*(\\d+)\\);',
   ).firstMatch(contents)?.group(1);
   if (solution == null) {
     stderr.writeln('Could not find solution in ${file.path} for part $part.');
@@ -270,12 +277,18 @@ Future<void> main(List<String> arguments) async {
           '.',
         );
       }
-      buffer.writeln('The puzzle input is in @${input.path}.');
-      buffer.writeln('The solution is in @${dart.path}.');
+      buffer.writeln(
+        'The puzzle input is in ${input.path} (do not attempt to directly read '
+        'whole file into your context, as it might be very large).',
+      );
+      buffer.writeln('Your solution should be in @${dart.path}.');
       buffer.writeln();
       buffer.writeln('Refine the code to solve the puzzle:');
       buffer.writeln('- Read the puzzle description carefully.');
-      buffer.writeln('- Assume the puzzle input is very large.');
+      buffer.writeln(
+        '- Reproduce the example from the puzzle description, '
+        'do not create unit tests.',
+      );
       buffer.writeln('- Write readable, efficient, and idiomatic Dart code.');
       if (part == 2) {
         buffer.writeln('- Avoid duplicating code between part 1 and 2.');
@@ -284,8 +297,10 @@ Future<void> main(List<String> arguments) async {
       buffer.writeln('- Run `dart analyze ${dart.path}` to check for errors.');
       buffer.writeln();
       buffer.writeln(
-        'Once the solution is verified, replace the print statement '
-        'with an assertion of the form: `assert(part$part() == SOLUTION)`.',
+        'Once the solution is verified, replace the print statements '
+        'for part $part with assertions of the form: '
+        '`assert(part$part(exampleInput) == EXAMPLE_SOLUTION)` and '
+        '`assert(part$part(puzzleInput) == PUZZLE_SOLUTION)`.',
       );
       await runGemini(buffer.toString());
     }
