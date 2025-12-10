@@ -278,7 +278,7 @@ Future<void> main(List<String> arguments) async {
       }
       buffer.writeln(
         'The puzzle input is in ${input.path} (do not attempt to directly read '
-        'whole file into your context, as it might be very large).',
+        'the whole file into your context, as it might be very large).',
       );
       buffer.writeln('Your solution should be in @${dart.path}.');
       buffer.writeln();
