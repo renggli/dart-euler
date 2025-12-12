@@ -1,37 +1,45 @@
-import 'dart:io';
-
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final input = File('lib/aoc/2025/dec_06.txt').readAsLinesSync();
-final columns = () {
-  final result = <List<String>>[];
-  final width = input.first.length;
-  for (var start = 0, end = 0; end <= width; end++) {
-    if (end == width || input.every((line) => line[end] == ' ')) {
-      result.add(input.map((line) => line.substring(start, end)).toList());
-      start = end + 1;
+import '../../utils.dart';
+
+class AoC2025Day6 extends AoC {
+  AoC2025Day6()
+    : super(year: 2025, day: 6, part1: 4364617236318, part2: 9077004354241);
+
+  List<List<String>> parse(String input) {
+    final lines = input.split('\n');
+    final result = <List<String>>[];
+    final width = lines.first.length;
+    for (var start = 0, end = 0; end <= width; end++) {
+      if (end == width || lines.every((line) => line[end] == ' ')) {
+        result.add(lines.map((line) => line.substring(start, end)).toList());
+        start = end + 1;
+      }
     }
+    return result;
   }
-  return result;
-}();
 
-int solve(Iterable<int> Function(List<String>) extract) =>
-    columns.map((column) {
-      final operands = extract(column.sublist(0, column.length - 1));
-      return column.last.trim() == '+' ? operands.sum() : operands.product();
-    }).sum();
+  int solve(
+    List<List<String>> columns,
+    Iterable<int> Function(List<String>) extract,
+  ) => columns.map((column) {
+    final operands = extract(column.sublist(0, column.length - 1));
+    return column.last.trim() == '+' ? operands.sum() : operands.product();
+  }).sum();
 
-int part1() => solve((values) => values.map(int.parse));
+  @override
+  int part1(String input) =>
+      solve(parse(input), (values) => values.map(int.parse));
 
-int part2() => solve(
-  (rows) => 0
-      .to(rows.first.length)
-      .reversed
-      .map((i) => int.parse(rows.map((row) => row[i]).join())),
-);
-
-void main() {
-  assert(part1() == 4364617236318);
-  assert(part2() == 9077004354241);
+  @override
+  int part2(String input) => solve(
+    parse(input),
+    (rows) => 0
+        .to(rows.first.length)
+        .reversed
+        .map((i) => int.parse(rows.map((row) => row[i]).join())),
+  );
 }
+
+void main() => MainRunner().runProblem(AoC2025Day6());

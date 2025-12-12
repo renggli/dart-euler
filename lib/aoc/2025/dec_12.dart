@@ -1,56 +1,73 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:collection/collection.dart' show ListEquality;
 import 'package:more/more.dart';
 
-const exampleInput = '''
-0:
-###
-##.
-##.
+import '../../utils.dart';
 
-1:
-###
-##.
-.##
+class AoC2025Day12 extends AoC {
+  AoC2025Day12()
+    : super(
+        year: 2025,
+        day: 12,
+        part1: 536,
+        skip2: true,
+        examples: [
+          AoCExample(
+            input: [
+              '0:',
+              '###',
+              '##.',
+              '##.',
+              '',
+              '1:',
+              '###',
+              '##.',
+              '.##',
+              '',
+              '2:',
+              '.##',
+              '###',
+              '##.',
+              '',
+              '3:',
+              '##.',
+              '###',
+              '##.',
+              '',
+              '4:',
+              '###',
+              '#..',
+              '###',
+              '',
+              '5:',
+              '###',
+              '.#.',
+              '###',
+              '',
+              '4x4: 0 0 0 0 2 0',
+              '12x5: 1 0 1 0 2 2',
+              '12x5: 1 0 1 0 3 2',
+            ].join('\n'),
+            part1: 2,
+          ),
+        ],
+      );
 
-2:
-.##
-###
-##.
-
-3:
-##.
-###
-##.
-
-4:
-###
-#..
-###
-
-5:
-###
-.#.
-###
-
-4x4: 0 0 0 0 2 0
-12x5: 1 0 1 0 2 2
-12x5: 1 0 1 0 3 2
-''';
-final puzzleInput = File('lib/aoc/2025/dec_12.txt').readAsStringSync();
-
-int part1(String input) {
-  final blocks = input.trim().split('\n\n');
-  final presents = blocks
-      .take(blocks.length - 1)
-      .map(Shape.parse)
-      .map(Present.new)
-      .toList();
-  final regions = blocks.last.split('\n').map(Region.parse).toList();
-  return regions.count((region) => region.canFit(presents));
+  @override
+  int part1(String input) {
+    final blocks = input.split('\n\n');
+    final presents = blocks
+        .take(blocks.length - 1)
+        .map(Shape.parse)
+        .map(Present.new)
+        .toList();
+    final regions = blocks.last.split('\n').map(Region.parse).toList();
+    return regions.count((region) => region.canFit(presents));
+  }
 }
+
+void main() => MainRunner().runProblem(AoC2025Day12());
 
 class Present {
   final List<Shape> variants;
@@ -214,9 +231,4 @@ class Region {
       grid[x + cell.x][y + cell.y] = value;
     }
   }
-}
-
-void main() {
-  assert(part1(exampleInput) == 2);
-  assert(part1(puzzleInput) == 536);
 }

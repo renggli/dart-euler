@@ -1,4 +1,4 @@
 import 'package:euler/all.dart';
 import 'package:euler/utils.dart';
 
-void main(List<String> args) => MainRunner().runGroup(all);
+void main() => TestRunner().runGroup(all);

@@ -1,46 +1,51 @@
-import 'dart:io';
-
 import 'package:data/data.dart';
 
-final grid = File('lib/aoc/2025/dec_07.txt').readAsLinesSync();
+import '../../utils.dart';
 
-int part1() {
-  var splits = 0;
-  var beams = {grid[0].indexOf('S')};
-  for (var row = 1; row < grid.length; row++) {
-    final next = <int>{};
-    for (final col in beams) {
-      if (grid[row][col] == '^') {
-        next.add(col - 1);
-        next.add(col + 1);
-        splits++;
-      } else {
-        next.add(col);
+class AoC2025Day7 extends AoC {
+  AoC2025Day7() : super(year: 2025, day: 7, part1: 1598, part2: 4509723641302);
+
+  List<String> parse(String input) => input.trim().split('\n');
+
+  @override
+  int part1(String input) {
+    final grid = parse(input);
+    var splits = 0;
+    var beams = {grid[0].indexOf('S')};
+    for (var row = 1; row < grid.length; row++) {
+      final next = <int>{};
+      for (final col in beams) {
+        if (grid[row][col] == '^') {
+          next.add(col - 1);
+          next.add(col + 1);
+          splits++;
+        } else {
+          next.add(col);
+        }
       }
+      beams = next;
     }
-    beams = next;
+    return splits;
   }
-  return splits;
-}
 
-int part2() {
-  var particles = {grid[0].indexOf('S'): 1};
-  for (var row = 1; row < grid.length; row++) {
-    final next = <int, int>{};
-    for (final MapEntry(key: col, value: count) in particles.entries) {
-      if (grid[row][col] == '^') {
-        next[col - 1] = (next[col - 1] ?? 0) + count;
-        next[col + 1] = (next[col + 1] ?? 0) + count;
-      } else {
-        next[col] = (next[col] ?? 0) + count;
+  @override
+  int part2(String input) {
+    final grid = parse(input);
+    var particles = {grid[0].indexOf('S'): 1};
+    for (var row = 1; row < grid.length; row++) {
+      final next = <int, int>{};
+      for (final MapEntry(key: col, value: count) in particles.entries) {
+        if (grid[row][col] == '^') {
+          next[col - 1] = (next[col - 1] ?? 0) + count;
+          next[col + 1] = (next[col + 1] ?? 0) + count;
+        } else {
+          next[col] = (next[col] ?? 0) + count;
+        }
       }
+      particles = next;
     }
-    particles = next;
+    return particles.values.sum();
   }
-  return particles.values.sum();
 }
 
-void main() {
-  assert(part1() == 1598);
-  assert(part2() == 4509723641302);
-}
+void main() => MainRunner().runProblem(AoC2025Day7());
