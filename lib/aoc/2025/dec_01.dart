@@ -1,24 +1,26 @@
-import 'dart:io';
+import 'package:more/more.dart';
 
-final offsets = File('lib/aoc/2025/dec_01.txt')
-    .readAsLinesSync()
-    .map((line) => (line[0] == 'L' ? -1 : 1) * int.parse(line.substring(1)))
-    .toList();
+import '../../tools.dart';
 
-int part1() {
+Iterable<int> parseInput(List<String> input) =>
+    input.map((line) => (line[0] == 'L' ? -1 : 1) * int.parse(line.skip(1)));
+
+@AoC(year: 2025, day: 1, part: 1, expected: 1195)
+int part1(List<String> input) {
   var pos = 50;
   var count = 0;
-  for (final offset in offsets) {
+  for (final offset in parseInput(input)) {
     pos = (pos + offset) % 100;
     if (pos == 0) count++;
   }
   return count;
 }
 
-int part2() {
+@AoC(year: 2025, day: 1, part: 2, expected: 6770)
+int part2(List<String> input) {
   var pos = 50;
   var count = 0;
-  for (final offset in offsets) {
+  for (final offset in parseInput(input)) {
     final old = pos;
     pos += offset;
     count += offset > 0
@@ -26,9 +28,4 @@ int part2() {
         : (old / 100).ceil() - (pos / 100).ceil();
   }
   return count;
-}
-
-void main() {
-  assert(part1() == 1195);
-  assert(part2() == 6770);
 }

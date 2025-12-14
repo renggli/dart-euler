@@ -22,4 +22,8 @@ dependencies:
   timezone: ^0.10.0
   z3: ^0.1.0
 dev_dependencies:
+  analyzer: ^9.0.0
+  build: ^4.0.0
+  build_runner: ^2.10.0
   lints: ^6.0.0
+  source_gen: ^4.1.0
