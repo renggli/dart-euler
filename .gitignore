@@ -1,4 +1,5 @@
 *.iml
+.cache/
 .DS_Store
 .dart_tool/
 .pub/
