@@ -13,16 +13,12 @@ int run(String filename) {
     final parts = line.split('\t');
     final date = DateTime.parse(parts[0]);
     final offset = Duration(hours: int.parse(parts[0].substring(23, 26)));
-    final halifaxOffset = Duration(
-      milliseconds: halifaxTimezone
-          .timeZone(date.millisecondsSinceEpoch)
-          .offset,
-    );
-    final santiagoOffset = Duration(
-      milliseconds: santiagoTimezone
-          .timeZone(date.millisecondsSinceEpoch)
-          .offset,
-    );
+    final halifaxOffset = halifaxTimezone
+        .timeZone(date.millisecondsSinceEpoch)
+        .offset;
+    final santiagoOffset = santiagoTimezone
+        .timeZone(date.millisecondsSinceEpoch)
+        .offset;
     final tzDate = offset == halifaxOffset
         ? TZDateTime.parse(halifaxTimezone, parts[0])
         : offset == santiagoOffset
