@@ -13,38 +13,48 @@
 //
 // Find the value of n, 1 < n < 10^7, for which φ(n) is a permutation of n and
 // the ratio n/φ(n) produces a minimum.
+
 import 'package:more/math.dart';
 
-int phi(int n) {
-  var r = 0;
-  for (var k = 1; k <= n; k++) {
-    if (n.gcd(k) == 1) {
-      r++;
-    }
-  }
-  return r;
-}
-
 bool isPermutation(int a, int b) {
-  final ad = a.digits().toList()..sort();
-  final bd = b.digits().toList()..sort();
-  return ad.join() == bd.join();
+  final counts = List.filled(10, 0);
+  while (a > 0) {
+    counts[a % 10]++;
+    a ~/= 10;
+  }
+  while (b > 0) {
+    counts[b % 10]--;
+    b ~/= 10;
+  }
+  for (final c in counts) {
+    if (c != 0) return false;
+  }
+  return true;
 }
-
-const max = 10000000;
 
 void main() {
-  assert(false);
-  var minr = 2.0;
-  var minn = 0;
-  for (var n = 2; n < max; n++) {
-    final p = phi(n);
-    final r = n / p;
-    if (r < minr && isPermutation(n, p)) {
-      minr = r;
-      minn = n;
+  const max = 10000000;
+  var minR = double.infinity;
+  var minN = 0;
+
+  final primes = AtkinPrimeSieve(max).primes.toList();
+
+  for (var i = 0; i < primes.length; i++) {
+    for (var j = i + 1; j < primes.length; j++) {
+      final p1 = primes[i];
+      final p2 = primes[j];
+      final n = p1 * p2;
+      if (n > max) break;
+
+      final phi = (p1 - 1) * (p2 - 1);
+      final r = n / phi;
+
+      if (r < minR && isPermutation(n, phi)) {
+        minR = r;
+        minN = n;
+      }
     }
   }
-  assert(minn == 0);
-  assert(false);
+
+  assert(minN == 8319823);
 }

@@ -28,6 +28,44 @@
 // form 16- and 17-digit strings. What is the maximum 16-digit string for a
 // "magic" 5-gon ring?
 
+import 'package:more/collection.dart';
+
 void main() {
-  assert(false);
+  var maxString = '';
+
+  for (final p in [1, 2, 3, 4, 5].permutations()) {
+    final outer = <int>[];
+    var valid = true;
+    for (var i = 0; i < 5; i++) {
+      final o = 14 - p[i] - p[(i + 1) % 5];
+      if (o < 6 || o > 10 || outer.contains(o)) {
+        valid = false;
+        break;
+      }
+      outer.add(o);
+    }
+    if (valid) {
+      var minIndex = 0;
+      for (var i = 1; i < 5; i++) {
+        if (outer[i] < outer[minIndex]) {
+          minIndex = i;
+        }
+      }
+
+      final buffer = StringBuffer();
+      for (var i = 0; i < 5; i++) {
+        final idx = (minIndex + i) % 5;
+        buffer.write(outer[idx]);
+        buffer.write(p[idx]);
+        buffer.write(p[(idx + 1) % 5]);
+      }
+
+      final s = buffer.toString();
+      if (maxString.isEmpty || s.compareTo(maxString) > 0) {
+        maxString = s;
+      }
+    }
+  }
+
+  assert(maxString == '6531031914842725');
 }
