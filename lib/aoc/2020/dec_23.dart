@@ -3,12 +3,14 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final values = File(
-  'lib/aoc/2020/dec_23.txt',
-).readAsStringSync().split('').map(int.parse).toList();
+final values = File('lib/aoc/2020/dec_23.txt')
+    .readAsStringSync()
+    .split('')
+    .map(int.parse)
+    .toList();
 
 base class Cup extends LinkedListEntry<Cup> {
-  Cup(this.value);
+  new(this.value);
 
   final int value;
 

@@ -4,20 +4,20 @@ import 'dart:io';
 import 'package:more/more.dart';
 
 class Module {
-  Module(this.name, this.outgoing);
+  new(this.name, this.outgoing);
 
   final String name;
   final List<String> outgoing;
 }
 
 class FlipFlop extends Module {
-  FlipFlop(super.name, super.outgoing);
+  new(super.name, super.outgoing);
 
   bool state = false;
 }
 
 class Conjunction extends Module {
-  Conjunction(super.name, super.outgoing);
+  new(super.name, super.outgoing);
 
   final Map<String, bool> states = {};
 }
@@ -47,9 +47,9 @@ final modules = File('lib/aoc/2023/dec_20.txt')
     });
 
 final broadcaster = modules['broadcaster']!;
-final rx =
-    modules.values.singleWhere((each) => each.outgoing.contains('rx'))
-        as Conjunction;
+final rx = modules.values.singleWhere(
+  (each) => each.outgoing.contains('rx'),
+) as Conjunction;
 
 var lowCount = 0, highCount = 0, pressCount = 0;
 final rxPresses = <String, int>{};

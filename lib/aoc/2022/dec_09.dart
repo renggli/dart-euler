@@ -7,7 +7,7 @@ enum Direction {
   left(Point(-1, 0)),
   right(Point(1, 0));
 
-  const Direction(this.offset);
+  new(this.offset);
 
   final Point<int> offset;
 }
@@ -20,7 +20,7 @@ const directions = {
 };
 
 class Move {
-  Move(String input)
+  new(String input)
     : direction = directions[input[0]]!,
       count = int.parse(input.substring(2));
 

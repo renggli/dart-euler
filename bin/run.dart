@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:euler/all.dart';
+
 import 'utils/ansi.dart';
 
 Future<void> runGroup(Group parent, {Pattern? pattern, int level = 0}) async {

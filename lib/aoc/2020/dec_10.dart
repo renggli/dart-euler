@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final values = File(
-  'lib/aoc/2020/dec_10.txt',
-).readAsLinesSync().map(int.parse).toList();
+final values = File('lib/aoc/2020/dec_10.txt')
+    .readAsLinesSync()
+    .map(int.parse)
+    .toList();
 
 final cache = <int, int>{};
 

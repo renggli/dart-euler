@@ -6,14 +6,14 @@ abstract interface class Input {
 }
 
 class NullInput implements Input {
-  const NullInput();
+  const new();
 
   @override
   int get() => throw StateError('No input provided');
 }
 
 class ListInput implements Input {
-  ListInput([Iterable<int> iterable = const []]) {
+  new([Iterable<int> iterable = const []]) {
     list.addAll(iterable);
   }
 

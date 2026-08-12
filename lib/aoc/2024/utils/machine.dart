@@ -1,5 +1,5 @@
 class Machine {
-  Machine(Iterable<int> registers, Iterable<int> program)
+  new(Iterable<int> registers, Iterable<int> program)
     : registers = registers.toList(growable: false),
       program = program.toList(growable: false) {
     assert(registers.length == 3, 'Exactly 3 registers expected');

@@ -18,7 +18,7 @@ abstract class Entry {
 }
 
 class FileEntry extends Entry {
-  FileEntry(this.parent, this.name, this.size);
+  new(this.parent, this.name, this.size);
 
   @override
   final DirEntry? parent;
@@ -31,7 +31,7 @@ class FileEntry extends Entry {
 }
 
 class DirEntry extends Entry {
-  DirEntry(this.parent, this.name);
+  new(this.parent, this.name);
 
   @override
   final DirEntry? parent;
@@ -58,9 +58,9 @@ final root = () {
         } else if (token[2] == '..') {
           current = current.parent!;
         } else {
-          current =
-              current.children.firstWhere((each) => each.name == token[2])
-                  as DirEntry;
+          current = current.children.firstWhere(
+            (each) => each.name == token[2],
+          ) as DirEntry;
         }
       } else if (token[1] == 'ls') {
         // nothing to do

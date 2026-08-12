@@ -55,7 +55,7 @@ int part1(String input) {
 class Present {
   final List<Shape> variants;
 
-  Present(Shape shape)
+  new(Shape shape)
     : variants = iterate(
         shape,
         (s) => s.rotated,
@@ -63,7 +63,7 @@ class Present {
 }
 
 class Shape {
-  Shape(Iterable<Cell> input) : cells = input.toList(growable: false) {
+  new(Iterable<Cell> input) : cells = input.toList(growable: false) {
     cells.sort((a, b) => a.y == b.y ? a.x.compareTo(b.x) : a.y.compareTo(b.y));
     final offset = Cell(
       cells.map((cell) => cell.x).min(),
@@ -74,7 +74,7 @@ class Shape {
     }
   }
 
-  factory Shape.parse(String input) {
+  factory parse(String input) {
     final lines = input.split('\n');
     final grid = lines.skip(1).map((line) => line.split('')).toList();
     final cells = <Cell>[];
@@ -108,9 +108,9 @@ class Shape {
 typedef Cell = Point<int>;
 
 class Region {
-  Region(this.width, this.height, this.counts);
+  new(this.width, this.height, this.counts);
 
-  factory Region.parse(String line) {
+  factory parse(String line) {
     final parts = line.split(': ');
     final dims = parts[0].split('x');
     return Region(

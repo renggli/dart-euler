@@ -4,9 +4,10 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final rulesAndUpdates = File(
-  'lib/aoc/2024/dec_05.txt',
-).readAsStringSync().trim().split('\n\n');
+final rulesAndUpdates = File('lib/aoc/2024/dec_05.txt')
+    .readAsStringSync()
+    .trim()
+    .split('\n\n');
 final rules = SetMultimap.fromEntries(
   rulesAndUpdates.first
       .split('\n')

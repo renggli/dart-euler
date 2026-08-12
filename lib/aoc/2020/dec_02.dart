@@ -1,9 +1,9 @@
 import 'dart:io';
 
 class Value {
-  Value(this.first, this.second, this.letter, this.password);
+  new(this.first, this.second, this.letter, this.password);
 
-  factory Value.fromString(String input) {
+  factory fromString(String input) {
     final match = pattern.matchAsPrefix(input)!;
     return Value(
       int.parse(match.group(1)!),
@@ -35,9 +35,9 @@ bool isValid2(Value value) =>
         value.second <= value.password.length &&
         value.password[value.second - 1] == value.letter);
 
-final values = File(
-  'lib/aoc/2020/dec_02.txt',
-).readAsLinesSync().map(Value.fromString);
+final values = File('lib/aoc/2020/dec_02.txt')
+    .readAsLinesSync()
+    .map(Value.fromString);
 
 void main() {
   assert(values.where(isValid1).length == 458);

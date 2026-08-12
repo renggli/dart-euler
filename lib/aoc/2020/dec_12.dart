@@ -17,7 +17,7 @@ Point<int> rotate(Point<int> point, int degrees) {
 }
 
 class State {
-  const State(this.pos, this.dir);
+  const new(this.pos, this.dir);
 
   final Point<int> pos;
   final Point<int> dir;

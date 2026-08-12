@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:data/data.dart';
 
 final input = File('lib/aoc/2015/dec_02.txt').readAsLinesSync();

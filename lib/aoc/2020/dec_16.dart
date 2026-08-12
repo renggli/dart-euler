@@ -24,9 +24,10 @@ final nearbyTickets = values[2]
     .toList();
 
 final allFieldValues = fields.values.reduce((a, b) => {...a, ...b});
-final validTickets = [
-  yourTicket,
-].followedBy(nearbyTickets).where(allFieldValues.containsAll).toList();
+final validTickets = [yourTicket]
+    .followedBy(nearbyTickets)
+    .where(allFieldValues.containsAll)
+    .toList();
 
 int part1() => nearbyTickets
     .map(

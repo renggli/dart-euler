@@ -7,7 +7,7 @@ abstract interface class Output {
 }
 
 class NullOutput implements Output {
-  const NullOutput();
+  const new();
 
   @override
   void put(int value) {}

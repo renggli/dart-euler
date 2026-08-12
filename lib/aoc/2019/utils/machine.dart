@@ -7,14 +7,13 @@ import 'inputs.dart';
 import 'outputs.dart';
 
 class Machine {
-  factory Machine.fromFile(File file, {Input? input, Output? output}) =>
-      Machine(
-        file.readAsStringSync().split(',').map(int.parse),
-        input: input,
-        output: output,
-      );
+  factory fromFile(File file, {Input? input, Output? output}) => Machine(
+    file.readAsStringSync().split(',').map(int.parse),
+    input: input,
+    output: output,
+  );
 
-  Machine(Iterable<int> memory, {Input? input, Output? output})
+  new(Iterable<int> memory, {Input? input, Output? output})
     : memory = memory.toList(),
       input = input ?? const NullInput(),
       output = output ?? const NullOutput();

@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:data/data.dart';
 
-final data = File(
-  'lib/aoc/2019/dec_01.txt',
-).readAsLinesSync().map(int.parse).toList();
+final data = File('lib/aoc/2019/dec_01.txt')
+    .readAsLinesSync()
+    .map(int.parse)
+    .toList();
 
 int part1() => data.map((each) => each ~/ 3 - 2).sum();
 

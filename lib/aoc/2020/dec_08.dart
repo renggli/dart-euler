@@ -1,9 +1,9 @@
 import 'dart:io';
 
 class Code {
-  Code(this.name, this.value);
+  new(this.name, this.value);
 
-  factory Code.parse(String line) {
+  factory parse(String line) {
     final parts = line.split(' ');
     return Code(parts[0], int.parse(parts[1]));
   }
@@ -29,7 +29,7 @@ class Code {
 }
 
 class State {
-  State([this.pc = 0, this.acc = 0]);
+  new([this.pc = 0, this.acc = 0]);
 
   final int pc;
   final int acc;
@@ -64,9 +64,10 @@ int switchNopJmp(List<Code> codes) {
   throw StateError('No terminating mutation found.');
 }
 
-final codes = File(
-  'lib/aoc/2020/dec_08.txt',
-).readAsLinesSync().map(Code.parse).toList();
+final codes = File('lib/aoc/2020/dec_08.txt')
+    .readAsLinesSync()
+    .map(Code.parse)
+    .toList();
 
 void main() {
   assert(run(State(), codes).acc == 2034);

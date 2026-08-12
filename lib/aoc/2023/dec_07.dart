@@ -75,9 +75,8 @@ int problem(String values, bool withJokers) => hands
       explicitComparator(HandType.values)
           .keyOf<Hand>((hand) => handStrength(hand, withJokers))
           .thenCompare(
-            explicitComparator(
-              values.split(''),
-            ).lexicographical.keyOf<Hand>((hand) => hand.cards),
+            explicitComparator(values.split('')).lexicographical
+                .keyOf<Hand>((hand) => hand.cards),
           ),
     )
     .indexed(start: hands.length, step: -1)

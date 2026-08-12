@@ -12,9 +12,9 @@ final monkeyPattern = RegExp(r'''Monkey (\d+):
     If false: throw to monkey (\d+)''', multiLine: true);
 
 class Monkey {
-  Monkey(String input) : this._(monkeyPattern.matchAsPrefix(input)!);
+  new(String input) : this._(monkeyPattern.matchAsPrefix(input)!);
 
-  Monkey._(Match match)
+  new _(Match match)
     : index = int.parse(match.group(1)!),
       startItems = match.group(2)!.split(',').map(int.parse),
       operation = match.group(3) == '+'
@@ -36,9 +36,11 @@ class Monkey {
   final int falseTarget;
 }
 
-final monkeys = File(
-  'lib/aoc/2022/dec_11.txt',
-).readAsStringSync().split('\n\n').map(Monkey.new).toList();
+final monkeys = File('lib/aoc/2022/dec_11.txt')
+    .readAsStringSync()
+    .split('\n\n')
+    .map(Monkey.new)
+    .toList();
 
 void round(
   List<List<int>> monkeyItems,

@@ -6,9 +6,10 @@ const outside = ' ';
 const empty = 'L';
 const occupied = '#';
 
-final values = File(
-  'lib/aoc/2020/dec_11.txt',
-).readAsLinesSync().map((line) => line.split('')).toList();
+final values = File('lib/aoc/2020/dec_11.txt')
+    .readAsLinesSync()
+    .map((line) => line.split(''))
+    .toList();
 
 String seatAt(List<List<String>> input, int x, int y) =>
     0 <= x && x < input.length && 0 <= y && y < input[x].length

@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:more/more.dart';
 
-final lines = File(
-  'lib/aoc/2020/dec_21.txt',
-).readAsLinesSync().map((line) => line.removeSuffix(')').split(' (contains '));
+final lines = File('lib/aoc/2020/dec_21.txt')
+    .readAsLinesSync()
+    .map((line) => line.removeSuffix(')').split(' (contains '));
 
 void main() {
   final ingredients = <String>[];

@@ -19,9 +19,10 @@ final horizontalGaps = IntegerRange(horizontalLength)
 
 final galaxies = IntegerRange(verticalLength)
     .expand(
-      (i) => IntegerRange(
-        horizontalLength,
-      ).where((j) => data[i][j] != '.').map((j) => Point(i, j)),
+      (i) =>
+          IntegerRange(horizontalLength)
+              .where((j) => data[i][j] != '.')
+              .map((j) => Point(i, j)),
     )
     .toList();
 

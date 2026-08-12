@@ -6,7 +6,7 @@ import 'package:more/more.dart';
 
 @immutable
 class Cell {
-  const Cell(this.x, this.y, [this.z = 0, this.w = 0]);
+  const new(this.x, this.y, [this.z = 0, this.w = 0]);
 
   final int x, y, z, w;
 

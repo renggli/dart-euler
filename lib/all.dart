@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:more/collection.dart';
 
 class Group {
-  Group(this.directory);
+  new(this.directory);
 
   final Directory directory;
 
@@ -31,7 +31,7 @@ class Group {
 }
 
 class Problem {
-  Problem(this.file);
+  new(this.file);
 
   final File file;
 

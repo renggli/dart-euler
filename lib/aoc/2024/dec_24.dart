@@ -140,16 +140,16 @@ void main() {
 
 enum Operation { xor, and, or }
 
-sealed class Wire {}
+sealed class Wire;
 
 class ValueWire extends Wire {
-  ValueWire(this.value);
+  new(this.value);
 
   bool value;
 }
 
 class OperationWire extends Wire {
-  OperationWire(this.a, this.op, this.b);
+  new(this.a, this.op, this.b);
 
   String a;
   Operation op;

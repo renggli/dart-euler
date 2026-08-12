@@ -45,9 +45,11 @@ Iterable<Path<State, num>> search({bool includeAlternativePaths = false}) =>
 
 int part1() => search().first.cost.toInt();
 
-int part2() => search(
-  includeAlternativePaths: true,
-).flatMap((path) => path.vertices.map((state) => state.pos)).toSet().length;
+int part2() =>
+    search(includeAlternativePaths: true)
+        .flatMap((path) => path.vertices.map((state) => state.pos))
+        .toSet()
+        .length;
 
 void main() {
   assert(part1() == 130536);

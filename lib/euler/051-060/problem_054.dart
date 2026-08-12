@@ -74,7 +74,7 @@ const values = [
 const suits = ['C', 'D', 'H', 'S'];
 
 class Card implements Comparable<Card> {
-  factory Card(String input) {
+  factory(String input) {
     if (input.length != 2) {
       throw ArgumentError('Invalid card: $input');
     }
@@ -87,7 +87,7 @@ class Card implements Comparable<Card> {
     return Card._(input, values.indexOf(input[0]), suits.indexOf(input[1]));
   }
 
-  Card._(this.input, this.value, this.suit);
+  new _(this.input, this.value, this.suit);
 
   final String input;
   final int value;
@@ -101,7 +101,7 @@ class Card implements Comparable<Card> {
 }
 
 class Hand {
-  factory Hand(Iterable<String> input) {
+  factory(Iterable<String> input) {
     if (input.length != 5) {
       throw ArgumentError('Invalid hand: $input');
     }
@@ -111,7 +111,7 @@ class Hand {
     return Hand._(input.join(' '), cards, values, suits);
   }
 
-  Hand._(this.input, this.cards, this.values, this.suits);
+  new _(this.input, this.cards, this.values, this.suits);
 
   final String input;
   final List<Card> cards;

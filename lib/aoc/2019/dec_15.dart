@@ -19,10 +19,10 @@ const directions = {
 
 enum Type { wall, seen, goal }
 
-class Complete extends Error {}
+class Complete extends Error;
 
 class State implements Input, Output {
-  State([this.start = const Point(0, 0)])
+  new([this.start = const Point(0, 0)])
     : visited = {start: Type.seen},
       path = [start];
 

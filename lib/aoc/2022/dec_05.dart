@@ -6,7 +6,7 @@ final stack = RegExp(r'( {3}|\[(\w)\]) ?');
 final operation = RegExp(r'move (\d+) from (\d+) to (\d+)');
 
 class Operation {
-  Operation(this.quantity, this.from, this.to);
+  new(this.quantity, this.from, this.to);
 
   final int quantity;
   final int from;

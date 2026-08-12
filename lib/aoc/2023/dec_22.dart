@@ -6,7 +6,7 @@ import 'package:more/more.dart';
 typedef Cube = ({int x, int y, int z});
 
 class Brick {
-  factory Brick.fromString(int index, String input) {
+  factory fromString(int index, String input) {
     final [x1, y1, z1, x2, y2, z2] = input
         .split(CharMatcher.charSet(',~'))
         .map(int.parse)
@@ -23,8 +23,7 @@ class Brick {
     return Brick(index, cubes);
   }
 
-  Brick(this.index, Iterable<Cube> cubes)
-    : cubes = cubes.toList(growable: false);
+  new(this.index, Iterable<Cube> cubes) : cubes = cubes.toList(growable: false);
 
   final int index;
   final List<Cube> cubes;
@@ -41,9 +40,10 @@ class Brick {
   toString() => 'Blocks($index: ${cubes.join(', ')})';
 }
 
-final bricks = File(
-  'lib/aoc/2023/dec_22.txt',
-).readAsLinesSync().mapIndexed(Brick.fromString).toList();
+final bricks = File('lib/aoc/2023/dec_22.txt')
+    .readAsLinesSync()
+    .mapIndexed(Brick.fromString)
+    .toList();
 
 List<Brick> drop(List<Brick> bricks) {
   final blocked = <Cube>{};

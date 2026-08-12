@@ -7,15 +7,17 @@ import 'utils/inputs.dart';
 import 'utils/machine.dart';
 import 'utils/outputs.dart';
 
-final program = File(
-  'lib/aoc/2019/dec_23.txt',
-).readAsStringSync().split(',').map(int.parse).toList();
+final program = File('lib/aoc/2019/dec_23.txt')
+    .readAsStringSync()
+    .split(',')
+    .map(int.parse)
+    .toList();
 
 final computers = List.generate(50, Computer.new);
 final nat = QueueList<int>();
 
 class Computer implements Input, Output {
-  Computer(int address) {
+  new(int address) {
     incoming.add(address);
   }
 

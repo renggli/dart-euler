@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:more/more.dart';
 
-final values = File(
-  'lib/aoc/2020/dec_15.txt',
-).readAsStringSync().split(',').map(int.parse);
+final values = File('lib/aoc/2020/dec_15.txt')
+    .readAsStringSync()
+    .split(',')
+    .map(int.parse);
 
 int run(int count) {
   final lastSpoken = values.indexed().toMap(

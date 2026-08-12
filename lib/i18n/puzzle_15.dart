@@ -35,7 +35,7 @@ TZDateTime parseDate(Location location, String input) {
 // Model of place and timezone.
 
 class Place {
-  factory Place.fromString(String input) {
+  factory fromString(String input) {
     final parts = input.split('\t');
     final location = getLocation(parts[1]);
     return Place(
@@ -45,7 +45,7 @@ class Place {
     );
   }
 
-  Place(this.name, this.location, this.holidays);
+  new(this.name, this.location, this.holidays);
 
   bool isWorkday(TZDateTime datetime) {
     if (datetime.weekday == DateTime.saturday ||

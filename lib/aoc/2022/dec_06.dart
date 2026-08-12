@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 
-final stream = File(
-  'lib/aoc/2022/dec_06.txt',
-).readAsStringSync().split('').toList();
+final stream = File('lib/aoc/2022/dec_06.txt')
+    .readAsStringSync()
+    .split('')
+    .toList();
 
 int firstDistinctIndex(int count) {
   final queue = QueueList<String>(count);

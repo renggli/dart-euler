@@ -3,9 +3,10 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:more/more.dart';
 
-final input = File(
-  'lib/aoc/2024/dec_22.txt',
-).readAsLinesSync().map(int.parse).toList();
+final input = File('lib/aoc/2024/dec_22.txt')
+    .readAsLinesSync()
+    .map(int.parse)
+    .toList();
 
 int next(int value) {
   final step1 = (value ^ value * 64) % 16777216;
