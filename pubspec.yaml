@@ -22,4 +22,5 @@ dependencies:
   timezone: ^0.11.1
   z3: ^0.1.0
 dev_dependencies:
+  checks: ^0.3.2
   lints: ^6.1.0

@@ -1,15 +1,18 @@
+import 'package:checks/checks.dart';
 import 'package:euler/all.dart';
-import 'package:test/test.dart' as test;
+import 'package:test/scaffolding.dart';
 
-void createGroup(Group group) {
-  test.group(group.name, () {
-    group.groups.forEach(createGroup);
-    for (final problem in group.problems) {
-      test.test(problem.name, () async {
+import 'test_utils.dart';
+
+void createGroup(Group groupDef) {
+  group(groupDef.name, () {
+    groupDef.groups.forEach(createGroup);
+    for (final problem in groupDef.problems) {
+      test(problem.name, () async {
         final result = await problem.execute();
-        if (result.exitCode != 0) {
-          test.fail(result.stderr as String);
-        }
+        check(result)
+          ..succeeded()
+          ..stderr.equals('');
       });
     }
   });
