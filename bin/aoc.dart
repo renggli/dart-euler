@@ -185,19 +185,24 @@ Future<void> streamListener(
   return completer.future;
 }
 
-Future<void> runGemini(String prompt) async {
-  stdout.writeln('${bold}Prompting Gemini ...$reset');
+Future<void> runAgy(String prompt) async {
+  stdout.writeln('${bold}Prompting Antigravity ...$reset');
   stdout.writeln(prompt);
-  stdout.writeln('${bold}Gemini is thinking ...$reset');
-  final process = await Process.start('gemini', [
+  stdout.writeln('${bold}Antigravity is thinking ...$reset');
+  final process = await Process.start('agy', [
     '--output-format=text',
-    '--yolo',
-    prompt,
+    '--dangerously-skip-permissions',
+    '--print=$prompt',
   ]);
   await Future.wait([
     streamListener(process.stdout, stdout.writeln),
     streamListener(process.stderr, stderr.writeln),
   ]);
+  final exitCode = await process.exitCode;
+  if (exitCode != 0) {
+    stderr.writeln('Antigravity exited with code $exitCode');
+    exit(exitCode);
+  }
 }
 
 Future<void> submitAnswer({
@@ -289,10 +294,27 @@ Future<void> main(List<String> arguments) async {
         'do not create unit tests.',
       );
       buffer.writeln('- Write readable, efficient, and idiomatic Dart code.');
+      buffer.writeln('- Where applicable use helper libraries:');
+      buffer.writeln(
+        '    - package:more/more.dart for collections data types (B+Tree, '
+        'R-Tree, Trie, Multimap, BiMap, BitList), graphs algorithms, caches, '
+        'combinatorics, math (Fraction, Complex), Unicode, diff, intervals, '
+        'and printers.',
+      );
+      buffer.writeln(
+        '    - package:data/data.dart for scientific computing, i.e vectors,'
+        'matrices, tensors, linear algebra (BLAS/LAPACK), statistics, '
+        'probability, symbolic calculus, FFT, and numeric solvers.',
+      );
+      buffer.writeln(
+        '    - Ask before importing any other non-standard library.',
+      );
       if (part == 2) {
         buffer.writeln('- Avoid duplicating code between part 1 and 2.');
       }
-      buffer.writeln('- Run `dart run ${dart.path}` to verify your solution.');
+      buffer.writeln(
+        '- Run `dart run --enable-asserts ${dart.path}` to verify your solution.',
+      );
       buffer.writeln('- Run `dart analyze ${dart.path}` to check for errors.');
       buffer.writeln();
       buffer.writeln(
@@ -301,7 +323,7 @@ Future<void> main(List<String> arguments) async {
         '`assert(part$part(exampleInput) == EXAMPLE_SOLUTION)` and '
         '`assert(part$part(puzzleInput) == PUZZLE_SOLUTION)`.',
       );
-      await runGemini(buffer.toString());
+      await runAgy(buffer.toString());
     }
     if (answer.contains(part)) {
       await submitAnswer(year: year, day: day, part: part);
