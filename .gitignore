@@ -3,8 +3,12 @@
 .dart_tool/
 .DS_Store
 .idea/
+.opencode/
 .packages
 .pub/
-.opencode/
 *.iml
+bin/.session
+lib/aoc/**/*_1.md
+lib/aoc/**/*_2.md
+lib/aoc/**/*.html
 pubspec.lock
