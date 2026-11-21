@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:data/data.dart';
-import 'package:more/more.dart';
+import 'package:more/more.dart' hide Match;
 
 final regex = RegExp(r'([DURL]) (\d+) \(#([a-f0-9]{6})\)');
 final data = File('lib/aoc/2023/dec_18.txt').readAsLinesSync().toList();

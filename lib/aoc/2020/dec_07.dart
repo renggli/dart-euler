@@ -8,12 +8,12 @@ final values = File('lib/aoc/2020/dec_07.txt')
     .readAsLinesSync()
     .map((each) => each.split(' contain '))
     .toMap(
-      key: (each) => trimmer.trimTailingFrom(each[0]),
+      key: (each) => trimmer.trimTrailingFrom(each[0]),
       value: (each) => each[1]
           .split(', ')
           .where((each) => !each.startsWith('no other bags'))
           .toMap(
-            key: (each) => trimmer.trimTailingFrom(each.substring(2)),
+            key: (each) => trimmer.trimTrailingFrom(each.substring(2)),
             value: (each) => int.parse(each[0]),
           ),
     );

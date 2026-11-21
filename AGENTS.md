@@ -9,7 +9,7 @@
 - **Part isolation:** While working on Part 1, never hint at or design for Part 2 twists.
 - **Input hygiene:** Never read full puzzle input files (`dec_XX.txt`) into context; they can be large and waste tokens. Inspect only a few lines if needed to verify formatting, and debug using `exampleInput` or minimal synthetic inputs.
 - **When writing code IS allowed:**
-  - Tooling, scripts, and test infrastructure (`bin/`, `test/`).
+  - Boilerplate, Tooling, scripts, and test infrastructure (`bin/`, `test/`).
   - Scaffolding/boilerplate (file setup, empty templates).
   - Post-solve cleanup (formatting, lint fixes, or refactoring an already-solved puzzle when explicitly asked).
 
@@ -26,6 +26,7 @@
 - **Solution lifecycle:**
   - During development, use `exampleInput` and `puzzleInput` with `print(...)`.
   - Once solved, remove all `print(...)` output (tests expect silent execution with empty stderr) and assert on both `exampleInput` and `puzzleInput`:
+
     ```dart
     void main() {
       assert(part1(exampleInput) == ...);
@@ -34,11 +35,12 @@
       assert(part2(puzzleInput) == ...);
     }
     ```
+
 - **Secrets & copyright:** Never commit `bin/.session` or downloaded puzzle descriptions (`*.html`, `*_1.md`, `*_2.md`).
 
 ## Dart Conventions & Tooling
 
-- **SDK & style:** Target Dart `^3.14.0` and follow [Effective Dart](https://dart.dev/effective-dart) plus `analysis_options.yaml` (`strict-casts`, `strict-inference`, `strict-raw-types`, `prefer_const_*`, `prefer_final_locals`, `prefer_expression_function_bodies`, `omit_local_variable_types`, `prefer_single_quotes`, `prefer_relative_imports`, `use_declaring_parameters`).
+- **SDK & style:** Target latest Dart and follow [Effective Dart](https://dart.dev/effective-dart) plus `analysis_options.yaml` (`strict-casts`, `strict-inference`, `strict-raw-types`, `prefer_const_*`, `prefer_final_locals`, `prefer_expression_function_bodies`, `omit_local_variable_types`, `prefer_single_quotes`, `prefer_relative_imports`, `use_declaring_parameters`).
 - **Performance:** Prefer `const` constructors/literals and short, readable, fast solutions (in that priority order).
 - **Dart MCP first:** Prefer the Dart MCP server tools (`analyze_files`, `lsp`, `pub`, etc.) over running `dart` CLI commands manually.
 - **Available packages (`pubspec.yaml`):** Keep these in mind when suggesting idiomatic Dart tools (only when relevant, without spoiling the algorithm):
